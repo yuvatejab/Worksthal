@@ -125,7 +125,6 @@ export function Contact() {
           count={5}
           color="rgba(161, 161, 170, 0.06)"
           blur={50}
-          opacity={0.35}
           speed={24}
           length="60vh"
         />

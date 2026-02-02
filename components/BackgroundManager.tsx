@@ -50,7 +50,6 @@ export function BackgroundManager({ activeSection }: BackgroundManagerProps) {
           count={5}
           color="rgba(161, 161, 170, 0.06)"
           blur={60}
-          opacity={0.3}
           speed={22}
           length="80vh"
         />

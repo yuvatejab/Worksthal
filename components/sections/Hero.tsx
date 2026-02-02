@@ -13,7 +13,6 @@ export function Hero() {
           count={10}
           color="rgba(212, 212, 216, 0.15)"
           blur={80}
-          opacity={0.7}
           speed={18}
           length="100vh"
         />
