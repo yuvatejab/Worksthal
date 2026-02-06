@@ -84,7 +84,7 @@ export default function Home() {
         initial={{ opacity: 0 }}
         animate={{ opacity: isLoaded ? 1 : 0 }}
         transition={{ duration: 0.5 }}
-        className="flex h-screen w-full overflow-hidden bg-background"
+        className="flex min-h-screen w-full bg-background"
       >
         {/* Persistent Sidebar */}
       <Sidebar open={open} setOpen={setOpen}>
@@ -118,7 +118,7 @@ export default function Home() {
       </Sidebar>
 
         {/* Main Content Area - Scrollable */}
-        <div className="flex flex-1 flex-col overflow-y-auto scroll-smooth">
+        <div className="flex flex-1 flex-col overflow-y-auto scroll-smooth pt-16 md:pt-0">
           {/* Hero Section */}
           <Hero />
 

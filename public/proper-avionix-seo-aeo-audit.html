@@ -1,0 +1,2466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEO & AEO Audit Report — Proper Avionix | Worksthal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0A0A0A;
+            --bg-secondary: #121212;
+            --bg-card: #1A1A1A;
+            --bg-card-hover: #222222;
+            --text-primary: #FFFFFF;
+            --text-secondary: #A1A1AA;
+            --text-muted: #71717A;
+            --accent-silver: #D4D4D8;
+            --accent-zinc: #A1A1AA;
+            --border: #27272A;
+            --border-light: #3F3F46;
+            --score-critical: #EF4444;
+            --score-poor: #F97316;
+            --score-needs-work: #EAB308;
+            --score-good: #22C55E;
+            --score-excellent: #10B981;
+            --chart-blue: #3B82F6;
+            --chart-purple: #8B5CF6;
+            --chart-cyan: #06B6D4;
+            --chart-pink: #EC4899;
+            --chart-orange: #F97316;
+            --client-blue: #2196F3;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            font-size: 14px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ==================== PRINT STYLES ==================== */
+        @media print {
+            body { background: white; color: #1a1a1a; font-size: 11px; line-height: 1.5; }
+            .page-break { page-break-before: always; }
+            .no-print { display: none !important; }
+            .report-container { max-width: 100%; padding: 0; }
+            .section-card { background: #f8f8f8 !important; border: 1px solid #ddd !important; box-shadow: none !important; }
+            .cover-page { background: linear-gradient(135deg, #1a1a1a, #2d2d2d) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .gauge-label { color: #1a1a1a !important; }
+            .metric-value { color: #1a1a1a !important; }
+            h1, h2, h3, h4 { color: #1a1a1a !important; }
+            .text-secondary { color: #555 !important; }
+            .chart-bar-fill { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+
+        @page {
+            size: A4;
+            margin: 15mm;
+        }
+
+        /* ==================== LAYOUT ==================== */
+        .report-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ==================== COVER PAGE ==================== */
+        .cover-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(160deg, #0A0A0A 0%, #121212 30%, #1A1A2E 60%, #0A0A0A 100%);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            padding: 60px 40px;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at 30% 50%, rgba(161,161,170,0.03) 0%, transparent 60%),
+                        radial-gradient(ellipse at 70% 50%, rgba(212,212,216,0.02) 0%, transparent 60%);
+            animation: subtleGlow 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes subtleGlow {
+            0% { opacity: 0.5; transform: scale(1); }
+            100% { opacity: 1; transform: scale(1.05); }
+        }
+
+        .cover-brand {
+            position: relative;
+            z-index: 2;
+            margin-bottom: 20px;
+        }
+
+        .cover-brand .brand-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--accent-silver), var(--accent-zinc));
+            border-radius: 10px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 24px;
+            color: var(--bg-primary);
+            margin-bottom: 12px;
+        }
+
+        .cover-brand-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--accent-silver);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .cover-divider {
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-zinc), transparent);
+            margin: 32px auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cover-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.2;
+            margin-bottom: 16px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cover-subtitle {
+            font-size: 18px;
+            color: var(--text-secondary);
+            font-weight: 300;
+            letter-spacing: 1px;
+            margin-bottom: 48px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cover-client {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .cover-client-label {
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .cover-client-logo {
+            max-width: 320px;
+            height: auto;
+            filter: brightness(1.1);
+        }
+
+        .cover-meta {
+            position: absolute;
+            bottom: 40px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            z-index: 2;
+        }
+
+        .cover-meta-text {
+            font-size: 12px;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+        }
+
+        .cover-meta-text span {
+            color: var(--text-secondary);
+        }
+
+        /* ==================== SECTION STYLES ==================== */
+        .section-wrapper {
+            padding: 60px 0;
+        }
+
+        .section-header {
+            margin-bottom: 40px;
+        }
+
+        .section-number {
+            font-family: 'Source Code Pro', monospace;
+            font-size: 12px;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .section-desc {
+            font-size: 15px;
+            color: var(--text-secondary);
+            font-weight: 300;
+            max-width: 600px;
+        }
+
+        .section-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 24px;
+            transition: border-color 0.3s ease;
+        }
+
+        .section-card:hover { border-color: var(--border-light); }
+
+        .card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .card-title .icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .card-text {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-size: 14px;
+        }
+
+        /* ==================== SCORE GAUGES ==================== */
+        .overall-score-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 48px 0;
+        }
+
+        .gauge-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .gauge-grid.two-col {
+            grid-template-columns: repeat(2, 1fr);
+            max-width: 540px;
+            margin: 0 auto;
+        }
+
+        .gauge-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .gauge-svg {
+            width: 140px;
+            height: 140px;
+            transform: rotate(-90deg);
+        }
+
+        .gauge-svg.large {
+            width: 180px;
+            height: 180px;
+        }
+
+        .gauge-bg {
+            fill: none;
+            stroke: var(--border);
+            stroke-width: 8;
+        }
+
+        .gauge-fill {
+            fill: none;
+            stroke-width: 8;
+            stroke-linecap: round;
+            transition: stroke-dashoffset 1s ease-out;
+        }
+
+        .gauge-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            fill: var(--text-primary);
+            text-anchor: middle;
+            dominant-baseline: central;
+            transform: rotate(90deg);
+            transform-origin: center;
+        }
+
+        .gauge-text.large { font-size: 36px; }
+
+        .gauge-label {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            text-align: center;
+        }
+
+        .gauge-sublabel {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-align: center;
+        }
+
+        /* ==================== SCORE BADGE ==================== */
+        .score-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .score-critical { background: rgba(239,68,68,0.15); color: #EF4444; }
+        .score-poor { background: rgba(249,115,22,0.15); color: #F97316; }
+        .score-needs-work { background: rgba(234,179,8,0.15); color: #EAB308; }
+        .score-good { background: rgba(34,197,94,0.15); color: #22C55E; }
+
+        /* ==================== FINDINGS TABLE ==================== */
+        .findings-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 16px 0;
+        }
+
+        .findings-table thead th {
+            font-size: 11px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            font-weight: 600;
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .findings-table tbody td {
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-size: 13px;
+            vertical-align: top;
+        }
+
+        .findings-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .findings-table .issue-name {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        /* ==================== HORIZONTAL BAR CHART ==================== */
+        .chart-container {
+            margin: 24px 0;
+        }
+
+        .chart-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+            gap: 16px;
+        }
+
+        .chart-label {
+            width: 160px;
+            flex-shrink: 0;
+            font-size: 13px;
+            color: var(--text-secondary);
+            text-align: right;
+        }
+
+        .chart-bar-container {
+            flex: 1;
+            height: 28px;
+            background: var(--border);
+            border-radius: 6px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .chart-bar-fill {
+            height: 100%;
+            border-radius: 6px;
+            transition: width 1s ease-out;
+            position: relative;
+        }
+
+        .chart-bar-value {
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 11px;
+            font-weight: 600;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .chart-bar-value.outside {
+            right: auto;
+            left: calc(100% + 8px);
+            color: var(--text-secondary);
+        }
+
+        /* ==================== CHECKLIST ==================== */
+        .checklist {
+            list-style: none;
+            padding: 0;
+        }
+
+        .checklist li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .checklist li:last-child { border-bottom: none; }
+
+        .check-icon {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 11px;
+            margin-top: 2px;
+        }
+
+        .check-pass { background: rgba(34,197,94,0.15); color: #22C55E; }
+        .check-fail { background: rgba(239,68,68,0.15); color: #EF4444; }
+        .check-warn { background: rgba(234,179,8,0.15); color: #EAB308; }
+
+        /* ==================== PRIORITY TAG ==================== */
+        .priority-tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .priority-critical { background: rgba(239,68,68,0.12); color: #EF4444; border: 1px solid rgba(239,68,68,0.2); }
+        .priority-high { background: rgba(249,115,22,0.12); color: #F97316; border: 1px solid rgba(249,115,22,0.2); }
+        .priority-medium { background: rgba(234,179,8,0.12); color: #EAB308; border: 1px solid rgba(234,179,8,0.2); }
+        .priority-low { background: rgba(34,197,94,0.12); color: #22C55E; border: 1px solid rgba(34,197,94,0.2); }
+
+        /* ==================== GRID LAYOUTS ==================== */
+        .two-col-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .three-col-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 24px;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* ==================== RECOMMENDATION CARDS ==================== */
+        .rec-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+            border-left: 3px solid var(--border-light);
+        }
+
+        .rec-card.critical { border-left-color: #EF4444; }
+        .rec-card.high { border-left-color: #F97316; }
+        .rec-card.medium { border-left-color: #EAB308; }
+        .rec-card.low { border-left-color: #22C55E; }
+
+        .rec-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .rec-title {
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 15px;
+        }
+
+        .rec-body {
+            color: var(--text-secondary);
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        .rec-impact {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            gap: 24px;
+        }
+
+        .rec-impact-item {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .rec-impact-item strong {
+            color: var(--text-secondary);
+        }
+
+        /* ==================== COMPARISON TABLE ==================== */
+        .comparison-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .comparison-table thead th {
+            background: var(--bg-secondary);
+            padding: 14px 16px;
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-align: left;
+        }
+
+        .comparison-table tbody td {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border);
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        .comparison-table tbody tr:last-child td { border-bottom: none; }
+
+        .comparison-table .highlight {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        /* ==================== DIVIDERS ==================== */
+        .section-divider {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-light), transparent);
+            margin: 0;
+        }
+
+        /* ==================== TOC ==================== */
+        .toc-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .toc-list li {
+            padding: 14px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .toc-list li:last-child { border-bottom: none; }
+
+        .toc-number {
+            font-family: 'Source Code Pro', monospace;
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-right: 16px;
+        }
+
+        .toc-text {
+            font-size: 15px;
+            color: var(--text-primary);
+            font-weight: 500;
+            flex: 1;
+        }
+
+        .toc-page {
+            font-family: 'Source Code Pro', monospace;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        /* ==================== EXECUTIVE SUMMARY BOX ==================== */
+        .exec-highlight {
+            background: linear-gradient(135deg, rgba(239,68,68,0.06), rgba(249,115,22,0.04));
+            border: 1px solid rgba(239,68,68,0.15);
+            border-radius: 12px;
+            padding: 28px;
+            margin: 24px 0;
+        }
+
+        .exec-highlight.positive {
+            background: linear-gradient(135deg, rgba(34,197,94,0.06), rgba(6,182,212,0.04));
+            border-color: rgba(34,197,94,0.15);
+        }
+
+        .exec-highlight h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 16px;
+            margin-bottom: 12px;
+        }
+
+        .exec-highlight p, .exec-highlight li {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .exec-highlight ul {
+            margin-top: 8px;
+            padding-left: 20px;
+        }
+
+        /* ==================== FOOTER ==================== */
+        .report-footer {
+            text-align: center;
+            padding: 60px 0 40px;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--accent-silver);
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .footer-text {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        /* ==================== RESPONSIVE ==================== */
+        @media (max-width: 768px) {
+            .two-col-grid, .three-col-grid { grid-template-columns: 1fr; }
+            .gauge-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+            .cover-title { font-size: 28px; }
+            .chart-label { width: 100px; font-size: 11px; }
+        }
+
+        /* ==================== DONUT CHART ==================== */
+        .donut-container {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            justify-content: center;
+            padding: 24px 0;
+        }
+
+        .donut-legend {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        .legend-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        /* Vertical timeline for roadmap */
+        .timeline {
+            position: relative;
+            padding-left: 32px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 32px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -29px;
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 2px solid var(--border-light);
+            background: var(--bg-primary);
+        }
+
+        .timeline-item.critical::before { border-color: #EF4444; background: rgba(239,68,68,0.2); }
+        .timeline-item.high::before { border-color: #F97316; background: rgba(249,115,22,0.2); }
+        .timeline-item.medium::before { border-color: #EAB308; background: rgba(234,179,8,0.2); }
+
+        .timeline-phase {
+            font-size: 11px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .timeline-title {
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 15px;
+            margin-bottom: 6px;
+        }
+
+        .timeline-desc {
+            color: var(--text-secondary);
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        /* Radar chart approximation with CSS */
+        .radar-container {
+            display: flex;
+            justify-content: center;
+            padding: 20px 0;
+        }
+
+        /* highlight key stat */
+        .key-stat {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            margin-bottom: 12px;
+        }
+
+        .key-stat-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .key-stat-content {
+            flex: 1;
+        }
+
+        .key-stat-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .key-stat-label {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        /* Inline metric */
+        .inline-metric {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 2px 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-primary);
+            font-family: 'Source Code Pro', monospace;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================================ -->
+    <!-- COVER PAGE -->
+    <!-- ============================================================ -->
+    <div class="cover-page">
+        <div class="cover-brand">
+            <div class="brand-icon">W</div>
+            <div class="cover-brand-name">Worksthal</div>
+        </div>
+
+        <div class="cover-divider"></div>
+
+        <h1 class="cover-title">SEO &amp; AEO<br>Audit Report</h1>
+        <p class="cover-subtitle">Search Engine &amp; AI Engine Optimization Analysis</p>
+
+        <div class="cover-client">
+            <span class="cover-client-label">Prepared for</span>
+            <img src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='80'%3E%3Ctext x='10' y='45' font-family='Arial Black,Arial' font-weight='900' font-size='36'%3E%3Ctspan fill='%23111111'%3EPROPER %3C/tspan%3E%3Ctspan fill='%232196F3'%3EAVION%3C/tspan%3E%3Ctspan fill='%232196F3'%3E!X%3C/tspan%3E%3C/text%3E%3Ctext x='190' y='65' font-family='Arial' font-weight='400' font-size='11' fill='%232196F3' letter-spacing='2'%3EEXPERIENCE PHYSICS%3C/text%3E%3C/svg%3E" alt="Proper Avionix Logo" class="cover-client-logo">
+        </div>
+
+        <div class="cover-meta">
+            <p class="cover-meta-text"><span>February 2026</span> &nbsp;&bull;&nbsp; Confidential &nbsp;&bull;&nbsp; Version 1.0</p>
+        </div>
+    </div>
+
+    <div class="report-container">
+
+        <!-- ============================================================ -->
+        <!-- TABLE OF CONTENTS -->
+        <!-- ============================================================ -->
+        <div class="section-wrapper page-break">
+            <div class="section-header">
+                <div class="section-number">Contents</div>
+                <h2 class="section-title">Table of Contents</h2>
+            </div>
+
+            <div class="section-card">
+                <ul class="toc-list">
+                    <li>
+                        <span><span class="toc-number">01</span><span class="toc-text">Executive Summary</span></span>
+                    </li>
+                    <li>
+                        <span><span class="toc-number">02</span><span class="toc-text">Overall Scores &amp; Health Dashboard</span></span>
+                    </li>
+                    <li>
+                        <span><span class="toc-number">03</span><span class="toc-text">Technical SEO Analysis</span></span>
+                    </li>
+                    <li>
+                        <span><span class="toc-number">04</span><span class="toc-text">On-Page SEO &amp; Content Optimization</span></span>
+                    </li>
+                    <li>
+                        <span><span class="toc-number">05</span><span class="toc-text">E-E-A-T Assessment</span></span>
+                    </li>
+                    <li>
+                        <span><span class="toc-number">06</span><span class="toc-text">AEO (AI Engine Optimization) Audit</span></span>
+                    </li>
+                    <li>
+                        <span><span class="toc-number">07</span><span class="toc-text">Competitive Landscape</span></span>
+                    </li>
+                    <li>
+                        <span><span class="toc-number">08</span><span class="toc-text">Prioritized Recommendations</span></span>
+                    </li>
+                    <li>
+                        <span><span class="toc-number">09</span><span class="toc-text">Implementation Roadmap</span></span>
+                    </li>
+                    <li>
+                        <span><span class="toc-number">10</span><span class="toc-text">Appendix &amp; Methodology</span></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- ============================================================ -->
+        <!-- 01 — EXECUTIVE SUMMARY -->
+        <!-- ============================================================ -->
+        <div class="section-wrapper page-break" id="exec-summary">
+            <div class="section-header">
+                <div class="section-number">Section 01</div>
+                <h2 class="section-title">Executive Summary</h2>
+                <p class="section-desc">A high-level overview of findings, critical issues, and strategic recommendations.</p>
+            </div>
+
+            <div class="section-card">
+                <div class="card-title">
+                    <div class="icon" style="background:rgba(59,130,246,0.12); color:#3B82F6;">&#9881;</div>
+                    Overview
+                </div>
+                <div class="card-text">
+                    <p>This report presents a comprehensive SEO (Search Engine Optimization) and AEO (AI Engine Optimization) audit of <strong>properavionix.in</strong>, the official website of Proper Avionix Private Limited — an Indian Urban Air Mobility (UAM) and eVTOL company based in Hyderabad, Telangana.</p>
+                    <br>
+                    <p>The website is currently built on the <strong>Wix platform</strong>, which introduces significant technical limitations that affect search visibility, performance, and the ability to compete effectively in both traditional search and emerging AI-powered search engines.</p>
+                    <br>
+                    <p>The audit evaluated the website across <strong>5 core dimensions</strong>: Technical SEO, On-Page Content, E-E-A-T Signals, AEO Readiness, and Competitive Positioning. Each dimension was scored independently to provide a clear, actionable picture of where the website stands and where improvements will yield the highest return.</p>
+                </div>
+            </div>
+
+            <div class="exec-highlight">
+                <h4 style="color: #EF4444;">&#9888; Critical Findings</h4>
+                <ul>
+                    <li><strong>No structured data (Schema markup)</strong> — The website has zero JSON-LD schema implementation. This means search engines and AI engines cannot reliably extract company information, product details, or FAQ content.</li>
+                    <li><strong>Missing or weak meta tags</strong> — Title tags are generic ("Home | Proper Avionix"), meta descriptions appear absent, and H1 tags lack target keywords.</li>
+                    <li><strong>Zero AEO readiness</strong> — Content is not structured for AI engine citation. No semantic triples, no FAQ schema, no entity-first writing patterns. The brand is invisible to ChatGPT, Claude, Perplexity, and Google AI Overviews.</li>
+                    <li><strong>Multiple pages timing out</strong> — Several key pages (Programs, Technology & Team, Be Familiarized) failed to load during our analysis, indicating severe performance or configuration issues.</li>
+                    <li><strong>No press coverage or backlinks detected</strong> — The brand has virtually no external authority signals, severely limiting E-E-A-T credibility.</li>
+                </ul>
+            </div>
+
+            <div class="exec-highlight positive">
+                <h4 style="color: #22C55E;">&#10003; Opportunities &amp; Strengths</h4>
+                <ul>
+                    <li><strong>First-mover advantage</strong> — Proper Avionix operates in the rapidly growing Indian UAM market (projected $23.47 billion globally by 2030). Competitors like Sarla Aviation, ePlane Company, and global players are investing heavily in SEO. Early optimization creates lasting advantage.</li>
+                    <li><strong>Unique product portfolio</strong> — Nimbus Hop (passenger), Defense Hex (military), Air Medic (healthcare), and Carbon Capture drones provide rich content opportunities across multiple high-value verticals.</li>
+                    <li><strong>HTTPS is enabled</strong> — The site is served over HTTPS, which is a baseline trust and ranking signal.</li>
+                    <li><strong>robots.txt and sitemap configured</strong> — Basic crawling infrastructure exists and can be optimized further.</li>
+                </ul>
+            </div>
+
+            <!-- Key Metrics Overview -->
+            <div class="three-col-grid" style="margin-top:24px;">
+                <div class="stat-card">
+                    <div class="stat-value" style="color: #EF4444;">21</div>
+                    <div class="stat-label">Overall Score (out of 100)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" style="color: #F97316;">17</div>
+                    <div class="stat-label">Critical Issues Found</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" style="color: #22C55E;">4</div>
+                    <div class="stat-label">Product Verticals to Leverage</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- ============================================================ -->
+        <!-- 02 — OVERALL SCORES -->
+        <!-- ============================================================ -->
+        <div class="section-wrapper page-break" id="scores">
+            <div class="section-header">
+                <div class="section-number">Section 02</div>
+                <h2 class="section-title">Overall Scores &amp; Health Dashboard</h2>
+                <p class="section-desc">Visual breakdown of performance across all five audit dimensions.</p>
+            </div>
+
+            <!-- Large Overall Gauge -->
+            <div class="section-card" style="text-align:center;">
+                <div class="card-title" style="justify-content:center;">
+                    <div class="icon" style="background:rgba(239,68,68,0.12); color:#EF4444;">&#9632;</div>
+                    Overall Website Health Score
+                </div>
+                <div class="overall-score-container">
+                    <div class="gauge-item">
+                        <svg class="gauge-svg large" viewBox="0 0 120 120">
+                            <circle class="gauge-bg" cx="60" cy="60" r="52"/>
+                            <circle class="gauge-fill" cx="60" cy="60" r="52" stroke="#EF4444" 
+                                stroke-dasharray="326.73" stroke-dashoffset="258.11"/>
+                            <text class="gauge-text large" x="60" y="60">21</text>
+                        </svg>
+                        <div class="gauge-label">OVERALL HEALTH</div>
+                        <div class="score-badge score-critical">CRITICAL</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Individual Dimension Gauges -->
+            <div class="section-card">
+                <div class="card-title">Score Breakdown by Dimension</div>
+                <div class="overall-score-container">
+                    <div class="gauge-grid">
+                        <!-- Technical SEO -->
+                        <div class="gauge-item">
+                            <svg class="gauge-svg" viewBox="0 0 120 120">
+                                <circle class="gauge-bg" cx="60" cy="60" r="52"/>
+                                <circle class="gauge-fill" cx="60" cy="60" r="52" stroke="#F97316" 
+                                    stroke-dasharray="326.73" stroke-dashoffset="235.24"/>
+                                <text class="gauge-text" x="60" y="60">28</text>
+                            </svg>
+                            <div class="gauge-label">Technical SEO</div>
+                            <span class="score-badge score-poor">POOR</span>
+                        </div>
+
+                        <!-- On-Page SEO -->
+                        <div class="gauge-item">
+                            <svg class="gauge-svg" viewBox="0 0 120 120">
+                                <circle class="gauge-bg" cx="60" cy="60" r="52"/>
+                                <circle class="gauge-fill" cx="60" cy="60" r="52" stroke="#EF4444"
+                                    stroke-dasharray="326.73" stroke-dashoffset="254.84"/>
+                                <text class="gauge-text" x="60" y="60">22</text>
+                            </svg>
+                            <div class="gauge-label">On-Page SEO</div>
+                            <span class="score-badge score-critical">CRITICAL</span>
+                        </div>
+
+                        <!-- Content Quality -->
+                        <div class="gauge-item">
+                            <svg class="gauge-svg" viewBox="0 0 120 120">
+                                <circle class="gauge-bg" cx="60" cy="60" r="52"/>
+                                <circle class="gauge-fill" cx="60" cy="60" r="52" stroke="#F97316"
+                                    stroke-dasharray="326.73" stroke-dashoffset="245.05"/>
+                                <text class="gauge-text" x="60" y="60">25</text>
+                            </svg>
+                            <div class="gauge-label">Content Quality</div>
+                            <span class="score-badge score-poor">POOR</span>
+                        </div>
+
+                        <!-- E-E-A-T -->
+                        <div class="gauge-item">
+                            <svg class="gauge-svg" viewBox="0 0 120 120">
+                                <circle class="gauge-bg" cx="60" cy="60" r="52"/>
+                                <circle class="gauge-fill" cx="60" cy="60" r="52" stroke="#EF4444"
+                                    stroke-dasharray="326.73" stroke-dashoffset="267.91"/>
+                                <text class="gauge-text" x="60" y="60">18</text>
+                            </svg>
+                            <div class="gauge-label">E-E-A-T Signals</div>
+                            <span class="score-badge score-critical">CRITICAL</span>
+                        </div>
+
+                        <!-- AEO -->
+                        <div class="gauge-item">
+                            <svg class="gauge-svg" viewBox="0 0 120 120">
+                                <circle class="gauge-bg" cx="60" cy="60" r="52"/>
+                                <circle class="gauge-fill" cx="60" cy="60" r="52" stroke="#EF4444"
+                                    stroke-dasharray="326.73" stroke-dashoffset="287.52"/>
+                                <text class="gauge-text" x="60" y="60">12</text>
+                            </svg>
+                            <div class="gauge-label">AEO Readiness</div>
+                            <span class="score-badge score-critical">CRITICAL</span>
+                        </div>
+
+                        <!-- Competitive -->
+                        <div class="gauge-item">
+                            <svg class="gauge-svg" viewBox="0 0 120 120">
+                                <circle class="gauge-bg" cx="60" cy="60" r="52"/>
+                                <circle class="gauge-fill" cx="60" cy="60" r="52" stroke="#EF4444"
+                                    stroke-dasharray="326.73" stroke-dashoffset="277.72"/>
+                                <text class="gauge-text" x="60" y="60">15</text>
+                            </svg>
+                            <div class="gauge-label">Competitive Position</div>
+                            <span class="score-badge score-critical">CRITICAL</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Score Comparison Bar Chart -->
+            <div class="section-card">
+                <div class="card-title">Score Distribution</div>
+                <div class="chart-container">
+                    <div class="chart-row">
+                        <div class="chart-label">Technical SEO</div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar-fill" style="width:28%; background: linear-gradient(90deg, #F97316, #FB923C);">
+                                <span class="chart-bar-value">28/100</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-label">On-Page SEO</div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar-fill" style="width:22%; background: linear-gradient(90deg, #EF4444, #F87171);">
+                                <span class="chart-bar-value outside">22/100</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-label">Content Quality</div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar-fill" style="width:25%; background: linear-gradient(90deg, #F97316, #FB923C);">
+                                <span class="chart-bar-value outside">25/100</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-label">E-E-A-T Signals</div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar-fill" style="width:18%; background: linear-gradient(90deg, #EF4444, #F87171);">
+                                <span class="chart-bar-value outside">18/100</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-label">AEO Readiness</div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar-fill" style="width:12%; background: linear-gradient(90deg, #EF4444, #F87171);">
+                                <span class="chart-bar-value outside">12/100</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-label">Competitive Position</div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar-fill" style="width:15%; background: linear-gradient(90deg, #EF4444, #F87171);">
+                                <span class="chart-bar-value outside">15/100</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p style="text-align:center; font-size:12px; color:var(--text-muted); margin-top:8px;">
+                    Scores below 40 indicate critical deficiencies requiring immediate attention.
+                </p>
+            </div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- ============================================================ -->
+        <!-- 03 — TECHNICAL SEO -->
+        <!-- ============================================================ -->
+        <div class="section-wrapper page-break" id="technical-seo">
+            <div class="section-header">
+                <div class="section-number">Section 03</div>
+                <h2 class="section-title">Technical SEO Analysis</h2>
+                <p class="section-desc">Evaluation of site architecture, crawlability, performance, and technical infrastructure.</p>
+            </div>
+
+            <!-- Platform Assessment -->
+            <div class="section-card">
+                <div class="card-title">
+                    <div class="icon" style="background:rgba(239,68,68,0.12); color:#EF4444;">&#9888;</div>
+                    Platform Assessment — Wix
+                </div>
+                <div class="card-text">
+                    <p>The website is built on <strong>Wix</strong>, a website builder platform. While Wix has improved its SEO capabilities in recent years, it still imposes significant technical limitations compared to custom-built or CMS-based solutions:</p>
+                    <br>
+                    <ul class="checklist">
+                        <li>
+                            <span class="check-icon check-fail">&#10007;</span>
+                            <span><strong>Limited server-side rendering control</strong> — Wix handles rendering internally, resulting in JavaScript-heavy page loads that can delay content discovery by search engine crawlers.</span>
+                        </li>
+                        <li>
+                            <span class="check-icon check-fail">&#10007;</span>
+                            <span><strong>Restricted schema markup</strong> — Wix does not natively support custom JSON-LD structured data beyond basic page types. This severely limits the ability to implement Organization, Product, FAQ, and Article schema.</span>
+                        </li>
+                        <li>
+                            <span class="check-icon check-fail">&#10007;</span>
+                            <span><strong>Auto-generated sitemap</strong> — The sitemap is auto-generated and could not be fetched successfully during testing, indicating potential configuration or accessibility issues.</span>
+                        </li>
+                        <li>
+                            <span class="check-icon check-warn">&#9888;</span>
+                            <span><strong>Limited page speed optimization</strong> — Wix controls CDN caching, image optimization, and code splitting. Customization options are minimal, which affects Core Web Vitals performance.</span>
+                        </li>
+                        <li>
+                            <span class="check-icon check-pass">&#10003;</span>
+                            <span><strong>HTTPS enabled</strong> — The site is served over HTTPS, meeting baseline security requirements for search rankings.</span>
+                        </li>
+                        <li>
+                            <span class="check-icon check-pass">&#10003;</span>
+                            <span><strong>robots.txt exists</strong> — A robots.txt file is present with appropriate directives, though it is auto-generated by Wix.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Technical Checklist -->
+            <div class="section-card">
+                <div class="card-title">
+                    <div class="icon" style="background:rgba(59,130,246,0.12); color:#3B82F6;">&#9776;</div>
+                    Technical Checklist
+                </div>
+                <table class="findings-table">
+                    <thead>
+                        <tr>
+                            <th>Element</th>
+                            <th>Status</th>
+                            <th>Finding</th>
+                            <th>Impact</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="issue-name">HTTPS / SSL</td>
+                            <td><span class="priority-tag priority-low">PASS</span></td>
+                            <td>SSL certificate is active and valid</td>
+                            <td>Baseline ranking signal</td>
+                        </tr>
+                        <tr>
+                            <td class="issue-name">robots.txt</td>
+                            <td><span class="priority-tag priority-medium">PARTIAL</span></td>
+                            <td>Present but auto-generated. Blocks PetalBot, sets crawl delays for AhrefsBot and dotbot</td>
+                            <td>May limit SEO tool crawling</td>
+                        </tr>
+                        <tr>
+                            <td class="issue-name">XML Sitemap</td>
+                            <td><span class="priority-tag priority-critical">FAIL</span></td>
+                            <td>Declared in robots.txt but returned an error when fetched — inaccessible to crawlers</td>
+                            <td>Search engines cannot discover all pages</td>
+                        </tr>
+                        <tr>
+                            <td class="issue-name">Structured Data</td>
+                            <td><span class="priority-tag priority-critical">MISSING</span></td>
+                            <td>No JSON-LD schema markup detected on any page</td>
+                            <td>No rich results, poor AI extraction</td>
+                        </tr>
+                        <tr>
+                            <td class="issue-name">Canonical Tags</td>
+                            <td><span class="priority-tag priority-medium">UNKNOWN</span></td>
+                            <td>Wix auto-generates canonicals but custom control is limited</td>
+                            <td>Potential duplicate content issues</td>
+                        </tr>
+                        <tr>
+                            <td class="issue-name">Page Load / Availability</td>
+                            <td><span class="priority-tag priority-critical">FAIL</span></td>
+                            <td>3 of 7 tested pages timed out (Programs, Technology & Team, Be Familiarized)</td>
+                            <td>~43% of site is inaccessible</td>
+                        </tr>
+                        <tr>
+                            <td class="issue-name">Mobile Responsiveness</td>
+                            <td><span class="priority-tag priority-medium">PARTIAL</span></td>
+                            <td>Wix provides responsive templates, but heavy images likely cause poor mobile performance</td>
+                            <td>Mobile-first indexing affected</td>
+                        </tr>
+                        <tr>
+                            <td class="issue-name">URL Structure</td>
+                            <td><span class="priority-tag priority-medium">PARTIAL</span></td>
+                            <td>URLs are clean (e.g., /solutions, /vision) but not keyword-optimized</td>
+                            <td>Missed keyword signaling opportunity</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Page Availability Chart -->
+            <div class="section-card">
+                <div class="card-title">
+                    <div class="icon" style="background:rgba(249,115,22,0.12); color:#F97316;">&#9888;</div>
+                    Page Availability Test Results
+                </div>
+                <div class="chart-container">
+                    <div class="chart-row">
+                        <div class="chart-label">Home</div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar-fill" style="width:100%; background: linear-gradient(90deg, #22C55E, #4ADE80);">
+                                <span class="chart-bar-value">LOADED</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-label">Solutions</div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar-fill" style="width:100%; background: linear-gradient(90deg, #22C55E, #4ADE80);">
+                                <span class="chart-bar-value">LOADED</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-label">Vision</div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar-fill" style="width:100%; background: linear-gradient(90deg, #22C55E, #4ADE80);">
+                                <span class="chart-bar-value">LOADED</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-label">Gallery</div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar-fill" style="width:100%; background: linear-gradient(90deg, #22C55E, #4ADE80);">
+                                <span class="chart-bar-value">LOADED</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-label">Programs</div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar-fill" style="width:100%; background: linear-gradient(90deg, #EF4444, #F87171);">
+                                <span class="chart-bar-value">TIMEOUT</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-label">Technology &amp; Team</div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar-fill" style="width:100%; background: linear-gradient(90deg, #EF4444, #F87171);">
+                                <span class="chart-bar-value">TIMEOUT</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-label">Be Familiarized</div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar-fill" style="width:100%; background: linear-gradient(90deg, #EF4444, #F87171);">
+                                <span class="chart-bar-value">TIMEOUT</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p style="font-size:12px; color:var(--text-muted); margin-top:12px;">Pages that timed out during fetching cannot be crawled by search engines, effectively making them invisible in search results.</p>
+            </div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- ============================================================ -->
+        <!-- 04 — ON-PAGE SEO & CONTENT -->
+        <!-- ============================================================ -->
+        <div class="section-wrapper page-break" id="onpage-seo">
+            <div class="section-header">
+                <div class="section-number">Section 04</div>
+                <h2 class="section-title">On-Page SEO &amp; Content Optimization</h2>
+                <p class="section-desc">Analysis of title tags, meta descriptions, headings, content quality, and keyword optimization.</p>
+            </div>
+
+            <!-- Title Tags -->
+            <div class="section-card">
+                <div class="card-title">
+                    <div class="icon" style="background:rgba(239,68,68,0.12); color:#EF4444;">&#9888;</div>
+                    Title Tag Analysis
+                </div>
+                <table class="findings-table">
+                    <thead>
+                        <tr>
+                            <th>Page</th>
+                            <th>Current Title</th>
+                            <th>Issue</th>
+                            <th>Severity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="issue-name">Home</td>
+                            <td>"Home | Proper Avionix"</td>
+                            <td>Generic. No keywords like "eVTOL", "urban air mobility", "passenger drone", or "India"</td>
+                            <td><span class="priority-tag priority-critical">CRITICAL</span></td>
+                        </tr>
+                        <tr>
+                            <td class="issue-name">Solutions</td>
+                            <td>"Solutions | Proper Avionix"</td>
+                            <td>Vague. Should describe service offerings with target keywords</td>
+                            <td><span class="priority-tag priority-critical">CRITICAL</span></td>
+                        </tr>
+                        <tr>
+                            <td class="issue-name">Vision</td>
+                            <td>"Vision | Proper Avionix"</td>
+                            <td>Not descriptive. Misses opportunity to communicate company mission and UAM leadership</td>
+                            <td><span class="priority-tag priority-high">HIGH</span></td>
+                        </tr>
+                        <tr>
+                            <td class="issue-name">Gallery</td>
+                            <td>"Gallery | Proper Avionix"</td>
+                            <td>Should showcase product gallery with product names and keywords</td>
+                            <td><span class="priority-tag priority-medium">MEDIUM</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div style="margin-top:16px; padding:16px; background: var(--bg-secondary); border-radius:8px;">
+                    <p style="font-size:13px; color:var(--text-secondary);"><strong style="color:var(--text-primary);">Recommended title format:</strong> [Primary Keyword] — [Secondary Keyword] | Proper Avionix</p>
+                    <p style="font-size:12px; color:var(--text-muted); margin-top:4px;">Example: "Passenger Drones &amp; eVTOL Aircraft for Urban Air Mobility in India | Proper Avionix"</p>
+                </div>
+            </div>
+
+            <!-- Heading Hierarchy -->
+            <div class="section-card">
+                <div class="card-title">
+                    <div class="icon" style="background:rgba(234,179,8,0.12); color:#EAB308;">&#9776;</div>
+                    Heading Hierarchy Analysis (Homepage)
+                </div>
+                <div class="card-text">
+                    <p>The heading structure on the homepage reveals multiple issues affecting both SEO and accessibility:</p>
+                </div>
+                <table class="findings-table" style="margin-top:16px;">
+                    <thead>
+                        <tr>
+                            <th>Tag</th>
+                            <th>Content</th>
+                            <th>Issue</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="issue-name">H1</td>
+                            <td>"Welcome to the New Standard of 3 Dimensional Travel"</td>
+                            <td>Vague. Contains no target keywords (eVTOL, drone, UAM, India)</td>
+                        </tr>
+                        <tr>
+                            <td class="issue-name">H2</td>
+                            <td>"EXPERIENCE THE PHYSICS BY FLYING INTRACITY WITH US"</td>
+                            <td>ALL CAPS is treated as shouting by accessibility tools. Not descriptive for search</td>
+                        </tr>
+                        <tr>
+                            <td class="issue-name">H3</td>
+                            <td>"WAYPOINT CITY PLANNING" / "ALTERNATE FLIGHT PATH"</td>
+                            <td>ALL CAPS pattern continues. Technical jargon without context</td>
+                        </tr>
+                        <tr>
+                            <td class="issue-name">H2</td>
+                            <td>"NEED OF THE HOUR"</td>
+                            <td>Empty of keywords. Should describe the UAM problem/solution</td>
+                        </tr>
+                        <tr>
+                            <td class="issue-name">H2</td>
+                            <td>"Unprecedented Engineering. Impeccable Reliability."</td>
+                            <td>Marketing slogan, not keyword-rich heading</td>
+                        </tr>
+                        <tr>
+                            <td class="issue-name">H2</td>
+                            <td>"Vehicle Top Shots"</td>
+                            <td>Unclear meaning. Not optimized for search</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Content Quality Issues -->
+            <div class="section-card">
+                <div class="card-title">
+                    <div class="icon" style="background:rgba(239,68,68,0.12); color:#EF4444;">&#9998;</div>
+                    Content Quality Issues
+                </div>
+                <div class="card-text">
+                    <p>Content across the website suffers from several recurring quality issues that impact both search rankings and user engagement:</p>
+                </div>
+
+                <div class="two-col-grid" style="margin-top:20px;">
+                    <div style="padding:20px; background: var(--bg-secondary); border-radius:10px;">
+                        <h4 style="font-size:14px; color:#EF4444; margin-bottom:12px;">&#10007; Grammar &amp; Spelling Errors</h4>
+                        <ul style="list-style:none; padding:0;">
+                            <li style="padding:6px 0; font-size:13px; color:var(--text-secondary); border-bottom:1px solid var(--border);">"beacuse" → "because"</li>
+                            <li style="padding:6px 0; font-size:13px; color:var(--text-secondary); border-bottom:1px solid var(--border);">"happenned" → "happened"</li>
+                            <li style="padding:6px 0; font-size:13px; color:var(--text-secondary); border-bottom:1px solid var(--border);">"Ambulance Vitalities" → "Ambulance Vitals/Equipment"</li>
+                            <li style="padding:6px 0; font-size:13px; color:var(--text-secondary); border-bottom:1px solid var(--border);">"with in" → "within"</li>
+                            <li style="padding:6px 0; font-size:13px; color:var(--text-secondary);">"it's" → "its" (possessive)</li>
+                        </ul>
+                    </div>
+                    <div style="padding:20px; background: var(--bg-secondary); border-radius:10px;">
+                        <h4 style="font-size:14px; color:#F97316; margin-bottom:12px;">&#9888; Vague &amp; Buzzword-Heavy Copy</h4>
+                        <ul style="list-style:none; padding:0;">
+                            <li style="padding:6px 0; font-size:13px; color:var(--text-secondary); border-bottom:1px solid var(--border);">"A Vision Beyond Time" — no clear meaning</li>
+                            <li style="padding:6px 0; font-size:13px; color:var(--text-secondary); border-bottom:1px solid var(--border);">"Experience the Physics" — confusing tagline</li>
+                            <li style="padding:6px 0; font-size:13px; color:var(--text-secondary); border-bottom:1px solid var(--border);">"disruptive analogies for a better future"</li>
+                            <li style="padding:6px 0; font-size:13px; color:var(--text-secondary); border-bottom:1px solid var(--border);">"Unprecedented Engineering" — unsubstantiated claim</li>
+                            <li style="padding:6px 0; font-size:13px; color:var(--text-secondary);">"It takes time to change and yet, its time to change"</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div style="margin-top:20px; padding:20px; background: var(--bg-secondary); border-radius:10px;">
+                    <h4 style="font-size:14px; color:#3B82F6; margin-bottom:12px;">&#9998; Missing Content Elements</h4>
+                    <div class="two-col-grid" style="gap:12px;">
+                        <ul class="checklist" style="margin:0;">
+                            <li><span class="check-icon check-fail">&#10007;</span><span>No FAQ section on any page</span></li>
+                            <li><span class="check-icon check-fail">&#10007;</span><span>No blog or content hub</span></li>
+                            <li><span class="check-icon check-fail">&#10007;</span><span>No customer testimonials or case studies</span></li>
+                            <li><span class="check-icon check-fail">&#10007;</span><span>No clear call-to-action on most pages</span></li>
+                        </ul>
+                        <ul class="checklist" style="margin:0;">
+                            <li><span class="check-icon check-fail">&#10007;</span><span>No image alt text optimization</span></li>
+                            <li><span class="check-icon check-fail">&#10007;</span><span>No internal linking strategy</span></li>
+                            <li><span class="check-icon check-fail">&#10007;</span><span>No content dates or author attributions</span></li>
+                            <li><span class="check-icon check-fail">&#10007;</span><span>No meta descriptions visible</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Keyword Gap -->
+            <div class="section-card">
+                <div class="card-title">
+                    <div class="icon" style="background:rgba(139,92,246,0.12); color:#8B5CF6;">&#128269;</div>
+                    Target Keyword Opportunities (Not Currently Targeted)
+                </div>
+                <div class="card-text">
+                    <p>Based on our analysis of the Indian UAM market, the following high-value keywords should be woven into the site's content and meta tags:</p>
+                </div>
+                <table class="findings-table" style="margin-top:16px;">
+                    <thead>
+                        <tr>
+                            <th>Keyword Cluster</th>
+                            <th>Example Keywords</th>
+                            <th>Relevance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="issue-name">Core Product</td>
+                            <td>eVTOL aircraft India, passenger drone India, Nimbus Hop drone, urban air mobility India</td>
+                            <td><span class="priority-tag priority-critical">CRITICAL</span></td>
+                        </tr>
+                        <tr>
+                            <td class="issue-name">Defense</td>
+                            <td>military drone India, defense drone manufacturer, troop transport drone, heavy payload drone</td>
+                            <td><span class="priority-tag priority-high">HIGH</span></td>
+                        </tr>
+                        <tr>
+                            <td class="issue-name">Medical</td>
+                            <td>air ambulance drone India, medical supply drone, emergency medical drone, drone ambulance</td>
+                            <td><span class="priority-tag priority-high">HIGH</span></td>
+                        </tr>
+                        <tr>
+                            <td class="issue-name">Technology</td>
+                            <td>LIDAR drone navigation, AI-powered drone, autonomous drone India, thrust vectoring drone</td>
+                            <td><span class="priority-tag priority-medium">MEDIUM</span></td>
+                        </tr>
+                        <tr>
+                            <td class="issue-name">Industry</td>
+                            <td>Indian drone companies, eVTOL startups India, Hyderabad drone manufacturer, DGCA drone certification</td>
+                            <td><span class="priority-tag priority-medium">MEDIUM</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- ============================================================ -->
+        <!-- 05 — E-E-A-T ASSESSMENT -->
+        <!-- ============================================================ -->
+        <div class="section-wrapper page-break" id="eeat">
+            <div class="section-header">
+                <div class="section-number">Section 05</div>
+                <h2 class="section-title">E-E-A-T Assessment</h2>
+                <p class="section-desc">Evaluation of Experience, Expertise, Authoritativeness, and Trustworthiness signals.</p>
+            </div>
+
+            <div class="section-card">
+                <div class="card-title">E-E-A-T Dimension Scores</div>
+                <div class="chart-container">
+                    <div class="chart-row">
+                        <div class="chart-label">Experience</div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar-fill" style="width:15%; background: linear-gradient(90deg, #EF4444, #F87171);">
+                                <span class="chart-bar-value outside">15/100</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-label">Expertise</div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar-fill" style="width:22%; background: linear-gradient(90deg, #EF4444, #F87171);">
+                                <span class="chart-bar-value outside">22/100</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-label">Authoritativeness</div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar-fill" style="width:10%; background: linear-gradient(90deg, #EF4444, #F87171);">
+                                <span class="chart-bar-value outside">10/100</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-label">Trustworthiness</div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar-fill" style="width:25%; background: linear-gradient(90deg, #F97316, #FB923C);">
+                                <span class="chart-bar-value outside">25/100</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="two-col-grid">
+                <div class="section-card">
+                    <h4 style="color:#EF4444; margin-bottom:12px; font-size:14px;">Experience — 15/100</h4>
+                    <div class="card-text">
+                        <ul style="padding-left:16px;">
+                            <li style="margin-bottom:8px;">No case studies, flight test data, or deployment evidence</li>
+                            <li style="margin-bottom:8px;">No customer testimonials or user stories</li>
+                            <li style="margin-bottom:8px;">No video footage of actual flights or product demos</li>
+                            <li>Claims "14+ years of industry experience" but provides no supporting proof</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="section-card">
+                    <h4 style="color:#EF4444; margin-bottom:12px; font-size:14px;">Expertise — 22/100</h4>
+                    <div class="card-text">
+                        <ul style="padding-left:16px;">
+                            <li style="margin-bottom:8px;">Technical specifications are mentioned but not documented in detail</li>
+                            <li style="margin-bottom:8px;">No whitepapers, technical blog posts, or research publications</li>
+                            <li style="margin-bottom:8px;">Team credentials page timed out during testing</li>
+                            <li>No partnerships with recognized institutions (aside from Bihar Agricultural University mention)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="section-card">
+                    <h4 style="color:#EF4444; margin-bottom:12px; font-size:14px;">Authoritativeness — 10/100</h4>
+                    <div class="card-text">
+                        <ul style="padding-left:16px;">
+                            <li style="margin-bottom:8px;">No press coverage or media mentions detected</li>
+                            <li style="margin-bottom:8px;">No backlinks from industry publications</li>
+                            <li style="margin-bottom:8px;">No industry awards or certifications displayed</li>
+                            <li>No speaking engagements or conference participation visible</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="section-card">
+                    <h4 style="color:#F97316; margin-bottom:12px; font-size:14px;">Trustworthiness — 25/100</h4>
+                    <div class="card-text">
+                        <ul style="padding-left:16px;">
+                            <li style="margin-bottom:8px;">HTTPS is enabled (positive signal)</li>
+                            <li style="margin-bottom:8px;">Physical address is provided (Hyderabad)</li>
+                            <li style="margin-bottom:8px;">No privacy policy or terms of service visible</li>
+                            <li>Grammar and spelling errors erode professional credibility</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- ============================================================ -->
+        <!-- 06 — AEO AUDIT -->
+        <!-- ============================================================ -->
+        <div class="section-wrapper page-break" id="aeo">
+            <div class="section-header">
+                <div class="section-number">Section 06</div>
+                <h2 class="section-title">AEO (AI Engine Optimization) Audit</h2>
+                <p class="section-desc">Assessment of readiness for AI-powered search engines — ChatGPT, Claude, Perplexity, and Google AI Overviews.</p>
+            </div>
+
+            <div class="section-card">
+                <div class="card-title">
+                    <div class="icon" style="background:rgba(139,92,246,0.12); color:#8B5CF6;">&#129302;</div>
+                    Why AEO Matters for Proper Avionix
+                </div>
+                <div class="card-text">
+                    <p>AI engines like ChatGPT, Claude, Perplexity, and Google AI Overviews are rapidly becoming the primary way professionals, investors, and decision-makers research companies and technologies. In 2026:</p>
+                    <br>
+                    <div class="three-col-grid" style="margin-top:8px;">
+                        <div class="stat-card" style="padding:16px;">
+                            <div class="stat-value" style="font-size:28px; color:#8B5CF6;">70%</div>
+                            <div class="stat-label">of consumers use AI for searches</div>
+                        </div>
+                        <div class="stat-card" style="padding:16px;">
+                            <div class="stat-value" style="font-size:28px; color:#8B5CF6;">47%</div>
+                            <div class="stat-label">of Google queries show AI Overviews</div>
+                        </div>
+                        <div class="stat-card" style="padding:16px;">
+                            <div class="stat-value" style="font-size:28px; color:#8B5CF6;">58%</div>
+                            <div class="stat-label">of searches result in zero clicks</div>
+                        </div>
+                    </div>
+                    <br>
+                    <p>When a potential investor asks an AI engine <em>"What are the top eVTOL companies in India?"</em> or a defense official queries <em>"Indian drone manufacturers for military applications"</em> — <strong>Proper Avionix is currently invisible in those answers.</strong></p>
+                </div>
+            </div>
+
+            <!-- AEO Detailed Checklist -->
+            <div class="section-card">
+                <div class="card-title">
+                    <div class="icon" style="background:rgba(239,68,68,0.12); color:#EF4444;">&#9744;</div>
+                    AEO Readiness Checklist
+                </div>
+                <table class="findings-table">
+                    <thead>
+                        <tr>
+                            <th>AEO Element</th>
+                            <th>Status</th>
+                            <th>Current State</th>
+                            <th>Impact on AI Citation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="issue-name">Semantic Triples</td>
+                            <td><span class="priority-tag priority-critical">MISSING</span></td>
+                            <td>Content uses vague language. No clear Subject → Verb → Object patterns</td>
+                            <td>AI engines cannot extract factual claims</td>
+                        </tr>
+                        <tr>
+                            <td class="issue-name">Entity-First Writing</td>
+                            <td><span class="priority-tag priority-critical">MISSING</span></td>
+                            <td>Entities (products, features, company) are not named consistently or prominently</td>
+                            <td>Brand and products won't be recognized as entities</td>
+                        </tr>
+                        <tr>
+                            <td class="issue-name">FAQ Schema</td>
+                            <td><span class="priority-tag priority-critical">MISSING</span></td>
+                            <td>No FAQ content exists on any page</td>
+                            <td>Cannot appear in AI Q&A responses</td>
+                        </tr>
+                        <tr>
+                            <td class="issue-name">Article Schema</td>
+                            <td><span class="priority-tag priority-critical">MISSING</span></td>
+                            <td>No Article schema on any page</td>
+                            <td>Content not recognized as authoritative articles</td>
+                        </tr>
+                        <tr>
+                            <td class="issue-name">Organization Schema</td>
+                            <td><span class="priority-tag priority-critical">MISSING</span></td>
+                            <td>No Organization schema with company details</td>
+                            <td>Company info cannot be reliably extracted</td>
+                        </tr>
+                        <tr>
+                            <td class="issue-name">Author Attribution</td>
+                            <td><span class="priority-tag priority-critical">MISSING</span></td>
+                            <td>No author names, bios, or credentials on any content</td>
+                            <td>No expert validation for AI trust signals</td>
+                        </tr>
+                        <tr>
+                            <td class="issue-name">Content Clusters</td>
+                            <td><span class="priority-tag priority-critical">MISSING</span></td>
+                            <td>No topic cluster architecture. Pages exist in isolation</td>
+                            <td>No topical authority built around key categories</td>
+                        </tr>
+                        <tr>
+                            <td class="issue-name">Feature → How → Outcome</td>
+                            <td><span class="priority-tag priority-critical">MISSING</span></td>
+                            <td>Content describes features without mechanism or measurable outcomes</td>
+                            <td>AI engines prefer actionable, outcome-based content</td>
+                        </tr>
+                        <tr>
+                            <td class="issue-name">External Citations</td>
+                            <td><span class="priority-tag priority-critical">MISSING</span></td>
+                            <td>No references to industry reports, DGCA regulations, or credible sources</td>
+                            <td>Consensus signal is absent</td>
+                        </tr>
+                        <tr>
+                            <td class="issue-name">Last Updated Dates</td>
+                            <td><span class="priority-tag priority-critical">MISSING</span></td>
+                            <td>No dates visible on any content</td>
+                            <td>AI engines may treat content as stale or unreliable</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div style="margin-top:16px; padding:16px; background:rgba(239,68,68,0.06); border-radius:8px; border:1px solid rgba(239,68,68,0.1);">
+                    <p style="font-size:13px; color:var(--text-secondary);"><strong style="color:#EF4444;">Result:</strong> All 10 AEO elements are missing. Proper Avionix has <strong>zero AI engine optimization</strong>, meaning the brand is not being cited, referenced, or recommended by any major AI engine when users ask about Indian drone companies, eVTOL manufacturers, or urban air mobility.</p>
+                </div>
+            </div>
+
+            <!-- AEO Before/After Example -->
+            <div class="section-card">
+                <div class="card-title">
+                    <div class="icon" style="background:rgba(34,197,94,0.12); color:#22C55E;">&#128161;</div>
+                    AEO Content Transformation Example
+                </div>
+                <div class="card-text">
+                    <p>Here is an example of how current content can be restructured for AI engine optimization:</p>
+                </div>
+                <div class="two-col-grid" style="margin-top:20px;">
+                    <div style="padding:20px; background:rgba(239,68,68,0.04); border:1px solid rgba(239,68,68,0.15); border-radius:10px;">
+                        <h4 style="font-size:13px; color:#EF4444; margin-bottom:12px; letter-spacing:1px;">CURRENT (Not AI-Optimized)</h4>
+                        <p style="font-size:13px; color:var(--text-secondary); line-height:1.8; font-style:italic;">"Proper Avionix developed radical, robust and highly reliable products that were designed to take the passengers from one place to any place with in 200 Kilometer range with in the city."</p>
+                    </div>
+                    <div style="padding:20px; background:rgba(34,197,94,0.04); border:1px solid rgba(34,197,94,0.15); border-radius:10px;">
+                        <h4 style="font-size:13px; color:#22C55E; margin-bottom:12px; letter-spacing:1px;">RECOMMENDED (AI-Optimized)</h4>
+                        <p style="font-size:13px; color:var(--text-secondary); line-height:1.8;">"The Nimbus Hop is a passenger eVTOL aircraft developed by Proper Avionix for intracity travel within 200 kilometres. It carries up to 496 kg of payload at a cruising speed of 140 km/h, with flight times ranging from 45 to 126 minutes. Nimbus Hop integrates 28 sensors and three independent failsafe systems to ensure operational reliability."</p>
+                        <div style="margin-top:12px; padding:8px 12px; background:var(--bg-secondary); border-radius:6px;">
+                            <p style="font-size:11px; color:var(--text-muted); font-family:'Source Code Pro', monospace;">
+                                Semantic Triples:<br>
+                                • Nimbus Hop → carries → 496 kg payload<br>
+                                • Nimbus Hop → cruises at → 140 km/h<br>
+                                • Nimbus Hop → integrates → 28 sensors
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- ============================================================ -->
+        <!-- 07 — COMPETITIVE LANDSCAPE -->
+        <!-- ============================================================ -->
+        <div class="section-wrapper page-break" id="competitive">
+            <div class="section-header">
+                <div class="section-number">Section 07</div>
+                <h2 class="section-title">Competitive Landscape</h2>
+                <p class="section-desc">How Proper Avionix compares to key competitors in digital presence and search visibility.</p>
+            </div>
+
+            <div class="section-card">
+                <div class="card-title">
+                    <div class="icon" style="background:rgba(6,182,212,0.12); color:#06B6D4;">&#9878;</div>
+                    Indian eVTOL &amp; UAM Competitor Landscape
+                </div>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Dimension</th>
+                            <th>Proper Avionix</th>
+                            <th>Sarla Aviation</th>
+                            <th>ePlane Company</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="issue-name">Website Platform</td>
+                            <td>Wix</td>
+                            <td class="highlight">Custom-built</td>
+                            <td class="highlight">Custom-built</td>
+                        </tr>
+                        <tr>
+                            <td class="issue-name">Press Coverage</td>
+                            <td style="color:#EF4444;">None detected</td>
+                            <td class="highlight">Extensive (TechCrunch, Economic Times)</td>
+                            <td class="highlight">Strong (BusinessStandard, Economic Times, Indian Defense News)</td>
+                        </tr>
+                        <tr>
+                            <td class="issue-name">Funding / Investors</td>
+                            <td style="color:#EF4444;">Not disclosed</td>
+                            <td class="highlight">$13M raised</td>
+                            <td class="highlight">IIT-Madras incubated</td>
+                        </tr>
+                        <tr>
+                            <td class="issue-name">Blog / Content Hub</td>
+                            <td style="color:#EF4444;">None</td>
+                            <td class="highlight">Active blog</td>
+                            <td class="highlight">Research publications</td>
+                        </tr>
+                        <tr>
+                            <td class="issue-name">Schema Markup</td>
+                            <td style="color:#EF4444;">None</td>
+                            <td>Organization + Article</td>
+                            <td>Organization + Article</td>
+                        </tr>
+                        <tr>
+                            <td class="issue-name">Target Keywords</td>
+                            <td style="color:#EF4444;">Not optimized</td>
+                            <td class="highlight">"eVTOL India", "air taxi"</td>
+                            <td class="highlight">"drone taxi India", "air ambulance"</td>
+                        </tr>
+                        <tr>
+                            <td class="issue-name">AI Engine Visibility</td>
+                            <td style="color:#EF4444;">Invisible</td>
+                            <td class="highlight">Mentioned in AI answers</td>
+                            <td class="highlight">Frequently cited</td>
+                        </tr>
+                        <tr>
+                            <td class="issue-name">Social Media Engagement</td>
+                            <td>Present but limited</td>
+                            <td class="highlight">Active on LinkedIn, Twitter</td>
+                            <td class="highlight">Active engagement</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section-card">
+                <div class="card-title">
+                    <div class="icon" style="background:rgba(249,115,22,0.12); color:#F97316;">&#128200;</div>
+                    Digital Presence Comparison
+                </div>
+                <div class="chart-container">
+                    <p style="font-size:12px; color:var(--text-muted); margin-bottom:16px; text-align:center;">Estimated Digital Presence Strength (0-100 scale)</p>
+                    <div class="chart-row">
+                        <div class="chart-label" style="font-weight:600; color:var(--client-blue);">Proper Avionix</div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar-fill" style="width:15%; background: linear-gradient(90deg, #2196F3, #42A5F5);">
+                                <span class="chart-bar-value outside">15</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-label">Sarla Aviation</div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar-fill" style="width:68%; background: linear-gradient(90deg, #8B5CF6, #A78BFA);">
+                                <span class="chart-bar-value">68</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-label">ePlane Company</div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar-fill" style="width:72%; background: linear-gradient(90deg, #06B6D4, #22D3EE);">
+                                <span class="chart-bar-value">72</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-label">Industry Average</div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar-fill" style="width:55%; background: linear-gradient(90deg, #71717A, #A1A1AA);">
+                                <span class="chart-bar-value">55</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-top:16px; padding:16px; background:rgba(249,115,22,0.06); border-radius:8px; border:1px solid rgba(249,115,22,0.1);">
+                    <p style="font-size:13px; color:var(--text-secondary);"><strong style="color:#F97316;">Key Insight:</strong> Proper Avionix has a significant digital presence gap compared to competitors. However, with the Indian government announcing eVTOL trials for 2026, this is the critical window to build search visibility. Competitors who secure early search authority will have a compounding advantage that becomes harder to close over time.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- ============================================================ -->
+        <!-- 08 — PRIORITIZED RECOMMENDATIONS -->
+        <!-- ============================================================ -->
+        <div class="section-wrapper page-break" id="recommendations">
+            <div class="section-header">
+                <div class="section-number">Section 08</div>
+                <h2 class="section-title">Prioritized Recommendations</h2>
+                <p class="section-desc">Actionable recommendations ordered by impact and urgency.</p>
+            </div>
+
+            <!-- Critical Priority -->
+            <div style="margin-bottom:8px;">
+                <h3 style="font-size:14px; letter-spacing:2px; text-transform:uppercase; color:#EF4444; margin-bottom:16px;">&#9632; Critical Priority — Immediate Action Required</h3>
+            </div>
+
+            <div class="rec-card critical">
+                <div class="rec-header">
+                    <div class="rec-title">1. Migrate Off Wix to a Custom-Built or Headless CMS Platform</div>
+                    <span class="priority-tag priority-critical">CRITICAL</span>
+                </div>
+                <div class="rec-body">
+                    Wix imposes severe technical SEO and AEO limitations that cannot be overcome through content changes alone. Migrate to a modern framework (Next.js, Astro, or WordPress with headless CMS) that provides full control over metadata, schema markup, server-side rendering, page speed, and URL structure. This is the single highest-impact change and the foundation for all other recommendations.
+                </div>
+                <div class="rec-impact">
+                    <div class="rec-impact-item"><strong>Impact:</strong> Very High (enables all other optimizations)</div>
+                    <div class="rec-impact-item"><strong>Effort:</strong> High (4-8 weeks)</div>
+                    <div class="rec-impact-item"><strong>Timeline:</strong> 0-60 days</div>
+                </div>
+            </div>
+
+            <div class="rec-card critical">
+                <div class="rec-header">
+                    <div class="rec-title">2. Fix Broken / Timing-Out Pages</div>
+                    <span class="priority-tag priority-critical">CRITICAL</span>
+                </div>
+                <div class="rec-body">
+                    Three key pages (Programs, Technology & Team, Be Familiarized) are completely inaccessible. These pages likely contain important content about the company's capabilities, team credentials, and programs. Fix immediately — any page that doesn't load is effectively invisible to both search engines and users. Diagnose whether the issue is Wix configuration, heavy media files, or broken page elements.
+                </div>
+                <div class="rec-impact">
+                    <div class="rec-impact-item"><strong>Impact:</strong> Very High (~43% of site is down)</div>
+                    <div class="rec-impact-item"><strong>Effort:</strong> Low-Medium</div>
+                    <div class="rec-impact-item"><strong>Timeline:</strong> Immediately</div>
+                </div>
+            </div>
+
+            <div class="rec-card critical">
+                <div class="rec-header">
+                    <div class="rec-title">3. Implement Structured Data (Schema Markup) Across All Pages</div>
+                    <span class="priority-tag priority-critical">CRITICAL</span>
+                </div>
+                <div class="rec-body">
+                    Deploy JSON-LD schema markup on every page. At minimum, implement: <strong>Organization</strong> (company info, logo, contact), <strong>Product</strong> (for Nimbus Hop, Defense Hex, Air Medic), <strong>FAQPage</strong> (after adding FAQ sections), and <strong>Article</strong> (for any long-form content or blog posts). This is the single fastest way to improve both SEO rich results and AEO citation probability.
+                </div>
+                <div class="rec-impact">
+                    <div class="rec-impact-item"><strong>Impact:</strong> Very High (enables rich results + AI extraction)</div>
+                    <div class="rec-impact-item"><strong>Effort:</strong> Medium</div>
+                    <div class="rec-impact-item"><strong>Timeline:</strong> 0-30 days</div>
+                </div>
+            </div>
+
+            <!-- High Priority -->
+            <div style="margin-bottom:8px; margin-top:32px;">
+                <h3 style="font-size:14px; letter-spacing:2px; text-transform:uppercase; color:#F97316; margin-bottom:16px;">&#9632; High Priority — Within 30 Days</h3>
+            </div>
+
+            <div class="rec-card high">
+                <div class="rec-header">
+                    <div class="rec-title">4. Rewrite All Title Tags and Meta Descriptions</div>
+                    <span class="priority-tag priority-high">HIGH</span>
+                </div>
+                <div class="rec-body">
+                    Replace generic titles ("Home | Proper Avionix") with keyword-rich, compelling titles for every page. Each title should be 50-60 characters with the primary keyword at the front. Write unique meta descriptions (150-160 characters) for each page that include a clear value proposition and call to action.
+                </div>
+                <div class="rec-impact">
+                    <div class="rec-impact-item"><strong>Impact:</strong> High (directly affects CTR and rankings)</div>
+                    <div class="rec-impact-item"><strong>Effort:</strong> Low</div>
+                    <div class="rec-impact-item"><strong>Timeline:</strong> 1-2 weeks</div>
+                </div>
+            </div>
+
+            <div class="rec-card high">
+                <div class="rec-header">
+                    <div class="rec-title">5. Restructure All Content Using Semantic Triples and AEO Patterns</div>
+                    <span class="priority-tag priority-high">HIGH</span>
+                </div>
+                <div class="rec-body">
+                    Rewrite website copy to follow the <strong>Feature → How → Outcome</strong> pattern. Every paragraph should contain 2-4 clear semantic triples (Subject → Verb → Object). Replace vague buzzwords with specific, quantifiable claims. Name entities (Nimbus Hop, Defense Hex, Air Medic POD) explicitly and consistently across all pages.
+                </div>
+                <div class="rec-impact">
+                    <div class="rec-impact-item"><strong>Impact:</strong> High (enables AI citation)</div>
+                    <div class="rec-impact-item"><strong>Effort:</strong> Medium</div>
+                    <div class="rec-impact-item"><strong>Timeline:</strong> 2-4 weeks</div>
+                </div>
+            </div>
+
+            <div class="rec-card high">
+                <div class="rec-header">
+                    <div class="rec-title">6. Fix All Grammar, Spelling, and Content Quality Issues</div>
+                    <span class="priority-tag priority-high">HIGH</span>
+                </div>
+                <div class="rec-body">
+                    Professional credibility is undermined by spelling and grammar errors throughout the site. Conduct a complete editorial review and rewrite. Remove ALL CAPS headings (accessibility issue). Replace jargon-heavy copy with clear, confident language that serves both technical audiences and potential investors.
+                </div>
+                <div class="rec-impact">
+                    <div class="rec-impact-item"><strong>Impact:</strong> High (credibility + E-E-A-T)</div>
+                    <div class="rec-impact-item"><strong>Effort:</strong> Low</div>
+                    <div class="rec-impact-item"><strong>Timeline:</strong> 1-2 weeks</div>
+                </div>
+            </div>
+
+            <div class="rec-card high">
+                <div class="rec-header">
+                    <div class="rec-title">7. Add FAQ Sections with Schema Markup</div>
+                    <span class="priority-tag priority-high">HIGH</span>
+                </div>
+                <div class="rec-body">
+                    Add 3-5 FAQ questions on each major page, addressing common queries about eVTOL technology, safety, pricing, and availability in India. Implement FAQPage schema markup for each. This is one of the highest-ROI AEO tactics — FAQ schema is directly used by AI engines to generate answers.
+                </div>
+                <div class="rec-impact">
+                    <div class="rec-impact-item"><strong>Impact:</strong> High (rich results + AI answers)</div>
+                    <div class="rec-impact-item"><strong>Effort:</strong> Low</div>
+                    <div class="rec-impact-item"><strong>Timeline:</strong> 1-2 weeks</div>
+                </div>
+            </div>
+
+            <!-- Medium Priority -->
+            <div style="margin-bottom:8px; margin-top:32px;">
+                <h3 style="font-size:14px; letter-spacing:2px; text-transform:uppercase; color:#EAB308; margin-bottom:16px;">&#9632; Medium Priority — Within 60 Days</h3>
+            </div>
+
+            <div class="rec-card medium">
+                <div class="rec-header">
+                    <div class="rec-title">8. Launch a Content Hub / Blog</div>
+                    <span class="priority-tag priority-medium">MEDIUM</span>
+                </div>
+                <div class="rec-body">
+                    Create a blog or content hub covering topics across all four verticals: civilian UAM, defense, medical, and carbon capture. Publish 2-4 articles per month targeting high-value keywords. Each article should follow AEO content templates (Category Explainer, Use Case, Supporting Blog Post). This builds topical authority and creates internal linking opportunities.
+                </div>
+                <div class="rec-impact">
+                    <div class="rec-impact-item"><strong>Impact:</strong> High (long-term authority building)</div>
+                    <div class="rec-impact-item"><strong>Effort:</strong> Medium-High (ongoing)</div>
+                    <div class="rec-impact-item"><strong>Timeline:</strong> 30-60 days to launch</div>
+                </div>
+            </div>
+
+            <div class="rec-card medium">
+                <div class="rec-header">
+                    <div class="rec-title">9. Create Dedicated Product Pages for Each Aircraft Variant</div>
+                    <span class="priority-tag priority-medium">MEDIUM</span>
+                </div>
+                <div class="rec-body">
+                    Create individual, keyword-optimized pages for: Nimbus Hop (passenger eVTOL), Defense Hex (military drone), Air Medic POD (medical), and Carbon Capture drone. Each page should include full technical specifications, use cases, comparison tables, and FAQ sections with schema markup. This is critical for both SEO ranking and AI entity recognition.
+                </div>
+                <div class="rec-impact">
+                    <div class="rec-impact-item"><strong>Impact:</strong> High</div>
+                    <div class="rec-impact-item"><strong>Effort:</strong> Medium</div>
+                    <div class="rec-impact-item"><strong>Timeline:</strong> 30-60 days</div>
+                </div>
+            </div>
+
+            <div class="rec-card medium">
+                <div class="rec-header">
+                    <div class="rec-title">10. Build Backlinks Through PR and Industry Partnerships</div>
+                    <span class="priority-tag priority-medium">MEDIUM</span>
+                </div>
+                <div class="rec-body">
+                    Develop a PR strategy to get coverage in Indian aviation publications, tech media, and defense journals. Target publications like Economic Times, YourStory, Inc42, LiveMint, and defense-specific outlets. Backlinks from authoritative sources are the strongest signal for both traditional SEO rankings and AI engine authority.
+                </div>
+                <div class="rec-impact">
+                    <div class="rec-impact-item"><strong>Impact:</strong> Very High (authority building)</div>
+                    <div class="rec-impact-item"><strong>Effort:</strong> High (ongoing)</div>
+                    <div class="rec-impact-item"><strong>Timeline:</strong> Ongoing</div>
+                </div>
+            </div>
+
+            <!-- Additional Recommendations -->
+            <div style="margin-bottom:8px; margin-top:32px;">
+                <h3 style="font-size:14px; letter-spacing:2px; text-transform:uppercase; color:#22C55E; margin-bottom:16px;">&#9632; Additional Recommendations</h3>
+            </div>
+
+            <div class="rec-card low">
+                <div class="rec-header">
+                    <div class="rec-title">11. Add Team Credentials and Author Bios</div>
+                    <span class="priority-tag priority-low">STANDARD</span>
+                </div>
+                <div class="rec-body">
+                    Create detailed team pages with professional bios, credentials, and LinkedIn profiles. Add author attribution to all content. This directly strengthens E-E-A-T signals that both search engines and AI engines use to evaluate content trustworthiness.
+                </div>
+            </div>
+
+            <div class="rec-card low">
+                <div class="rec-header">
+                    <div class="rec-title">12. Optimize All Images with Alt Text and Modern Formats</div>
+                    <span class="priority-tag priority-low">STANDARD</span>
+                </div>
+                <div class="rec-body">
+                    Add descriptive, keyword-rich alt text to every image. Convert images to WebP format for faster loading. Implement lazy loading for below-the-fold images. This improves accessibility, page speed, and image search visibility.
+                </div>
+            </div>
+
+            <div class="rec-card low">
+                <div class="rec-header">
+                    <div class="rec-title">13. Add Privacy Policy, Terms of Service, and Legal Pages</div>
+                    <span class="priority-tag priority-low">STANDARD</span>
+                </div>
+                <div class="rec-body">
+                    Add essential legal pages to improve trust signals. Include a privacy policy, terms of service, and cookie policy. These are baseline expectations for any professional website and are factored into trustworthiness assessments.
+                </div>
+            </div>
+
+            <div class="rec-card low">
+                <div class="rec-header">
+                    <div class="rec-title">14. Implement Internal Linking Strategy</div>
+                    <span class="priority-tag priority-low">STANDARD</span>
+                </div>
+                <div class="rec-body">
+                    Create a deliberate internal linking structure with 3-5 contextual links per page. Link product pages to the Vision page, link use cases to product specs, and link blog articles to product pages. This distributes link equity, aids crawling, and builds topical clusters that AI engines can follow.
+                </div>
+            </div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- ============================================================ -->
+        <!-- 09 — IMPLEMENTATION ROADMAP -->
+        <!-- ============================================================ -->
+        <div class="section-wrapper page-break" id="roadmap">
+            <div class="section-header">
+                <div class="section-number">Section 09</div>
+                <h2 class="section-title">Implementation Roadmap</h2>
+                <p class="section-desc">A phased approach to implementing recommendations, ordered by impact and dependency.</p>
+            </div>
+
+            <div class="section-card">
+                <div class="timeline">
+                    <!-- Phase 1 -->
+                    <div class="timeline-item critical">
+                        <div class="timeline-phase">Phase 1 — Week 1-2 (Immediate)</div>
+                        <div class="timeline-title">Emergency Fixes &amp; Foundation</div>
+                        <div class="timeline-desc">
+                            <ul style="padding-left:16px; margin-top:8px;">
+                                <li style="margin-bottom:6px;">Fix all broken/timing-out pages (Programs, Technology & Team, Be Familiarized)</li>
+                                <li style="margin-bottom:6px;">Fix all grammar and spelling errors across the site</li>
+                                <li style="margin-bottom:6px;">Rewrite all title tags and add meta descriptions</li>
+                                <li>Verify sitemap accessibility and submit to Google Search Console</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Phase 2 -->
+                    <div class="timeline-item critical">
+                        <div class="timeline-phase">Phase 2 — Week 3-6</div>
+                        <div class="timeline-title">Platform Migration &amp; Schema Implementation</div>
+                        <div class="timeline-desc">
+                            <ul style="padding-left:16px; margin-top:8px;">
+                                <li style="margin-bottom:6px;">Begin website migration from Wix to a modern platform (Next.js recommended)</li>
+                                <li style="margin-bottom:6px;">Implement Organization, Product, and FAQ schema across all pages</li>
+                                <li style="margin-bottom:6px;">Create dedicated product pages for each aircraft variant</li>
+                                <li>Add FAQ sections with FAQPage schema to all major pages</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Phase 3 -->
+                    <div class="timeline-item high">
+                        <div class="timeline-phase">Phase 3 — Week 7-10</div>
+                        <div class="timeline-title">Content Optimization &amp; AEO Implementation</div>
+                        <div class="timeline-desc">
+                            <ul style="padding-left:16px; margin-top:8px;">
+                                <li style="margin-bottom:6px;">Rewrite all content using semantic triples and Feature → How → Outcome patterns</li>
+                                <li style="margin-bottom:6px;">Launch content hub/blog with first 4-6 keyword-targeted articles</li>
+                                <li style="margin-bottom:6px;">Add author bios and credentials to all content</li>
+                                <li>Implement internal linking strategy across all pages</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Phase 4 -->
+                    <div class="timeline-item medium">
+                        <div class="timeline-phase">Phase 4 — Month 3-6 (Ongoing)</div>
+                        <div class="timeline-title">Authority Building &amp; Growth</div>
+                        <div class="timeline-desc">
+                            <ul style="padding-left:16px; margin-top:8px;">
+                                <li style="margin-bottom:6px;">Execute PR and backlink building campaign</li>
+                                <li style="margin-bottom:6px;">Publish 2-4 blog articles per month targeting keyword clusters</li>
+                                <li style="margin-bottom:6px;">Monitor AI engine citations and adjust content strategy</li>
+                                <li style="margin-bottom:6px;">Create comparison and use case pages for each product vertical</li>
+                                <li>Build content cluster architecture around key categories</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Expected Outcomes -->
+            <div class="section-card">
+                <div class="card-title">
+                    <div class="icon" style="background:rgba(34,197,94,0.12); color:#22C55E;">&#128200;</div>
+                    Projected Score Improvements
+                </div>
+                <div class="card-text" style="margin-bottom:20px;">
+                    <p>Estimated scores after full implementation of all recommendations over 6 months:</p>
+                </div>
+                <div class="chart-container">
+                    <div class="chart-row">
+                        <div class="chart-label">Technical SEO</div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar-fill" style="width:28%; background: linear-gradient(90deg, rgba(239,68,68,0.6), rgba(239,68,68,0.3));">
+                            </div>
+                            <div class="chart-bar-fill" style="width:78%; background: linear-gradient(90deg, #22C55E, #4ADE80); position:absolute; top:0; left:0; opacity:0.4;">
+                            </div>
+                            <span class="chart-bar-value" style="right:auto; left:80%; color:var(--text-secondary);">28 → 78</span>
+                        </div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-label">On-Page SEO</div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar-fill" style="width:22%; background: linear-gradient(90deg, rgba(239,68,68,0.6), rgba(239,68,68,0.3));">
+                            </div>
+                            <div class="chart-bar-fill" style="width:75%; background: linear-gradient(90deg, #22C55E, #4ADE80); position:absolute; top:0; left:0; opacity:0.4;">
+                            </div>
+                            <span class="chart-bar-value" style="right:auto; left:77%; color:var(--text-secondary);">22 → 75</span>
+                        </div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-label">Content Quality</div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar-fill" style="width:25%; background: linear-gradient(90deg, rgba(239,68,68,0.6), rgba(239,68,68,0.3));">
+                            </div>
+                            <div class="chart-bar-fill" style="width:72%; background: linear-gradient(90deg, #22C55E, #4ADE80); position:absolute; top:0; left:0; opacity:0.4;">
+                            </div>
+                            <span class="chart-bar-value" style="right:auto; left:74%; color:var(--text-secondary);">25 → 72</span>
+                        </div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-label">E-E-A-T Signals</div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar-fill" style="width:18%; background: linear-gradient(90deg, rgba(239,68,68,0.6), rgba(239,68,68,0.3));">
+                            </div>
+                            <div class="chart-bar-fill" style="width:60%; background: linear-gradient(90deg, #22C55E, #4ADE80); position:absolute; top:0; left:0; opacity:0.4;">
+                            </div>
+                            <span class="chart-bar-value" style="right:auto; left:62%; color:var(--text-secondary);">18 → 60</span>
+                        </div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-label">AEO Readiness</div>
+                        <div class="chart-bar-container">
+                            <div class="chart-bar-fill" style="width:12%; background: linear-gradient(90deg, rgba(239,68,68,0.6), rgba(239,68,68,0.3));">
+                            </div>
+                            <div class="chart-bar-fill" style="width:65%; background: linear-gradient(90deg, #22C55E, #4ADE80); position:absolute; top:0; left:0; opacity:0.4;">
+                            </div>
+                            <span class="chart-bar-value" style="right:auto; left:67%; color:var(--text-secondary);">12 → 65</span>
+                        </div>
+                    </div>
+                </div>
+                <div style="display:flex; justify-content:center; gap:24px; margin-top:16px;">
+                    <div class="legend-item">
+                        <div class="legend-dot" style="background:rgba(239,68,68,0.5);"></div>
+                        <span>Current Score</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-dot" style="background:rgba(34,197,94,0.5);"></div>
+                        <span>Projected Score (6 months)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- ============================================================ -->
+        <!-- 10 — APPENDIX -->
+        <!-- ============================================================ -->
+        <div class="section-wrapper page-break" id="appendix">
+            <div class="section-header">
+                <div class="section-number">Section 10</div>
+                <h2 class="section-title">Appendix &amp; Methodology</h2>
+                <p class="section-desc">Audit methodology, scoring criteria, and definitions.</p>
+            </div>
+
+            <div class="section-card">
+                <div class="card-title">Audit Methodology</div>
+                <div class="card-text">
+                    <p>This audit was conducted by the Worksthal Digital Strategy team using a proprietary analysis framework that evaluates websites across five core dimensions. The methodology combines automated scanning with expert manual review to provide actionable, accurate insights.</p>
+                    <br>
+                    <p><strong>Audit Date:</strong> February 2026</p>
+                    <p><strong>Website Analyzed:</strong> properavionix.in (all accessible pages)</p>
+                    <p><strong>Pages Tested:</strong> 7 pages (4 loaded, 3 timed out)</p>
+                </div>
+            </div>
+
+            <div class="section-card">
+                <div class="card-title">Scoring Criteria</div>
+                <table class="findings-table">
+                    <thead>
+                        <tr>
+                            <th>Score Range</th>
+                            <th>Rating</th>
+                            <th>Definition</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="issue-name">90-100</td>
+                            <td><span class="score-badge score-good">EXCELLENT</span></td>
+                            <td>Industry-leading implementation. Minimal improvements needed.</td>
+                        </tr>
+                        <tr>
+                            <td class="issue-name">70-89</td>
+                            <td><span class="score-badge score-good">GOOD</span></td>
+                            <td>Strong foundation with optimization opportunities.</td>
+                        </tr>
+                        <tr>
+                            <td class="issue-name">40-69</td>
+                            <td><span class="score-badge score-needs-work">NEEDS WORK</span></td>
+                            <td>Significant gaps that limit search visibility and performance.</td>
+                        </tr>
+                        <tr>
+                            <td class="issue-name">20-39</td>
+                            <td><span class="score-badge score-poor">POOR</span></td>
+                            <td>Major deficiencies across multiple areas requiring urgent attention.</td>
+                        </tr>
+                        <tr>
+                            <td class="issue-name">0-19</td>
+                            <td><span class="score-badge score-critical">CRITICAL</span></td>
+                            <td>Fundamental issues preventing search visibility. Immediate intervention required.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section-card">
+                <div class="card-title">Glossary of Key Terms</div>
+                <table class="findings-table">
+                    <thead>
+                        <tr>
+                            <th>Term</th>
+                            <th>Definition</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="issue-name">SEO</td>
+                            <td>Search Engine Optimization — the practice of improving a website's visibility in traditional search engine results (Google, Bing).</td>
+                        </tr>
+                        <tr>
+                            <td class="issue-name">AEO</td>
+                            <td>AI Engine Optimization — optimizing content to be cited and referenced by AI-powered search and answer engines (ChatGPT, Claude, Perplexity, Google AI Overviews).</td>
+                        </tr>
+                        <tr>
+                            <td class="issue-name">E-E-A-T</td>
+                            <td>Experience, Expertise, Authoritativeness, Trustworthiness — Google's framework for evaluating content quality and credibility.</td>
+                        </tr>
+                        <tr>
+                            <td class="issue-name">Schema Markup</td>
+                            <td>Structured data code (JSON-LD format) added to web pages to help search engines understand the content's meaning and context.</td>
+                        </tr>
+                        <tr>
+                            <td class="issue-name">Semantic Triples</td>
+                            <td>Clear Subject → Verb → Object fact statements that AI engines can reliably extract and cite (e.g., "Nimbus Hop carries 496 kg payload").</td>
+                        </tr>
+                        <tr>
+                            <td class="issue-name">Core Web Vitals</td>
+                            <td>Google's metrics for measuring real-world user experience: Largest Contentful Paint (loading), Interaction to Next Paint (responsiveness), and Cumulative Layout Shift (visual stability).</td>
+                        </tr>
+                        <tr>
+                            <td class="issue-name">Content Clusters</td>
+                            <td>A strategic content architecture where a central "pillar" page links to and from related supporting content, building topical authority.</td>
+                        </tr>
+                        <tr>
+                            <td class="issue-name">Backlinks</td>
+                            <td>Links from external websites pointing to your site. Quality backlinks from authoritative sources are a major ranking factor.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- FOOTER -->
+        <!-- ============================================================ -->
+        <div class="report-footer">
+            <div class="cover-brand" style="margin-bottom:16px;">
+                <div class="brand-icon" style="width:36px; height:36px; font-size:18px; margin-bottom:8px;">W</div>
+                <div class="footer-brand">WORKSTHAL</div>
+            </div>
+            <div class="footer-text">
+                AI-Powered Digital Solutions &amp; Automation<br>
+                Hyderabad, India &nbsp;&bull;&nbsp; contact@worksthal.com<br><br>
+                This report is confidential and prepared exclusively for Proper Avionix Private Limited.<br>
+                &copy; 2026 Worksthal. All rights reserved.
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
