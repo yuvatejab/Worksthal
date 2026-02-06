@@ -156,14 +156,14 @@ export function Contact() {
             </ExpandableScreenTrigger>
 
             {/* Contact Info */}
-            <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-3">
+            <address className="mt-16 not-italic grid grid-cols-1 gap-6 md:grid-cols-3">
               <div className="flex flex-col items-center gap-3 rounded-2xl border border-border bg-card/50 p-6 backdrop-blur-sm">
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
                   <Mail className="h-6 w-6 text-primary" />
                 </div>
-                <div>
+                <div className="text-center">
                   <p className="mb-1 text-sm font-medium text-muted-foreground">Email</p>
-                  <p className="text-sm font-semibold text-foreground">contact@worksthal.com</p>
+                  <a href="mailto:contact@worksthal.com" className="text-sm font-semibold text-foreground transition-colors hover:text-primary">contact@worksthal.com</a>
                 </div>
               </div>
 
@@ -171,9 +171,9 @@ export function Contact() {
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-secondary/10">
                   <Phone className="h-6 w-6 text-secondary" />
                 </div>
-                <div>
+                <div className="text-center">
                   <p className="mb-1 text-sm font-medium text-muted-foreground">Phone</p>
-                  <p className="text-sm font-semibold text-foreground">+91 63098219055</p>
+                  <a href="tel:+916309821905" className="text-sm font-semibold text-foreground transition-colors hover:text-primary">+91 63098219055</a>
                 </div>
               </div>
 
@@ -181,12 +181,12 @@ export function Contact() {
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-accent/10">
                   <MapPin className="h-6 w-6 text-accent" />
                 </div>
-                <div>
+                <div className="text-center">
                   <p className="mb-1 text-sm font-medium text-muted-foreground">Location</p>
-                  <p className="text-sm font-semibold text-foreground">Hyderabad, India</p>
+                  <p className="text-sm font-semibold text-foreground">Hyderabad, Telangana, India</p>
                 </div>
               </div>
-            </div>
+            </address>
           </div>
 
           {/* Expandable Form Content */}

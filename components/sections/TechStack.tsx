@@ -28,9 +28,9 @@ export function TechStack() {
           <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-2 text-sm font-medium text-primary backdrop-blur-sm">
             Technology
           </div>
-          <h2 className="text-h1 mb-6 font-serif font-bold">Powered by Leading Technology</h2>
+          <h2 className="text-h1 mb-6 font-serif font-bold">Technology Stack Powering Worksthal Solutions</h2>
           <p className="text-body-lg mx-auto max-w-3xl text-muted-foreground">
-            We work with industry-leading platforms and AI models to build solutions that are reliable, scalable, and future-proof.
+            Worksthal uses industry-leading AI models, automation platforms, and modern web frameworks to build solutions that are reliable, scalable, and optimized for performance.
           </p>
         </div>
 
@@ -75,7 +75,7 @@ export function TechStack() {
           <div className="rounded-2xl border border-border bg-card p-6 transition-all hover:border-primary/50 hover:shadow-lg">
             <h3 className="mb-3 text-xl font-semibold text-foreground">AI and Automation</h3>
             <p className="mb-4 text-sm text-muted-foreground">
-              Cutting-edge AI models and automation platforms
+              Worksthal integrates leading AI models (OpenAI, Claude, Gemini) with automation platforms (n8n, Make, Zapier) to build intelligent workflows that process data and trigger actions automatically.
             </p>
             <div className="flex flex-wrap gap-2">
               {["OpenAI", "Claude", "Gemini", "n8n", "Make", "Zapier"].map((tech) => (
@@ -92,7 +92,7 @@ export function TechStack() {
           <div className="rounded-2xl border border-border bg-card p-6 transition-all hover:border-secondary/50 hover:shadow-lg">
             <h3 className="mb-3 text-xl font-semibold text-foreground">Web Development</h3>
             <p className="mb-4 text-sm text-muted-foreground">
-              Modern frameworks for fast, scalable applications
+              Worksthal builds web applications using Next.js, React, TypeScript, Tailwind CSS, and Node.js — the same modern stack used by companies like Vercel and Netflix for sub-2-second load times.
             </p>
             <div className="flex flex-wrap gap-2">
               {["Next.js", "React", "TypeScript", "Tailwind", "Node.js"].map((tech) => (
@@ -109,7 +109,7 @@ export function TechStack() {
           <div className="rounded-2xl border border-border bg-card p-6 transition-all hover:border-accent/50 hover:shadow-lg">
             <h3 className="mb-3 text-xl font-semibold text-foreground">AEO/SEO Audit and Visibility</h3>
             <p className="mb-4 text-sm text-muted-foreground">
-              Data-driven insights and optimization tools
+              Worksthal uses Google Analytics, Search Console, Ahrefs, and Semrush to audit, optimize, and track search engine and AI engine visibility for maximum organic traffic.
             </p>
             <div className="flex flex-wrap gap-2">
               {["Google Analytics", "Search Console", "Ahrefs", "Semrush"].map((tech) => (

@@ -1,0 +1,48 @@
+# Worksthal — AI-Powered Digital Solutions Agency
+
+> Worksthal is a full-service digital agency based in Hyderabad, India, specializing in AI workflow automation, modern web development, and AI engine optimization (AEO).
+
+## Company Overview
+
+- Name: Worksthal
+- Type: Digital Solutions Agency
+- Location: Hyderabad, India
+- Website: https://worksthal.vercel.app
+- Email: contact@worksthal.com
+- Phone: +91 63098219055
+- Founded: 2024
+
+## Core Services
+
+### AI Workflow Automation
+Worksthal builds custom AI automation workflows using n8n, Make, and AI APIs. These workflows connect existing business tools, automate repetitive data processing, and trigger event-driven actions in real time. Clients typically save 20+ hours per week on manual tasks within the first 30 days of deployment.
+
+### Website Design and Development
+Worksthal creates fast, responsive, conversion-optimized websites using Next.js, React, and TypeScript. Websites load in under 2 seconds, follow modern SEO best practices, and are designed to turn visitors into customers.
+
+### AI-Optimized Audit and Visibility (AEO)
+Worksthal optimizes content and technical infrastructure so search engines and AI assistants (ChatGPT, Perplexity, Gemini, Google AI Overviews) can understand and recommend businesses. Services include structured data implementation, semantic content optimization, and AI crawler configuration.
+
+### AI-Driven Marketing
+Worksthal delivers data-driven marketing campaigns powered by AI analytics. Services include targeted content creation, ad spend optimization, and revenue-focused strategy development using tools like Google Analytics, Search Console, Ahrefs, and Semrush.
+
+## Technology Stack
+
+- AI & Automation: OpenAI, Claude, Gemini, n8n, Make, Zapier
+- Web Development: Next.js, React, TypeScript, Tailwind CSS, Node.js
+- Analytics & SEO: Google Analytics, Google Search Console, Ahrefs, Semrush
+
+## Key Facts
+
+- Worksthal has delivered 50+ projects for clients across multiple industries.
+- Clients report 98% satisfaction rate.
+- AI automation workflows save clients an average of 20+ hours per week.
+- Worksthal delivers measurable ROI within 90 days of engagement.
+- The agency combines human expertise with AI capabilities for practical, results-driven solutions.
+
+## Contact
+
+For inquiries, project consultations, or partnership opportunities:
+- Email: contact@worksthal.com
+- Phone: +91 63098219055
+- Location: Hyderabad, Telangana, India

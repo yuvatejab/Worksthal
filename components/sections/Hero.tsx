@@ -29,21 +29,22 @@ export function Hero() {
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75"></span>
             <span className="relative inline-flex h-2 w-2 rounded-full bg-primary"></span>
           </span>
-          Full-Service Digital Agency
+          AI-Powered Digital Agency — Hyderabad, India
         </div>
 
-        {/* Main Heading */}
+        {/* Main Heading — keywords front-loaded for SEO */}
         <h1 className="font-serif text-5xl font-bold leading-tight tracking-tight text-foreground md:text-6xl lg:text-7xl">
-          Transform Your Business with{" "}
+          AI Workflow Automation &amp;{" "}
           <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-            Intelligent Automation
+            Web Development Agency
           </span>
         </h1>
 
-        {/* Subheading */}
+        {/* Subheading — AEO-optimized with semantic triples */}
         <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
-          We're a full-service digital agency specializing in AI workflow automation, 
-          modern web development, and data-driven marketing strategies that deliver measurable results.
+          Worksthal builds custom AI automation workflows, modern websites, and AEO strategies
+          that deliver measurable ROI within 90 days. Our automation solutions save clients
+          20+ hours per week on repetitive tasks.
         </p>
 
         {/* CTA Buttons */}
@@ -52,12 +53,13 @@ export function Hero() {
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
             className="w-full px-6 py-3 text-base font-semibold sm:w-auto sm:px-8"
           >
-            Start Your Project
+            Get a Free Consultation
           </ShinyButton>
           
           <button
             onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
             className="w-full rounded-lg border border-primary/30 bg-transparent px-6 py-3 text-base font-semibold text-foreground transition-all hover:border-primary/50 hover:bg-primary/5 sm:w-auto sm:px-8"
+            aria-label="View Worksthal services including AI automation and web development"
           >
             View Our Services
           </button>
@@ -71,15 +73,15 @@ export function Hero() {
               <div className="h-8 w-8 rounded-full border-2 border-background bg-gradient-to-br from-secondary to-accent" />
               <div className="h-8 w-8 rounded-full border-2 border-background bg-gradient-to-br from-accent to-primary" />
             </div>
-            <span className="font-medium">50+ Projects</span>
+            <span className="font-medium">50+ Projects Delivered</span>
           </div>
           <div className="hidden h-4 w-px bg-border sm:block" />
           <div className="font-medium">
-            <span className="text-primary">98%</span> Satisfaction
+            <span className="text-primary">98%</span> Client Satisfaction
           </div>
           <div className="hidden h-4 w-px bg-border sm:block" />
           <div className="font-medium">
-            <span className="text-primary">20hrs+</span> Saved Weekly
+            <span className="text-primary">20hrs+</span> Saved Weekly per Client
           </div>
         </div>
       </div>

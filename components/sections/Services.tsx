@@ -19,7 +19,7 @@ export function Services() {
   const services = [
     {
       name: "AI Workflow Automation",
-      description: "Eliminate repetitive tasks and scale your operations with intelligent automation. We build custom workflows using n8n, Make, and AI APIs that connect your tools, automate data processing, and trigger smart actions—saving your team 20+ hours per week.",
+      description: "Worksthal builds custom AI automation workflows using n8n, Make, and AI APIs. These workflows connect your existing business tools, automate repetitive data processing, and trigger event-driven actions in real time. Clients typically save 20+ hours per week on manual tasks within the first 30 days of deployment.",
       icon: Workflow,
       className: "col-span-3 lg:col-span-2",
       background: (
@@ -39,7 +39,7 @@ export function Services() {
     },
     {
       name: "Website Design and Development",
-      description: "Fast, beautiful, conversion-optimized websites built with modern frameworks. We create responsive sites using Next.js and React that load in under 2 seconds, rank well in search, and turn visitors into customers.",
+      description: "Worksthal creates fast, responsive, conversion-optimized websites using Next.js, React, and TypeScript. These modern web applications load in under 2 seconds, follow SEO best practices for high search rankings, and are designed to turn visitors into paying customers.",
       icon: Globe,
       className: "col-span-3 lg:col-span-1",
       background: (
@@ -51,8 +51,8 @@ export function Services() {
       ),
     },
     {
-      name: "AI-Optimized Audit and Visibility",
-      description: "Get found by both humans and AI. We optimize your content and technical setup so search engines and AI assistants (ChatGPT, Perplexity, Gemini) can understand and recommend your business—driving qualified traffic that converts.",
+      name: "AI-Optimized Audit and Visibility (AEO)",
+      description: "Worksthal optimizes your content and technical infrastructure so search engines and AI assistants (ChatGPT, Perplexity, Google AI Overviews) can understand and recommend your business. Services include structured data implementation, semantic content optimization, and AI crawler configuration — driving qualified traffic that converts.",
       icon: Search,
       className: "col-span-3 lg:col-span-1",
       background: (
@@ -65,7 +65,7 @@ export function Services() {
     },
     {
       name: "AI-Driven Marketing",
-      description: "Data-driven campaigns powered by AI insights. We use advanced analytics and AI tools to create targeted content, optimize ad spend, and identify the strategies that actually grow your revenue—not just vanity metrics.",
+      description: "Worksthal delivers data-driven marketing campaigns powered by AI analytics. Using tools like Google Analytics, Search Console, Ahrefs, and Semrush, Worksthal creates targeted content strategies, optimizes ad spend for maximum ROI, and identifies the growth levers that actually increase your revenue — not just vanity metrics.",
       icon: TrendingUp,
       className: "col-span-3 lg:col-span-2",
       background: (
@@ -105,10 +105,10 @@ export function Services() {
             What We Do
           </div>
           <h2 className="mb-6 font-serif text-4xl font-bold text-foreground md:text-5xl lg:text-6xl">
-            Our Services
+            AI Automation &amp; Web Development Services
           </h2>
           <p className="mx-auto max-w-3xl text-lg leading-relaxed text-muted-foreground">
-            Explore our range of services designed to elevate your business with cutting-edge technology and innovative solutions.
+            Worksthal delivers four core services — AI workflow automation, modern web development, AI engine optimization (AEO), and data-driven marketing — each designed to generate measurable ROI within 90 days.
           </p>
         </div>
 

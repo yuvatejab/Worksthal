@@ -25,10 +25,11 @@ export function About() {
           <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-2 text-sm font-medium text-primary backdrop-blur-sm">
             About Worksthal
           </div>
-          <h2 className="text-h1 mb-6 font-serif font-bold">Built for Growing Businesses</h2>
+          <h2 className="text-h1 mb-6 font-serif font-bold">Digital Agency Built for Growing Businesses</h2>
           <p className="text-body-lg mx-auto max-w-3xl text-muted-foreground">
-            Worksthal is a modern digital agency built around practical AI and clean execution. 
-            We don't sell big promises or complicated systems. We focus on doing useful work that helps businesses move forward, one step at a time.
+            Worksthal is a digital agency based in Hyderabad, India, built around practical AI implementation and clean execution.
+            Worksthal focuses on delivering useful work that generates measurable results — from custom AI automation workflows that save 20+ hours per week
+            to modern websites built with Next.js that load in under 2 seconds.
           </p>
         </div>
 
@@ -99,7 +100,7 @@ export function About() {
                 Practical AI Implementation
               </h3>
               <p className="text-sm leading-relaxed text-muted-foreground">
-                We don't chase trends. We implement AI tools that solve real problems and deliver ROI within 90 days.
+                Worksthal implements AI tools that solve real business problems and deliver measurable ROI within 90 days. Every automation is built around your existing tools and workflows.
               </p>
             </div>
           </div>
@@ -114,7 +115,7 @@ export function About() {
                 Transparent Partnership
               </h3>
               <p className="text-sm leading-relaxed text-muted-foreground">
-                No jargon, no surprises. You'll understand exactly what we're building, why it matters, and what results to expect.
+                Worksthal operates with full transparency — clear project scopes, defined milestones, and regular progress updates. Clients understand exactly what is being built, why it matters, and what results to expect.
               </p>
             </div>
           </div>
@@ -129,7 +130,7 @@ export function About() {
                 Technical Excellence
               </h3>
               <p className="text-sm leading-relaxed text-muted-foreground">
-                Modern stack, best practices, clean code. We build solutions that scale with your business and don't require constant maintenance.
+                Worksthal uses a modern technology stack — Next.js, React, TypeScript, and Tailwind CSS — following industry best practices. Solutions are built to scale with your business and require minimal ongoing maintenance.
               </p>
             </div>
           </div>
@@ -144,13 +145,14 @@ export function About() {
               </div>
             </div>
             <div className="flex-1">
-              <h3 className="text-h3 mb-4 font-serif font-bold">Why AI (The Right Way)</h3>
+              <h3 className="text-h3 mb-4 font-serif font-bold">Why AI — The Right Way</h3>
               <p className="text-body-lg mb-4 text-foreground">
-                AI as a tool, not a buzzword
+                AI as a practical tool, not a buzzword
               </p>
               <p className="text-muted-foreground">
-                We use it to reduce effort, improve clarity, and speed up execution—not to overcomplicate things or replace common sense. 
-                Our approach combines human expertise with AI capabilities to deliver solutions that actually work.
+                Worksthal uses AI to reduce effort, improve clarity, and accelerate execution — not to overcomplicate things or replace human judgment.
+                Worksthal&apos;s approach combines human expertise with AI capabilities from OpenAI, Claude, and Gemini to deliver solutions
+                that produce measurable business outcomes. Every AI implementation is validated against real performance data before deployment.
               </p>
             </div>
           </div>
