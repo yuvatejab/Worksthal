@@ -19,7 +19,7 @@ export function Services() {
   const services = [
     {
       name: "AI Workflow Automation",
-      description: "Worksthal builds custom AI automation workflows using n8n, Make, and AI APIs. These workflows connect your existing business tools, automate repetitive data processing, and trigger event-driven actions in real time. Clients typically save 20+ hours per week on manual tasks within the first 30 days of deployment.",
+      description: "Worksthal builds custom AI automation workflows using n8n, Make, and AI APIs. These workflows connect your existing business tools, automate repetitive data processing, and trigger event-driven actions in real time. Our automation solutions eliminate manual tasks, reduce errors, and free up your team to focus on strategic work.",
       icon: Workflow,
       className: "col-span-3 lg:col-span-2",
       background: (
@@ -108,7 +108,7 @@ export function Services() {
             AI Automation &amp; Web Development Services
           </h2>
           <p className="mx-auto max-w-3xl text-lg leading-relaxed text-muted-foreground">
-            Worksthal delivers four core services — AI workflow automation, modern web development, AI engine optimization (AEO), and data-driven marketing — each designed to generate measurable ROI within 90 days.
+            Worksthal delivers four core services — AI workflow automation, modern web development, AI engine optimization (AEO), and data-driven marketing — each designed to generate measurable results and accelerate your business growth.
           </p>
         </div>
 

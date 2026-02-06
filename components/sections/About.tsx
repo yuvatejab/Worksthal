@@ -28,8 +28,8 @@ export function About() {
           <h2 className="text-h1 mb-6 font-serif font-bold">Digital Agency Built for Growing Businesses</h2>
           <p className="text-body-lg mx-auto max-w-3xl text-muted-foreground">
             Worksthal is a digital agency based in Hyderabad, India, built around practical AI implementation and clean execution.
-            Worksthal focuses on delivering useful work that generates measurable results — from custom AI automation workflows that save 20+ hours per week
-            to modern websites built with Next.js that load in under 2 seconds.
+            Worksthal focuses on delivering useful work that generates measurable results — from custom AI automation workflows that eliminate repetitive tasks
+            to modern websites built with Next.js that deliver exceptional performance and user experience.
           </p>
         </div>
 
@@ -100,7 +100,7 @@ export function About() {
                 Practical AI Implementation
               </h3>
               <p className="text-sm leading-relaxed text-muted-foreground">
-                Worksthal implements AI tools that solve real business problems and deliver measurable ROI within 90 days. Every automation is built around your existing tools and workflows.
+                Worksthal implements AI tools that solve real business problems and deliver measurable ROI. Every automation is built around your existing tools and workflows, ensuring seamless integration and immediate value.
               </p>
             </div>
           </div>

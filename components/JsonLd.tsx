@@ -75,22 +75,22 @@ export function JsonLd() {
     {
       name: "AI Workflow Automation",
       description:
-        "Worksthal builds custom AI automation workflows using n8n, Make, and AI APIs. These workflows connect existing business tools, automate repetitive data processing, and trigger event-driven actions in real time. Clients typically save 20+ hours per week on manual tasks within the first 30 days.",
+        "Worksthal builds custom AI automation workflows using n8n, Make, and AI APIs. These workflows connect existing business tools, automate repetitive data processing, and trigger event-driven actions in real time. Our automation solutions eliminate manual tasks, reduce errors, and free up teams to focus on strategic work.",
     },
     {
       name: "Website Design and Development",
       description:
-        "Worksthal creates fast, responsive, conversion-optimized websites using Next.js, React, and TypeScript. Websites load in under 2 seconds, follow modern SEO best practices, and are designed to turn visitors into customers.",
+        "Worksthal creates fast, responsive, conversion-optimized websites using Next.js, React, and TypeScript. These modern web applications deliver exceptional performance, follow SEO best practices, and are designed to turn visitors into customers.",
     },
     {
-      name: "AI-Optimized Audit and Visibility (AEO)",
+      name: "AI Engine Optimization (AEO)",
       description:
-        "Worksthal optimizes content and technical infrastructure so search engines and AI assistants can understand and recommend businesses. Services include structured data implementation, semantic content optimization, and AI crawler configuration.",
+        "Worksthal optimizes content and technical infrastructure so search engines and AI assistants can understand and recommend businesses. Services include structured data implementation, semantic content optimization, and AI crawler configuration to increase visibility in AI-powered search results.",
     },
     {
       name: "AI-Driven Marketing",
       description:
-        "Worksthal delivers data-driven marketing campaigns powered by AI analytics. Services include targeted content creation, ad spend optimization, and revenue-focused strategy using Google Analytics, Ahrefs, and Semrush.",
+        "Worksthal delivers data-driven marketing campaigns powered by AI analytics. Services include targeted content creation, ad spend optimization, and revenue-focused strategy using Google Analytics, Ahrefs, and Semrush to drive measurable business growth.",
     },
   ];
 
@@ -111,6 +111,37 @@ export function JsonLd() {
     serviceType: service.name,
   }));
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: baseUrl,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Services",
+        item: `${baseUrl}/services`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: "About",
+        item: `${baseUrl}/about`,
+      },
+      {
+        "@type": "ListItem",
+        position: 4,
+        name: "FAQ",
+        item: `${baseUrl}/faq`,
+      },
+    ],
+  };
+
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -128,7 +159,7 @@ export function JsonLd() {
         name: "How much time can AI automation save my business?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Worksthal's AI automation workflows typically save clients 20+ hours per week on repetitive manual tasks. Most clients see measurable time savings within the first 30 days of deployment. Worksthal builds custom workflows tailored to your existing tools and processes.",
+          text: "Worksthal's AI automation workflows eliminate hours of manual work every week by automating repetitive tasks and data processing. The exact time savings depend on your specific workflows and processes. Worksthal builds custom workflows tailored to your existing tools and processes to maximize efficiency gains.",
         },
       },
       {
@@ -160,7 +191,7 @@ export function JsonLd() {
         name: "How quickly can I expect results from Worksthal?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Worksthal delivers measurable ROI within 90 days of engagement. AI automation workflows typically show time savings within 30 days. Web development projects are scoped for efficient delivery. AEO improvements begin showing AI citation results within 60-90 days of implementation.",
+          text: "Worksthal delivers measurable results that vary based on the service. AI automation workflows show immediate time savings after deployment. Web development projects follow agile delivery with functional milestones throughout. AEO and SEO improvements are long-term strategies that build visibility over time. Worksthal provides transparent reporting so you can track progress throughout the engagement.",
         },
       },
     ],
@@ -195,6 +226,12 @@ export function JsonLd() {
           }}
         />
       ))}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema),
+        }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

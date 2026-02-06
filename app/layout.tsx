@@ -3,6 +3,7 @@ import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { JsonLd } from "@/components/JsonLd";
+import { GlobalCursor } from "@/components/GlobalCursor";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -22,9 +23,9 @@ const baseUrl = "https://worksthal.vercel.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
-  title: "AI Workflow Automation & Web Development Agency | Worksthal",
+  title: "Worksthal — AI Automation, Web Development & AEO Agency in Hyderabad",
   description:
-    "Worksthal is a digital agency in Hyderabad specializing in AI workflow automation, Next.js web development, and AEO (AI Engine Optimization). Save 20+ hours per week with custom automation. Get a free consultation.",
+    "Worksthal is a digital agency in Hyderabad specializing in AI workflow automation, Next.js web development, and AI Engine Optimization (AEO). We help businesses automate repetitive tasks, build modern websites, and improve search visibility. Get a free consultation.",
   keywords: [
     "AI automation agency",
     "AI workflow automation",
@@ -60,9 +61,9 @@ export const metadata: Metadata = {
     canonical: baseUrl,
   },
   openGraph: {
-    title: "AI Workflow Automation & Web Development Agency | Worksthal",
+    title: "Worksthal — AI Automation, Web Development & AEO Agency",
     description:
-      "Worksthal builds custom AI automation workflows, modern websites, and AEO strategies that deliver measurable ROI within 90 days. Based in Hyderabad, serving clients worldwide.",
+      "Worksthal builds custom AI automation workflows, modern websites, and AEO strategies that help businesses grow. Based in Hyderabad, serving clients worldwide.",
     type: "website",
     locale: "en_US",
     url: baseUrl,
@@ -72,15 +73,15 @@ export const metadata: Metadata = {
         url: "/website preview.png",
         width: 1200,
         height: 630,
-        alt: "Worksthal — AI-Powered Digital Solutions Agency",
+        alt: "Worksthal — AI Automation & Web Development Agency",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI Workflow Automation & Web Development Agency | Worksthal",
+    title: "Worksthal — AI Automation, Web Development & AEO Agency",
     description:
-      "Worksthal builds custom AI automation workflows, modern websites, and AEO strategies. Save 20+ hours per week. Based in Hyderabad, India.",
+      "Worksthal builds custom AI automation workflows, modern websites, and AEO strategies. Based in Hyderabad, India, serving clients worldwide.",
     images: ["/website preview.png"],
   },
   category: "Technology",
@@ -113,6 +114,7 @@ export default function RootLayout({
           "--font-serif": playfair.style.fontFamily,
         } as React.CSSProperties}
       >
+        <GlobalCursor />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

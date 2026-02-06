@@ -32,19 +32,19 @@ export function Hero() {
           AI-Powered Digital Agency — Hyderabad, India
         </div>
 
-        {/* Main Heading — keywords front-loaded for SEO */}
+        {/* Main Heading — Intriguing and benefit-focused */}
         <h1 className="font-serif text-5xl font-bold leading-tight tracking-tight text-foreground md:text-6xl lg:text-7xl">
-          AI Workflow Automation &amp;{" "}
+          Turn Repetitive Tasks Into{" "}
           <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-            Web Development Agency
+            Automated Growth
           </span>
         </h1>
 
         {/* Subheading — AEO-optimized with semantic triples */}
         <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
-          Worksthal builds custom AI automation workflows, modern websites, and AEO strategies
-          that deliver measurable ROI within 90 days. Our automation solutions save clients
-          20+ hours per week on repetitive tasks.
+          Worksthal builds custom AI automation workflows, modern websites, and AI-optimized content strategies
+          that free up your time and accelerate business growth. Our clients reclaim hours every week
+          while improving efficiency and visibility.
         </p>
 
         {/* CTA Buttons */}
@@ -73,15 +73,15 @@ export function Hero() {
               <div className="h-8 w-8 rounded-full border-2 border-background bg-gradient-to-br from-secondary to-accent" />
               <div className="h-8 w-8 rounded-full border-2 border-background bg-gradient-to-br from-accent to-primary" />
             </div>
-            <span className="font-medium">50+ Projects Delivered</span>
+            <span className="font-medium">Trusted by Growing Businesses</span>
           </div>
           <div className="hidden h-4 w-px bg-border sm:block" />
           <div className="font-medium">
-            <span className="text-primary">98%</span> Client Satisfaction
+            Based in <span className="text-primary">Hyderabad, India</span>
           </div>
           <div className="hidden h-4 w-px bg-border sm:block" />
           <div className="font-medium">
-            <span className="text-primary">20hrs+</span> Saved Weekly per Client
+            Serving Clients <span className="text-primary">Worldwide</span>
           </div>
         </div>
       </div>

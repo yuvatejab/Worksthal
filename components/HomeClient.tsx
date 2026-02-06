@@ -10,14 +10,12 @@ import {
   IconQuestionMark,
 } from "@tabler/icons-react";
 import { motion } from "motion/react";
-import { Pointer } from "@/components/ui/pointer";
 import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler";
 
 import { Hero } from "@/components/sections/Hero";
 import { Services } from "@/components/sections/Services";
 import { About } from "@/components/sections/About";
 import { TechStack } from "@/components/sections/TechStack";
-import { FAQ } from "@/components/sections/FAQ";
 import { Contact } from "@/components/sections/Contact";
 
 const Logo = () => {
@@ -57,28 +55,28 @@ export function HomeClient() {
     },
     {
       label: "About",
-      href: "#about",
+      href: "/about",
       icon: (
         <IconInfoCircle className="h-5 w-5 shrink-0 text-muted-foreground group-hover:text-foreground transition-colors" />
       ),
     },
     {
       label: "Services",
-      href: "#services",
+      href: "/services",
       icon: (
         <IconBriefcase className="h-5 w-5 shrink-0 text-muted-foreground group-hover:text-foreground transition-colors" />
       ),
     },
     {
       label: "FAQ",
-      href: "#faq",
+      href: "/faq",
       icon: (
         <IconQuestionMark className="h-5 w-5 shrink-0 text-muted-foreground group-hover:text-foreground transition-colors" />
       ),
     },
     {
       label: "Contact",
-      href: "#contact",
+      href: "/contact",
       icon: (
         <IconMail className="h-5 w-5 shrink-0 text-muted-foreground group-hover:text-foreground transition-colors" />
       ),
@@ -87,9 +85,6 @@ export function HomeClient() {
 
   return (
     <>
-      {/* Custom Pointer */}
-      <Pointer className="fill-primary/60" />
-
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: isLoaded ? 1 : 0 }}
@@ -146,9 +141,6 @@ export function HomeClient() {
           {/* Technology Stack Section */}
           <TechStack />
 
-          {/* FAQ Section */}
-          <FAQ />
-
           {/* Contact Section */}
           <Contact />
 
@@ -177,7 +169,7 @@ export function HomeClient() {
                   <ul className="space-y-3">
                     <li>
                       <a
-                        href="#services"
+                        href="/services/ai-automation"
                         className="text-sm text-muted-foreground transition-colors hover:text-primary"
                       >
                         AI Workflow Automation
@@ -185,7 +177,7 @@ export function HomeClient() {
                     </li>
                     <li>
                       <a
-                        href="#services"
+                        href="/services/web-development"
                         className="text-sm text-muted-foreground transition-colors hover:text-primary"
                       >
                         Website Development
@@ -193,7 +185,7 @@ export function HomeClient() {
                     </li>
                     <li>
                       <a
-                        href="#services"
+                        href="/services/aeo"
                         className="text-sm text-muted-foreground transition-colors hover:text-primary"
                       >
                         AEO &amp; Search Visibility
@@ -201,7 +193,7 @@ export function HomeClient() {
                     </li>
                     <li>
                       <a
-                        href="#services"
+                        href="/services/ai-marketing"
                         className="text-sm text-muted-foreground transition-colors hover:text-primary"
                       >
                         AI Marketing
@@ -218,7 +210,7 @@ export function HomeClient() {
                   <ul className="space-y-3">
                     <li>
                       <a
-                        href="#about"
+                        href="/about"
                         className="text-sm text-muted-foreground transition-colors hover:text-primary"
                       >
                         About Us
@@ -226,7 +218,7 @@ export function HomeClient() {
                     </li>
                     <li>
                       <a
-                        href="#services"
+                        href="/services"
                         className="text-sm text-muted-foreground transition-colors hover:text-primary"
                       >
                         Our Services
@@ -234,7 +226,15 @@ export function HomeClient() {
                     </li>
                     <li>
                       <a
-                        href="#faq"
+                        href="/blog"
+                        className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                      >
+                        Blog
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="/faq"
                         className="text-sm text-muted-foreground transition-colors hover:text-primary"
                       >
                         FAQ
@@ -242,7 +242,7 @@ export function HomeClient() {
                     </li>
                     <li>
                       <a
-                        href="#contact"
+                        href="/contact"
                         className="text-sm text-muted-foreground transition-colors hover:text-primary"
                       >
                         Contact Us
@@ -298,13 +298,13 @@ export function HomeClient() {
                   </p>
                   <div className="flex gap-6">
                     <a
-                      href="#contact"
+                      href="/privacy"
                       className="text-sm text-muted-foreground transition-colors hover:text-primary"
                     >
                       Privacy Policy
                     </a>
                     <a
-                      href="#contact"
+                      href="/terms"
                       className="text-sm text-muted-foreground transition-colors hover:text-primary"
                     >
                       Terms of Service
