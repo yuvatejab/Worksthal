@@ -379,7 +379,7 @@ Before delivering the report, verify:
 □ Every recommendation has impact/effort/timeline metrics
 □ The executive summary can be understood in 60 seconds
 □ Glossary explains all technical terms for non-technical readers
-□ The report tells a clear story: here's where you are → here's where you should be → here's how to get there
+□ The report tells a clear story: here's where you are → here's where you should be → here's how to get there 
 ```
 
 ---

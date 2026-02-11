@@ -128,7 +128,7 @@ export default function WebDevelopmentPage() {
   return (
     <main className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="relative w-full px-4 py-20 md:py-32">
+      <section className="relative w-full px-4 pt-32 pb-20 md:pt-40 md:pb-32">
         <div className="absolute inset-0 bg-gradient-to-b from-secondary/5 via-background to-background" />
         <div className="relative z-10 mx-auto max-w-4xl">
           <Link
@@ -152,6 +152,7 @@ export default function WebDevelopmentPage() {
             TypeScript. These modern web applications follow SEO best practices for high search rankings
             and are designed to turn visitors into paying customers.
           </p>
+          
           <Link
             href="/contact"
             className="inline-flex items-center gap-2 rounded-lg bg-secondary px-8 py-4 text-base font-semibold text-secondary-foreground transition-all hover:bg-secondary/90"

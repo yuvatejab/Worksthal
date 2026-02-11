@@ -1,9 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Inter, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { JsonLd } from "@/components/JsonLd";
 import { GlobalCursor } from "@/components/GlobalCursor";
+import { PageNavWrapper } from "@/components/ui/page-nav-wrapper";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -12,10 +13,10 @@ const inter = Inter({
   display: "swap",
 });
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
+const cormorant = Cormorant_Garamond({
+  variable: "--font-cormorant",
   subsets: ["latin"],
-  weight: ["400", "600", "700"],
+  weight: ["300", "400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -108,10 +109,10 @@ export default function RootLayout({
         <JsonLd />
       </head>
       <body
-        className={`${inter.variable} ${playfair.variable} font-sans antialiased`}
+        className={`${inter.variable} ${cormorant.variable} font-sans antialiased`}
         style={{
           "--font-sans": inter.style.fontFamily,
-          "--font-serif": playfair.style.fontFamily,
+          "--font-serif": cormorant.style.fontFamily,
         } as React.CSSProperties}
       >
         <GlobalCursor />
@@ -122,6 +123,7 @@ export default function RootLayout({
           disableTransitionOnChange
           storageKey="worksthal-theme"
         >
+          <PageNavWrapper />
           {children}
         </ThemeProvider>
       </body>

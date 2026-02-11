@@ -128,7 +128,7 @@ export default function AEOPage() {
   return (
     <main className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="relative w-full px-4 py-20 md:py-32">
+      <section className="relative w-full px-4 pt-32 pb-20 md:pt-40 md:pb-32">
         <div className="absolute inset-0 bg-gradient-to-b from-accent/5 via-background to-background" />
         <div className="relative z-10 mx-auto max-w-4xl">
           <Link
@@ -153,6 +153,7 @@ export default function AEOPage() {
             business. With 70% of consumers now using AI for research, AEO ensures your business stays
             visible in the AI-driven search landscape.
           </p>
+          
           <Link
             href="/contact"
             className="inline-flex items-center gap-2 rounded-lg bg-accent px-8 py-4 text-base font-semibold text-accent-foreground transition-all hover:bg-accent/90"

@@ -11,6 +11,7 @@ import {
 } from "@tabler/icons-react";
 import { motion } from "motion/react";
 import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler";
+import { VideoText } from "@/components/ui/video-text";
 
 import { Hero } from "@/components/sections/Hero";
 import { Services } from "@/components/sections/Services";
@@ -276,7 +277,7 @@ export function HomeClient() {
                         href="tel:+916309821905"
                         className="transition-colors hover:text-primary"
                       >
-                        +91 63098219055
+                        +91 6309821905
                       </a>
                     </p>
                     <p className="text-sm text-muted-foreground">
@@ -289,8 +290,20 @@ export function HomeClient() {
                 </div>
               </div>
 
+              {/* Video Text - Brand Statement */}
+              <div className="relative mt-16 h-[200px] md:h-[280px] w-full overflow-hidden">
+                <VideoText
+                  src="/text-video.mp4"
+                  fontSize={13}
+                  fontWeight="700"
+                  fontFamily="serif"
+                >
+                  Worksthal
+                </VideoText>
+              </div>
+
               {/* Bottom Bar */}
-              <div className="mt-12 border-t border-border pt-8">
+              <div className="border-t border-border pt-8">
                 <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
                   <p className="text-sm text-muted-foreground">
                     &copy; {new Date().getFullYear()} Worksthal. All rights

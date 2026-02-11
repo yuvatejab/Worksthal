@@ -41,8 +41,8 @@
   --sidebar-border: 212 212 216; /* #D4D4D8 Zinc 300 */
   --sidebar-ring: 24 24 27; /* #18181B Zinc 900 */
   --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-serif: "Playfair Display", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-  --font-mono: "Source Code Pro", monospace;
+  --font-serif: "Cormorant Garamond", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-mono: "SF Mono", "Monaco", "Inconsolata", "Fira Code", monospace;
   --shadow-color: hsl(0 0% 0%);
   --shadow-opacity: 0.1;
   --shadow-blur: 8px;
@@ -64,62 +64,62 @@
 
 .dark {
   --radius: 12px;
-  /* Premium Dark Theme - Rich Navy Slate with Sophisticated Depth */
-  --background: 15 23 42; /* #0F172A Slate 900 - Rich Navy */
-  --foreground: 248 250 252; /* #F8FAFC Slate 50 - Soft White */
-  --card: 30 41 59; /* #1E293B Slate 800 - Deep Slate */
-  --card-foreground: 248 250 252; /* #F8FAFC Slate 50 */
-  --popover: 30 41 59; /* #1E293B Slate 800 */
-  --popover-foreground: 248 250 252; /* #F8FAFC Slate 50 */
-  --primary: 148 163 184; /* #94A3B8 Slate 400 - Elegant Silver */
-  --primary-foreground: 15 23 42; /* #0F172A Slate 900 */
-  --secondary: 100 116 139; /* #64748B Slate 500 - Refined Gray */
-  --secondary-foreground: 248 250 252; /* #F8FAFC Slate 50 */
-  --muted: 51 65 85; /* #334155 Slate 700 */
-  --muted-foreground: 148 163 184; /* #94A3B8 Slate 400 */
-  --accent: 71 85 105; /* #475569 Slate 600 - Sophisticated Charcoal */
-  --accent-foreground: 248 250 252; /* #F8FAFC Slate 50 */
-  --destructive: 239 68 68; /* #EF4444 Red 500 */
-  --destructive-foreground: 248 250 252; /* #F8FAFC Slate 50 */
-  --border: 51 65 85; /* #334155 Slate 700 */
-  --input: 30 41 59; /* #1E293B Slate 800 */
-  --ring: 148 163 184; /* #94A3B8 Slate 400 */
-  --success: 34 197 94; /* #22C55E Green 500 */
-  --warning: 251 191 36; /* #FBBF24 Yellow 400 */
-  --chart-1: 148 163 184; /* #94A3B8 Slate 400 */
-  --chart-2: 100 116 139; /* #64748B Slate 500 */
-  --chart-3: 71 85 105; /* #475569 Slate 600 */
-  --chart-4: 51 65 85; /* #334155 Slate 700 */
-  --chart-5: 30 41 59; /* #1E293B Slate 800 */
-  --sidebar: 15 23 42; /* #0F172A Slate 900 - Matches background */
-  --sidebar-foreground: 248 250 252; /* #F8FAFC Slate 50 */
-  --sidebar-primary: 148 163 184; /* #94A3B8 Slate 400 */
-  --sidebar-primary-foreground: 15 23 42; /* #0F172A Slate 900 */
-  --sidebar-accent: 51 65 85; /* #334155 Slate 700 */
-  --sidebar-accent-foreground: 248 250 252; /* #F8FAFC Slate 50 */
-  --sidebar-border: 51 65 85; /* #334155 Slate 700 */
-  --sidebar-ring: 148 163 184; /* #94A3B8 Slate 400 */
-  --footer: 15 23 42; /* #0F172A Slate 900 - Matches background */
-  --footer-foreground: 248 250 252; /* #F8FAFC Slate 50 */
+  /* Premium Dark Theme - Sophisticated Charcoal Luxury */
+  --background: 12 12 13; /* #0C0C0D - Deep Charcoal */
+  --foreground: 250 250 250; /* #FAFAFA - Soft White */
+  --card: 20 20 22; /* #141416 - Elevated Surface */
+  --card-foreground: 250 250 250; /* #FAFAFA */
+  --popover: 24 24 27; /* #18181B - Popover Surface */
+  --popover-foreground: 250 250 250; /* #FAFAFA */
+  --primary: 212 212 216; /* #D4D4D8 - Elegant Silver/Platinum */
+  --primary-foreground: 9 9 11; /* #09090B - Deep Black */
+  --secondary: 63 63 70; /* #3F3F46 - Refined Charcoal */
+  --secondary-foreground: 250 250 250; /* #FAFAFA */
+  --muted: 39 39 42; /* #27272A - Subtle Background */
+  --muted-foreground: 161 161 170; /* #A1A1AA - Muted Text */
+  --accent: 39 39 42; /* #27272A - Hover States */
+  --accent-foreground: 250 250 250; /* #FAFAFA */
+  --destructive: 220 38 38; /* #DC2626 - Red 600 */
+  --destructive-foreground: 250 250 250; /* #FAFAFA */
+  --border: 39 39 42; /* #27272A - Whisper-Quiet Borders */
+  --input: 24 24 27; /* #18181B - Input Background */
+  --ring: 212 212 216; /* #D4D4D8 - Focus Ring */
+  --success: 22 163 74; /* #16A34A - Green 600 */
+  --warning: 217 119 6; /* #D97706 - Amber 600 */
+  --chart-1: 212 212 216; /* #D4D4D8 - Lightest */
+  --chart-2: 161 161 170; /* #A1A1AA */
+  --chart-3: 113 113 122; /* #71717A */
+  --chart-4: 63 63 70; /* #3F3F46 */
+  --chart-5: 39 39 42; /* #27272A - Darkest */
+  --sidebar: 12 12 13; /* #0C0C0D - Matches Background */
+  --sidebar-foreground: 250 250 250; /* #FAFAFA */
+  --sidebar-primary: 212 212 216; /* #D4D4D8 - Silver */
+  --sidebar-primary-foreground: 9 9 11; /* #09090B */
+  --sidebar-accent: 39 39 42; /* #27272A */
+  --sidebar-accent-foreground: 250 250 250; /* #FAFAFA */
+  --sidebar-border: 39 39 42; /* #27272A */
+  --sidebar-ring: 212 212 216; /* #D4D4D8 */
+  --footer: 12 12 13; /* #0C0C0D - Matches Background */
+  --footer-foreground: 250 250 250; /* #FAFAFA */
   --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-serif: "Playfair Display", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-  --font-mono: "Source Code Pro", monospace;
+  --font-serif: "Cormorant Garamond", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-mono: "SF Mono", "Monaco", "Inconsolata", "Fira Code", monospace;
   --shadow-color: hsl(0 0% 0%);
-  --shadow-opacity: 0.95;
-  --shadow-blur: 24px;
+  --shadow-opacity: 0.4;
+  --shadow-blur: 20px;
   --shadow-spread: 0px;
   --shadow-offset-x: 0px;
-  --shadow-offset-y: 8px;
-  --letter-spacing: 0em;
+  --shadow-offset-y: 4px;
+  --letter-spacing: -0.008em;
   --spacing: 0.25rem;
-  --shadow-2xs: 0px 2px 4px 0px hsl(0 0% 0% / 0.6);
-  --shadow-xs: 0px 2px 8px 0px hsl(0 0% 0% / 0.7);
-  --shadow-sm: 0px 4px 12px 0px hsl(0 0% 0% / 0.75), 0px 2px 6px -1px hsl(0 0% 0% / 0.75);
-  --shadow: 0px 8px 16px 0px hsl(0 0% 0% / 0.8), 0px 4px 8px -2px hsl(0 0% 0% / 0.8);
-  --shadow-md: 0px 12px 24px 0px hsl(0 0% 0% / 0.85), 0px 6px 12px -2px hsl(0 0% 0% / 0.85);
-  --shadow-lg: 0px 16px 32px -4px hsl(0 0% 0% / 0.9), 0px 8px 16px -4px hsl(0 0% 0% / 0.9);
-  --shadow-xl: 0px 24px 48px -8px hsl(0 0% 0% / 0.95), 0px 12px 24px -8px hsl(0 0% 0% / 0.95);
-  --shadow-2xl: 0px 40px 80px -12px hsl(0 0% 0% / 1);
+  --shadow-2xs: 0px 1px 2px 0px hsl(0 0% 0% / 0.3);
+  --shadow-xs: 0px 2px 4px 0px hsl(0 0% 0% / 0.35);
+  --shadow-sm: 0px 4px 8px 0px hsl(0 0% 0% / 0.4);
+  --shadow: 0px 8px 16px 0px hsl(0 0% 0% / 0.45);
+  --shadow-md: 0px 12px 20px 0px hsl(0 0% 0% / 0.5);
+  --shadow-lg: 0px 16px 28px 0px hsl(0 0% 0% / 0.55);
+  --shadow-xl: 0px 24px 40px 0px hsl(0 0% 0% / 0.6);
+  --shadow-2xl: 0px 40px 64px 0px hsl(0 0% 0% / 0.7);
 }
 
 @theme inline {
@@ -294,6 +294,17 @@
   .gradient-charcoal {
     background: linear-gradient(180deg, rgb(24 24 27) 0%, rgb(39 39 42) 100%);
   }
+  
+  /* Dark mode specific gradients */
+  .dark .gradient-premium-dark {
+    background: linear-gradient(135deg, rgb(20 20 22) 0%, rgb(12 12 13) 100%);
+  }
+  .dark .gradient-silver-dark {
+    background: linear-gradient(135deg, rgb(212 212 216) 0%, rgb(161 161 170) 100%);
+  }
+  .dark .gradient-charcoal-dark {
+    background: linear-gradient(180deg, rgb(20 20 22) 0%, rgb(12 12 13) 100%);
+  }
 
   /* Performance optimized animations */
   .animate-fade-in {
@@ -388,6 +399,72 @@ html {
 
 html.dark {
   color-scheme: dark;
+}
+
+/* Premium Typography Settings */
+body {
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "ss01" 1;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.011em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-feature-settings: "kern" 1, "liga" 1, "dlig" 1, "swsh" 1;
+  letter-spacing: -0.025em;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+}
+
+h2 {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  letter-spacing: -0.03em;
+}
+
+h3 {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  letter-spacing: -0.025em;
+}
+
+p {
+  font-family: var(--font-sans);
+  line-height: 1.7;
+  letter-spacing: -0.011em;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+/* Dark mode typography enhancements */
+.dark body {
+  letter-spacing: -0.008em;
+}
+
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark h6 {
+  color: rgb(250 250 250);
+  letter-spacing: -0.03em;
+}
+
+.dark p {
+  color: rgb(212 212 216);
 }
 
 /* Custom cursor - DESKTOP ONLY (not on mobile/touch devices) */

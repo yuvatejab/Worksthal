@@ -118,7 +118,7 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="relative w-full px-4 py-20 md:py-32">
+    <section id="contact" className="relative w-full px-4 pt-32 pb-20 md:pt-40 md:pb-32">
       {/* Background with Light Rays from bottom */}
       <div className="absolute inset-0 z-0 rotate-180 opacity-50">
         <LightRays
