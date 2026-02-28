@@ -198,7 +198,7 @@ Copyright © 2026 Worksthal. All rights reserved.
 
 ## 🤝 Contributing
 
-This is a private project for Worksthal. For inquiries, contact: contact@worksthal.com
+This is a private project for Worksthal. For inquiries, contact: shubham@worksthal.com
 
 ---
 

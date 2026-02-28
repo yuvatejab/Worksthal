@@ -1,7 +1,7 @@
 "use client"
 
-import React, { useEffect, useId, useRef, useState } from "react"
-import { motion } from "motion/react"
+import React, { useEffect, useMemo, useRef, useState } from "react"
+import { motion } from "framer-motion"
 
 import { cn } from "@/lib/utils"
 
@@ -73,7 +73,11 @@ export function DotPattern({
   glow = false,
   ...props
 }: DotPatternProps) {
-  const id = useId()
+  // Use a stable ID based on the component's props to avoid hydration mismatch
+  const id = useMemo(() => {
+    return `dot-pattern-${width}-${height}-${cx}-${cy}-${cr}`
+  }, [width, height, cx, cy, cr])
+  
   const containerRef = useRef<SVGSVGElement>(null)
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
 

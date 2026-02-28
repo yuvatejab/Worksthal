@@ -6,7 +6,7 @@ const baseUrl = "https://worksthal.vercel.app";
 export const metadata: Metadata = {
   title: "Contact Worksthal — Get a Free Consultation",
   description:
-    "Contact Worksthal for AI automation, web development, and AEO services. Schedule a free consultation to discuss your project. Based in Hyderabad, India, serving clients worldwide.",
+    "Contact Worksthal for AI automation, web development, and AEO services. Schedule a free consultation to discuss your project. Based in India, serving clients worldwide.",
   keywords: [
     "contact Worksthal",
     "free consultation",

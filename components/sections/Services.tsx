@@ -1,7 +1,7 @@
 "use client";
 
 import { FeatureCarousel } from "@/components/ui/feature-carousel";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 export function Services() {
@@ -36,7 +36,7 @@ export function Services() {
               description="Worksthal delivers AI workflow automation, modern web development, AI engine optimization (AEO), and data-driven marketing — each designed to generate measurable results and accelerate your business growth."
               image={{
                 step1light1: "/ai-card2.png",
-                step2light1: "/web-card2.png",
+                step2light1: "/website preview.png",
                 step3light: "/aeo-card.png",
                 step4light: "/marketing-card.png",
                 alt: "Worksthal Services Showcase",

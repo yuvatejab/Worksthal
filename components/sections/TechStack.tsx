@@ -2,6 +2,7 @@
 
 import { DotPattern } from "@/components/ui/dot-pattern";
 import { AnimatedTechShowcase } from "@/components/ui/animated-tech-showcase";
+import ServicesBento3D from "@/components/ui/services-bento-3d";
 import { cn } from "@/lib/utils";
 
 export function TechStack() {
@@ -33,58 +34,9 @@ export function TechStack() {
         {/* Animated Tech Showcase */}
         <AnimatedTechShowcase />
 
-        {/* Tech Categories */}
-        <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-3">
-          <div className="rounded-2xl border border-zinc-200 dark:border-zinc-700 bg-[#f5f5f7] dark:bg-[#2a2a2e] p-6 transition-all hover:border-zinc-400 dark:hover:border-zinc-500 hover:shadow-lg">
-            <h3 className="mb-3 text-xl font-semibold text-foreground">AI and Automation</h3>
-            <p className="mb-4 text-sm text-muted-foreground">
-              Worksthal integrates leading AI models (OpenAI, Claude, Gemini) with automation platforms (n8n, Make, Zapier) to build intelligent workflows that process data and trigger actions automatically.
-            </p>
-            <div className="flex flex-wrap gap-2">
-              {["OpenAI", "Claude", "Gemini", "n8n", "Make", "Zapier"].map((tech) => (
-                <span
-                  key={tech}
-                  className="rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          <div className="rounded-2xl border border-zinc-200 dark:border-zinc-700 bg-[#f5f5f7] dark:bg-[#2a2a2e] p-6 transition-all hover:border-zinc-400 dark:hover:border-zinc-500 hover:shadow-lg">
-            <h3 className="mb-3 text-xl font-semibold text-foreground">Web Development</h3>
-            <p className="mb-4 text-sm text-muted-foreground">
-              Worksthal builds web applications using Next.js, React, TypeScript, Tailwind CSS, and Node.js — the same modern stack used by companies like Vercel and Netflix for sub-2-second load times.
-            </p>
-            <div className="flex flex-wrap gap-2">
-              {["Next.js", "React", "TypeScript", "Tailwind", "Node.js"].map((tech) => (
-                <span
-                  key={tech}
-                  className="rounded-full bg-secondary/10 px-3 py-1 text-xs font-medium text-secondary"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          <div className="rounded-2xl border border-zinc-200 dark:border-zinc-700 bg-[#f5f5f7] dark:bg-[#2a2a2e] p-6 transition-all hover:border-zinc-400 dark:hover:border-zinc-500 hover:shadow-lg">
-            <h3 className="mb-3 text-xl font-semibold text-foreground">AEO/SEO Audit and Visibility</h3>
-            <p className="mb-4 text-sm text-muted-foreground">
-              Worksthal uses Google Analytics, Search Console, Ahrefs, and Semrush to audit, optimize, and track search engine and AI engine visibility for maximum organic traffic.
-            </p>
-            <div className="flex flex-wrap gap-2">
-              {["Google Analytics", "Search Console", "Ahrefs", "Semrush"].map((tech) => (
-                <span
-                  key={tech}
-                  className="rounded-full bg-accent/10 px-3 py-1 text-xs font-medium text-accent"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
-          </div>
+        {/* Services Bento Grid with 3D Elements */}
+        <div className="mt-16">
+          <ServicesBento3D />
         </div>
       </div>
     </section>

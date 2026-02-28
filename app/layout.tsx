@@ -1,10 +1,12 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Cormorant_Garamond } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { JsonLd } from "@/components/JsonLd";
 import { GlobalCursor } from "@/components/GlobalCursor";
 import { PageNavWrapper } from "@/components/ui/page-nav-wrapper";
+import { ScrollDepthTracker } from "@/components/ScrollDepthTracker";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -24,9 +26,9 @@ const baseUrl = "https://worksthal.vercel.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
-  title: "Worksthal — AI Automation, Web Development & AEO Agency in Hyderabad",
+  title: "Worksthal — AI Automation, Web Development & AEO Agency in India",
   description:
-    "Worksthal is a digital agency in Hyderabad specializing in AI workflow automation, Next.js web development, and AI Engine Optimization (AEO). We help businesses automate repetitive tasks, build modern websites, and improve search visibility. Get a free consultation.",
+    "Worksthal is a digital agency based in India specializing in AI workflow automation, Next.js web development, and AI Engine Optimization (AEO). We help businesses automate repetitive tasks, build modern websites, and improve search visibility. Get a free consultation.",
   keywords: [
     "AI automation agency",
     "AI workflow automation",
@@ -34,7 +36,7 @@ export const metadata: Metadata = {
     "Next.js development company",
     "AEO optimization",
     "AI engine optimization",
-    "digital agency Hyderabad",
+    "digital agency India",
     "n8n automation",
     "Make automation",
     "workflow automation services",
@@ -47,6 +49,9 @@ export const metadata: Metadata = {
   authors: [{ name: "Worksthal", url: baseUrl }],
   creator: "Worksthal",
   publisher: "Worksthal",
+  verification: {
+    google: "db3438e9c7f67513",
+  },
   robots: {
     index: true,
     follow: true,
@@ -64,7 +69,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Worksthal — AI Automation, Web Development & AEO Agency",
     description:
-      "Worksthal builds custom AI automation workflows, modern websites, and AEO strategies that help businesses grow. Based in Hyderabad, serving clients worldwide.",
+      "Worksthal builds custom AI automation workflows, modern websites, and AEO strategies that help businesses grow. Based in India, serving clients worldwide.",
     type: "website",
     locale: "en_US",
     url: baseUrl,
@@ -82,7 +87,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Worksthal — AI Automation, Web Development & AEO Agency",
     description:
-      "Worksthal builds custom AI automation workflows, modern websites, and AEO strategies. Based in Hyderabad, India, serving clients worldwide.",
+      "Worksthal builds custom AI automation workflows, modern websites, and AEO strategies. Based in India, serving clients worldwide.",
     images: ["/website preview.png"],
   },
   category: "Technology",
@@ -115,7 +120,22 @@ export default function RootLayout({
           "--font-serif": cormorant.style.fontFamily,
         } as React.CSSProperties}
       >
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-X3XE5PWWHZ"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-X3XE5PWWHZ');
+          `}
+        </Script>
+
         <GlobalCursor />
+        <ScrollDepthTracker />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

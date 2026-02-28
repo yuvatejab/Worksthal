@@ -1,327 +1,338 @@
 "use client";
 
-import { NumberTicker } from "@/components/ui/number-ticker";
-import { MagicCard } from "@/components/ui/magic-card";
+import React, { useState, useRef, useCallback, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Volume2, VolumeX } from "lucide-react";
 import { BlurFade } from "@/components/ui/blur-fade";
-import { BorderBeam } from "@/components/ui/border-beam";
-import { DotPattern } from "@/components/ui/dot-pattern";
-import { Target, Users, Code, Zap, ArrowRight, Sparkles, TrendingUp, Clock, Award } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { trackVideoPlay, trackVideoComplete, trackCTAClick } from "@/lib/analytics";
 
 export function About() {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isHoveringRef = useRef(false);
+
+  const playVideo = useCallback(() => {
+    if (videoRef.current) {
+      const playPromise = videoRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
+            setIsPlaying(true);
+            trackVideoPlay("Worksthal Demo Video");
+          })
+          .catch((error) => {
+            console.log("Video play failed:", error);
+            setIsPlaying(false);
+          });
+      }
+    }
+  }, []);
+
+  const pauseVideo = useCallback(() => {
+    if (videoRef.current) {
+      videoRef.current.pause();
+      videoRef.current.currentTime = 0;
+      setIsPlaying(false);
+    }
+  }, []);
+
+  const handleMouseEnter = useCallback(() => {
+    isHoveringRef.current = true;
+    setIsExpanded(true);
+    setTimeout(() => {
+      playVideo();
+    }, 100);
+  }, [playVideo]);
+
+  const handleMouseLeave = useCallback(() => {
+    isHoveringRef.current = false;
+    setTimeout(() => {
+      if (!isHoveringRef.current) {
+        setIsExpanded(false);
+        pauseVideo();
+      }
+    }, 300);
+  }, [pauseVideo]);
+
+  const handleBackdropClick = useCallback(() => {
+    isHoveringRef.current = false;
+    setIsExpanded(false);
+    pauseVideo();
+  }, [pauseVideo]);
+
+  const toggleMute = useCallback(() => {
+    if (videoRef.current) {
+      const newMutedState = !isMuted;
+      videoRef.current.muted = newMutedState;
+      setIsMuted(newMutedState);
+    }
+  }, [isMuted]);
+
+  useEffect(() => {
+    if (isExpanded) {
+      const timer = setTimeout(() => {
+        playVideo();
+      }, 150);
+      return () => clearTimeout(timer);
+    }
+  }, [isExpanded, playVideo]);
+
   return (
-    <section id="about" className="relative w-full px-4 py-20 md:py-32">
-      {/* Gradient Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-card/50 to-background" />
+    <>
+      {/* Backdrop and Expanded Video - Rendered at root level */}
+      <AnimatePresence>
+        {isExpanded && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="fixed inset-0 bg-black/90 z-[9997]"
+              style={{ 
+                backdropFilter: "blur(8px)",
+              }}
+              onClick={handleBackdropClick}
+              onMouseEnter={() => {
+                isHoveringRef.current = true;
+              }}
+            />
+            
+            {/* Expanded Video Container */}
+            <motion.div
+              ref={containerRef}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+              initial={{ 
+                opacity: 0,
+                scale: 0.8,
+              }}
+              animate={{ 
+                opacity: 1,
+                scale: 1,
+              }}
+              exit={{ 
+                opacity: 0,
+                scale: 0.8,
+              }}
+              transition={{
+                duration: 0.4,
+                ease: [0.32, 0.72, 0, 1],
+              }}
+              className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[9998]"
+              style={{
+                width: "90vw",
+                height: "90vh",
+                maxWidth: "1600px",
+                maxHeight: "900px",
+              }}
+            >
+              <div className="relative overflow-hidden rounded-2xl shadow-2xl ring-1 ring-white/10 bg-black h-full w-full">
+                <video
+                  ref={videoRef}
+                  className="w-full h-full object-contain"
+                  loop
+                  muted={isMuted}
+                  playsInline
+                  onPlay={() => setIsPlaying(true)}
+                  onPause={() => setIsPlaying(false)}
+                  onPlaying={() => setIsPlaying(true)}
+                >
+                  <source src="/home page video.mp4" type="video/mp4" />
+                </video>
 
-      <div className="relative z-10 mx-auto max-w-7xl">
-        {/* Section Header */}
-        <BlurFade delay={0} inView>
-          <div className="mb-16 text-center">
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-2 text-sm font-medium text-primary backdrop-blur-sm">
-              About Worksthal
+                {/* Play Overlay (when not playing) */}
+                <AnimatePresence>
+                  {!isPlaying && (
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="absolute inset-0 flex items-center justify-center bg-black/20 pointer-events-none"
+                    >
+                      <div className="flex h-24 w-24 items-center justify-center rounded-full bg-white/90 shadow-xl">
+                        <svg
+                          className="h-12 w-12 text-black ml-1"
+                          fill="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path d="M8 5v14l11-7z" />
+                        </svg>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
+                {/* Video Controls Overlay */}
+                <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 via-black/40 to-transparent">
+                  <div className="flex items-center justify-between">
+                    {/* Volume Control */}
+                    <motion.button
+                      onClick={toggleMute}
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="flex items-center justify-center w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm transition-colors"
+                      aria-label={isMuted ? "Unmute" : "Mute"}
+                    >
+                      {isMuted ? (
+                        <VolumeX className="w-6 h-6 text-white" />
+                      ) : (
+                        <Volume2 className="w-6 h-6 text-white" />
+                      )}
+                    </motion.button>
+
+                    {/* Close hint */}
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.5 }}
+                      className="text-white/80 text-sm"
+                    >
+                      <p>Click outside to close</p>
+                    </motion.div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+
+      <section id="about" className="relative w-full px-4 py-20 md:py-32">
+        {/* Gradient Background */}
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-card/50 to-background" />
+
+        <div className="relative z-10 mx-auto max-w-7xl">
+          {/* Section Header */}
+          <BlurFade delay={0} inView>
+            <div className="mb-16 text-center">
+              <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-2 text-sm font-medium text-primary backdrop-blur-sm">
+                About Worksthal
+              </div>
+              <h2 className="text-h1 font-serif font-bold">
+                Digital Agency Built for Growing Businesses
+              </h2>
             </div>
-            <h2 className="text-h1 font-serif font-bold">
-              Digital Agency Built for Growing Businesses
-            </h2>
-          </div>
-        </BlurFade>
+          </BlurFade>
 
-        {/* Bento Grid */}
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-6 md:grid-rows-[320px_220px_160px]">
-
-          {/* ── Hero Card: Why AI (Top-left, spans 4 cols, 2 rows) ── */}
-          <BlurFade delay={0.1} inView className="md:col-span-4 md:row-span-2">
-            <MagicCard
-              className="h-full rounded-3xl overflow-hidden"
-              gradientColor="#18181b"
-              gradientOpacity={0.15}
-              gradientFrom="#71717a"
-              gradientTo="#a1a1aa"
+          {/* Video Showcase Content */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {/* Left: Video Player */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="relative w-full"
             >
-              {/* Background Pattern */}
-              <DotPattern
-                className={cn(
-                  "absolute inset-0 opacity-20 dark:opacity-10 [mask-image:radial-gradient(600px_circle_at_center,white,transparent)]"
-                )}
-                width={16}
-                height={16}
-                cx={1}
-                cy={1}
-                cr={0.8}
-              />
-              
-              {/* Animated corner sparkle */}
-              <div className="absolute top-4 right-4 opacity-40">
-                <Sparkles className="h-5 w-5 text-zinc-400 dark:text-zinc-600 animate-pulse" />
-              </div>
+              {/* Compact Video Container */}
+              {!isExpanded && (
+                <motion.div
+                  onMouseEnter={handleMouseEnter}
+                  initial={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="relative w-full cursor-pointer"
+                >
+                  <div className="relative overflow-hidden rounded-2xl shadow-2xl ring-1 ring-black/5 dark:ring-white/10 bg-black">
+                    <video
+                      className="w-full h-full object-cover"
+                      loop
+                      muted
+                      playsInline
+                      preload="metadata"
+                      style={{ aspectRatio: "16/9" }}
+                    >
+                      <source src="/home page video.mp4" type="video/mp4" />
+                    </video>
 
-              <div className="relative flex h-full flex-col justify-between p-8 md:p-10">
-                <div>
-                  <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-zinc-800 to-zinc-600 dark:from-zinc-200 dark:to-zinc-400 shadow-lg">
-                    <Zap className="h-7 w-7 text-white dark:text-zinc-900" />
+                    {/* Play Overlay */}
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/20 backdrop-blur-[2px]">
+                      <div className="flex h-20 w-20 items-center justify-center rounded-full bg-white/90 shadow-xl">
+                        <svg
+                          className="h-10 w-10 text-black ml-1"
+                          fill="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path d="M8 5v14l11-7z" />
+                        </svg>
+                      </div>
+                    </div>
+
+                    {/* Hover Hint */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none">
+                      <div className="absolute bottom-4 left-4 right-4 text-white">
+                        <p className="text-sm font-medium">Hover to expand and play</p>
+                      </div>
+                    </div>
                   </div>
-                  <h3 className="mb-3 font-serif text-2xl font-bold text-foreground md:text-3xl">
-                    Why AI — The Right Way
-                  </h3>
-                  <p className="mb-4 text-lg font-medium text-foreground/80">
-                    AI as a practical tool, not a buzzword
-                  </p>
-                  <p className="max-w-xl text-sm leading-relaxed text-muted-foreground md:text-base">
-                    Worksthal uses AI to reduce effort, improve clarity, and accelerate execution — not to overcomplicate things or replace human judgment.
-                    Our approach combines human expertise with AI capabilities from OpenAI, Claude, and Gemini to deliver solutions
-                    that produce measurable business outcomes.
-                  </p>
-                </div>
-                <div className="mt-6 flex items-center gap-2 text-sm font-medium text-foreground/60 transition-colors hover:text-foreground cursor-pointer">
-                  <span>Learn more about our approach</span>
-                  <ArrowRight className="h-4 w-4" />
-                </div>
-              </div>
-            </MagicCard>
-          </BlurFade>
 
-          {/* ── Metric: Projects Delivered (Top-right, row 1) ── */}
-          <BlurFade delay={0.2} inView className="md:col-span-2">
-            <MagicCard
-              className="h-full rounded-3xl overflow-hidden"
-              gradientColor="#18181b"
-              gradientOpacity={0.12}
-              gradientFrom="#71717a"
-              gradientTo="#a1a1aa"
-            >
-              <BorderBeam
-                size={80}
-                duration={8}
-                delay={0}
-                colorFrom="#71717a"
-                colorTo="#d4d4d8"
-                borderWidth={1.5}
-              />
-              
-              {/* Radial glow behind number */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="h-32 w-32 rounded-full bg-zinc-500/10 dark:bg-zinc-400/5 blur-2xl" />
-              </div>
-
-              {/* Floating decorative icon */}
-              <div className="absolute top-4 right-4 opacity-20 animate-pulse">
-                <TrendingUp className="h-8 w-8 text-zinc-400 dark:text-zinc-600" />
-              </div>
-
-              <div className="relative flex h-full flex-col items-center justify-center p-6 text-center">
-                <div className="mb-2 flex items-baseline gap-1">
-                  <span className="text-6xl font-bold tracking-tight text-foreground md:text-7xl">
-                    <NumberTicker value={50} />
-                  </span>
-                  <span className="text-4xl font-bold text-foreground/60">+</span>
-                </div>
-                <p className="text-xs font-medium tracking-wide text-muted-foreground uppercase">
-                  Projects Delivered
-                </p>
-              </div>
-            </MagicCard>
-          </BlurFade>
-
-          {/* ── Metric: Hours Saved (Right, row 2, split into 2 mini metrics) ── */}
-          <BlurFade delay={0.25} inView className="md:col-span-1">
-            <MagicCard
-              className="h-full rounded-3xl overflow-hidden"
-              gradientColor="#18181b"
-              gradientOpacity={0.12}
-              gradientFrom="#71717a"
-              gradientTo="#a1a1aa"
-            >
-              <BorderBeam
-                size={60}
-                duration={10}
-                delay={1}
-                colorFrom="#71717a"
-                colorTo="#d4d4d8"
-                borderWidth={1.5}
-              />
-              
-              {/* Radial glow */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="h-24 w-24 rounded-full bg-zinc-500/10 dark:bg-zinc-400/5 blur-2xl" />
-              </div>
-
-              {/* Floating decorative icon */}
-              <div className="absolute bottom-3 left-3 opacity-20 animate-pulse">
-                <Clock className="h-6 w-6 text-zinc-400 dark:text-zinc-600" />
-              </div>
-
-              <div className="relative flex h-full flex-col items-center justify-center p-5 text-center">
-                <div className="mb-1 flex items-baseline gap-1">
-                  <span className="text-5xl font-bold tracking-tight text-foreground md:text-6xl">
-                    <NumberTicker value={20} />
-                  </span>
-                  <span className="text-2xl font-bold text-foreground/60">hrs</span>
-                </div>
-                <p className="text-[10px] font-medium tracking-wide text-muted-foreground uppercase">
-                  Saved Weekly
-                </p>
-              </div>
-            </MagicCard>
-          </BlurFade>
-
-          <BlurFade delay={0.3} inView className="md:col-span-1">
-            <MagicCard
-              className="h-full rounded-3xl overflow-hidden"
-              gradientColor="#18181b"
-              gradientOpacity={0.12}
-              gradientFrom="#71717a"
-              gradientTo="#a1a1aa"
-            >
-              <BorderBeam
-                size={60}
-                duration={12}
-                delay={2}
-                colorFrom="#71717a"
-                colorTo="#d4d4d8"
-                borderWidth={1.5}
-              />
-              
-              {/* Radial glow */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="h-24 w-24 rounded-full bg-zinc-500/10 dark:bg-zinc-400/5 blur-2xl" />
-              </div>
-
-              {/* Floating decorative icon */}
-              <div className="absolute bottom-3 right-3 opacity-20 animate-pulse">
-                <Award className="h-6 w-6 text-zinc-400 dark:text-zinc-600" />
-              </div>
-
-              <div className="relative flex h-full flex-col items-center justify-center p-5 text-center">
-                <div className="mb-1 flex items-baseline gap-1">
-                  <span className="text-5xl font-bold tracking-tight text-foreground md:text-6xl">
-                    <NumberTicker value={2.5} decimalPlaces={1} />
-                  </span>
-                  <span className="text-2xl font-bold text-foreground/60">x</span>
-                </div>
-                <p className="text-[10px] font-medium tracking-wide text-muted-foreground uppercase">
-                  Average ROI
-                </p>
-              </div>
-            </MagicCard>
-          </BlurFade>
-
-          {/* ── Bottom Row: 3 Value Props + 1 Satisfaction Metric ── */}
-
-          {/* Practical AI */}
-          <BlurFade delay={0.35} inView className="md:col-span-2">
-            <MagicCard
-              className="h-full rounded-3xl overflow-hidden"
-              gradientColor="#18181b"
-              gradientOpacity={0.1}
-              gradientFrom="#71717a"
-              gradientTo="#a1a1aa"
-            >
-              <BorderBeam
-                size={50}
-                duration={14}
-                delay={3}
-                colorFrom="#71717a"
-                colorTo="#d4d4d8"
-                borderWidth={1}
-              />
-              <div className="relative flex h-full items-center gap-4 p-5">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-zinc-100 dark:bg-zinc-800 shadow-sm">
-                  <Target className="h-5 w-5 text-foreground" />
-                </div>
-                <div>
-                  <h4 className="text-sm font-semibold text-foreground mb-0.5">
-                    Practical AI Implementation
-                  </h4>
-                  <p className="text-xs leading-snug text-muted-foreground">
-                    AI tools that solve real business problems with measurable ROI.
-                  </p>
-                </div>
-              </div>
-            </MagicCard>
-          </BlurFade>
-
-          {/* Transparent Partnership */}
-          <BlurFade delay={0.4} inView className="md:col-span-2">
-            <MagicCard
-              className="h-full rounded-3xl overflow-hidden"
-              gradientColor="#18181b"
-              gradientOpacity={0.1}
-              gradientFrom="#71717a"
-              gradientTo="#a1a1aa"
-            >
-              <BorderBeam
-                size={50}
-                duration={16}
-                delay={4}
-                colorFrom="#71717a"
-                colorTo="#d4d4d8"
-                borderWidth={1}
-              />
-              <div className="relative flex h-full items-center gap-4 p-5">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-zinc-100 dark:bg-zinc-800 shadow-sm">
-                  <Users className="h-5 w-5 text-foreground" />
-                </div>
-                <div>
-                  <h4 className="text-sm font-semibold text-foreground mb-0.5">
-                    Transparent Partnership
-                  </h4>
-                  <p className="text-xs leading-snug text-muted-foreground">
-                    Clear scopes, milestones, and updates so you know what to expect.
-                  </p>
-                </div>
-              </div>
-            </MagicCard>
-          </BlurFade>
-
-          {/* Technical Excellence + Satisfaction */}
-          <BlurFade delay={0.45} inView className="md:col-span-2">
-            <MagicCard
-              className="h-full rounded-3xl overflow-hidden"
-              gradientColor="#18181b"
-              gradientOpacity={0.1}
-              gradientFrom="#71717a"
-              gradientTo="#a1a1aa"
-            >
-              <BorderBeam
-                size={50}
-                duration={18}
-                delay={5}
-                colorFrom="#71717a"
-                colorTo="#d4d4d8"
-                borderWidth={1}
-              />
-              <div className="relative flex h-full items-center justify-between gap-3 p-5">
-                <div className="flex items-center gap-3">
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-zinc-100 dark:bg-zinc-800 shadow-sm">
-                    <Code className="h-5 w-5 text-foreground" />
-                  </div>
-                  <div>
-                    <h4 className="text-sm font-semibold text-foreground mb-0.5">
-                      Technical Excellence
-                    </h4>
-                    <p className="text-xs leading-snug text-muted-foreground">
-                      Modern stack built to scale.
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="mt-4 text-center lg:text-left"
+                  >
+                    <p className="text-sm text-muted-foreground italic">
+                      Hover to expand • Plays automatically
                     </p>
-                  </div>
-                </div>
-                <div className="flex flex-col items-center border-l border-border pl-3">
-                  <div className="flex items-baseline gap-0.5">
-                    <span className="text-3xl font-bold tracking-tight text-foreground">
-                      <NumberTicker value={98} />
-                    </span>
-                    <span className="text-lg font-bold text-foreground/60">%</span>
-                  </div>
-                  <p className="text-[9px] font-medium tracking-wide text-muted-foreground uppercase">
-                    Satisfaction
-                  </p>
-                </div>
-              </div>
-            </MagicCard>
-          </BlurFade>
+                  </motion.div>
+                </motion.div>
+              )}
+            </motion.div>
 
+            {/* Right: Text Content */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="flex flex-col gap-6"
+            >
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+                <span className="bg-gradient-to-r from-zinc-900 via-zinc-700 to-zinc-500 dark:from-zinc-100 dark:via-zinc-200 dark:to-zinc-300 bg-clip-text text-transparent">
+                  Most businesses struggle with the same problem
+                </span>
+              </h2>
+              
+              <div className="space-y-4">
+                <p className="text-lg leading-relaxed text-muted-foreground">
+                  They know they need modern technology. They know AI and automation could save 
+                  time and reduce costs. But they don't know where to start, who to trust, or how to 
+                  avoid wasting money on solutions that don't deliver.
+                </p>
+                
+                <p className="text-lg leading-relaxed text-foreground font-semibold">
+                  Worksthal exists to solve this problem.
+                </p>
+              </div>
+
+              {/* CTA Button */}
+              <div className="flex flex-col sm:flex-row gap-4 mt-4">
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={() => {
+                    trackCTAClick("See how we help", "Video Showcase Section");
+                    document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="group relative overflow-hidden rounded-xl bg-foreground px-6 py-3 text-base font-semibold text-background transition-all hover:shadow-xl"
+                >
+                  <span className="relative z-10 flex items-center justify-center gap-2">
+                    See how we help
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="transition-transform group-hover:translate-x-1">
+                      <path d="M6 3L11 8L6 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </span>
+                </motion.button>
+              </div>
+            </motion.div>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }

@@ -14,7 +14,7 @@ Comprehensive SEO and AEO optimization based on audit report. Goal: Achieve 90%+
 ### 1. Hero Section
 - **Changed Title:** "Turn Repetitive Tasks Into Automated Growth" (was: "AI Workflow Automation & Web Development Agency")
 - **Removed Claims:** Eliminated "20+ hours", "30 days", "98% satisfaction", "50+ projects"
-- **Updated Social Proof:** Now shows "Trusted by Growing Businesses", "Based in Hyderabad", "Serving Worldwide"
+- **Updated Social Proof:** Now shows "Trusted by Growing Businesses", "Based in India", "Serving Worldwide"
 
 ### 2. New Pages Created (10 Total)
 1. `/services` - Services overview
@@ -134,7 +134,7 @@ Track these in Google Search Console and Analytics:
 ## 📞 Support
 
 Questions? Contact:
-- Email: contact@worksthal.com
+- Email: shubham@worksthal.com
 - Phone: +91 63098 21905
 
 ---

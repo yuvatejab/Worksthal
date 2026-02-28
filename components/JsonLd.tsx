@@ -8,13 +8,11 @@ export function JsonLd() {
     url: baseUrl,
     logo: `${baseUrl}/favicon.ico`,
     description:
-      "Full-service digital agency specializing in AI workflow automation, modern web development, and AI engine optimization (AEO) based in Hyderabad, India.",
-    email: "contact@worksthal.com",
+      "Full-service digital agency specializing in AI workflow automation, modern web development, and AI engine optimization (AEO) based in India.",
+    email: "shubham@worksthal.com",
     telephone: "+916309821905",
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Hyderabad",
-      addressRegion: "Telangana",
       addressCountry: "IN",
     },
     foundingDate: "2024",
@@ -57,14 +55,12 @@ export function JsonLd() {
     "@id": `${baseUrl}/#localbusiness`,
     name: "Worksthal",
     description:
-      "Digital agency specializing in AI workflow automation, web development, and AI engine optimization based in Hyderabad, India.",
+      "Digital agency specializing in AI workflow automation, web development, and AI engine optimization based in India.",
     url: baseUrl,
     telephone: "+916309821905",
-    email: "contact@worksthal.com",
+    email: "shubham@worksthal.com",
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Hyderabad",
-      addressRegion: "Telangana",
       addressCountry: "IN",
     },
     priceRange: "$$",
@@ -175,7 +171,7 @@ export function JsonLd() {
         name: "Where is Worksthal located?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Worksthal is based in Hyderabad, Telangana, India. The agency serves clients worldwide and operates remotely for international projects. You can reach Worksthal at contact@worksthal.com or +91 63098219055.",
+          text: "Worksthal is based in India. The agency serves clients worldwide and operates remotely for international projects. You can reach Worksthal at shubham@worksthal.com or +91 63098219055.",
         },
       },
       {

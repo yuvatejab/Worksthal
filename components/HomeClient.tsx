@@ -9,11 +9,13 @@ import {
   IconMail,
   IconQuestionMark,
 } from "@tabler/icons-react";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler";
 import { VideoText } from "@/components/ui/video-text";
+import { trackEmailClick, trackPhoneClick } from "@/lib/analytics";
 
 import { Hero } from "@/components/sections/Hero";
+import { WhyAI } from "@/components/sections/WhyAI";
 import { Services } from "@/components/sections/Services";
 import { About } from "@/components/sections/About";
 import { TechStack } from "@/components/sections/TechStack";
@@ -133,11 +135,14 @@ export function HomeClient() {
           {/* Hero Section */}
           <Hero />
 
+          {/* About Section with Video */}
+          <About />
+
+          {/* Why AI Section */}
+          <WhyAI />
+
           {/* Services Section */}
           <Services />
-
-          {/* About Section */}
-          <About />
 
           {/* Technology Stack Section */}
           <TechStack />
@@ -155,7 +160,7 @@ export function HomeClient() {
                     Worksthal
                   </h3>
                   <p className="text-sm leading-relaxed text-muted-foreground">
-                    Worksthal is a digital agency in Hyderabad, India,
+                    Worksthal is a digital agency based in India,
                     specializing in AI workflow automation, web development, and
                     AI engine optimization. We deliver measurable results within
                     90 days.
@@ -263,10 +268,11 @@ export function HomeClient() {
                         Email:
                       </span>{" "}
                       <a
-                        href="mailto:contact@worksthal.com"
+                        href="mailto:shubham@worksthal.com"
+                        onClick={() => trackEmailClick()}
                         className="transition-colors hover:text-primary"
                       >
-                        contact@worksthal.com
+                        shubham@worksthal.com
                       </a>
                     </p>
                     <p className="text-sm text-muted-foreground">
@@ -275,6 +281,7 @@ export function HomeClient() {
                       </span>{" "}
                       <a
                         href="tel:+916309821905"
+                        onClick={() => trackPhoneClick()}
                         className="transition-colors hover:text-primary"
                       >
                         +91 6309821905
@@ -284,7 +291,7 @@ export function HomeClient() {
                       <span className="font-semibold text-foreground">
                         Location:
                       </span>{" "}
-                      Hyderabad, India
+                      India
                     </p>
                   </address>
                 </div>

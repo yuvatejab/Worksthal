@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const faqs = [
   {
@@ -34,7 +34,7 @@ const faqs = [
   {
     question: "Does Worksthal work with international clients?",
     answer:
-      "Yes. Worksthal is based in Hyderabad, India, and serves clients worldwide. The agency operates remotely for international projects, with regular communication via email, video calls, and project management tools. Worksthal has delivered 50+ projects across multiple industries and geographies, maintaining a 98% client satisfaction rate.",
+      "Yes. Worksthal is based in India and serves clients worldwide. The agency operates remotely for international projects, with regular communication via email, video calls, and project management tools. Worksthal has delivered 50+ projects across multiple industries and geographies, maintaining a 98% client satisfaction rate.",
   },
 ];
 

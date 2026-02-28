@@ -18,7 +18,7 @@ import {
   type MotionStyle,
   type MotionValue,
   type Variants,
-} from "motion/react"
+} from "framer-motion"
 import Balancer from "react-wrap-balancer"
 
 import { cn } from "@/lib/utils"
@@ -289,6 +289,8 @@ const StepImage = forwardRef<
         style={{
           position: "absolute",
           userSelect: "none",
+          maxHeight: "100%",
+          objectFit: "contain",
           ...style,
         }}
         {...props}
@@ -423,7 +425,7 @@ function FeatureCard({
           </div>
           
           {/* Images Container - Fixed height for absolute positioning */}
-          <div className="relative z-10 w-full h-[350px] md:h-[400px]">
+          <div className="relative z-10 w-full h-[350px] md:h-[400px] flex items-center justify-center">
             {mounted ? children : null}
           </div>
         </div>
@@ -543,17 +545,17 @@ function Steps({
 
 const defaultClasses = {
   step1img1:
-    "pointer-events-none w-[90%] border border-zinc-200/20 dark:border-zinc-700/30 transition-all duration-500 rounded-2xl shadow-xl left-[5%] top-[10%]",
+    "pointer-events-none w-full border border-zinc-200/20 dark:border-zinc-700/30 transition-all duration-500 rounded-2xl shadow-xl left-0 top-0 object-contain",
   step1img2:
-    "pointer-events-none w-[90%] border border-zinc-200/20 dark:border-zinc-700/30 transition-all duration-500 overflow-hidden rounded-2xl shadow-xl left-[5%] top-[10%]",
+    "pointer-events-none w-full border border-zinc-200/20 dark:border-zinc-700/30 transition-all duration-500 overflow-hidden rounded-2xl shadow-xl left-0 top-0 object-contain",
   step2img1:
-    "pointer-events-none w-[90%] border border-zinc-200/20 dark:border-zinc-700/30 transition-all duration-500 rounded-2xl overflow-hidden shadow-xl left-[5%] top-[10%]",
+    "pointer-events-none w-full border border-zinc-200/20 dark:border-zinc-700/30 transition-all duration-500 rounded-2xl overflow-hidden shadow-xl left-0 top-0 object-contain",
   step2img2:
-    "pointer-events-none w-[90%] border border-zinc-200/20 dark:border-zinc-700/30 transition-all duration-500 rounded-2xl overflow-hidden shadow-xl left-[5%] top-[10%]",
+    "pointer-events-none w-full border border-zinc-200/20 dark:border-zinc-700/30 transition-all duration-500 rounded-2xl overflow-hidden shadow-xl left-0 top-0 object-contain",
   step3img:
-    "pointer-events-none w-[90%] border border-zinc-200/20 dark:border-zinc-700/30 rounded-2xl transition-all duration-500 overflow-hidden shadow-xl left-[5%] top-[10%]",
+    "pointer-events-none w-full border border-zinc-200/20 dark:border-zinc-700/30 rounded-2xl transition-all duration-500 overflow-hidden shadow-xl left-0 top-0 object-contain",
   step4img:
-    "pointer-events-none w-[90%] border border-zinc-200/20 dark:border-zinc-700/30 rounded-2xl transition-all duration-500 overflow-hidden shadow-xl left-[5%] top-[10%]",
+    "pointer-events-none w-full border border-zinc-200/20 dark:border-zinc-700/30 rounded-2xl transition-all duration-500 overflow-hidden shadow-xl left-0 top-0 object-contain",
 } as const
 
 /**

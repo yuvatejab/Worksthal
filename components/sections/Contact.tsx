@@ -18,11 +18,16 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Mail, Phone, MapPin, CheckCircle2 } from "lucide-react";
+import {
+  trackContactFormStart,
+  trackContactFormSubmit,
+  trackEmailClick,
+  trackPhoneClick,
+} from "@/lib/analytics";
 
 export function Contact() {
   const nameId = useId();
   const emailId = useId();
-  const companyId = useId();
   const serviceId = useId();
   const budgetId = useId();
   const messageId = useId();
@@ -41,12 +46,18 @@ export function Contact() {
     type: "success" | "error" | null;
     message: string;
   }>({ type: null, message: "" });
+  const [formStarted, setFormStarted] = useState(false);
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    
+    if (!formStarted && value.length > 0) {
+      setFormStarted(true);
+      trackContactFormStart();
+    }
   };
 
   const handleSelectChange = (name: string, value: string) => {
@@ -88,6 +99,8 @@ export function Contact() {
       const data = await response.json();
 
       if (response.ok) {
+        trackContactFormSubmit(formData.service || "General Inquiry");
+        
         setSubmitStatus({
           type: "success",
           message:
@@ -101,6 +114,7 @@ export function Contact() {
           budget: "",
           message: "",
         });
+        setFormStarted(false);
       } else {
         setSubmitStatus({
           type: "error",
@@ -163,27 +177,39 @@ export function Contact() {
                 </div>
                 <div className="text-center">
                   <p className="mb-1 text-sm font-medium text-muted-foreground">Email</p>
-                  <a href="mailto:contact@worksthal.com" className="text-sm font-semibold text-foreground transition-colors hover:text-primary">contact@worksthal.com</a>
+                  <a 
+                    href="mailto:shubham@worksthal.com" 
+                    onClick={() => trackEmailClick()}
+                    className="text-sm font-semibold text-foreground transition-colors hover:text-primary"
+                  >
+                    shubham@worksthal.com
+                  </a>
                 </div>
               </div>
 
               <div className="flex flex-col items-center gap-3 rounded-2xl border border-border bg-card/50 p-6 backdrop-blur-sm">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-secondary/10">
-                  <Phone className="h-6 w-6 text-secondary" />
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
+                  <Phone className="h-6 w-6 text-primary" />
                 </div>
                 <div className="text-center">
                   <p className="mb-1 text-sm font-medium text-muted-foreground">Phone</p>
-                  <a href="tel:+916309821905" className="text-sm font-semibold text-foreground transition-colors hover:text-primary">+91 63098219055</a>
+                  <a 
+                    href="tel:+916309821905" 
+                    onClick={() => trackPhoneClick()}
+                    className="text-sm font-semibold text-foreground transition-colors hover:text-primary"
+                  >
+                    +91 63098219055
+                  </a>
                 </div>
               </div>
 
               <div className="flex flex-col items-center gap-3 rounded-2xl border border-border bg-card/50 p-6 backdrop-blur-sm">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-accent/10">
-                  <MapPin className="h-6 w-6 text-accent" />
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
+                  <MapPin className="h-6 w-6 text-primary" />
                 </div>
                 <div className="text-center">
                   <p className="mb-1 text-sm font-medium text-muted-foreground">Location</p>
-                  <p className="text-sm font-semibold text-foreground">Hyderabad, Telangana, India</p>
+                  <p className="text-sm font-semibold text-foreground">India</p>
                 </div>
               </div>
             </address>
@@ -195,80 +221,65 @@ export function Contact() {
             showCloseButton={true}
             closeButtonClassName="text-neutral-900 hover:text-neutral-700"
           >
-            <div className="relative z-10 flex h-full w-full items-start justify-center overflow-y-auto p-6 sm:p-10 lg:p-16">
-              <div className="grid w-full max-w-7xl grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
+            <div className="relative z-10 flex h-full w-full items-center justify-center p-4 sm:p-6 lg:p-8 light-form-override">
+              <div className="grid w-full max-w-6xl grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8">
                 {/* Left Side - Content */}
-                <div className="flex flex-col justify-center space-y-8">
+                <div className="flex flex-col justify-center space-y-4">
                   <div>
-                    <h2 className="mb-4 font-serif text-4xl font-bold text-neutral-900 md:text-5xl lg:text-6xl">
+                    <h2 className="mb-2 font-serif text-2xl font-bold !text-neutral-900 md:text-3xl lg:text-4xl">
                       Let's Transform Your Business
                     </h2>
-                    <p className="text-lg text-neutral-700">
+                    <p className="text-sm !text-neutral-700">
                       Schedule a free consultation and discover how AI automation can revolutionize your workflow.
                     </p>
                   </div>
 
                   {/* Benefits List */}
-                  <div className="space-y-6">
-                    <div className="flex items-start gap-4">
-                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-neutral-300">
-                        <svg className="h-6 w-6 text-neutral-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  <div className="space-y-2.5">
+                    <div className="flex items-start gap-2.5">
+                      <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-neutral-800 to-neutral-700 shadow-sm">
+                        <svg className="h-3.5 w-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
                         </svg>
                       </div>
-                      <div>
-                        <h3 className="mb-1 text-lg font-semibold text-neutral-900">
-                          Save 20+ hours per week with intelligent automation workflows
-                        </h3>
-                        <p className="text-sm text-neutral-600">
-                          Eliminate repetitive tasks and focus on what matters most
-                        </p>
-                      </div>
+                      <h3 className="text-xs font-semibold text-neutral-900 tracking-tight leading-tight pt-0.5">
+                        Save hours per week with intelligent automation workflows
+                      </h3>
                     </div>
 
-                    <div className="flex items-start gap-4">
-                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-neutral-300">
-                        <svg className="h-6 w-6 text-neutral-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    <div className="flex items-start gap-2.5">
+                      <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-neutral-800 to-neutral-700 shadow-sm">
+                        <svg className="h-3.5 w-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                       </div>
-                      <div>
-                        <h3 className="mb-1 text-lg font-semibold text-neutral-900">
-                          Get a custom solution tailored to your specific business needs
-                        </h3>
-                        <p className="text-sm text-neutral-600">
-                          No cookie-cutter templates, just results that work for you
-                        </p>
-                      </div>
+                      <h3 className="text-xs font-semibold text-neutral-900 tracking-tight leading-tight pt-0.5">
+                        Get a custom solution tailored to your specific business needs
+                      </h3>
                     </div>
 
-                    <div className="flex items-start gap-4">
-                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-neutral-300">
-                        <svg className="h-6 w-6 text-neutral-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    <div className="flex items-start gap-2.5">
+                      <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-neutral-800 to-neutral-700 shadow-sm">
+                        <svg className="h-3.5 w-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                       </div>
-                      <div>
-                        <h3 className="mb-1 text-lg font-semibold text-neutral-900">
-                          See ROI within 90 days or get transparent guidance on next steps
-                        </h3>
-                        <p className="text-sm text-neutral-600">
-                          We focus on measurable results, not vanity metrics
-                        </p>
-                      </div>
+                      <h3 className="text-xs font-semibold text-neutral-900 tracking-tight leading-tight pt-0.5">
+                        Get transparent guidance on next steps
+                      </h3>
                     </div>
                   </div>
 
                   {/* Testimonial */}
-                  <div className="rounded-3xl border-2 border-neutral-300 bg-white/50 p-8">
-                    <p className="mb-6 text-lg italic text-neutral-800">
+                  <div className="rounded-xl border border-neutral-300 bg-white/50 p-4">
+                    <p className="mb-2.5 text-xs italic text-neutral-800 leading-snug">
                       "Worksthal automated our entire lead qualification process. We went from spending 15 hours a week on manual data entry to having everything handled automatically. Game changer."
                     </p>
-                    <div className="flex items-center gap-3">
-                      <div className="h-12 w-12 rounded-full bg-gradient-to-br from-teal-500 to-teal-600"></div>
+                    <div className="flex items-center gap-2">
+                      <div className="h-7 w-7 rounded-full bg-gradient-to-br from-teal-500 to-teal-600"></div>
                       <div>
-                        <p className="font-semibold text-neutral-900">Sarah Chen</p>
-                        <p className="text-sm text-neutral-600">Marketing Director, TechFlow</p>
+                        <p className="text-[10px] font-semibold text-neutral-900">Sarah Chen</p>
+                        <p className="text-[9px] text-neutral-600">Marketing Director, TechFlow</p>
                       </div>
                     </div>
                   </div>
@@ -276,119 +287,150 @@ export function Contact() {
 
                 {/* Right Side - Form */}
                 <div className="flex flex-col justify-center">
-                  <form onSubmit={handleSubmit} className="space-y-5">
-                  <div>
-                    <Label htmlFor={nameId} className="mb-2 block text-xs font-medium uppercase tracking-wide text-neutral-600">
-                      Your Name *
-                    </Label>
-                    <Input
-                      type="text"
-                      id={nameId}
-                      name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      placeholder=""
-                      required
-                      className="w-full rounded-xl border-0 bg-neutral-900 px-4 py-3.5 text-white placeholder:text-neutral-500 focus:ring-2 focus:ring-neutral-700"
-                    />
-                  </div>
-
-                  <div>
-                    <Label htmlFor={emailId} className="mb-2 block text-xs font-medium uppercase tracking-wide text-neutral-600">
-                      Work Email *
-                    </Label>
-                    <Input
-                      type="email"
-                      id={emailId}
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      placeholder=""
-                      required
-                      className="w-full rounded-xl border-0 bg-neutral-900 px-4 py-3.5 text-white placeholder:text-neutral-500 focus:ring-2 focus:ring-neutral-700"
-                    />
-                  </div>
-
-                  <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+                  <form onSubmit={handleSubmit} className="space-y-3">
                     <div>
-                      <Label htmlFor={serviceId} className="mb-2 block text-xs font-medium uppercase tracking-wide text-neutral-600">
-                        Service Interested In
-                      </Label>
-                      <Select
-                        name="service"
-                        value={formData.service}
-                        onValueChange={(value) => handleSelectChange("service", value)}
+                      <Label 
+                        htmlFor={nameId} 
+                        className="mb-1.5 block text-[10px] font-semibold uppercase tracking-wider text-neutral-800 dark:text-neutral-800"
+                        style={{ color: '#262626' }}
                       >
-                        <SelectTrigger id={serviceId} className="w-full rounded-xl border-0 bg-neutral-900 px-4 py-3.5 text-white focus:ring-2 focus:ring-neutral-700">
-                          <SelectValue placeholder="Select a service" />
-                        </SelectTrigger>
-                        <SelectContent className="bg-neutral-900 border-neutral-800">
-                          <SelectItem value="automation" className="text-white focus:bg-neutral-800">AI Workflow Automation</SelectItem>
-                          <SelectItem value="web-dev" className="text-white focus:bg-neutral-800">Website Development</SelectItem>
-                          <SelectItem value="aeo" className="text-white focus:bg-neutral-800">AEO & Search Visibility</SelectItem>
-                          <SelectItem value="marketing" className="text-white focus:bg-neutral-800">AI Marketing</SelectItem>
-                          <SelectItem value="multiple" className="text-white focus:bg-neutral-800">Multiple Services</SelectItem>
-                        </SelectContent>
-                      </Select>
+                        Your Name *
+                      </Label>
+                      <Input
+                        type="text"
+                        id={nameId}
+                        name="name"
+                        value={formData.name}
+                        onChange={handleInputChange}
+                        placeholder="John Doe"
+                        required
+                        className="w-full rounded-lg border border-neutral-300 dark:border-neutral-300 bg-white dark:bg-white px-3 py-2 text-sm text-neutral-900 dark:text-neutral-900 placeholder:text-neutral-400 dark:placeholder:text-neutral-400 focus:ring-2 focus:ring-neutral-900 focus:border-neutral-900 transition-all shadow-sm hover:border-neutral-400"
+                        style={{ color: '#171717', backgroundColor: '#ffffff' }}
+                      />
                     </div>
 
                     <div>
-                      <Label htmlFor={budgetId} className="mb-2 block text-xs font-medium uppercase tracking-wide text-neutral-600">
-                        Company Size
-                      </Label>
-                      <Select
-                        name="budget"
-                        value={formData.budget}
-                        onValueChange={(value) => handleSelectChange("budget", value)}
+                      <Label 
+                        htmlFor={emailId} 
+                        className="mb-1.5 block text-[10px] font-semibold uppercase tracking-wider text-neutral-800 dark:text-neutral-800"
+                        style={{ color: '#262626' }}
                       >
-                        <SelectTrigger id={budgetId} className="w-full rounded-xl border-0 bg-neutral-900 px-4 py-3.5 text-white focus:ring-2 focus:ring-neutral-700">
-                          <SelectValue placeholder="Select size" />
-                        </SelectTrigger>
-                        <SelectContent className="bg-neutral-900 border-neutral-800">
-                          <SelectItem value="1-10" className="text-white focus:bg-neutral-800">1-10 employees</SelectItem>
-                          <SelectItem value="11-50" className="text-white focus:bg-neutral-800">11-50 employees</SelectItem>
-                          <SelectItem value="51-200" className="text-white focus:bg-neutral-800">51-200 employees</SelectItem>
-                          <SelectItem value="200+" className="text-white focus:bg-neutral-800">200+ employees</SelectItem>
-                        </SelectContent>
-                      </Select>
+                        Work Email *
+                      </Label>
+                      <Input
+                        type="email"
+                        id={emailId}
+                        name="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        placeholder="john@company.com"
+                        required
+                        className="w-full rounded-lg border border-neutral-300 dark:border-neutral-300 bg-white dark:bg-white px-3 py-2 text-sm text-neutral-900 dark:text-neutral-900 placeholder:text-neutral-400 dark:placeholder:text-neutral-400 focus:ring-2 focus:ring-neutral-900 focus:border-neutral-900 transition-all shadow-sm hover:border-neutral-400"
+                        style={{ color: '#171717', backgroundColor: '#ffffff' }}
+                      />
                     </div>
-                  </div>
 
-                  <div>
-                    <Label htmlFor={messageId} className="mb-2 block text-xs font-medium uppercase tracking-wide text-neutral-600">
-                      Tell Us About Your Project *
-                    </Label>
-                    <Textarea
-                      id={messageId}
-                      name="message"
-                      value={formData.message}
-                      onChange={handleInputChange}
-                      rows={5}
-                      placeholder="What challenges are you facing? What are your goals?"
-                      required
-                      className="w-full rounded-xl border-0 bg-neutral-900 px-4 py-3.5 text-white placeholder:text-neutral-500 focus:ring-2 focus:ring-neutral-700"
-                    />
-                  </div>
+                    <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                      <div>
+                        <Label 
+                          htmlFor={serviceId} 
+                          className="mb-1.5 block text-[10px] font-semibold uppercase tracking-wider text-neutral-800 dark:text-neutral-800"
+                          style={{ color: '#262626' }}
+                        >
+                          Service Interested In
+                        </Label>
+                        <Select
+                          name="service"
+                          value={formData.service}
+                          onValueChange={(value) => handleSelectChange("service", value)}
+                        >
+                          <SelectTrigger 
+                            id={serviceId} 
+                            className="w-full rounded-lg border border-neutral-300 dark:border-neutral-300 bg-white dark:bg-white px-3 py-2 text-sm text-neutral-900 dark:text-neutral-900 focus:ring-2 focus:ring-neutral-900 focus:border-neutral-900 transition-all shadow-sm hover:border-neutral-400 [&>span]:text-neutral-900 dark:[&>span]:text-neutral-900"
+                            style={{ color: '#171717', backgroundColor: '#ffffff' }}
+                          >
+                            <SelectValue placeholder="Select a service" style={{ color: '#737373' }} />
+                          </SelectTrigger>
+                          <SelectContent className="bg-white border-neutral-300 rounded-lg">
+                            <SelectItem value="automation" className="text-neutral-900 focus:bg-neutral-100 text-sm">AI Workflow Automation</SelectItem>
+                            <SelectItem value="web-dev" className="text-neutral-900 focus:bg-neutral-100 text-sm">Website Development</SelectItem>
+                            <SelectItem value="aeo" className="text-neutral-900 focus:bg-neutral-100 text-sm">AEO & Search Visibility</SelectItem>
+                            <SelectItem value="marketing" className="text-neutral-900 focus:bg-neutral-100 text-sm">AI Marketing</SelectItem>
+                            <SelectItem value="multiple" className="text-neutral-900 focus:bg-neutral-100 text-sm">Multiple Services</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
 
-                  {submitStatus.type && (
-                    <div
-                      className={`flex items-center gap-3 rounded-xl p-4 ${
-                        submitStatus.type === "success"
-                          ? "bg-green-100 text-green-800 border border-green-200"
-                          : "bg-red-100 text-red-800 border border-red-200"
-                      }`}
-                    >
-                      {submitStatus.type === "success" && (
-                        <CheckCircle2 className="h-5 w-5 flex-shrink-0" />
-                      )}
-                      <p className="text-sm font-medium">{submitStatus.message}</p>
+                      <div>
+                        <Label 
+                          htmlFor={budgetId} 
+                          className="mb-1.5 block text-[10px] font-semibold uppercase tracking-wider text-neutral-800 dark:text-neutral-800"
+                          style={{ color: '#262626' }}
+                        >
+                          Company Size
+                        </Label>
+                        <Select
+                          name="budget"
+                          value={formData.budget}
+                          onValueChange={(value) => handleSelectChange("budget", value)}
+                        >
+                          <SelectTrigger 
+                            id={budgetId} 
+                            className="w-full rounded-lg border border-neutral-300 dark:border-neutral-300 bg-white dark:bg-white px-3 py-2 text-sm text-neutral-900 dark:text-neutral-900 focus:ring-2 focus:ring-neutral-900 focus:border-neutral-900 transition-all shadow-sm hover:border-neutral-400 [&>span]:text-neutral-900 dark:[&>span]:text-neutral-900"
+                            style={{ color: '#171717', backgroundColor: '#ffffff' }}
+                          >
+                            <SelectValue placeholder="Select size" style={{ color: '#737373' }} />
+                          </SelectTrigger>
+                          <SelectContent className="bg-white border-neutral-300 rounded-lg">
+                            <SelectItem value="1-10" className="text-neutral-900 focus:bg-neutral-100 text-sm">1-10 employees</SelectItem>
+                            <SelectItem value="11-50" className="text-neutral-900 focus:bg-neutral-100 text-sm">11-50 employees</SelectItem>
+                            <SelectItem value="51-200" className="text-neutral-900 focus:bg-neutral-100 text-sm">51-200 employees</SelectItem>
+                            <SelectItem value="200+" className="text-neutral-900 focus:bg-neutral-100 text-sm">200+ employees</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
                     </div>
-                  )}
+
+                    <div>
+                      <Label 
+                        htmlFor={messageId} 
+                        className="mb-1.5 block text-[10px] font-semibold uppercase tracking-wider text-neutral-800 dark:text-neutral-800"
+                        style={{ color: '#262626' }}
+                      >
+                        Tell Us About Your Project *
+                      </Label>
+                      <Textarea
+                        id={messageId}
+                        name="message"
+                        value={formData.message}
+                        onChange={handleInputChange}
+                        rows={3}
+                        placeholder="What challenges are you facing? What are your goals?"
+                        required
+                        className="w-full rounded-lg border border-neutral-300 dark:border-neutral-300 bg-white dark:bg-white px-3 py-2 text-sm text-neutral-900 dark:text-neutral-900 placeholder:text-neutral-400 dark:placeholder:text-neutral-400 focus:ring-2 focus:ring-neutral-900 focus:border-neutral-900 transition-all shadow-sm hover:border-neutral-400 resize-none"
+                        style={{ color: '#171717', backgroundColor: '#ffffff' }}
+                      />
+                    </div>
+
+                    {submitStatus.type && (
+                      <div
+                        className={`flex items-center gap-2 rounded-lg p-3 text-xs ${
+                          submitStatus.type === "success"
+                            ? "bg-green-100 text-green-800 border border-green-200"
+                            : "bg-red-100 text-red-800 border border-red-200"
+                        }`}
+                      >
+                        {submitStatus.type === "success" && (
+                          <CheckCircle2 className="h-4 w-4 flex-shrink-0" />
+                        )}
+                        <p className="font-medium">{submitStatus.message}</p>
+                      </div>
+                    )}
 
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full rounded-xl bg-neutral-900 px-6 py-3.5 text-base font-semibold text-white transition-all hover:bg-neutral-800 disabled:opacity-50"
+                      className="w-full rounded-lg bg-neutral-900 px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-neutral-800 hover:shadow-lg disabled:opacity-50"
                     >
                       {isSubmitting ? "Sending..." : "Schedule Free Consultation"}
                     </button>

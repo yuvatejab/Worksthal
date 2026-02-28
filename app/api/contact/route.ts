@@ -6,12 +6,32 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { firstName, lastName, email, company, message } = body;
+    const { firstName, lastName, name, email, company, message } = body;
+
+    // Handle both name formats (single "name" field or separate "firstName"/"lastName")
+    let fullName: string;
+    let firstNameValue: string;
+    
+    if (name) {
+      // If single name field is provided, split it
+      fullName = name;
+      const nameParts = name.trim().split(' ');
+      firstNameValue = nameParts[0];
+    } else if (firstName && lastName) {
+      // If separate fields are provided
+      fullName = `${firstName} ${lastName}`;
+      firstNameValue = firstName;
+    } else {
+      return NextResponse.json(
+        { error: 'Missing required fields: name or firstName/lastName required' },
+        { status: 400 }
+      );
+    }
 
     // Validate required fields
-    if (!firstName || !lastName || !email || !message) {
+    if (!email || !message) {
       return NextResponse.json(
-        { error: 'Missing required fields' },
+        { error: 'Missing required fields: email and message are required' },
         { status: 400 }
       );
     }
@@ -25,17 +45,13 @@ export async function POST(request: Request) {
       );
     }
 
-    const fullName = `${firstName} ${lastName}`;
-
     // Send both emails in parallel for faster response
-    // NOTE: Using onboarding@resend.dev only allows sending to ybandharapu@gmail.com
-    // To send to actual users, verify your domain at resend.com/domains
     const [userEmail, adminEmail] = await Promise.all([
-      // Send acknowledgment email to the user (currently to admin for testing)
+      // Send acknowledgment email to the user
       resend.emails.send({
-        from: 'Worksthal <onboarding@resend.dev>',
-        to: 'ybandharapu@gmail.com', // Temporarily sending to admin email for testing
-        subject: `[User Copy] Thank you for contacting Worksthal - ${email}`,
+        from: 'Worksthal <noreply@worksthal.com>',
+        to: email,
+        subject: `Thank you for contacting Worksthal, ${firstNameValue}!`,
       html: `
         <!DOCTYPE html>
         <html>
@@ -43,101 +59,247 @@ export async function POST(request: Request) {
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <style>
+              * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+              }
               body {
                 font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
                 line-height: 1.6;
-                color: #333;
+                background: #0a0a0a;
+                padding: 40px 20px;
+              }
+              .container {
                 max-width: 600px;
                 margin: 0 auto;
-                padding: 20px;
+                background: linear-gradient(135deg, #18181b 0%, #27272a 100%);
+                border-radius: 16px;
+                overflow: hidden;
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+                border: 1px solid #3f3f46;
               }
               .header {
                 background: linear-gradient(135deg, #059669 0%, #10b981 100%);
-                color: white;
-                padding: 30px 20px;
-                border-radius: 8px 8px 0 0;
+                padding: 50px 40px;
                 text-align: center;
+                position: relative;
+                overflow: hidden;
+              }
+              .header::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+                opacity: 0.3;
               }
               .header h1 {
                 margin: 0;
-                font-size: 28px;
+                font-size: 36px;
                 font-weight: 700;
+                color: white;
+                position: relative;
+                z-index: 1;
+                letter-spacing: -0.5px;
+              }
+              .header p {
+                margin: 12px 0 0 0;
+                font-size: 16px;
+                color: rgba(255, 255, 255, 0.9);
+                position: relative;
+                z-index: 1;
               }
               .content {
-                background: #ffffff;
-                padding: 30px;
-                border: 1px solid #e5e7eb;
-                border-top: none;
+                padding: 40px;
+                color: #e4e4e7;
               }
-              .message-box {
-                background: #f9fafb;
-                border-left: 4px solid #059669;
-                padding: 15px;
-                margin: 20px 0;
-                border-radius: 4px;
+              .greeting {
+                font-size: 20px;
+                font-weight: 600;
+                color: #fafafa;
+                margin-bottom: 20px;
               }
-              .contact-info {
-                background: #f3f4f6;
+              .message-preview {
+                background: linear-gradient(135deg, #27272a 0%, #3f3f46 100%);
+                border: 1px solid #52525b;
+                border-radius: 12px;
+                padding: 24px;
+                margin: 30px 0;
+                position: relative;
+              }
+              .message-preview::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 4px;
+                height: 100%;
+                background: linear-gradient(180deg, #059669 0%, #10b981 100%);
+                border-radius: 12px 0 0 12px;
+              }
+              .preview-label {
+                font-size: 12px;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                color: #10b981;
+                font-weight: 600;
+                margin-bottom: 12px;
+              }
+              .preview-content {
+                color: #d4d4d8;
+                font-size: 15px;
+                line-height: 1.7;
+                white-space: pre-wrap;
+              }
+              .info-grid {
+                display: table;
+                width: 100%;
+                margin: 30px 0;
+                background: #18181b;
+                border-radius: 12px;
                 padding: 20px;
-                border-radius: 8px;
-                margin: 20px 0;
+                border: 1px solid #3f3f46;
               }
-              .contact-info p {
-                margin: 8px 0;
+              .info-row {
+                display: table-row;
+              }
+              .info-label {
+                display: table-cell;
+                padding: 12px 16px;
+                font-size: 13px;
+                color: #a1a1aa;
+                font-weight: 500;
+                width: 30%;
+              }
+              .info-value {
+                display: table-cell;
+                padding: 12px 16px;
+                font-size: 14px;
+                color: #fafafa;
+                font-weight: 500;
+              }
+              .divider {
+                height: 1px;
+                background: linear-gradient(90deg, transparent 0%, #3f3f46 50%, transparent 100%);
+                margin: 30px 0;
+              }
+              .cta-button {
+                display: inline-block;
+                background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+                color: white;
+                padding: 16px 32px;
+                text-decoration: none;
+                border-radius: 8px;
+                font-weight: 600;
+                font-size: 15px;
+                text-align: center;
+                box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
+                transition: all 0.3s ease;
               }
               .footer {
+                background: #18181b;
+                padding: 30px 40px;
                 text-align: center;
-                padding: 20px;
-                color: #6b7280;
-                font-size: 14px;
+                border-top: 1px solid #3f3f46;
               }
-              .button {
-                display: inline-block;
-                background: #059669;
-                color: white;
-                padding: 12px 24px;
+              .footer-text {
+                color: #a1a1aa;
+                font-size: 13px;
+                margin: 8px 0;
+              }
+              .footer-links {
+                margin-top: 16px;
+              }
+              .footer-link {
+                color: #10b981;
                 text-decoration: none;
-                border-radius: 6px;
-                margin: 20px 0;
-                font-weight: 600;
+                margin: 0 12px;
+                font-size: 13px;
               }
             </style>
           </head>
           <body>
-            <div class="header">
-              <h1>Worksthal</h1>
-            </div>
-            <div class="content">
-              <p style="background: #fef3c7; padding: 10px; border-radius: 4px; font-size: 12px; color: #92400e;">
-                <strong>NOTE:</strong> This is a test copy. In production, this email would be sent to: <strong>${email}</strong>
-              </p>
-              
-              <h2 style="color: #059669; margin-top: 0;">Thank you for reaching out!</h2>
-              
-              <p>Hi ${firstName},</p>
-              
-              <p>We've received your message and appreciate you taking the time to contact us. Our team will review your inquiry and get back to you within 24-48 hours.</p>
-              
-              <div class="message-box">
-                <p style="margin: 0; font-weight: 600; color: #059669;">Your Message:</p>
-                <p style="margin: 10px 0 0 0;">${message}</p>
+            <div class="container">
+              <div class="header">
+                <h1>Worksthal</h1>
+                <p>We've received your message</p>
               </div>
               
-              <p>In the meantime, if you have any urgent questions, feel free to reach out to us directly:</p>
-              
-              <div class="contact-info">
-                <p><strong>📧 Email:</strong> contact@worksthal.com</p>
-                <p><strong>📱 Phone:</strong> +91 63098219055</p>
-                <p><strong>📍 Location:</strong> Hyderabad, India</p>
+              <div class="content">
+                <div class="greeting">Hi ${firstNameValue},</div>
+                
+                <p style="color: #d4d4d8; margin-bottom: 20px;">
+                  Thank you for reaching out to Worksthal. We've successfully received your inquiry and our team is reviewing it.
+                </p>
+                
+                <p style="color: #d4d4d8; margin-bottom: 30px;">
+                  We typically respond within <strong style="color: #10b981;">24-48 hours</strong>. If your project is time-sensitive, feel free to reach us directly at <a href="mailto:shubham@worksthal.com" style="color: #10b981; text-decoration: none;">shubham@worksthal.com</a>.
+                </p>
+
+                <div class="message-preview">
+                  <div class="preview-label">Your Message</div>
+                  <div class="preview-content">${message}</div>
+                </div>
+
+                <div class="info-grid">
+                  <div class="info-row">
+                    <div class="info-label">Name</div>
+                    <div class="info-value">${fullName}</div>
+                  </div>
+                  <div class="info-row">
+                    <div class="info-label">Email</div>
+                    <div class="info-value">${email}</div>
+                  </div>
+                  ${company ? `
+                  <div class="info-row">
+                    <div class="info-label">Company</div>
+                    <div class="info-value">${company}</div>
+                  </div>
+                  ` : ''}
+                  <div class="info-row">
+                    <div class="info-label">Submitted</div>
+                    <div class="info-value">${new Date().toLocaleString('en-US', { 
+                      month: 'short', 
+                      day: 'numeric', 
+                      year: 'numeric',
+                      hour: '2-digit',
+                      minute: '2-digit'
+                    })}</div>
+                  </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <p style="color: #d4d4d8; margin-bottom: 24px;">
+                  While you wait, explore what we can do for your business:
+                </p>
+
+                <div style="text-align: center;">
+                  <a href="https://worksthal.com/#services" class="cta-button">
+                    View Our Services
+                  </a>
+                </div>
               </div>
               
-              <p>We're excited to learn more about your project and explore how we can help bring your ideas to life.</p>
-              
-              <p style="margin-top: 30px;">Best regards,<br><strong>The Worksthal Team</strong></p>
-            </div>
-            <div class="footer">
-              <p>© ${new Date().getFullYear()} Worksthal. All rights reserved.</p>
-              <p>Empowering businesses with AI-driven solutions.</p>
+              <div class="footer">
+                <p class="footer-text">
+                  <strong style="color: #fafafa;">Worksthal</strong> — AI Automation, Web Development & AEO Agency
+                </p>
+                <p class="footer-text">
+                  📧 shubham@worksthal.com  •  📱 +91 63098219055
+                </p>
+                <div class="footer-links">
+                  <a href="https://worksthal.com" class="footer-link">Website</a>
+                  <a href="https://worksthal.com/about" class="footer-link">About</a>
+                  <a href="https://worksthal.com/services" class="footer-link">Services</a>
+                </div>
+                <p class="footer-text" style="margin-top: 20px;">
+                  © ${new Date().getFullYear()} Worksthal. All rights reserved.
+                </p>
+              </div>
             </div>
           </body>
         </html>
@@ -145,9 +307,9 @@ export async function POST(request: Request) {
       }),
       // Send notification email to admin
       resend.emails.send({
-        from: 'Worksthal Contact Form <onboarding@resend.dev>',
-        to: 'ybandharapu@gmail.com',
-        subject: `New Contact Form Submission from ${fullName}`,
+        from: 'Worksthal Contact Form <noreply@worksthal.com>',
+        to: 'shubham@worksthal.com',
+        subject: `🔔 New Lead: ${fullName}${company ? ` from ${company}` : ''}`,
       html: `
         <!DOCTYPE html>
         <html>
@@ -155,128 +317,263 @@ export async function POST(request: Request) {
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <style>
+              * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+              }
               body {
                 font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
                 line-height: 1.6;
-                color: #333;
-                max-width: 700px;
-                margin: 0 auto;
-                padding: 20px;
-                background: #f9fafb;
+                background: #0a0a0a;
+                padding: 40px 20px;
               }
               .container {
-                background: white;
-                border-radius: 8px;
-                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                max-width: 700px;
+                margin: 0 auto;
+                background: linear-gradient(135deg, #18181b 0%, #27272a 100%);
+                border-radius: 16px;
                 overflow: hidden;
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+                border: 1px solid #3f3f46;
               }
               .header {
-                background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
-                color: white;
-                padding: 25px;
+                background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+                padding: 40px;
                 text-align: center;
+                position: relative;
+                overflow: hidden;
+              }
+              .header::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+                opacity: 0.4;
+              }
+              .header-badge {
+                display: inline-block;
+                background: rgba(255, 255, 255, 0.2);
+                color: white;
+                padding: 8px 16px;
+                border-radius: 20px;
+                font-size: 13px;
+                font-weight: 600;
+                margin-bottom: 16px;
+                position: relative;
+                z-index: 1;
+                letter-spacing: 0.5px;
               }
               .header h1 {
                 margin: 0;
-                font-size: 24px;
+                font-size: 32px;
+                font-weight: 700;
+                color: white;
+                position: relative;
+                z-index: 1;
+                letter-spacing: -0.5px;
               }
               .content {
-                padding: 30px;
+                padding: 40px;
+                color: #e4e4e7;
               }
-              .field {
-                margin-bottom: 20px;
-                padding-bottom: 20px;
-                border-bottom: 1px solid #e5e7eb;
+              .lead-card {
+                background: linear-gradient(135deg, #27272a 0%, #3f3f46 100%);
+                border: 1px solid #52525b;
+                border-radius: 12px;
+                padding: 28px;
+                margin: 24px 0;
+                position: relative;
               }
-              .field:last-child {
-                border-bottom: none;
+              .lead-card::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 4px;
+                height: 100%;
+                background: linear-gradient(180deg, #dc2626 0%, #ef4444 100%);
+                border-radius: 12px 0 0 12px;
               }
-              .label {
-                font-weight: 600;
-                color: #059669;
-                font-size: 14px;
+              .field-group {
+                margin-bottom: 24px;
+              }
+              .field-group:last-child {
+                margin-bottom: 0;
+              }
+              .field-label {
+                font-size: 11px;
                 text-transform: uppercase;
-                letter-spacing: 0.5px;
+                letter-spacing: 1px;
+                color: #a1a1aa;
+                font-weight: 600;
                 margin-bottom: 8px;
               }
-              .value {
+              .field-value {
                 font-size: 16px;
-                color: #1f2937;
-                margin: 0;
+                color: #fafafa;
+                font-weight: 500;
+                line-height: 1.5;
               }
-              .message-box {
-                background: #f3f4f6;
-                padding: 20px;
-                border-radius: 6px;
-                border-left: 4px solid #059669;
+              .field-value a {
+                color: #ef4444;
+                text-decoration: none;
+                font-weight: 600;
+              }
+              .message-section {
+                background: #18181b;
+                border: 1px solid #3f3f46;
+                border-radius: 12px;
+                padding: 24px;
+                margin: 24px 0;
+              }
+              .message-label {
+                font-size: 11px;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                color: #ef4444;
+                font-weight: 600;
+                margin-bottom: 12px;
+              }
+              .message-text {
+                color: #d4d4d8;
+                font-size: 15px;
+                line-height: 1.8;
+                white-space: pre-wrap;
+              }
+              .action-buttons {
+                display: flex;
+                gap: 12px;
+                margin: 30px 0;
+              }
+              .btn-primary {
+                flex: 1;
+                display: inline-block;
+                background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+                color: white;
+                padding: 16px 24px;
+                text-decoration: none;
+                border-radius: 8px;
+                font-weight: 600;
+                font-size: 15px;
+                text-align: center;
+                box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+              }
+              .btn-secondary {
+                flex: 1;
+                display: inline-block;
+                background: #27272a;
+                color: white;
+                padding: 16px 24px;
+                text-decoration: none;
+                border-radius: 8px;
+                font-weight: 600;
+                font-size: 15px;
+                text-align: center;
+                border: 1px solid #52525b;
               }
               .timestamp {
+                background: #18181b;
+                padding: 20px;
                 text-align: center;
-                padding: 15px;
-                background: #f9fafb;
-                color: #6b7280;
-                font-size: 14px;
+                border-top: 1px solid #3f3f46;
+                border-bottom: 1px solid #3f3f46;
               }
-              .reply-button {
-                display: inline-block;
-                background: #059669;
-                color: white;
-                padding: 12px 24px;
-                text-decoration: none;
-                border-radius: 6px;
-                margin-top: 20px;
+              .timestamp-text {
+                color: #a1a1aa;
+                font-size: 13px;
+              }
+              .timestamp-value {
+                color: #fafafa;
                 font-weight: 600;
+                font-size: 14px;
+                margin-top: 4px;
+              }
+              .footer {
+                background: #18181b;
+                padding: 30px 40px;
+                text-align: center;
+              }
+              .footer-text {
+                color: #71717a;
+                font-size: 12px;
+                margin: 6px 0;
               }
             </style>
           </head>
           <body>
             <div class="container">
               <div class="header">
-                <h1>🔔 New Contact Form Submission</h1>
+                <div class="header-badge">NEW LEAD</div>
+                <h1>Contact Form Submission</h1>
               </div>
               
               <div class="content">
-                <div class="field">
-                  <div class="label">Full Name</div>
-                  <p class="value">${fullName}</p>
-                </div>
-                
-                <div class="field">
-                  <div class="label">Email Address</div>
-                  <p class="value">
-                    <a href="mailto:${email}" style="color: #059669; text-decoration: none;">${email}</a>
-                  </p>
-                </div>
-                
-                ${company ? `
-                <div class="field">
-                  <div class="label">Company Name</div>
-                  <p class="value">${company}</p>
-                </div>
-                ` : ''}
-                
-                <div class="field">
-                  <div class="label">Message</div>
-                  <div class="message-box">
-                    <p class="value" style="white-space: pre-wrap;">${message}</p>
+                <p style="color: #d4d4d8; margin-bottom: 24px; font-size: 15px;">
+                  You have a new inquiry from your website contact form. Review the details below and respond promptly.
+                </p>
+
+                <div class="lead-card">
+                  <div class="field-group">
+                    <div class="field-label">Contact Name</div>
+                    <div class="field-value">${fullName}</div>
                   </div>
+                  
+                  <div class="field-group">
+                    <div class="field-label">Email Address</div>
+                    <div class="field-value">
+                      <a href="mailto:${email}">${email}</a>
+                    </div>
+                  </div>
+                  
+                  ${company ? `
+                  <div class="field-group">
+                    <div class="field-label">Company</div>
+                    <div class="field-value">${company}</div>
+                  </div>
+                  ` : ''}
                 </div>
-                
-                <div style="text-align: center; margin-top: 30px;">
-                  <a href="mailto:${email}" class="reply-button">Reply to ${firstName}</a>
+
+                <div class="message-section">
+                  <div class="message-label">Message</div>
+                  <div class="message-text">${message}</div>
+                </div>
+
+                <div class="action-buttons">
+                  <a href="mailto:${email}?subject=Re: Your inquiry to Worksthal&body=Hi ${firstNameValue},%0D%0A%0D%0AThank you for reaching out to Worksthal.%0D%0A%0D%0A" class="btn-primary">
+                    Reply to ${firstNameValue}
+                  </a>
+                  <a href="https://worksthal.com/admin" class="btn-secondary">
+                    View Dashboard
+                  </a>
                 </div>
               </div>
               
               <div class="timestamp">
-                Received on ${new Date().toLocaleString('en-US', { 
-                  weekday: 'long', 
-                  year: 'numeric', 
-                  month: 'long', 
-                  day: 'numeric',
-                  hour: '2-digit',
-                  minute: '2-digit',
-                  timeZoneName: 'short'
-                })}
+                <div class="timestamp-text">Received on</div>
+                <div class="timestamp-value">
+                  ${new Date().toLocaleString('en-US', { 
+                    weekday: 'long', 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    timeZoneName: 'short'
+                  })}
+                </div>
+              </div>
+
+              <div class="footer">
+                <p class="footer-text">
+                  This email was sent from your Worksthal website contact form
+                </p>
+                <p class="footer-text">
+                  worksthal.com • Automated by Resend
+                </p>
               </div>
             </div>
           </body>

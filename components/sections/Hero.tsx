@@ -1,7 +1,8 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import { Sparkles, Zap, Code2, Bot } from "lucide-react";
+import { trackCTAClick, trackConversion } from "@/lib/analytics";
 
 export function Hero() {
   return (
@@ -38,7 +39,11 @@ export function Hero() {
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => {
+                trackCTAClick("Get started", "Hero Section");
+                trackConversion("get_started", 10);
+                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+              }}
               className="group relative overflow-hidden rounded-xl bg-foreground px-8 py-4 text-base font-semibold text-background transition-all hover:shadow-xl"
             >
               <span className="relative z-10 flex items-center justify-center gap-2">
@@ -51,7 +56,11 @@ export function Hero() {
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => {
+                trackCTAClick("Request a demo", "Hero Section");
+                trackConversion("request_demo", 8);
+                document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
+              }}
               className="rounded-xl border border-border bg-background/50 backdrop-blur-sm px-8 py-4 text-base font-semibold text-foreground transition-all hover:bg-card hover:shadow-lg"
             >
               Request a demo

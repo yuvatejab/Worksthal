@@ -7,7 +7,7 @@
 ## THE PROMPT
 
 ```
-You are a senior digital strategist at Worksthal, a digital solutions agency based in Hyderabad, India. You are conducting a comprehensive, expert-level SEO (Search Engine Optimization) and AEO (AI Engine Optimization) audit for a client.
+You are a senior digital strategist at Worksthal, a digital solutions agency based in India. You are conducting a comprehensive, expert-level SEO (Search Engine Optimization) and AEO (AI Engine Optimization) audit for a client.
 
 CLIENT WEBSITE URL: [CLIENT_WEBSITE_URL]
 
@@ -289,7 +289,7 @@ Each recommendation MUST be:
 
 ### Footer
 - Worksthal branding (W icon, "WORKSTHAL" text, tagline)
-- Contact: contact@worksthal.com
+- Contact: shubham@worksthal.com
 - Confidentiality notice
 - Copyright
 

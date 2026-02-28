@@ -251,8 +251,7 @@ export default function TermsPage() {
             <p className="mb-4 leading-relaxed text-muted-foreground">
               These Terms are governed by the laws of India. Any disputes arising from these Terms or
               our services shall be resolved through good-faith negotiation. If negotiation fails,
-              disputes shall be subject to the exclusive jurisdiction of the courts in Hyderabad,
-              Telangana, India.
+              disputes shall be subject to the exclusive jurisdiction of the courts in India.
             </p>
           </section>
 
@@ -278,9 +277,9 @@ export default function TermsPage() {
               <p className="mb-2 text-foreground">
                 <strong>Worksthal</strong>
               </p>
-              <p className="mb-1 text-muted-foreground">Email: contact@worksthal.com</p>
+              <p className="mb-1 text-muted-foreground">Email: shubham@worksthal.com</p>
               <p className="mb-1 text-muted-foreground">Phone: +91 63098 21905</p>
-              <p className="text-muted-foreground">Location: Hyderabad, Telangana, India</p>
+              <p className="text-muted-foreground">Location: India</p>
             </div>
           </section>
         </div>

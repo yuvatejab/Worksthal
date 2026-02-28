@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState, useRef } from "react"
-import { motion, AnimatePresence, useInView } from "motion/react"
+import { motion, AnimatePresence, useInView } from "framer-motion"
 import { 
   SiNextdotjs, 
   SiReact, 
@@ -98,7 +98,7 @@ export function AnimatedTechShowcase() {
   }
 
   return (
-    <div ref={ref} className="relative w-full h-[600px] flex items-center justify-center overflow-hidden bg-gradient-to-br from-zinc-50 via-zinc-100 to-zinc-50 dark:from-zinc-900 dark:via-zinc-800 dark:to-zinc-900 rounded-3xl border border-zinc-200 dark:border-zinc-700">
+    <div ref={ref} className="relative w-full h-[600px] flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#e8e8eb] via-[#dddde1] to-[#d4d4d8] dark:from-[#3a3a3f] dark:via-[#2f2f34] dark:to-[#27272a] rounded-3xl border-2 border-zinc-300/50 dark:border-zinc-700/40 shadow-xl dark:shadow-2xl">
       {/* Center Content */}
       <AnimatePresence mode="wait">
         {phase === "final" && (
@@ -163,9 +163,9 @@ export function AnimatedTechShowcase() {
               }}
             >
               <motion.div
-                className="relative w-20 h-20 md:w-24 md:h-24 rounded-full flex items-center justify-center shadow-2xl overflow-hidden p-5"
+                className="relative w-20 h-20 md:w-24 md:h-24 rounded-full flex items-center justify-center shadow-2xl overflow-hidden p-5 border-2 border-zinc-300/30 dark:border-zinc-700/30 backdrop-blur-sm"
                 style={{
-                  backgroundColor: tech.bgColor,
+                  backgroundColor: tech.bgColor + 'E6',
                   color: tech.iconColor,
                 }}
                 whileHover={{ scale: 1.15, rotate: 360 }}

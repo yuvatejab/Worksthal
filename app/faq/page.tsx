@@ -17,12 +17,12 @@ const faqs = [
       {
         question: "Where is Worksthal located?",
         answer:
-          "Worksthal is based in Hyderabad, Telangana, India. The agency serves clients worldwide and operates remotely for international projects. You can reach Worksthal at contact@worksthal.com or +91 63098 21905.",
+          "Worksthal is based in India. The agency serves clients worldwide and operates remotely for international projects. You can reach Worksthal at shubham@worksthal.com or +91 63098 21905.",
       },
       {
         question: "Does Worksthal work with international clients?",
         answer:
-          "Yes. Worksthal is based in Hyderabad, India, and serves clients worldwide. The agency operates remotely for international projects, with regular communication via email, video calls, and project management tools. Worksthal has delivered projects across multiple industries and geographies.",
+          "Yes. Worksthal is based in India and serves clients worldwide. The agency operates remotely for international projects, with regular communication via email, video calls, and project management tools. Worksthal has delivered projects across multiple industries and geographies.",
       },
       {
         question: "What industries does Worksthal serve?",
@@ -122,7 +122,7 @@ const faqs = [
       {
         question: "How do I get started with Worksthal?",
         answer:
-          "Start by scheduling a free consultation via the contact form or email (contact@worksthal.com). During the consultation, Worksthal will understand your goals, challenges, and requirements. Then Worksthal provides a detailed proposal with scope, timeline, and pricing. Once approved, work begins with regular check-ins and progress updates throughout the project.",
+          "Start by scheduling a free consultation via the contact form or email (shubham@worksthal.com). During the consultation, Worksthal will understand your goals, challenges, and requirements. Then Worksthal provides a detailed proposal with scope, timeline, and pricing. Once approved, work begins with regular check-ins and progress updates throughout the project.",
       },
     ],
   },
