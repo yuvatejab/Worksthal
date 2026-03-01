@@ -2,7 +2,6 @@
 
 import { DotPattern } from "@/components/ui/dot-pattern";
 import { AnimatedTechShowcase } from "@/components/ui/animated-tech-showcase";
-import ServicesBento3D from "@/components/ui/services-bento-3d";
 import { cn } from "@/lib/utils";
 
 export function TechStack() {
@@ -33,11 +32,6 @@ export function TechStack() {
 
         {/* Animated Tech Showcase */}
         <AnimatedTechShowcase />
-
-        {/* Services Bento Grid with 3D Elements */}
-        <div className="mt-16">
-          <ServicesBento3D />
-        </div>
       </div>
     </section>
   );
