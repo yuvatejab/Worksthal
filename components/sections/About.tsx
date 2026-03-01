@@ -238,14 +238,14 @@ export function About() {
                   exit={{ opacity: 0 }}
                   className="relative w-full cursor-pointer"
                 >
-                  <div className="relative overflow-hidden rounded-2xl shadow-2xl ring-1 ring-black/5 dark:ring-white/10 bg-black">
+                  <div className="relative overflow-hidden rounded-2xl shadow-2xl ring-1 ring-black/5 dark:ring-white/10 bg-black aspect-video">
                     <video
                       className="w-full h-full object-cover"
                       loop
                       muted
                       playsInline
-                      preload="metadata"
-                      style={{ aspectRatio: "16/9" }}
+                      preload="none"
+                      poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3C/svg%3E"
                     >
                       <source src="/home page video.mp4" type="video/mp4" />
                     </video>

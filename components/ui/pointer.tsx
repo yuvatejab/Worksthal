@@ -30,52 +30,45 @@ export function Pointer({
   const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (typeof window !== "undefined" && containerRef.current) {
-      // Get the parent element directly from the ref
-      const parentElement = containerRef.current.parentElement
+    if (typeof window === "undefined") return
 
-      if (parentElement) {
-        // Add cursor-none to parent
-        parentElement.style.cursor = "none"
+    document.documentElement.style.cursor = "none"
 
-        // Add event listeners to parent
-        const handleMouseMove = (e: MouseEvent) => {
-          x.set(e.clientX)
-          y.set(e.clientY)
-          setIsActive(true)
-        }
-
-        const handleMouseEnter = (e: MouseEvent) => {
-          x.set(e.clientX)
-          y.set(e.clientY)
-          setIsActive(true)
-        }
-
-        const handleMouseLeave = () => {
-          setIsActive(false)
-        }
-
-        parentElement.addEventListener("mousemove", handleMouseMove)
-        parentElement.addEventListener("mouseenter", handleMouseEnter)
-        parentElement.addEventListener("mouseleave", handleMouseLeave)
-
-        return () => {
-          parentElement.style.cursor = ""
-          parentElement.removeEventListener("mousemove", handleMouseMove)
-          parentElement.removeEventListener("mouseenter", handleMouseEnter)
-          parentElement.removeEventListener("mouseleave", handleMouseLeave)
-        }
-      }
+    const handleMouseMove = (e: MouseEvent) => {
+      x.set(e.clientX)
+      y.set(e.clientY)
+      if (!isActive) setIsActive(true)
     }
-  }, [x, y])
+
+    const handleMouseLeave = () => {
+      setIsActive(false)
+    }
+
+    const handleMouseEnter = (e: MouseEvent) => {
+      x.set(e.clientX)
+      y.set(e.clientY)
+      setIsActive(true)
+    }
+
+    document.addEventListener("mousemove", handleMouseMove, true)
+    document.addEventListener("mouseleave", handleMouseLeave)
+    document.addEventListener("mouseenter", handleMouseEnter)
+
+    return () => {
+      document.documentElement.style.cursor = ""
+      document.removeEventListener("mousemove", handleMouseMove, true)
+      document.removeEventListener("mouseleave", handleMouseLeave)
+      document.removeEventListener("mouseenter", handleMouseEnter)
+    }
+  }, [x, y, isActive])
 
   return (
     <>
-      <div ref={containerRef} />
+      <div ref={containerRef} className="hidden" />
       <AnimatePresence>
         {isActive && (
           <motion.div
-            className="pointer-events-none fixed z-[9999] transform-[translate(-50%,-50%)]"
+            className="pointer-events-none fixed z-[999999] transform-[translate(-50%,-50%)]"
             style={{
               top: y,
               left: x,

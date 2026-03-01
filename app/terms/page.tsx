@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-const baseUrl = "https://worksthal.vercel.app";
+const baseUrl = "https://www.worksthal.com";
 
 export const metadata: Metadata = {
   title: "Terms of Service — Worksthal",
@@ -41,7 +41,7 @@ export default function TermsPage() {
             </h2>
             <p className="mb-4 leading-relaxed text-muted-foreground">
               These Terms of Service ("Terms") govern your access to and use of Worksthal's website
-              (worksthal.vercel.app) and services. By accessing or using our website or services, you
+              (www.worksthal.com) and services. By accessing or using our website or services, you
               agree to be bound by these Terms and our Privacy Policy.
             </p>
             <p className="leading-relaxed text-muted-foreground">

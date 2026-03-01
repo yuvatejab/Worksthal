@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Calendar, Clock, ArrowLeft } from "lucide-react";
 
-const baseUrl = "https://worksthal.vercel.app";
+const baseUrl = "https://www.worksthal.com";
 
 // This would normally come from a CMS or database
 const blogPosts: Record<string, any> = {

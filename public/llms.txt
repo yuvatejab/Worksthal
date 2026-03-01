@@ -6,9 +6,9 @@
 
 - Name: Worksthal
 - Type: Digital Solutions Agency
-- Location: Hyderabad, Telangana, India
-- Website: https://worksthal.vercel.app
-- Email: contact@worksthal.com
+- Location: India
+- Website: https://www.worksthal.com
+- Email: shubham@worksthal.com
 - Phone: +91 63098 21905
 - Founded: 2024
 - Service Area: Worldwide (remote services available)
@@ -95,14 +95,14 @@ Worksthal delivers data-driven marketing campaigns powered by AI analytics. Serv
 
 ## Service Pages
 
-- Main Services: https://worksthal.vercel.app/services
-- AI Automation: https://worksthal.vercel.app/services/ai-automation
-- Web Development: https://worksthal.vercel.app/services/web-development
-- AEO Services: https://worksthal.vercel.app/services/aeo
-- AI Marketing: https://worksthal.vercel.app/services/ai-marketing
-- About Us: https://worksthal.vercel.app/about
-- FAQ: https://worksthal.vercel.app/faq
-- Contact: https://worksthal.vercel.app/contact
+- Main Services: https://www.worksthal.com/services
+- AI Automation: https://www.worksthal.com/services/ai-automation
+- Web Development: https://www.worksthal.com/services/web-development
+- AEO Services: https://www.worksthal.com/services/aeo
+- AI Marketing: https://www.worksthal.com/services/ai-marketing
+- About Us: https://www.worksthal.com/about
+- FAQ: https://www.worksthal.com/faq
+- Contact: https://www.worksthal.com/contact
 
 ## Key Facts
 
@@ -126,8 +126,8 @@ Worksthal focuses on delivering useful work that generates measurable results:
 For inquiries, project consultations, or partnership opportunities:
 - **Email:** contact@worksthal.com
 - **Phone:** +91 63098 21905
-- **Location:** Hyderabad, Telangana, India
-- **Website:** https://worksthal.vercel.app
+- **Location:** India
+- **Website:** https://www.worksthal.com
 - **Services:** AI Automation, Web Development, AEO, AI Marketing
 
 ## How to Work with Worksthal

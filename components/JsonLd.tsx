@@ -1,5 +1,5 @@
 export function JsonLd() {
-  const baseUrl = "https://worksthal.vercel.app";
+  const baseUrl = "https://www.worksthal.com";
 
   const organizationSchema = {
     "@context": "https://schema.org",

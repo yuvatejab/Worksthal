@@ -148,7 +148,7 @@ export function Contact() {
         <ExpandableScreen 
           layoutId="contact-form" 
           triggerRadius="12px" 
-          contentRadius="0px"
+          contentRadius="20px"
           lockScroll={true}
         >
           {/* Trigger Section */}
@@ -219,9 +219,9 @@ export function Contact() {
           <ExpandableScreenContent 
             className="bg-neutral-200 dark:bg-neutral-200"
             showCloseButton={true}
-            closeButtonClassName="text-neutral-900 hover:text-neutral-700"
+            closeButtonClassName="text-neutral-900 bg-neutral-300/80 hover:bg-neutral-400/80 hover:text-neutral-900"
           >
-            <div className="relative z-10 flex h-full w-full items-center justify-center p-4 sm:p-6 lg:p-8 light-form-override">
+            <div className="relative z-10 flex w-full items-center justify-center p-4 pt-6 sm:p-6 sm:pt-8 lg:p-8 lg:pt-8 light-form-override">
               <div className="grid w-full max-w-6xl grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8">
                 {/* Left Side - Content */}
                 <div className="flex flex-col justify-center space-y-4">
@@ -235,38 +235,38 @@ export function Contact() {
                   </div>
 
                   {/* Benefits List */}
-                  <div className="space-y-2.5">
-                    <div className="flex items-start gap-2.5">
-                      <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-neutral-800 to-neutral-700 shadow-sm">
-                        <svg className="h-3.5 w-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-3 group">
+                      <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-neutral-400">
+                        <svg className="h-2.5 w-2.5 text-neutral-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                         </svg>
                       </div>
-                      <h3 className="text-xs font-semibold text-neutral-900 tracking-tight leading-tight pt-0.5">
-                        Save hours per week with intelligent automation workflows
-                      </h3>
+                      <p className="text-[13px] font-normal text-neutral-600 leading-snug">
+                        Save hours per week with intelligent automation
+                      </p>
                     </div>
 
-                    <div className="flex items-start gap-2.5">
-                      <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-neutral-800 to-neutral-700 shadow-sm">
-                        <svg className="h-3.5 w-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    <div className="flex items-center gap-3 group">
+                      <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-neutral-400">
+                        <svg className="h-2.5 w-2.5 text-neutral-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                         </svg>
                       </div>
-                      <h3 className="text-xs font-semibold text-neutral-900 tracking-tight leading-tight pt-0.5">
-                        Get a custom solution tailored to your specific business needs
-                      </h3>
+                      <p className="text-[13px] font-normal text-neutral-600 leading-snug">
+                        Custom solutions tailored to your business
+                      </p>
                     </div>
 
-                    <div className="flex items-start gap-2.5">
-                      <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-neutral-800 to-neutral-700 shadow-sm">
-                        <svg className="h-3.5 w-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    <div className="flex items-center gap-3 group">
+                      <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-neutral-400">
+                        <svg className="h-2.5 w-2.5 text-neutral-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                         </svg>
                       </div>
-                      <h3 className="text-xs font-semibold text-neutral-900 tracking-tight leading-tight pt-0.5">
-                        Get transparent guidance on next steps
-                      </h3>
+                      <p className="text-[13px] font-normal text-neutral-600 leading-snug">
+                        Transparent guidance on next steps
+                      </p>
                     </div>
                   </div>
 
@@ -351,12 +351,12 @@ export function Contact() {
                           >
                             <SelectValue placeholder="Select a service" style={{ color: '#737373' }} />
                           </SelectTrigger>
-                          <SelectContent className="bg-white border-neutral-300 rounded-lg">
-                            <SelectItem value="automation" className="text-neutral-900 focus:bg-neutral-100 text-sm">AI Workflow Automation</SelectItem>
-                            <SelectItem value="web-dev" className="text-neutral-900 focus:bg-neutral-100 text-sm">Website Development</SelectItem>
-                            <SelectItem value="aeo" className="text-neutral-900 focus:bg-neutral-100 text-sm">AEO & Search Visibility</SelectItem>
-                            <SelectItem value="marketing" className="text-neutral-900 focus:bg-neutral-100 text-sm">AI Marketing</SelectItem>
-                            <SelectItem value="multiple" className="text-neutral-900 focus:bg-neutral-100 text-sm">Multiple Services</SelectItem>
+                          <SelectContent className="!bg-white border-neutral-300 rounded-lg">
+                            <SelectItem value="automation" className="!text-neutral-900 !focus:bg-neutral-100 focus:!bg-neutral-100 focus:!text-neutral-900 hover:!bg-neutral-100 data-[highlighted]:!bg-neutral-100 data-[highlighted]:!text-neutral-900 text-sm">AI Workflow Automation</SelectItem>
+                            <SelectItem value="web-dev" className="!text-neutral-900 !focus:bg-neutral-100 focus:!bg-neutral-100 focus:!text-neutral-900 hover:!bg-neutral-100 data-[highlighted]:!bg-neutral-100 data-[highlighted]:!text-neutral-900 text-sm">Website Development</SelectItem>
+                            <SelectItem value="aeo" className="!text-neutral-900 !focus:bg-neutral-100 focus:!bg-neutral-100 focus:!text-neutral-900 hover:!bg-neutral-100 data-[highlighted]:!bg-neutral-100 data-[highlighted]:!text-neutral-900 text-sm">AEO & Search Visibility</SelectItem>
+                            <SelectItem value="marketing" className="!text-neutral-900 !focus:bg-neutral-100 focus:!bg-neutral-100 focus:!text-neutral-900 hover:!bg-neutral-100 data-[highlighted]:!bg-neutral-100 data-[highlighted]:!text-neutral-900 text-sm">AI Marketing</SelectItem>
+                            <SelectItem value="multiple" className="!text-neutral-900 !focus:bg-neutral-100 focus:!bg-neutral-100 focus:!text-neutral-900 hover:!bg-neutral-100 data-[highlighted]:!bg-neutral-100 data-[highlighted]:!text-neutral-900 text-sm">Multiple Services</SelectItem>
                           </SelectContent>
                         </Select>
                       </div>
@@ -381,11 +381,11 @@ export function Contact() {
                           >
                             <SelectValue placeholder="Select size" style={{ color: '#737373' }} />
                           </SelectTrigger>
-                          <SelectContent className="bg-white border-neutral-300 rounded-lg">
-                            <SelectItem value="1-10" className="text-neutral-900 focus:bg-neutral-100 text-sm">1-10 employees</SelectItem>
-                            <SelectItem value="11-50" className="text-neutral-900 focus:bg-neutral-100 text-sm">11-50 employees</SelectItem>
-                            <SelectItem value="51-200" className="text-neutral-900 focus:bg-neutral-100 text-sm">51-200 employees</SelectItem>
-                            <SelectItem value="200+" className="text-neutral-900 focus:bg-neutral-100 text-sm">200+ employees</SelectItem>
+                          <SelectContent className="!bg-white border-neutral-300 rounded-lg">
+                            <SelectItem value="1-10" className="!text-neutral-900 focus:!bg-neutral-100 focus:!text-neutral-900 hover:!bg-neutral-100 data-[highlighted]:!bg-neutral-100 data-[highlighted]:!text-neutral-900 text-sm">1-10 employees</SelectItem>
+                            <SelectItem value="11-50" className="!text-neutral-900 focus:!bg-neutral-100 focus:!text-neutral-900 hover:!bg-neutral-100 data-[highlighted]:!bg-neutral-100 data-[highlighted]:!text-neutral-900 text-sm">11-50 employees</SelectItem>
+                            <SelectItem value="51-200" className="!text-neutral-900 focus:!bg-neutral-100 focus:!text-neutral-900 hover:!bg-neutral-100 data-[highlighted]:!bg-neutral-100 data-[highlighted]:!text-neutral-900 text-sm">51-200 employees</SelectItem>
+                            <SelectItem value="200+" className="!text-neutral-900 focus:!bg-neutral-100 focus:!text-neutral-900 hover:!bg-neutral-100 data-[highlighted]:!bg-neutral-100 data-[highlighted]:!text-neutral-900 text-sm">200+ employees</SelectItem>
                           </SelectContent>
                         </Select>
                       </div>

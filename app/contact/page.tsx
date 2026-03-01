@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Contact } from "@/components/sections/Contact";
 
-const baseUrl = "https://worksthal.vercel.app";
+const baseUrl = "https://www.worksthal.com";
 
 export const metadata: Metadata = {
   title: "Contact Worksthal — Get a Free Consultation",

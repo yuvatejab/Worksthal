@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { TrendingUp, Target, BarChart, ArrowRight, CheckCircle2, LineChart, PieChart, Activity } from "lucide-react";
 import Link from "next/link";
 
-const baseUrl = "https://worksthal.vercel.app";
+const baseUrl = "https://www.worksthal.com";
 
 export const metadata: Metadata = {
   title: "AI-Driven Marketing Services — Data-Driven Growth | Worksthal",

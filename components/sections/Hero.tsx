@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { Sparkles, Zap, Code2, Bot } from "lucide-react";
 import { trackCTAClick, trackConversion } from "@/lib/analytics";
 
@@ -82,21 +83,27 @@ export function Hero() {
             
             {/* Central Robot/AI Character */}
             <div className="relative flex h-full items-center justify-center">
-              <motion.div
-                animate={{
-                  y: [0, -10, 0],
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                className="relative w-80 h-80 rounded-3xl overflow-hidden shadow-2xl"
-              >
+            <motion.div
+              animate={{
+                y: [0, -10, 0],
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              style={{ willChange: "transform" }}
+              className="relative w-80 h-80 rounded-3xl overflow-hidden shadow-2xl"
+            >
                 {/* Hero Image */}
-                <img
+                <Image
                   src="/hero-img.webp"
                   alt="AI Automation Robot"
+                  width={640}
+                  height={640}
+                  priority
+                  quality={85}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="w-full h-full object-cover"
                 />
               </motion.div>

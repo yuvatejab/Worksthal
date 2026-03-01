@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-const baseUrl = "https://worksthal.vercel.app";
+const baseUrl = "https://www.worksthal.com";
 
 export const metadata: Metadata = {
   title: "Privacy Policy — Worksthal",
@@ -42,7 +42,7 @@ export default function PrivacyPage() {
             <p className="mb-4 leading-relaxed text-muted-foreground">
               Worksthal ("we," "our," or "us") is committed to protecting your privacy. This Privacy
               Policy explains how we collect, use, disclose, and safeguard your information when you
-              visit our website (worksthal.vercel.app) or use our services.
+              visit our website (www.worksthal.com) or use our services.
             </p>
             <p className="leading-relaxed text-muted-foreground">
               By using our website or services, you agree to the collection and use of information in

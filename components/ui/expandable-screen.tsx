@@ -2,6 +2,7 @@
 
 import {
   createContext,
+  useCallback,
   useContext,
   useEffect,
   useState,
@@ -9,6 +10,7 @@ import {
 } from "react"
 import { X } from "lucide-react"
 import { AnimatePresence, motion } from "framer-motion"
+import { createPortal } from "react-dom"
 
 // Context
 interface ExpandableScreenContextValue {
@@ -58,15 +60,15 @@ export function ExpandableScreen({
 }: ExpandableScreenProps) {
   const [isExpanded, setIsExpanded] = useState(defaultExpanded)
 
-  const expand = () => {
+  const expand = useCallback(() => {
     setIsExpanded(true)
     onExpandChange?.(true)
-  }
+  }, [onExpandChange])
 
-  const collapse = () => {
+  const collapse = useCallback(() => {
     setIsExpanded(false)
     onExpandChange?.(false)
-  }
+  }, [onExpandChange])
 
   useEffect(() => {
     if (lockScroll) {
@@ -75,6 +77,9 @@ export function ExpandableScreen({
       } else {
         document.body.style.overflow = "unset"
       }
+    }
+    return () => {
+      document.body.style.overflow = "unset"
     }
   }, [isExpanded, lockScroll])
 
@@ -105,33 +110,24 @@ export function ExpandableScreenTrigger({
   children,
   className = "",
 }: ExpandableScreenTriggerProps) {
-  const { isExpanded, expand, layoutId, triggerRadius } = useExpandableScreen()
+  const { isExpanded, expand } = useExpandableScreen()
 
   return (
     <AnimatePresence initial={false}>
       {!isExpanded && (
-        <motion.div className={`inline-block relative ${className}`}>
-          {/* Background layer with shared layoutId for morphing */}
-          <motion.div
-            style={{
-              borderRadius: triggerRadius,
-            }}
-            layout
-            layoutId={layoutId}
-            className="absolute inset-0 transform-gpu will-change-transform"
-          />
-          {/* Content layer that fades out on expand */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2 }}
-            exit={{ opacity: 0, scale: 0.8 }}
-            layout={false}
+        <motion.div
+          className={`inline-block relative ${className}`}
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.9 }}
+          transition={{ duration: 0.2 }}
+        >
+          <div
             onClick={expand}
             className="relative cursor-pointer"
           >
             {children}
-          </motion.div>
+          </div>
         </motion.div>
       )}
     </AnimatePresence>
@@ -152,48 +148,81 @@ export function ExpandableScreenContent({
   showCloseButton = true,
   closeButtonClassName = "",
 }: ExpandableScreenContentProps) {
-  const { isExpanded, collapse, layoutId, contentRadius, animationDuration } =
+  const { isExpanded, collapse, contentRadius, animationDuration } =
     useExpandableScreen()
 
-  return (
-    <AnimatePresence initial={false}>
-      {isExpanded && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-2">
-          {/* Morphing background with shared layoutId */}
-          <motion.div
-            layoutId={layoutId}
-            transition={{ duration: animationDuration }}
-            style={{
-              borderRadius: contentRadius,
-            }}
-            layout
-            className={`relative flex h-full w-full overflow-y-auto transform-gpu will-change-transform ${className}`}
-          >
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.15, duration: 0.4 }}
-              className="relative z-20 w-full"
-            >
-              {children}
-            </motion.div>
+  const [mounted, setMounted] = useState(false)
 
-            {showCloseButton && (
-              <motion.button
-                onClick={collapse}
-                className={`absolute right-6 top-6 z-30 flex h-10 w-10 items-center justify-center transition-colors rounded-full ${
-                  closeButtonClassName ||
-                  "text-white bg-transparent hover:bg-white/10"
-                }`}
-                aria-label="Close"
-              >
-                <X className="h-5 w-5" />
-              </motion.button>
-            )}
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  useEffect(() => {
+    if (!isExpanded) return
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape") collapse()
+    }
+    window.addEventListener("keydown", handleEscape)
+    return () => window.removeEventListener("keydown", handleEscape)
+  }, [isExpanded, collapse])
+
+  if (!mounted) return null
+
+  return createPortal(
+    <AnimatePresence>
+      {isExpanded && (
+        <>
+          {/* Backdrop overlay with gradient blur */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: animationDuration }}
+            className="fixed inset-0 z-[9998]"
+            onClick={collapse}
+            style={{ backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)" }}
+          >
+            <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black/70" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/20" />
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,rgba(0,0,0,0.4)_100%)]" />
           </motion.div>
-        </div>
+
+          {/* Centered modal container */}
+          <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6 md:p-8 pointer-events-none">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.92, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.92, y: 20 }}
+              transition={{
+                duration: animationDuration,
+                ease: [0.32, 0.72, 0, 1],
+              }}
+              style={{ borderRadius: contentRadius }}
+              className={`relative w-full max-w-[80vw] max-h-[80vh] overflow-y-auto pointer-events-auto ${className}`}
+            >
+              {/* Close button - fixed to top-right of the modal */}
+              {showCloseButton && (
+                <button
+                  onClick={collapse}
+                  className={`fixed right-2 top-2 z-[10000] flex h-10 w-10 items-center justify-center rounded-full transition-colors sm:right-4 sm:top-4 ${
+                    closeButtonClassName ||
+                    "text-white bg-black/20 hover:bg-black/40"
+                  }`}
+                  aria-label="Close"
+                >
+                  <X className="h-5 w-5" />
+                </button>
+              )}
+
+              <div className="relative z-20 w-full">
+                {children}
+              </div>
+            </motion.div>
+          </div>
+        </>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   )
 }
 

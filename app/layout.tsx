@@ -13,6 +13,8 @@ const inter = Inter({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
   display: "swap",
+  preload: true,
+  fallback: ["system-ui", "-apple-system", "sans-serif"],
 });
 
 const cormorant = Cormorant_Garamond({
@@ -20,9 +22,11 @@ const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
   display: "swap",
+  preload: true,
+  fallback: ["Georgia", "serif"],
 });
 
-const baseUrl = "https://worksthal.vercel.app";
+const baseUrl = "https://www.worksthal.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
@@ -111,6 +115,18 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        {/* Preconnect to external domains */}
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        
+        {/* Preload critical assets */}
+        <link
+          rel="preload"
+          href="/hero-img.webp"
+          as="image"
+          type="image/webp"
+        />
+        
         <JsonLd />
       </head>
       <body
@@ -120,17 +136,19 @@ export default function RootLayout({
           "--font-serif": cormorant.style.fontFamily,
         } as React.CSSProperties}
       >
-        {/* Google Analytics */}
+        {/* Google Analytics - Deferred for performance */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-X3XE5PWWHZ"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
-        <Script id="google-analytics" strategy="afterInteractive">
+        <Script id="google-analytics" strategy="lazyOnload">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-X3XE5PWWHZ');
+            gtag('config', 'G-X3XE5PWWHZ', {
+              page_path: window.location.pathname,
+            });
           `}
         </Script>
 

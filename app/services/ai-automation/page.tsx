@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Workflow, Bot, Zap, ArrowRight, CheckCircle2, Clock, TrendingUp, Users } from "lucide-react";
 import Link from "next/link";
 
-const baseUrl = "https://worksthal.vercel.app";
+const baseUrl = "https://www.worksthal.com";
 
 export const metadata: Metadata = {
   title: "AI Workflow Automation Services — Save Time & Reduce Errors | Worksthal",

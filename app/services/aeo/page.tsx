@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Search, Bot, TrendingUp, ArrowRight, CheckCircle2, Sparkles, Target, BarChart } from "lucide-react";
 import Link from "next/link";
 
-const baseUrl = "https://worksthal.vercel.app";
+const baseUrl = "https://www.worksthal.com";
 
 export const metadata: Metadata = {
   title: "AI Engine Optimization (AEO) Services — Get Cited by AI | Worksthal",

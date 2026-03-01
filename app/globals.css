@@ -487,6 +487,27 @@ p {
   }
 }
 
+/* Hide native cursor globally — custom cursor replaces it */
+*, *::before, *::after {
+  cursor: none !important;
+}
+
+/* Performance: Content visibility for off-screen sections */
+section:not(#home) {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 500px;
+}
+
+/* Performance: Optimize animations to prevent forced reflows */
+[data-motion] {
+  will-change: transform, opacity;
+}
+
+/* Remove will-change after animation completes */
+[data-motion]:not(:hover):not(:focus) {
+  will-change: auto;
+}
+
 /* Force light theme styles for contact form - Override ALL dark theme styles */
 .light-form-override,
 .light-form-override * {
@@ -533,4 +554,24 @@ p {
   color: #737373 !important;
   font-family: var(--font-sans) !important;
   font-weight: 400 !important;
+}
+
+/* Force light theme on Select dropdown portals (rendered outside .light-form-override) */
+[data-radix-popper-content-wrapper] [data-slot="select-content"] {
+  background-color: #ffffff !important;
+  border-color: #d4d4d4 !important;
+}
+
+[data-radix-popper-content-wrapper] [data-slot="select-item"] {
+  color: #171717 !important;
+}
+
+[data-radix-popper-content-wrapper] [data-slot="select-item"][data-highlighted] {
+  background-color: #f5f5f5 !important;
+  color: #171717 !important;
+}
+
+[data-radix-popper-content-wrapper] [data-slot="select-item"]:focus {
+  background-color: #f5f5f5 !important;
+  color: #171717 !important;
 }

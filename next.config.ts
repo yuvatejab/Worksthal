@@ -21,10 +21,19 @@ const nextConfig: NextConfig = {
 
   /* Experimental features for better performance */
   experimental: {
-    optimizePackageImports: ["lucide-react", "@tabler/icons-react"],
+    optimizePackageImports: ["lucide-react", "@tabler/icons-react", "framer-motion"],
   },
 
-  /* Security headers */
+  /* Compiler optimizations */
+  compiler: {
+    removeConsole: process.env.NODE_ENV === "production",
+  },
+
+  /* Production optimizations */
+  productionBrowserSourceMaps: false,
+  compress: true,
+
+  /* Security and performance headers */
   async headers() {
     return [
       {
@@ -50,6 +59,15 @@ const nextConfig: NextConfig = {
             key: "Permissions-Policy",
             value:
               "camera=(), microphone=(), geolocation=(), interest-cohort=()",
+          },
+        ],
+      },
+      {
+        source: "/(.*)\\.(jpg|jpeg|png|gif|webp|svg|ico|woff|woff2|mp4)",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
           },
         ],
       },
