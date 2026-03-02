@@ -286,10 +286,10 @@ export async function POST(request: Request) {
               
               <div class="footer">
                 <p class="footer-text">
-                  <strong style="color: #fafafa;">Worksthal</strong> — AI Automation, Web Development & AEO Agency
+                  <strong style="color: #fafafa;">Worksthal</strong> — AI Automation, Web Development & AEO Studio
                 </p>
                 <p class="footer-text">
-                  📧 shubham@worksthal.com  •  📱 +91 63098219055
+                  📧 shubham@worksthal.com  •  📱 +91 6309821905
                 </p>
                 <div class="footer-links">
                   <a href="https://worksthal.com" class="footer-link">Website</a>

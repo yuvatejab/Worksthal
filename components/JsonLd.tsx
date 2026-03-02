@@ -171,7 +171,7 @@ export function JsonLd() {
         name: "Where is Worksthal located?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Worksthal is based in India. The agency serves clients worldwide and operates remotely for international projects. You can reach Worksthal at shubham@worksthal.com or +91 63098219055.",
+          text: "Worksthal is based in India. The agency serves clients worldwide and operates remotely for international projects. You can reach Worksthal at shubham@worksthal.com or +91 6309821905.",
         },
       },
       {

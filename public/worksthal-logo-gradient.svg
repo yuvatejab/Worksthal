@@ -1,0 +1,12 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Concept B: Gradient — Bold W with gradient fade -->
+  <defs>
+    <linearGradient id="wg" x1="256" y1="140" x2="256" y2="388" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#71717A"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="96" fill="#0A0A0A"/>
+  <path d="M116,152 L196,380 L256,212 L316,380 L396,152 L348,152 L300,336 L256,240 L212,336 L164,152Z" fill="url(#wg)"/>
+  <circle cx="384" cy="356" r="14" fill="#3F3F46"/>
+</svg>

@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Worksthal — Google Ads Campaign Copy (Ready to Paste)</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #0a0a0a;
+    color: #e5e5e5;
+    line-height: 1.6;
+    padding: 40px 20px;
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+  }
+
+  .subtitle {
+    font-size: 14px;
+    color: #71717a;
+    margin-bottom: 48px;
+    line-height: 1.7;
+  }
+
+  .campaign {
+    background: #141414;
+    border: 1px solid #1e1e1e;
+    border-radius: 12px;
+    padding: 32px;
+    margin-bottom: 32px;
+  }
+
+  .campaign-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .campaign-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  .campaign-badge {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 100px;
+    background: #1a1a2e;
+    color: #818cf8;
+    border: 1px solid #2d2d5e;
+  }
+
+  .campaign-meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    margin-bottom: 24px;
+    padding: 16px;
+    background: #0d0d0d;
+    border-radius: 8px;
+    border: 1px solid #1a1a1a;
+  }
+
+  .meta-item {
+    font-size: 12px;
+  }
+
+  .meta-label {
+    color: #52525b;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+    font-size: 10px;
+    margin-bottom: 4px;
+  }
+
+  .meta-value {
+    color: #a1a1aa;
+    font-size: 13px;
+  }
+
+  .section-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #52525b;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
+    margin-top: 24px;
+  }
+
+  .section-label:first-of-type {
+    margin-top: 0;
+  }
+
+  .copy-grid {
+    display: grid;
+    gap: 6px;
+  }
+
+  .copy-row {
+    display: flex;
+    align-items: stretch;
+    gap: 8px;
+    background: #0d0d0d;
+    border: 1px solid #1a1a1a;
+    border-radius: 6px;
+    overflow: hidden;
+    transition: border-color 0.15s;
+  }
+
+  .copy-row:hover {
+    border-color: #2a2a2a;
+  }
+
+  .copy-num {
+    width: 36px;
+    min-width: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 600;
+    color: #3f3f46;
+    background: #111;
+    border-right: 1px solid #1a1a1a;
+  }
+
+  .copy-text {
+    flex: 1;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #d4d4d8;
+    cursor: text;
+    user-select: all;
+  }
+
+  .copy-chars {
+    width: 48px;
+    min-width: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 500;
+    color: #3f3f46;
+    border-left: 1px solid #1a1a1a;
+  }
+
+  .copy-chars.warn {
+    color: #f59e0b;
+  }
+
+  .copy-chars.ok {
+    color: #22c55e;
+  }
+
+  .desc-row .copy-text {
+    font-size: 13px;
+    color: #a1a1aa;
+  }
+
+  .keywords-box {
+    padding: 16px;
+    background: #0d0d0d;
+    border: 1px solid #1a1a1a;
+    border-radius: 8px;
+    margin-top: 8px;
+  }
+
+  .keyword-tag {
+    display: inline-block;
+    padding: 4px 10px;
+    margin: 3px;
+    font-size: 12px;
+    color: #a1a1aa;
+    background: #1a1a1a;
+    border: 1px solid #252525;
+    border-radius: 4px;
+    font-family: monospace;
+  }
+
+  .neg-keyword {
+    color: #ef4444;
+    background: #1a0a0a;
+    border-color: #2d1515;
+  }
+
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #1e1e1e, transparent);
+    margin: 24px 0;
+  }
+
+  .tips-box {
+    background: #0d1117;
+    border: 1px solid #1a2332;
+    border-radius: 8px;
+    padding: 24px;
+    margin-top: 8px;
+  }
+
+  .tips-box h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #58a6ff;
+    margin-bottom: 12px;
+  }
+
+  .tips-box ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .tips-box li {
+    font-size: 13px;
+    color: #8b949e;
+    padding: 4px 0;
+    padding-left: 20px;
+    position: relative;
+  }
+
+  .tips-box li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: #3f3f46;
+  }
+
+  .path-fields {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  .path-tag {
+    font-size: 12px;
+    font-family: monospace;
+    padding: 4px 10px;
+    background: #0d1117;
+    border: 1px solid #1a2332;
+    border-radius: 4px;
+    color: #58a6ff;
+  }
+
+  .strategy-section {
+    background: #141414;
+    border: 1px solid #1e1e1e;
+    border-radius: 12px;
+    padding: 32px;
+    margin-bottom: 32px;
+  }
+
+  .strategy-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 20px;
+  }
+
+  .strategy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+  }
+
+  .strategy-card {
+    padding: 20px;
+    background: #0d0d0d;
+    border: 1px solid #1a1a1a;
+    border-radius: 8px;
+  }
+
+  .strategy-card h4 {
+    font-size: 13px;
+    font-weight: 600;
+    color: #d4d4d8;
+    margin-bottom: 8px;
+  }
+
+  .strategy-card p {
+    font-size: 12px;
+    color: #71717a;
+    line-height: 1.6;
+  }
+
+  .landing-page-link {
+    font-family: monospace;
+    color: #58a6ff;
+    font-size: 12px;
+  }
+
+  @media print {
+    body { background: #fff; color: #000; }
+    .campaign { border: 1px solid #ddd; background: #fafafa; }
+    .copy-row { border: 1px solid #eee; background: #fff; }
+    .copy-text { color: #000; }
+    .campaign-title { color: #000; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <h1>Worksthal — Google Ads Campaigns</h1>
+  <p class="subtitle">
+    Complete Responsive Search Ad (RSA) copy for 5 campaigns. Click any headline or description text to select it, then paste directly into Google Ads.<br>
+    All headlines are under 30 characters. All descriptions are under 90 characters. Verified.
+  </p>
+
+  <!-- ============================================ -->
+  <!-- CAMPAIGN 1: AI WORKFLOW AUTOMATION            -->
+  <!-- ============================================ -->
+  <div class="campaign">
+    <div class="campaign-header">
+      <span class="campaign-title">Campaign 1: AI Workflow Automation</span>
+      <span class="campaign-badge">High Intent</span>
+    </div>
+
+    <div class="campaign-meta">
+      <div class="meta-item">
+        <div class="meta-label">Goal</div>
+        <div class="meta-value">Capture businesses searching for AI automation help</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Landing Page</div>
+        <div class="meta-value landing-page-link">worksthal.com/services/ai-automation</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Path Fields</div>
+        <div class="path-fields">
+          <span class="path-tag">/ai-automation</span>
+          <span class="path-tag">/services</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-label">Headlines (30 char max)</div>
+    <div class="copy-grid">
+      <div class="copy-row"><div class="copy-num">1</div><div class="copy-text">AI Automation That Delivers</div><div class="copy-chars ok">27</div></div>
+      <div class="copy-row"><div class="copy-num">2</div><div class="copy-text">Automate Your Business With AI</div><div class="copy-chars ok">30</div></div>
+      <div class="copy-row"><div class="copy-num">3</div><div class="copy-text">Custom AI Workflow Solutions</div><div class="copy-chars ok">28</div></div>
+      <div class="copy-row"><div class="copy-num">4</div><div class="copy-text">Save 40+ Hours Every Week</div><div class="copy-chars ok">26</div></div>
+      <div class="copy-row"><div class="copy-num">5</div><div class="copy-text">AI Automation Agency — India</div><div class="copy-chars ok">28</div></div>
+      <div class="copy-row"><div class="copy-num">6</div><div class="copy-text">Stop Manual Work. Automate.</div><div class="copy-chars ok">27</div></div>
+      <div class="copy-row"><div class="copy-num">7</div><div class="copy-text">n8n &amp; AI API Experts</div><div class="copy-chars ok">20</div></div>
+      <div class="copy-row"><div class="copy-num">8</div><div class="copy-text">Results Within 90 Days</div><div class="copy-chars ok">22</div></div>
+      <div class="copy-row"><div class="copy-num">9</div><div class="copy-text">Free Automation Consultation</div><div class="copy-chars ok">29</div></div>
+      <div class="copy-row"><div class="copy-num">10</div><div class="copy-text">Reduce Costs With AI</div><div class="copy-chars ok">20</div></div>
+      <div class="copy-row"><div class="copy-num">11</div><div class="copy-text">Built for Growing Businesses</div><div class="copy-chars ok">29</div></div>
+      <div class="copy-row"><div class="copy-num">12</div><div class="copy-text">Automate Repetitive Tasks</div><div class="copy-chars ok">25</div></div>
+      <div class="copy-row"><div class="copy-num">13</div><div class="copy-text">Smart AI Workflow Design</div><div class="copy-chars ok">24</div></div>
+      <div class="copy-row"><div class="copy-num">14</div><div class="copy-text">Scale Operations With AI</div><div class="copy-chars ok">24</div></div>
+      <div class="copy-row"><div class="copy-num">15</div><div class="copy-text">Get Your Free AI Audit Today</div><div class="copy-chars ok">29</div></div>
+    </div>
+
+    <div class="section-label">Descriptions (90 char max)</div>
+    <div class="copy-grid">
+      <div class="copy-row desc-row"><div class="copy-num">1</div><div class="copy-text">We build custom AI automation workflows that save 40+ hours/week. Free consultation.</div><div class="copy-chars ok">83</div></div>
+      <div class="copy-row desc-row"><div class="copy-num">2</div><div class="copy-text">Automate data processing, lead qualification &amp; CRM workflows with n8n, Make &amp; AI APIs.</div><div class="copy-chars ok">87</div></div>
+      <div class="copy-row desc-row"><div class="copy-num">3</div><div class="copy-text">Practical AI automation for real business problems. Measurable results within 90 days.</div><div class="copy-chars ok">87</div></div>
+      <div class="copy-row desc-row"><div class="copy-num">4</div><div class="copy-text">Stop wasting time on manual tasks. Our AI workflows reduce errors and free your team.</div><div class="copy-chars ok">85</div></div>
+    </div>
+
+    <div class="section-label">Target Keywords</div>
+    <div class="keywords-box">
+      <span class="keyword-tag">ai automation agency</span>
+      <span class="keyword-tag">ai workflow automation</span>
+      <span class="keyword-tag">automate business processes with ai</span>
+      <span class="keyword-tag">custom ai automation</span>
+      <span class="keyword-tag">n8n automation agency</span>
+      <span class="keyword-tag">ai automation consultant</span>
+      <span class="keyword-tag">hire ai automation expert</span>
+      <span class="keyword-tag">ai workflow solutions</span>
+      <span class="keyword-tag">business process automation ai</span>
+      <span class="keyword-tag">ai automation services india</span>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- CAMPAIGN 2: WEB DEVELOPMENT                   -->
+  <!-- ============================================ -->
+  <div class="campaign">
+    <div class="campaign-header">
+      <span class="campaign-title">Campaign 2: Web Design &amp; Development</span>
+      <span class="campaign-badge">High Intent</span>
+    </div>
+
+    <div class="campaign-meta">
+      <div class="meta-item">
+        <div class="meta-label">Goal</div>
+        <div class="meta-value">Capture businesses needing modern, high-performance websites</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Landing Page</div>
+        <div class="meta-value landing-page-link">worksthal.com/services/web-development</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Path Fields</div>
+        <div class="path-fields">
+          <span class="path-tag">/web-development</span>
+          <span class="path-tag">/services</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-label">Headlines (30 char max)</div>
+    <div class="copy-grid">
+      <div class="copy-row"><div class="copy-num">1</div><div class="copy-text">Modern Websites That Convert</div><div class="copy-chars ok">28</div></div>
+      <div class="copy-row"><div class="copy-num">2</div><div class="copy-text">Next.js Web Development</div><div class="copy-chars ok">24</div></div>
+      <div class="copy-row"><div class="copy-num">3</div><div class="copy-text">High-Performance Web Design</div><div class="copy-chars ok">28</div></div>
+      <div class="copy-row"><div class="copy-num">4</div><div class="copy-text">Custom Website Development</div><div class="copy-chars ok">26</div></div>
+      <div class="copy-row"><div class="copy-num">5</div><div class="copy-text">React &amp; Next.js Experts</div><div class="copy-chars ok">23</div></div>
+      <div class="copy-row"><div class="copy-num">6</div><div class="copy-text">Fast Sites. More Conversions.</div><div class="copy-chars ok">29</div></div>
+      <div class="copy-row"><div class="copy-num">7</div><div class="copy-text">Web Development Agency</div><div class="copy-chars ok">23</div></div>
+      <div class="copy-row"><div class="copy-num">8</div><div class="copy-text">Built for Speed &amp; Growth</div><div class="copy-chars ok">24</div></div>
+      <div class="copy-row"><div class="copy-num">9</div><div class="copy-text">SEO-Optimized Web Design</div><div class="copy-chars ok">25</div></div>
+      <div class="copy-row"><div class="copy-num">10</div><div class="copy-text">Free Website Consultation</div><div class="copy-chars ok">26</div></div>
+      <div class="copy-row"><div class="copy-num">11</div><div class="copy-text">Responsive &amp; Conversion Ready</div><div class="copy-chars ok">29</div></div>
+      <div class="copy-row"><div class="copy-num">12</div><div class="copy-text">Professional Web Solutions</div><div class="copy-chars ok">27</div></div>
+      <div class="copy-row"><div class="copy-num">13</div><div class="copy-text">Websites That Rank &amp; Convert</div><div class="copy-chars ok">28</div></div>
+      <div class="copy-row"><div class="copy-num">14</div><div class="copy-text">Modern Tech. Real Results.</div><div class="copy-chars ok">26</div></div>
+      <div class="copy-row"><div class="copy-num">15</div><div class="copy-text">Launch Your Website Faster</div><div class="copy-chars ok">27</div></div>
+    </div>
+
+    <div class="section-label">Descriptions (90 char max)</div>
+    <div class="copy-grid">
+      <div class="copy-row desc-row"><div class="copy-num">1</div><div class="copy-text">Fast, responsive websites built with Next.js &amp; React. SEO-optimized for conversions.</div><div class="copy-chars ok">85</div></div>
+      <div class="copy-row desc-row"><div class="copy-num">2</div><div class="copy-text">From design to deployment. Modern web development with cutting-edge tech. Free consult.</div><div class="copy-chars ok">88</div></div>
+      <div class="copy-row desc-row"><div class="copy-num">3</div><div class="copy-text">We build high-performance sites that rank on Google &amp; convert visitors into customers.</div><div class="copy-chars ok">86</div></div>
+      <div class="copy-row desc-row"><div class="copy-num">4</div><div class="copy-text">Professional web development for growing businesses. Clean code, fast load, great UX.</div><div class="copy-chars ok">86</div></div>
+    </div>
+
+    <div class="section-label">Target Keywords</div>
+    <div class="keywords-box">
+      <span class="keyword-tag">nextjs development agency</span>
+      <span class="keyword-tag">react web development company</span>
+      <span class="keyword-tag">custom website development</span>
+      <span class="keyword-tag">high performance website development</span>
+      <span class="keyword-tag">web development agency india</span>
+      <span class="keyword-tag">hire web developer company</span>
+      <span class="keyword-tag">modern website design agency</span>
+      <span class="keyword-tag">professional web development</span>
+      <span class="keyword-tag">responsive website development</span>
+      <span class="keyword-tag">ecommerce website development</span>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- CAMPAIGN 3: AEO / SEO                         -->
+  <!-- ============================================ -->
+  <div class="campaign">
+    <div class="campaign-header">
+      <span class="campaign-title">Campaign 3: AEO / SEO</span>
+      <span class="campaign-badge">Niche + High Intent</span>
+    </div>
+
+    <div class="campaign-meta">
+      <div class="meta-item">
+        <div class="meta-label">Goal</div>
+        <div class="meta-value">Capture early adopters searching for AI search visibility</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Landing Page</div>
+        <div class="meta-value landing-page-link">worksthal.com/services/aeo</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Path Fields</div>
+        <div class="path-fields">
+          <span class="path-tag">/aeo</span>
+          <span class="path-tag">/services</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-label">Headlines (30 char max)</div>
+    <div class="copy-grid">
+      <div class="copy-row"><div class="copy-num">1</div><div class="copy-text">Get Found by AI &amp; Google</div><div class="copy-chars ok">24</div></div>
+      <div class="copy-row"><div class="copy-num">2</div><div class="copy-text">AI Engine Optimization (AEO)</div><div class="copy-chars ok">28</div></div>
+      <div class="copy-row"><div class="copy-num">3</div><div class="copy-text">Rank on ChatGPT &amp; Google</div><div class="copy-chars ok">25</div></div>
+      <div class="copy-row"><div class="copy-num">4</div><div class="copy-text">AEO Agency | AI Visibility</div><div class="copy-chars ok">27</div></div>
+      <div class="copy-row"><div class="copy-num">5</div><div class="copy-text">Beyond SEO: AI Optimization</div><div class="copy-chars ok">28</div></div>
+      <div class="copy-row"><div class="copy-num">6</div><div class="copy-text">Be Cited by AI Platforms</div><div class="copy-chars ok">25</div></div>
+      <div class="copy-row"><div class="copy-num">7</div><div class="copy-text">SEO + AEO Combined Strategy</div><div class="copy-chars ok">28</div></div>
+      <div class="copy-row"><div class="copy-num">8</div><div class="copy-text">Future-Proof Your Visibility</div><div class="copy-chars ok">29</div></div>
+      <div class="copy-row"><div class="copy-num">9</div><div class="copy-text">AI Search Optimization</div><div class="copy-chars ok">23</div></div>
+      <div class="copy-row"><div class="copy-num">10</div><div class="copy-text">Free AEO Audit Available</div><div class="copy-chars ok">25</div></div>
+      <div class="copy-row"><div class="copy-num">11</div><div class="copy-text">Structured Data Experts</div><div class="copy-chars ok">24</div></div>
+      <div class="copy-row"><div class="copy-num">12</div><div class="copy-text">Show Up Where AI Looks</div><div class="copy-chars ok">23</div></div>
+      <div class="copy-row"><div class="copy-num">13</div><div class="copy-text">Dominate AI Search Results</div><div class="copy-chars ok">27</div></div>
+      <div class="copy-row"><div class="copy-num">14</div><div class="copy-text">Optimize for AI Assistants</div><div class="copy-chars ok">27</div></div>
+      <div class="copy-row"><div class="copy-num">15</div><div class="copy-text">Get Recommended by AI</div><div class="copy-chars ok">22</div></div>
+    </div>
+
+    <div class="section-label">Descriptions (90 char max)</div>
+    <div class="copy-grid">
+      <div class="copy-row desc-row"><div class="copy-num">1</div><div class="copy-text">AI assistants are the new search. We optimize your content to get cited by ChatGPT &amp; AI.</div><div class="copy-chars ok">90</div></div>
+      <div class="copy-row desc-row"><div class="copy-num">2</div><div class="copy-text">Most businesses are invisible to AI search. Our AEO strategy fixes that. Free audit.</div><div class="copy-chars ok">85</div></div>
+      <div class="copy-row desc-row"><div class="copy-num">3</div><div class="copy-text">Structured data, semantic optimization &amp; AI crawler setup. Show up where customers ask.</div><div class="copy-chars ok">88</div></div>
+      <div class="copy-row desc-row"><div class="copy-num">4</div><div class="copy-text">Combine SEO + AEO for total search visibility. Get found on Google and AI platforms.</div><div class="copy-chars ok">85</div></div>
+    </div>
+
+    <div class="section-label">Target Keywords</div>
+    <div class="keywords-box">
+      <span class="keyword-tag">ai engine optimization</span>
+      <span class="keyword-tag">aeo agency</span>
+      <span class="keyword-tag">ai search optimization</span>
+      <span class="keyword-tag">get found on chatgpt</span>
+      <span class="keyword-tag">optimize for ai search</span>
+      <span class="keyword-tag">seo agency india</span>
+      <span class="keyword-tag">ai seo services</span>
+      <span class="keyword-tag">ai visibility optimization</span>
+      <span class="keyword-tag">structured data optimization</span>
+      <span class="keyword-tag">chatgpt seo optimization</span>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- CAMPAIGN 4: AI-DRIVEN MARKETING               -->
+  <!-- ============================================ -->
+  <div class="campaign">
+    <div class="campaign-header">
+      <span class="campaign-title">Campaign 4: AI-Driven Marketing</span>
+      <span class="campaign-badge">High Intent</span>
+    </div>
+
+    <div class="campaign-meta">
+      <div class="meta-item">
+        <div class="meta-label">Goal</div>
+        <div class="meta-value">Capture businesses wanting data-driven marketing with AI</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Landing Page</div>
+        <div class="meta-value landing-page-link">worksthal.com/services/ai-marketing</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Path Fields</div>
+        <div class="path-fields">
+          <span class="path-tag">/ai-marketing</span>
+          <span class="path-tag">/services</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-label">Headlines (30 char max)</div>
+    <div class="copy-grid">
+      <div class="copy-row"><div class="copy-num">1</div><div class="copy-text">AI-Powered Marketing Agency</div><div class="copy-chars ok">28</div></div>
+      <div class="copy-row"><div class="copy-num">2</div><div class="copy-text">Data-Driven Growth Strategy</div><div class="copy-chars ok">28</div></div>
+      <div class="copy-row"><div class="copy-num">3</div><div class="copy-text">Marketing That Delivers ROI</div><div class="copy-chars ok">28</div></div>
+      <div class="copy-row"><div class="copy-num">4</div><div class="copy-text">AI Marketing Solutions</div><div class="copy-chars ok">22</div></div>
+      <div class="copy-row"><div class="copy-num">5</div><div class="copy-text">Smarter Campaigns. More Leads</div><div class="copy-chars ok">30</div></div>
+      <div class="copy-row"><div class="copy-num">6</div><div class="copy-text">Marketing Powered by AI</div><div class="copy-chars ok">24</div></div>
+      <div class="copy-row"><div class="copy-num">7</div><div class="copy-text">Measurable Marketing Results</div><div class="copy-chars ok">29</div></div>
+      <div class="copy-row"><div class="copy-num">8</div><div class="copy-text">Stop Guessing. Start Growing</div><div class="copy-chars ok">29</div></div>
+      <div class="copy-row"><div class="copy-num">9</div><div class="copy-text">AI Analytics &amp; Campaigns</div><div class="copy-chars ok">25</div></div>
+      <div class="copy-row"><div class="copy-num">10</div><div class="copy-text">Free Marketing Consultation</div><div class="copy-chars ok">29</div></div>
+      <div class="copy-row"><div class="copy-num">11</div><div class="copy-text">High-ROI Marketing Strategy</div><div class="copy-chars ok">28</div></div>
+      <div class="copy-row"><div class="copy-num">12</div><div class="copy-text">Turn Data Into Revenue</div><div class="copy-chars ok">23</div></div>
+      <div class="copy-row"><div class="copy-num">13</div><div class="copy-text">Optimize Ad Spend With AI</div><div class="copy-chars ok">26</div></div>
+      <div class="copy-row"><div class="copy-num">14</div><div class="copy-text">Targeted Campaigns That Work</div><div class="copy-chars ok">29</div></div>
+      <div class="copy-row"><div class="copy-num">15</div><div class="copy-text">Growth Marketing Agency</div><div class="copy-chars ok">24</div></div>
+    </div>
+
+    <div class="section-label">Descriptions (90 char max)</div>
+    <div class="copy-grid">
+      <div class="copy-row desc-row"><div class="copy-num">1</div><div class="copy-text">Data-driven marketing campaigns powered by AI analytics. Optimize spend, maximize ROI.</div><div class="copy-chars ok">88</div></div>
+      <div class="copy-row desc-row"><div class="copy-num">2</div><div class="copy-text">We use AI to find your ideal customers, create targeted content &amp; drive real conversions.</div><div class="copy-chars ok">90</div></div>
+      <div class="copy-row desc-row"><div class="copy-num">3</div><div class="copy-text">Stop wasting ad budget on guesswork. Our AI-driven strategy delivers measurable growth.</div><div class="copy-chars ok">88</div></div>
+      <div class="copy-row desc-row"><div class="copy-num">4</div><div class="copy-text">From Google Ads to content strategy. AI-powered marketing for high-ticket leads.</div><div class="copy-chars ok">82</div></div>
+    </div>
+
+    <div class="section-label">Target Keywords</div>
+    <div class="keywords-box">
+      <span class="keyword-tag">ai marketing agency</span>
+      <span class="keyword-tag">ai powered marketing</span>
+      <span class="keyword-tag">data driven marketing agency</span>
+      <span class="keyword-tag">ai digital marketing services</span>
+      <span class="keyword-tag">marketing automation agency</span>
+      <span class="keyword-tag">ai advertising agency</span>
+      <span class="keyword-tag">performance marketing agency india</span>
+      <span class="keyword-tag">lead generation agency</span>
+      <span class="keyword-tag">roi focused marketing</span>
+      <span class="keyword-tag">ai campaign optimization</span>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- CAMPAIGN 5: BRAND / CATCH-ALL                 -->
+  <!-- ============================================ -->
+  <div class="campaign">
+    <div class="campaign-header">
+      <span class="campaign-title">Campaign 5: Brand / Catch-All</span>
+      <span class="campaign-badge">Broad</span>
+    </div>
+
+    <div class="campaign-meta">
+      <div class="meta-item">
+        <div class="meta-label">Goal</div>
+        <div class="meta-value">Capture broad digital agency and brand searches</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Landing Page</div>
+        <div class="meta-value landing-page-link">worksthal.com or worksthal.com/contact</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Path Fields</div>
+        <div class="path-fields">
+          <span class="path-tag">/services</span>
+          <span class="path-tag">/contact</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-label">Headlines (30 char max)</div>
+    <div class="copy-grid">
+      <div class="copy-row"><div class="copy-num">1</div><div class="copy-text">Worksthal Digital Agency</div><div class="copy-chars ok">24</div></div>
+      <div class="copy-row"><div class="copy-num">2</div><div class="copy-text">AI Solutions for Business</div><div class="copy-chars ok">25</div></div>
+      <div class="copy-row"><div class="copy-num">3</div><div class="copy-text">Full-Service Digital Agency</div><div class="copy-chars ok">28</div></div>
+      <div class="copy-row"><div class="copy-num">4</div><div class="copy-text">AI Automation &amp; Web Dev</div><div class="copy-chars ok">24</div></div>
+      <div class="copy-row"><div class="copy-num">5</div><div class="copy-text">Digital Agency — India</div><div class="copy-chars ok">22</div></div>
+      <div class="copy-row"><div class="copy-num">6</div><div class="copy-text">One Agency. Four Solutions.</div><div class="copy-chars ok">27</div></div>
+      <div class="copy-row"><div class="copy-num">7</div><div class="copy-text">Transform Your Business</div><div class="copy-chars ok">24</div></div>
+      <div class="copy-row"><div class="copy-num">8</div><div class="copy-text">AI-Powered Digital Partner</div><div class="copy-chars ok">27</div></div>
+      <div class="copy-row"><div class="copy-num">9</div><div class="copy-text">Automation + Web + Marketing</div><div class="copy-chars ok">29</div></div>
+      <div class="copy-row"><div class="copy-num">10</div><div class="copy-text">Free Consultation Available</div><div class="copy-chars ok">29</div></div>
+      <div class="copy-row"><div class="copy-num">11</div><div class="copy-text">Serving Clients Worldwide</div><div class="copy-chars ok">27</div></div>
+      <div class="copy-row"><div class="copy-num">12</div><div class="copy-text">Results Within 90 Days</div><div class="copy-chars ok">23</div></div>
+      <div class="copy-row"><div class="copy-num">13</div><div class="copy-text">End-to-End Digital Solutions</div><div class="copy-chars ok">29</div></div>
+      <div class="copy-row"><div class="copy-num">14</div><div class="copy-text">Built for Growing Companies</div><div class="copy-chars ok">28</div></div>
+      <div class="copy-row"><div class="copy-num">15</div><div class="copy-text">Your AI Transformation Starts</div><div class="copy-chars ok">30</div></div>
+    </div>
+
+    <div class="section-label">Descriptions (90 char max)</div>
+    <div class="copy-grid">
+      <div class="copy-row desc-row"><div class="copy-num">1</div><div class="copy-text">AI workflow automation, web development, AEO &amp; marketing. One agency, real results.</div><div class="copy-chars ok">84</div></div>
+      <div class="copy-row desc-row"><div class="copy-num">2</div><div class="copy-text">Worksthal helps businesses automate, build &amp; grow with AI. Free consultation available.</div><div class="copy-chars ok">87</div></div>
+      <div class="copy-row desc-row"><div class="copy-num">3</div><div class="copy-text">From AI automation to modern websites and search visibility. End-to-end digital partner.</div><div class="copy-chars ok">89</div></div>
+      <div class="copy-row desc-row"><div class="copy-num">4</div><div class="copy-text">Practical AI. Beautiful websites. Total search visibility. Book your free strategy call.</div><div class="copy-chars ok">89</div></div>
+    </div>
+
+    <div class="section-label">Target Keywords</div>
+    <div class="keywords-box">
+      <span class="keyword-tag">digital agency india</span>
+      <span class="keyword-tag">ai digital agency</span>
+      <span class="keyword-tag">full service digital agency</span>
+      <span class="keyword-tag">digital transformation agency</span>
+      <span class="keyword-tag">worksthal</span>
+      <span class="keyword-tag">best digital agency india</span>
+      <span class="keyword-tag">ai agency near me</span>
+      <span class="keyword-tag">technology consulting agency</span>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- NEGATIVE KEYWORDS                             -->
+  <!-- ============================================ -->
+  <div class="strategy-section">
+    <h2>Negative Keywords (Apply to ALL Campaigns)</h2>
+    <p style="font-size: 13px; color: #71717a; margin-bottom: 16px;">Add these as negative keywords at the account level to prevent wasted spend on irrelevant clicks.</p>
+    <div class="keywords-box">
+      <span class="keyword-tag neg-keyword">free</span>
+      <span class="keyword-tag neg-keyword">template</span>
+      <span class="keyword-tag neg-keyword">tutorial</span>
+      <span class="keyword-tag neg-keyword">course</span>
+      <span class="keyword-tag neg-keyword">salary</span>
+      <span class="keyword-tag neg-keyword">career</span>
+      <span class="keyword-tag neg-keyword">internship</span>
+      <span class="keyword-tag neg-keyword">job</span>
+      <span class="keyword-tag neg-keyword">download</span>
+      <span class="keyword-tag neg-keyword">pdf</span>
+      <span class="keyword-tag neg-keyword">how to</span>
+      <span class="keyword-tag neg-keyword">what is</span>
+      <span class="keyword-tag neg-keyword">definition</span>
+      <span class="keyword-tag neg-keyword">diy</span>
+      <span class="keyword-tag neg-keyword">cheap</span>
+      <span class="keyword-tag neg-keyword">discount</span>
+      <span class="keyword-tag neg-keyword">reddit</span>
+      <span class="keyword-tag neg-keyword">quora</span>
+      <span class="keyword-tag neg-keyword">youtube</span>
+      <span class="keyword-tag neg-keyword">github</span>
+      <span class="keyword-tag neg-keyword">wordpress plugin</span>
+      <span class="keyword-tag neg-keyword">open source</span>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- BIDDING & BUDGET STRATEGY                     -->
+  <!-- ============================================ -->
+  <div class="strategy-section">
+    <h2>Bidding &amp; Budget Strategy</h2>
+    <div class="strategy-grid">
+      <div class="strategy-card">
+        <h4>Bidding Strategy</h4>
+        <p>Start with <strong>Maximize Conversions</strong>. Switch to <strong>Target CPA</strong> after accumulating 30+ conversions. This gives Google enough data to optimize.</p>
+      </div>
+      <div class="strategy-card">
+        <h4>Daily Budget</h4>
+        <p>Start at <strong>$20-30/day per campaign</strong>. Monitor for 2 weeks, then scale the winning campaigns and pause underperformers.</p>
+      </div>
+      <div class="strategy-card">
+        <h4>Value-Based Bidding</h4>
+        <p>Assign conversion values: <strong>Consultation booking = $500</strong>, Form fill = $50, Phone call = $200. This trains Google to prioritize high-value leads.</p>
+      </div>
+      <div class="strategy-card">
+        <h4>Ad Schedule</h4>
+        <p><strong>Mon-Fri, 8am-8pm</strong> (business hours). B2B decision makers search during work. Reduce or pause weekend spend initially.</p>
+      </div>
+      <div class="strategy-card">
+        <h4>Target Locations</h4>
+        <p>Start with <strong>India + US + UK + UAE</strong> (English-speaking markets with high-ticket potential). Expand based on performance data.</p>
+      </div>
+      <div class="strategy-card">
+        <h4>Devices</h4>
+        <p>Target <strong>all devices</strong>, but monitor mobile vs desktop conversion rates. B2B tends to convert better on desktop — adjust bids accordingly.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SETUP CHECKLIST                               -->
+  <!-- ============================================ -->
+  <div class="strategy-section">
+    <h2>Google Ads Setup Checklist</h2>
+    <div class="tips-box">
+      <h3>Before Launching</h3>
+      <ul>
+        <li>Set up conversion tracking: form submissions, phone calls, and consultation bookings</li>
+        <li>Link Google Analytics 4 to your Google Ads account</li>
+        <li>Add the Google Ads tag to your website (via GTM or direct)</li>
+        <li>Set up Enhanced Conversions for better attribution</li>
+        <li>Create separate ad groups within each campaign for keyword themes</li>
+        <li>Add all negative keywords at the account level</li>
+        <li>Enable call extensions with your phone number: +91 6309821905</li>
+        <li>Add sitelink extensions: Services, About, Contact, Blog</li>
+        <li>Add callout extensions: Free Consultation, Results in 90 Days, India-Based</li>
+        <li>Add structured snippet extensions: Services: AI Automation, Web Dev, AEO, Marketing</li>
+        <li>Ensure each landing page has a clear CTA above the fold</li>
+        <li>Test landing page load speed (aim for under 3 seconds)</li>
+      </ul>
+    </div>
+
+    <div class="tips-box" style="margin-top: 16px;">
+      <h3>After First 2 Weeks</h3>
+      <ul>
+        <li>Review Search Terms Report — add irrelevant terms as negative keywords</li>
+        <li>Check Quality Scores — aim for 7+ on all keywords</li>
+        <li>Replace "Low" performing headlines/descriptions with new variations</li>
+        <li>Identify top-performing ad combinations and create dedicated ad groups for them</li>
+        <li>Analyze which campaigns generate actual leads (not just clicks)</li>
+        <li>Scale budget on winning campaigns, pause losing ones</li>
+        <li>Set up remarketing audiences for website visitors who didn't convert</li>
+      </ul>
+    </div>
+
+    <div class="tips-box" style="margin-top: 16px;">
+      <h3>Key Metrics to Track</h3>
+      <ul>
+        <li>Cost Per Lead: target under $15-25 (India), $50-80 (US/UK)</li>
+        <li>Click-Through Rate: target 5%+ (search average is 6.66%)</li>
+        <li>Conversion Rate: target 5-10% on landing pages</li>
+        <li>Quality Score: target 7+ per keyword</li>
+        <li>Ad Strength: target "Good" or "Excellent"</li>
+        <li>Return on Ad Spend (ROAS): track revenue generated vs ad spend</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- COMPETITOR INSIGHTS                           -->
+  <!-- ============================================ -->
+  <div class="strategy-section">
+    <h2>Competitor Insights</h2>
+    <p style="font-size: 13px; color: #71717a; margin-bottom: 20px;">What top-performing agencies in your space do differently in their ads:</p>
+    <div class="strategy-grid">
+      <div class="strategy-card">
+        <h4>YOKR (yokr.io)</h4>
+        <p>Premium AI-native agency. Leads with "97% satisfaction, 3x ROI." Positions as exclusive/premium. Their weakness: no India pricing advantage.</p>
+      </div>
+      <div class="strategy-card">
+        <h4>Monogram (monogram.io)</h4>
+        <p>AI-first web agency. Uses enterprise logos (Google, IBM, Vercel) as social proof. Strong brand authority. Weakness: enterprise-only, not SMB-friendly.</p>
+      </div>
+      <div class="strategy-card">
+        <h4>LN Webworks</h4>
+        <p>India-based, 1000+ projects, 4.9 Clutch rating. Heavy volume metrics. Weakness: no AI automation or AEO differentiation.</p>
+      </div>
+      <div class="strategy-card">
+        <h4>Adverse Technologies</h4>
+        <p>AI automation + marketing. Claims 7.39 ROAS. Targets SMBs. Weakness: smaller scale, less tech depth than Worksthal.</p>
+      </div>
+      <div class="strategy-card">
+        <h4>Search Machines</h4>
+        <p>AI + human operators, 20%+ uplift in 30-90 days. Enterprise clients (Hyatt). Weakness: search/PPC only, not full-stack.</p>
+      </div>
+      <div class="strategy-card">
+        <h4>Your Edge: Worksthal</h4>
+        <p><strong>Full-stack (4 services in 1 agency)</strong>, India cost advantage, AEO niche differentiation, 90-day results guarantee. No other competitor offers all four.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

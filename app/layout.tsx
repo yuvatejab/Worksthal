@@ -30,9 +30,9 @@ const baseUrl = "https://www.worksthal.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
-  title: "Worksthal — AI Automation, Web Development & AEO Agency in India",
+  title: "Worksthal — AI Automation, Web Development & AEO Studio",
   description:
-    "Worksthal is a digital agency based in India specializing in AI workflow automation, Next.js web development, and AI Engine Optimization (AEO). We help businesses automate repetitive tasks, build modern websites, and improve search visibility. Get a free consultation.",
+    "Worksthal is a digital partner based in India specializing in AI workflow automation, Next.js web development, and AI Engine Optimization (AEO).",
   keywords: [
     "AI automation agency",
     "AI workflow automation",
@@ -71,7 +71,7 @@ export const metadata: Metadata = {
     canonical: baseUrl,
   },
   openGraph: {
-    title: "Worksthal — AI Automation, Web Development & AEO Agency",
+    title: "Worksthal — AI Automation, Web Development & AEO Studio",
     description:
       "Worksthal builds custom AI automation workflows, modern websites, and AEO strategies that help businesses grow. Based in India, serving clients worldwide.",
     type: "website",
@@ -89,7 +89,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Worksthal — AI Automation, Web Development & AEO Agency",
+    title: "Worksthal — AI Automation, Web Development & AEO Studio",
     description:
       "Worksthal builds custom AI automation workflows, modern websites, and AEO strategies. Based in India, serving clients worldwide.",
     images: ["/website preview.png"],

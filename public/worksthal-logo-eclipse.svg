@@ -1,0 +1,7 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Concept D: Eclipse — Layered multi-stroke W -->
+  <rect width="512" height="512" rx="96" fill="#0A0A0A"/>
+  <polyline points="116,148 200,380 256,200 312,380 396,148" stroke="white" stroke-width="28" fill="none" opacity="0.12" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="120,152 202,376 256,204 310,376 392,152" stroke="white" stroke-width="14" fill="none" opacity="0.35" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="124,156 204,372 256,208 308,372 388,156" stroke="white" stroke-width="6" fill="none" opacity="0.95" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

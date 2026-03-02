@@ -487,9 +487,11 @@ p {
   }
 }
 
-/* Hide native cursor globally — custom cursor replaces it */
-*, *::before, *::after {
-  cursor: none !important;
+/* Hide native cursor — DESKTOP ONLY */
+@media (hover: hover) and (pointer: fine) {
+  *, *::before, *::after {
+    cursor: none !important;
+  }
 }
 
 /* Performance: Content visibility for off-screen sections */

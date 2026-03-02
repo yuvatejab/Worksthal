@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Worksthal — Brand Poster</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&display=swap');
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: #000;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .poster {
+    width: 1080px;
+    height: 1080px;
+    position: relative;
+    overflow: hidden;
+    background: #08080A;
+  }
+
+  .poster::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 70% at 50% 35%, #13131A 0%, #08080A 100%);
+    z-index: 0;
+  }
+
+  .poster::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    background-size: 256px 256px;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* Editorial border frame */
+  .frame {
+    position: absolute;
+    inset: 20px;
+    border: 1px solid #1A1A1F;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  /* Corner accents */
+  .frame::before,
+  .frame::after {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    border-color: #2A2A30;
+    border-style: solid;
+  }
+  .frame::before {
+    top: -1px;
+    left: -1px;
+    border-width: 1px 0 0 1px;
+  }
+  .frame::after {
+    bottom: -1px;
+    right: -1px;
+    border-width: 0 1px 1px 0;
+  }
+
+  .content {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 56px 64px 48px;
+    justify-content: center;
+    gap: 0;
+  }
+
+  /* Header section */
+  .header {
+    text-align: center;
+    margin-bottom: 0;
+  }
+
+  .company-name {
+    font-size: 64px;
+    font-weight: 800;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    line-height: 1;
+    margin-right: -0.32em;
+    background: linear-gradient(135deg, #FFFFFF 0%, #C4C4CC 40%, #8B8B96 80%, #6B7280 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .descriptor {
+    margin-top: 14px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    color: #52525B;
+    text-transform: uppercase;
+    margin-right: -0.32em;
+  }
+
+  .descriptor span {
+    color: #3F3F46;
+    margin: 0 8px;
+  }
+
+  /* Tagline */
+  .tagline {
+    margin-top: 24px;
+    font-size: 17px;
+    font-weight: 300;
+    letter-spacing: 0.12em;
+    color: #A1A1AA;
+    text-align: center;
+    margin-right: -0.12em;
+  }
+
+  /* Divider */
+  .divider {
+    margin-top: 28px;
+    width: 56px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #2A2A30, transparent);
+    flex-shrink: 0;
+  }
+
+  /* Pitch */
+  .pitch {
+    margin-top: 28px;
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.85;
+    color: #71717A;
+    text-align: center;
+    max-width: 680px;
+    letter-spacing: 0.02em;
+  }
+
+  /* Services grid */
+  .services {
+    margin-top: 32px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    width: 100%;
+    max-width: 820px;
+  }
+
+  .service-card {
+    padding: 22px 24px;
+    border: 1px solid #1A1A1F;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.015);
+  }
+
+  .service-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+
+  .service-icon {
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .service-icon svg {
+    width: 20px;
+    height: 20px;
+    stroke: #52525B;
+    fill: none;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .service-name {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: #D4D4D8;
+  }
+
+  .service-desc {
+    font-size: 11px;
+    font-weight: 300;
+    line-height: 1.6;
+    color: #5A5A64;
+    letter-spacing: 0.01em;
+    padding-left: 40px;
+  }
+
+  /* Divider 2 */
+  .divider-2 {
+    margin-top: 32px;
+    width: 100%;
+    max-width: 820px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #1A1A1F 20%, #1A1A1F 80%, transparent);
+    flex-shrink: 0;
+  }
+
+  /* Contact strip */
+  .contact {
+    margin-top: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .contact-item svg {
+    width: 14px;
+    height: 14px;
+    stroke: #3F3F46;
+    fill: none;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    flex-shrink: 0;
+  }
+
+  .contact-item span {
+    font-size: 10.5px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    color: #52525B;
+  }
+
+  .contact-dot {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: #27272A;
+    flex-shrink: 0;
+  }
+
+  /* CTA line */
+  .cta {
+    margin-top: 14px;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    color: #3F3F46;
+    text-transform: uppercase;
+    margin-right: -0.2em;
+  }
+
+  /* Geometric accent - subtle corner decoration */
+  .accent-top-right {
+    position: absolute;
+    top: 48px;
+    right: 48px;
+    width: 60px;
+    height: 60px;
+    z-index: 2;
+    opacity: 0.15;
+  }
+  .accent-top-right::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #71717A);
+  }
+  .accent-top-right::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(180deg, #71717A, transparent);
+  }
+
+  .accent-bottom-left {
+    position: absolute;
+    bottom: 48px;
+    left: 48px;
+    width: 60px;
+    height: 60px;
+    z-index: 2;
+    opacity: 0.15;
+  }
+  .accent-bottom-left::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 1px;
+    background: linear-gradient(90deg, #71717A, transparent);
+  }
+  .accent-bottom-left::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(0deg, #71717A, transparent);
+  }
+</style>
+</head>
+<body>
+
+<div class="poster">
+  <div class="frame"></div>
+  <div class="accent-top-right"></div>
+  <div class="accent-bottom-left"></div>
+
+  <div class="content">
+
+    <!-- Header -->
+    <div class="header">
+      <h1 class="company-name">Worksthal</h1>
+      <p class="descriptor">Digital Agency <span>|</span> AI Solutions <span>|</span> India</p>
+    </div>
+
+    <p class="tagline">Redefine Your Digital Footprint</p>
+
+    <div class="divider"></div>
+
+    <!-- Pitch -->
+    <p class="pitch">
+      We help businesses automate workflows with AI, build high-performance
+      websites, and optimize visibility across search engines and AI platforms.
+      Practical solutions. Measurable results within 90 days.
+    </p>
+
+    <!-- Services -->
+    <div class="services">
+
+      <div class="service-card">
+        <div class="service-header">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <span class="service-name">AI Automation</span>
+        </div>
+        <p class="service-desc">Custom AI workflows that automate repetitive tasks and scale operations</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-header">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <span class="service-name">Web Development</span>
+        </div>
+        <p class="service-desc">Fast, responsive sites built with Next.js, React & modern tech</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-header">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><path d="M11 8v6l4 2"/></svg>
+          </div>
+          <span class="service-name">AI Engine Optimization</span>
+        </div>
+        <p class="service-desc">Get found by search engines and AI assistants like ChatGPT</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-header">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+          </div>
+          <span class="service-name">AI Marketing</span>
+        </div>
+        <p class="service-desc">Data-driven campaigns powered by AI for measurable growth</p>
+      </div>
+
+    </div>
+
+    <div class="divider-2"></div>
+
+    <!-- Contact -->
+    <div class="contact">
+      <div class="contact-item">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+        <span>+91 6309821905</span>
+      </div>
+      <div class="contact-dot"></div>
+      <div class="contact-item">
+        <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,4 12,13 2,4"/></svg>
+        <span>shubham@worksthal.com</span>
+      </div>
+      <div class="contact-dot"></div>
+      <div class="contact-item">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+        <span>www.worksthal.com</span>
+      </div>
+    </div>
+
+    <p class="cta">Book a Free Consultation</p>
+
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,8 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Concept A: Prism — Faceted W -->
+  <rect width="512" height="512" rx="96" fill="#0A0A0A"/>
+  <polygon points="124,156 172,156 220,340 204,376" fill="white" opacity="0.45"/>
+  <polygon points="204,376 220,340 256,236 256,196" fill="white" opacity="0.92"/>
+  <polygon points="256,196 256,236 292,340 308,376" fill="white" opacity="0.45"/>
+  <polygon points="308,376 292,340 340,156 388,156" fill="white" opacity="0.92"/>
+</svg>

@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState, useCallback } from "react"
 import {
   AnimatePresence,
   HTMLMotionProps,
@@ -10,13 +10,19 @@ import {
 
 import { cn } from "@/lib/utils"
 
+function isTouchDevice(): boolean {
+  if (typeof window === "undefined") return true
+  return (
+    window.matchMedia("(pointer: coarse)").matches ||
+    window.matchMedia("(hover: none)").matches ||
+    "ontouchstart" in window ||
+    navigator.maxTouchPoints > 0
+  )
+}
+
 /**
  * A custom pointer component that displays an animated cursor.
- * Add this as a child to any component to enable a custom pointer when hovering.
- * You can pass custom children to render as the pointer.
- *
- * @component
- * @param {HTMLMotionProps<"div">} props - The component props
+ * Completely disabled on touch/mobile devices.
  */
 export function Pointer({
   className,
@@ -27,14 +33,31 @@ export function Pointer({
   const x = useMotionValue(0)
   const y = useMotionValue(0)
   const [isActive, setIsActive] = useState<boolean>(false)
+  const [isMobile, setIsMobile] = useState<boolean>(true)
   const containerRef = useRef<HTMLDivElement>(null)
+  const touchDetectedRef = useRef(false)
 
   useEffect(() => {
     if (typeof window === "undefined") return
 
+    if (isTouchDevice()) {
+      setIsMobile(true)
+      setIsActive(false)
+      return
+    }
+
+    setIsMobile(false)
     document.documentElement.style.cursor = "none"
 
+    const handleTouchStart = () => {
+      touchDetectedRef.current = true
+      setIsActive(false)
+      setIsMobile(true)
+      document.documentElement.style.cursor = ""
+    }
+
     const handleMouseMove = (e: MouseEvent) => {
+      if (touchDetectedRef.current) return
       x.set(e.clientX)
       y.set(e.clientY)
       if (!isActive) setIsActive(true)
@@ -45,22 +68,27 @@ export function Pointer({
     }
 
     const handleMouseEnter = (e: MouseEvent) => {
+      if (touchDetectedRef.current) return
       x.set(e.clientX)
       y.set(e.clientY)
       setIsActive(true)
     }
 
+    document.addEventListener("touchstart", handleTouchStart, { once: true, passive: true })
     document.addEventListener("mousemove", handleMouseMove, true)
     document.addEventListener("mouseleave", handleMouseLeave)
     document.addEventListener("mouseenter", handleMouseEnter)
 
     return () => {
       document.documentElement.style.cursor = ""
+      document.removeEventListener("touchstart", handleTouchStart)
       document.removeEventListener("mousemove", handleMouseMove, true)
       document.removeEventListener("mouseleave", handleMouseLeave)
       document.removeEventListener("mouseenter", handleMouseEnter)
     }
   }, [x, y, isActive])
+
+  if (isMobile) return null
 
   return (
     <>

@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SOP — Website Hosting &amp; Online Visibility Setup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  @page {
+    size: A4;
+    margin: 20mm 18mm 24mm 18mm;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 11px;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #f5f5f5;
+    -webkit-font-smoothing: antialiased;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .doc {
+    max-width: 210mm;
+    margin: 0 auto;
+    background: #fff;
+    padding: 48px 56px;
+  }
+
+  @media screen {
+    .doc { margin: 24px auto; box-shadow: 0 1px 12px rgba(0,0,0,0.08); border-radius: 4px; }
+  }
+
+  /* ===== COVER ===== */
+  .cover {
+    text-align: center;
+    padding: 72px 0 56px;
+    page-break-after: always;
+  }
+  .cover .badge {
+    display: inline-block;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #71717a;
+    background: #f4f4f5;
+    border: 1px solid #e4e4e7;
+    padding: 5px 16px;
+    border-radius: 100px;
+    margin-bottom: 32px;
+  }
+  .cover h1 {
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.25;
+    color: #0a0a0a;
+    margin-bottom: 12px;
+  }
+  .cover .subtitle {
+    font-size: 13px;
+    color: #52525b;
+    max-width: 420px;
+    margin: 0 auto 40px;
+    line-height: 1.7;
+  }
+  .cover-meta {
+    border-top: 1px solid #e4e4e7;
+    padding-top: 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    text-align: center;
+    max-width: 460px;
+    margin: 0 auto;
+  }
+  .cover-meta dt { font-size: 8px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: #a1a1aa; margin-bottom: 4px; }
+  .cover-meta dd { font-size: 11px; font-weight: 600; color: #27272a; }
+
+  /* ===== TABLE OF CONTENTS ===== */
+  .toc {
+    page-break-after: always;
+    padding: 24px 0;
+  }
+  .toc h2 { font-size: 16px; font-weight: 800; margin-bottom: 20px; color: #0a0a0a; }
+  .toc-list { list-style: none; }
+  .toc-list li {
+    display: flex;
+    align-items: baseline;
+    padding: 7px 0;
+    border-bottom: 1px dotted #e4e4e7;
+  }
+  .toc-list .num { font-size: 10px; font-weight: 700; color: #71717a; width: 36px; flex-shrink: 0; }
+  .toc-list .title { font-weight: 600; color: #18181b; flex: 1; }
+  .toc-list .page { font-size: 10px; color: #a1a1aa; }
+
+  /* ===== SECTIONS ===== */
+  .section {
+    page-break-before: always;
+    padding-top: 8px;
+  }
+  .section:first-of-type { page-break-before: auto; }
+
+  .section-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #0a0a0a;
+  }
+  .section-num {
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #fff;
+    background: #0a0a0a;
+    padding: 4px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+  .section-title { font-size: 17px; font-weight: 800; color: #0a0a0a; letter-spacing: -0.01em; }
+
+  h3 {
+    font-size: 13px;
+    font-weight: 700;
+    color: #18181b;
+    margin: 20px 0 8px;
+  }
+
+  p { margin-bottom: 8px; color: #3f3f46; }
+
+  /* ===== STEPS ===== */
+  .steps { list-style: none; counter-reset: step; margin: 12px 0 16px; }
+  .steps > li {
+    counter-increment: step;
+    position: relative;
+    padding: 10px 12px 10px 44px;
+    margin-bottom: 6px;
+    background: #fafafa;
+    border: 1px solid #f0f0f2;
+    border-radius: 8px;
+    page-break-inside: avoid;
+  }
+  .steps > li::before {
+    content: counter(step);
+    position: absolute;
+    left: 12px;
+    top: 10px;
+    width: 22px;
+    height: 22px;
+    background: #18181b;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    text-align: center;
+    padding-top: 1px;
+  }
+  .steps > li strong { color: #18181b; }
+
+  /* Nested sub-steps */
+  .sub-steps { list-style: none; margin: 6px 0 2px 0; }
+  .sub-steps li {
+    padding: 2px 0 2px 16px;
+    position: relative;
+    color: #52525b;
+  }
+  .sub-steps li::before {
+    content: "›";
+    position: absolute;
+    left: 2px;
+    color: #a1a1aa;
+    font-weight: 700;
+  }
+
+  /* ===== CALLOUTS ===== */
+  .tip, .warn, .info, .check {
+    padding: 10px 14px;
+    border-radius: 8px;
+    margin: 12px 0;
+    font-size: 10.5px;
+    page-break-inside: avoid;
+  }
+  .tip { background: #f0fdf4; border-left: 3px solid #22c55e; color: #166534; }
+  .warn { background: #fefce8; border-left: 3px solid #eab308; color: #854d0e; }
+  .info { background: #eff6ff; border-left: 3px solid #3b82f6; color: #1e40af; }
+  .check { background: #faf5ff; border-left: 3px solid #a855f7; color: #6b21a8; }
+  .tip strong, .warn strong, .info strong, .check strong { display: block; margin-bottom: 3px; }
+
+  /* ===== URL BOX ===== */
+  .url {
+    display: inline-block;
+    background: #f4f4f5;
+    border: 1px solid #e4e4e7;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-family: 'SF Mono', 'Consolas', 'Liberation Mono', monospace;
+    font-size: 10px;
+    color: #3f3f46;
+    word-break: break-all;
+  }
+
+  code {
+    background: #f4f4f5;
+    border: 1px solid #e4e4e7;
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-family: 'SF Mono', 'Consolas', monospace;
+    font-size: 10px;
+    color: #dc2626;
+  }
+
+  /* ===== TABLE ===== */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 10.5px;
+  }
+  th {
+    text-align: left;
+    background: #18181b;
+    color: #fff;
+    font-weight: 600;
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 8px 12px;
+  }
+  th:first-child { border-radius: 6px 0 0 0; }
+  th:last-child { border-radius: 0 6px 0 0; }
+  td {
+    padding: 8px 12px;
+    border-bottom: 1px solid #f0f0f2;
+    color: #3f3f46;
+  }
+  tr:nth-child(even) td { background: #fafafa; }
+
+  /* ===== DNS BOX ===== */
+  .dns-box {
+    background: #18181b;
+    color: #e4e4e7;
+    padding: 14px 18px;
+    border-radius: 8px;
+    font-family: 'SF Mono', 'Consolas', monospace;
+    font-size: 10.5px;
+    line-height: 1.8;
+    margin: 12px 0;
+    page-break-inside: avoid;
+  }
+  .dns-box .comment { color: #71717a; }
+  .dns-box .value { color: #4ade80; }
+
+  /* ===== CHECKLIST ===== */
+  .checklist { list-style: none; margin: 12px 0; }
+  .checklist li {
+    padding: 6px 0 6px 28px;
+    position: relative;
+    color: #3f3f46;
+  }
+  .checklist li::before {
+    content: "☐";
+    position: absolute;
+    left: 4px;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #a1a1aa;
+  }
+
+  /* ===== DIVIDER ===== */
+  hr {
+    border: none;
+    border-top: 1px solid #e4e4e7;
+    margin: 20px 0;
+  }
+
+  /* ===== FOOTER ===== */
+  .doc-footer {
+    margin-top: 40px;
+    padding-top: 16px;
+    border-top: 1px solid #e4e4e7;
+    text-align: center;
+    font-size: 9px;
+    color: #a1a1aa;
+  }
+
+  /* ===== PRINT ===== */
+  @media print {
+    body { background: #fff; font-size: 10.5px; }
+    .doc { padding: 0; box-shadow: none; max-width: none; }
+    .section { page-break-before: always; }
+    .steps > li, .tip, .warn, .info, .check, .dns-box { page-break-inside: avoid; }
+    a { color: #18181b !important; text-decoration: none !important; }
+  }
+</style>
+</head>
+<body>
+<div class="doc">
+
+<!-- ============================================================ -->
+<!-- COVER PAGE                                                    -->
+<!-- ============================================================ -->
+<div class="cover">
+  <div class="badge">Standard Operating Procedure</div>
+  <h1>Website Hosting &amp;<br>Online Visibility Setup</h1>
+  <p class="subtitle">A step-by-step guide to deploying a website on Vercel with a custom domain, and setting up Google Search Console, Google Analytics, Google Business Profile, Bing Webmaster Tools, and essential online listings.</p>
+  <dl class="cover-meta">
+    <div><dt>Prepared By</dt><dd>Worksthal</dd></div>
+    <div><dt>Version</dt><dd>1.0</dd></div>
+    <div><dt>Last Updated</dt><dd>February 2026</dd></div>
+  </dl>
+</div>
+
+<!-- ============================================================ -->
+<!-- TABLE OF CONTENTS                                             -->
+<!-- ============================================================ -->
+<div class="toc">
+  <h2>Table of Contents</h2>
+  <ol class="toc-list">
+    <li><span class="num">01</span><span class="title">Prerequisites &amp; Accounts Needed</span></li>
+    <li><span class="num">02</span><span class="title">Deploy Website to Vercel</span></li>
+    <li><span class="num">03</span><span class="title">Connect Custom Domain (GoDaddy / Namecheap / Other)</span></li>
+    <li><span class="num">04</span><span class="title">Verify SSL &amp; Domain Configuration</span></li>
+    <li><span class="num">05</span><span class="title">Google Search Console Setup</span></li>
+    <li><span class="num">06</span><span class="title">Google Analytics (GA4) Setup</span></li>
+    <li><span class="num">07</span><span class="title">Google Business Profile Setup</span></li>
+    <li><span class="num">08</span><span class="title">Bing Webmaster Tools Setup</span></li>
+    <li><span class="num">09</span><span class="title">Additional Listings &amp; Directories</span></li>
+    <li><span class="num">10</span><span class="title">Post-Launch Verification Checklist</span></li>
+  </ol>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 1: PREREQUISITES                                      -->
+<!-- ============================================================ -->
+<div class="section">
+  <div class="section-head">
+    <span class="section-num">Section 01</span>
+    <span class="section-title">Prerequisites &amp; Accounts Needed</span>
+  </div>
+
+  <p>Before you begin, make sure you have access to the following accounts and tools. Create any you don't have yet.</p>
+
+  <table>
+    <thead>
+      <tr><th>Account / Tool</th><th>URL</th><th>Purpose</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>GitHub</strong></td><td><span class="url">github.com</span></td><td>Source code repository</td></tr>
+      <tr><td><strong>Vercel</strong></td><td><span class="url">vercel.com</span></td><td>Website hosting &amp; deployment</td></tr>
+      <tr><td><strong>Domain Registrar</strong></td><td><span class="url">godaddy.com</span> or similar</td><td>Custom domain ownership</td></tr>
+      <tr><td><strong>Google Account</strong></td><td><span class="url">accounts.google.com</span></td><td>GSC, GA4, Business Profile</td></tr>
+      <tr><td><strong>Microsoft Account</strong></td><td><span class="url">account.microsoft.com</span></td><td>Bing Webmaster Tools</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Project Requirements</h3>
+  <ul class="checklist">
+    <li>Website code is pushed to a GitHub (or GitLab/Bitbucket) repository</li>
+    <li>The project has a proper <code>package.json</code> with a <code>build</code> script</li>
+    <li>A custom domain is purchased from a domain registrar</li>
+    <li>You have a sitemap (e.g., <code>/sitemap.xml</code>) and <code>robots.txt</code> in your project</li>
+    <li>The website has proper meta tags (title, description, Open Graph)</li>
+  </ul>
+
+  <div class="info">
+    <strong>Important Note</strong>
+    Use one Google account for all Google services (Search Console, Analytics, Business Profile) to keep everything connected and easier to manage.
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 2: DEPLOY TO VERCEL                                   -->
+<!-- ============================================================ -->
+<div class="section">
+  <div class="section-head">
+    <span class="section-num">Section 02</span>
+    <span class="section-title">Deploy Website to Vercel</span>
+  </div>
+
+  <p>Vercel provides automatic deployments from your Git repository. Every push to the main branch triggers a new production build.</p>
+
+  <ol class="steps">
+    <li>
+      <strong>Sign in to Vercel</strong><br>
+      Go to <span class="url">vercel.com</span> and sign in using your GitHub account (recommended) or email.
+    </li>
+    <li>
+      <strong>Import your repository</strong><br>
+      Click <strong>"Add New…" → "Project"</strong> from the dashboard. Select your GitHub repository from the list. If it doesn't appear, click "Adjust GitHub App Permissions" to grant Vercel access.
+    </li>
+    <li>
+      <strong>Configure project settings</strong><br>
+      <ul class="sub-steps">
+        <li><strong>Framework Preset:</strong> Vercel auto-detects (e.g., Next.js, React, Vite). Verify it's correct.</li>
+        <li><strong>Root Directory:</strong> Leave as <code>./</code> unless your code is in a subdirectory.</li>
+        <li><strong>Build Command:</strong> Usually auto-detected. For Next.js: <code>next build</code>.</li>
+        <li><strong>Output Directory:</strong> Leave default unless using a custom setup.</li>
+        <li><strong>Environment Variables:</strong> Add any required env vars (API keys, etc.). Click "Add" for each one.</li>
+      </ul>
+    </li>
+    <li>
+      <strong>Click "Deploy"</strong><br>
+      Vercel will clone the repo, install dependencies, run the build, and deploy. Wait for the build to complete (usually 1–3 minutes).
+    </li>
+    <li>
+      <strong>Verify the deployment</strong><br>
+      Once complete, Vercel gives you a preview URL like <code>your-project.vercel.app</code>. Open it and verify the website works correctly.
+    </li>
+  </ol>
+
+  <div class="tip">
+    <strong>Tip: Automatic Deployments</strong>
+    Every future push to your <code>main</code> branch will automatically redeploy. Preview deployments are created for pull requests on other branches.
+  </div>
+
+  <div class="warn">
+    <strong>Common Issue: Build Fails</strong>
+    If the build fails, check the build logs in the Vercel dashboard. Common causes: missing environment variables, incorrect Node.js version (set in <code>package.json</code> engines field), or unresolved imports.
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 3: CUSTOM DOMAIN                                      -->
+<!-- ============================================================ -->
+<div class="section">
+  <div class="section-head">
+    <span class="section-num">Section 03</span>
+    <span class="section-title">Connect Custom Domain</span>
+  </div>
+
+  <p>This section covers connecting your custom domain (purchased from GoDaddy, Namecheap, or any registrar) to your Vercel deployment.</p>
+
+  <h3>Step A — Add Domain in Vercel</h3>
+  <ol class="steps">
+    <li>
+      <strong>Open your project in Vercel</strong><br>
+      Go to your project dashboard → <strong>Settings</strong> → <strong>Domains</strong>.
+    </li>
+    <li>
+      <strong>Enter your domain</strong><br>
+      Type your domain (e.g., <code>yourdomain.com</code>) and click <strong>"Add"</strong>.
+    </li>
+    <li>
+      <strong>Choose redirect behavior</strong><br>
+      Vercel will ask how to handle <code>www</code> vs non-<code>www</code>:
+      <ul class="sub-steps">
+        <li><strong>Recommended:</strong> Use <code>www.yourdomain.com</code> as primary, redirect bare domain to it.</li>
+        <li>OR: Use bare domain as primary, redirect <code>www</code> to it.</li>
+      </ul>
+      Add both versions. Vercel will show the DNS records you need to configure.
+    </li>
+  </ol>
+
+  <h3>Step B — Configure DNS at Your Registrar</h3>
+
+  <p>Vercel will show you the exact DNS records needed. Here is what you'll typically add:</p>
+
+  <div class="dns-box">
+    <span class="comment"># For bare domain (yourdomain.com):</span><br>
+    Type: <span class="value">A</span>&nbsp;&nbsp;&nbsp;Name: <span class="value">@</span>&nbsp;&nbsp;&nbsp;Value: <span class="value">76.76.21.21</span>&nbsp;&nbsp;&nbsp;TTL: 600<br><br>
+    <span class="comment"># For www subdomain:</span><br>
+    Type: <span class="value">CNAME</span>&nbsp;&nbsp;&nbsp;Name: <span class="value">www</span>&nbsp;&nbsp;&nbsp;Value: <span class="value">cname.vercel-dns.com</span>&nbsp;&nbsp;&nbsp;TTL: 600
+  </div>
+
+  <h3>Configuring DNS on GoDaddy</h3>
+  <ol class="steps">
+    <li>
+      <strong>Open GoDaddy DNS Management</strong><br>
+      Log in to <span class="url">godaddy.com</span> → <strong>My Products</strong> → Find your domain → <strong>DNS</strong> (or "Manage DNS").
+    </li>
+    <li>
+      <strong>Delete existing A records pointing elsewhere</strong><br>
+      If there's an existing A record for <code>@</code> pointing to a "Parked" page, <strong>delete it</strong> or edit it.
+    </li>
+    <li>
+      <strong>Add the A record</strong><br>
+      Click <strong>"Add Record"</strong> → Type: <strong>A</strong>, Name: <strong>@</strong>, Value: <strong>76.76.21.21</strong>, TTL: <strong>600</strong> (or 1/2 Hour). Click Save.
+    </li>
+    <li>
+      <strong>Add/Edit the CNAME record</strong><br>
+      Add or edit a CNAME record → Name: <strong>www</strong>, Value: <strong>cname.vercel-dns.com</strong>, TTL: <strong>600</strong>. Click Save.
+    </li>
+    <li>
+      <strong>Wait for DNS propagation</strong><br>
+      Changes take <strong>5 minutes to 48 hours</strong> to propagate globally. Usually under 30 minutes.
+    </li>
+  </ol>
+
+  <div class="info">
+    <strong>For Namecheap Users</strong>
+    Go to Domain List → Manage → Advanced DNS → Add the same records. For the CNAME, use <code>www</code> as Host (not the full domain).
+  </div>
+
+  <div class="warn">
+    <strong>Critical: Do NOT Change Nameservers Unless Instructed</strong>
+    If you only need to point your domain to Vercel, add the A and CNAME records above. Do NOT change your nameservers to Vercel's nameservers unless you want Vercel to manage all your DNS (including email MX records). Changing nameservers will break any existing email setup.
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 4: VERIFY SSL & DOMAIN                                -->
+<!-- ============================================================ -->
+<div class="section">
+  <div class="section-head">
+    <span class="section-num">Section 04</span>
+    <span class="section-title">Verify SSL &amp; Domain Configuration</span>
+  </div>
+
+  <p>After DNS propagation, verify everything is working correctly.</p>
+
+  <ol class="steps">
+    <li>
+      <strong>Check domain status in Vercel</strong><br>
+      Go to your project → <strong>Settings</strong> → <strong>Domains</strong>. Both domains should show a green checkmark and say <strong>"Valid Configuration"</strong>. If it shows an error, DNS hasn't propagated yet — wait and retry.
+    </li>
+    <li>
+      <strong>Verify SSL certificate</strong><br>
+      Vercel automatically generates a free SSL certificate via Let's Encrypt. Visit <code>https://yourdomain.com</code> and confirm the padlock icon appears in the browser address bar. This happens automatically after DNS propagates.
+    </li>
+    <li>
+      <strong>Test redirects</strong><br>
+      Verify these all work correctly:
+      <ul class="sub-steps">
+        <li><code>http://yourdomain.com</code> → redirects to <code>https://www.yourdomain.com</code></li>
+        <li><code>http://www.yourdomain.com</code> → redirects to <code>https://www.yourdomain.com</code></li>
+        <li><code>https://yourdomain.com</code> → redirects to <code>https://www.yourdomain.com</code></li>
+      </ul>
+      All four variations must land on the same final URL (your primary domain with HTTPS).
+    </li>
+    <li>
+      <strong>Verify DNS propagation globally</strong><br>
+      Use <span class="url">dnschecker.org</span> to confirm your A and CNAME records have propagated worldwide.
+    </li>
+  </ol>
+
+  <div class="tip">
+    <strong>Redirect Type Matters</strong>
+    Vercel should use <strong>308 (Permanent Redirect)</strong> for domain redirects. Check in Settings → Domains that the redirect type says "308" not "307". A 307 is temporary and won't pass SEO value. If it shows 307, remove and re-add the domain.
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 5: GOOGLE SEARCH CONSOLE                              -->
+<!-- ============================================================ -->
+<div class="section">
+  <div class="section-head">
+    <span class="section-num">Section 05</span>
+    <span class="section-title">Google Search Console Setup</span>
+  </div>
+
+  <p>Google Search Console (GSC) lets you monitor how Google sees your website, submit sitemaps, check indexing status, and diagnose SEO issues. This is the <strong>most critical</strong> tool for search visibility.</p>
+
+  <p><strong>Official URL:</strong> <span class="url">search.google.com/search-console</span></p>
+
+  <h3>Step A — Add Property</h3>
+  <ol class="steps">
+    <li>
+      <strong>Sign in to Google Search Console</strong><br>
+      Use the same Google account you'll use for Analytics and Business Profile.
+    </li>
+    <li>
+      <strong>Click "Add Property"</strong><br>
+      You'll see two options:
+      <ul class="sub-steps">
+        <li><strong>Domain (Recommended):</strong> Covers ALL variations (www, non-www, http, https, subdomains) in one property. Requires DNS verification only.</li>
+        <li><strong>URL Prefix:</strong> Tracks only the exact URL entered. Supports multiple verification methods. Use this if you cannot access DNS settings.</li>
+      </ul>
+    </li>
+    <li>
+      <strong>Choose "Domain" and enter your domain</strong><br>
+      Enter <code>yourdomain.com</code> (without http/https/www). Click Continue.
+    </li>
+  </ol>
+
+  <h3>Step B — Verify Ownership</h3>
+  <ol class="steps">
+    <li>
+      <strong>Copy the TXT record provided by Google</strong><br>
+      Google will display a TXT record like:<br>
+      <code>google-site-verification=xxxxxxxxxxxxxxxxxxxxxx</code>
+    </li>
+    <li>
+      <strong>Add the TXT record to your DNS</strong><br>
+      Go to your domain registrar's DNS settings (GoDaddy, Namecheap, etc.):<br>
+      <ul class="sub-steps">
+        <li>Type: <strong>TXT</strong></li>
+        <li>Name/Host: <strong>@</strong></li>
+        <li>Value: The full <code>google-site-verification=...</code> string</li>
+        <li>TTL: <strong>600</strong> (or default)</li>
+      </ul>
+    </li>
+    <li>
+      <strong>Click "Verify" in Google Search Console</strong><br>
+      Wait a few minutes for DNS to propagate, then click Verify. If it fails, wait 15–30 minutes and try again.
+    </li>
+  </ol>
+
+  <div class="info">
+    <strong>Alternative: HTML File Verification (URL Prefix only)</strong>
+    Download the HTML file from Google, place it in your project's <code>public/</code> folder (e.g., <code>public/googleXXXXXXXX.html</code>), deploy to Vercel, then verify. Google will check <code>https://yourdomain.com/googleXXXXXXXX.html</code>.
+  </div>
+
+  <h3>Step C — Submit Sitemap</h3>
+  <ol class="steps">
+    <li>
+      <strong>Go to "Sitemaps" in the left sidebar</strong><br>
+      In Google Search Console, click <strong>Sitemaps</strong> under the Indexing section.
+    </li>
+    <li>
+      <strong>Enter your sitemap URL</strong><br>
+      Type <code>sitemap.xml</code> in the field and click <strong>"Submit"</strong>.<br>
+      Full URL will be: <code>https://www.yourdomain.com/sitemap.xml</code>
+    </li>
+    <li>
+      <strong>Verify status shows "Success"</strong><br>
+      After Google processes it, the status should say <strong>"Success"</strong> with the number of discovered URLs.
+    </li>
+  </ol>
+
+  <h3>Step D — Request Indexing</h3>
+  <ol class="steps">
+    <li>
+      <strong>Use the URL Inspection tool</strong><br>
+      In the top search bar of GSC, paste your homepage URL: <code>https://www.yourdomain.com</code>
+    </li>
+    <li>
+      <strong>Click "Request Indexing"</strong><br>
+      If the page is not yet indexed, click <strong>"Request Indexing"</strong>. Google will prioritize crawling this page. Repeat for your most important pages (services, about, contact).
+    </li>
+  </ol>
+
+  <div class="warn">
+    <strong>Indexing Takes Time</strong>
+    Google typically indexes a new site within <strong>4–28 days</strong>. You cannot speed this up. Submitting the sitemap and requesting indexing are the only actions you can take. Do NOT submit the same URL repeatedly.
+  </div>
+
+  <h3>Step E — Recommended GSC Settings</h3>
+  <ol class="steps">
+    <li><strong>Set preferred country targeting</strong> — Settings → International Targeting (if applicable).</li>
+    <li><strong>Add users</strong> — Settings → Users and Permissions → Add team members with appropriate access levels (Owner / Full / Restricted).</li>
+    <li><strong>Check Coverage report</strong> — Pages → check for any errors or warnings.</li>
+    <li><strong>Monitor Core Web Vitals</strong> — Experience → Core Web Vitals → review any issues flagged.</li>
+  </ol>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 6: GOOGLE ANALYTICS (GA4)                             -->
+<!-- ============================================================ -->
+<div class="section">
+  <div class="section-head">
+    <span class="section-num">Section 06</span>
+    <span class="section-title">Google Analytics (GA4) Setup</span>
+  </div>
+
+  <p>Google Analytics 4 tracks visitor behavior, traffic sources, conversions, and more. It provides data you need to understand how users interact with your website.</p>
+
+  <p><strong>Official URL:</strong> <span class="url">analytics.google.com</span></p>
+
+  <h3>Step A — Create Account &amp; Property</h3>
+  <ol class="steps">
+    <li>
+      <strong>Go to Google Analytics and sign in</strong><br>
+      Use the same Google account as Search Console.
+    </li>
+    <li>
+      <strong>Click "Start measuring" (new) or Admin → Create → Property</strong><br>
+      Fill in:
+      <ul class="sub-steps">
+        <li><strong>Account Name:</strong> Your company name (e.g., "Worksthal")</li>
+        <li><strong>Property Name:</strong> Your website name (e.g., "Worksthal Website")</li>
+        <li><strong>Reporting Time Zone:</strong> Your local timezone</li>
+        <li><strong>Currency:</strong> Your primary business currency</li>
+      </ul>
+    </li>
+    <li>
+      <strong>Select business details</strong><br>
+      Choose your industry category, business size, and objectives (generate leads, drive sales, etc.).
+    </li>
+    <li>
+      <strong>Accept Terms of Service</strong><br>
+      Review and accept the Google Analytics Terms of Service for your country.
+    </li>
+  </ol>
+
+  <h3>Step B — Set Up Data Stream</h3>
+  <ol class="steps">
+    <li>
+      <strong>Choose "Web" as platform</strong><br>
+      After creating the property, select <strong>Web</strong> as your data stream type.
+    </li>
+    <li>
+      <strong>Enter your website URL</strong><br>
+      Enter <code>https://www.yourdomain.com</code> and give the stream a name (e.g., "Main Website").
+    </li>
+    <li>
+      <strong>Enable Enhanced Measurement</strong><br>
+      Toggle this ON to automatically track page views, scrolls, outbound clicks, site search, video engagement, and file downloads.
+    </li>
+    <li>
+      <strong>Copy your Measurement ID</strong><br>
+      You'll receive a <strong>Measurement ID</strong> that looks like <code>G-XXXXXXXXXX</code>. Copy this — you'll need it for installation.
+    </li>
+  </ol>
+
+  <h3>Step C — Install the GA4 Tag on Your Website</h3>
+
+  <p>Add the Google tag to your website code. For Next.js, add it in your root layout file (<code>app/layout.tsx</code>).</p>
+
+  <div class="dns-box">
+    <span class="comment">&lt;!-- Place inside &lt;head&gt; of your layout --&gt;</span><br>
+    &lt;Script<br>
+    &nbsp;&nbsp;src="https://www.googletagmanager.com/gtag/js?id=<span class="value">G-XXXXXXXXXX</span>"<br>
+    &nbsp;&nbsp;strategy="afterInteractive"<br>
+    /&gt;<br>
+    &lt;Script strategy="afterInteractive"&gt;<br>
+    &nbsp;&nbsp;{`window.dataLayer = window.dataLayer || [];<br>
+    &nbsp;&nbsp;function gtag(){dataLayer.push(arguments);}<br>
+    &nbsp;&nbsp;gtag('js', new Date());<br>
+    &nbsp;&nbsp;gtag('config', '<span class="value">G-XXXXXXXXXX</span>');`}<br>
+    &lt;/Script&gt;
+  </div>
+
+  <div class="warn">
+    <strong>Do NOT Add the Tag Twice</strong>
+    Only add one Google tag per page. If using Google Tag Manager, install GTM instead of the gtag.js snippet — never use both simultaneously.
+  </div>
+
+  <h3>Step D — Verify Installation &amp; Configure Settings</h3>
+  <ol class="steps">
+    <li>
+      <strong>Verify with Realtime report</strong><br>
+      In GA4, go to <strong>Reports → Realtime</strong>. Open your website in another tab. You should see yourself as an active user within 30 seconds.
+    </li>
+    <li>
+      <strong>Change data retention to 14 months</strong><br>
+      Admin → Data Settings → Data Retention → Change from <strong>2 months</strong> to <strong>14 months</strong>. Click Save. (This is frequently missed!)
+    </li>
+    <li>
+      <strong>Link Google Search Console</strong><br>
+      Admin → Product Links → <strong>Search Console Links</strong> → Link. Select your Search Console property. This imports search query data into GA4.
+    </li>
+    <li>
+      <strong>Set up Key Events (Conversions)</strong><br>
+      Admin → Events → mark important events as "Key Events" (form submissions, button clicks, page views on contact page, etc.).
+    </li>
+    <li>
+      <strong>Exclude internal traffic</strong><br>
+      Admin → Data Streams → your stream → <strong>Configure tag settings</strong> → Define Internal Traffic → add your office/home IP addresses so your own visits don't skew data.
+    </li>
+  </ol>
+
+  <div class="tip">
+    <strong>Link Google Ads</strong>
+    If running Google Ads, link it immediately: Admin → Product Links → Google Ads Links. This enables conversion tracking and audience sharing between the platforms.
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 7: GOOGLE BUSINESS PROFILE                            -->
+<!-- ============================================================ -->
+<div class="section">
+  <div class="section-head">
+    <span class="section-num">Section 07</span>
+    <span class="section-title">Google Business Profile Setup</span>
+  </div>
+
+  <p>Google Business Profile (GBP) makes your business appear in Google Maps and the local knowledge panel in search results. Even online-only businesses benefit from having one.</p>
+
+  <p><strong>Official URL:</strong> <span class="url">business.google.com</span></p>
+
+  <h3>Step A — Create Your Business Profile</h3>
+  <ol class="steps">
+    <li>
+      <strong>Go to business.google.com and sign in</strong><br>
+      Use the same Google account. Click <strong>"Manage now"</strong> or <strong>"Add your business"</strong>.
+    </li>
+    <li>
+      <strong>Enter your business name</strong><br>
+      Type your exact business name. If it doesn't appear in suggestions, select <strong>"Add your business to Google"</strong>.
+    </li>
+    <li>
+      <strong>Choose your business category</strong><br>
+      Select the most accurate primary category. Examples:
+      <ul class="sub-steps">
+        <li>IT/Tech: "Software Company", "Internet Marketing Service", "Web Designer"</li>
+        <li>Agency: "Marketing Agency", "Advertising Agency"</li>
+        <li>Consulting: "Business Management Consultant", "IT Consultant"</li>
+      </ul>
+      You can add additional categories later.
+    </li>
+    <li>
+      <strong>Set your location type</strong><br>
+      <ul class="sub-steps">
+        <li><strong>Physical location:</strong> If customers visit your office.</li>
+        <li><strong>Service area business:</strong> If you go to customers or work remotely. Enter the cities/regions you serve (up to 20).</li>
+      </ul>
+    </li>
+    <li>
+      <strong>Add contact information</strong><br>
+      Enter your phone number and website URL (<code>https://www.yourdomain.com</code>).
+    </li>
+  </ol>
+
+  <h3>Step B — Verify Your Business</h3>
+  <ol class="steps">
+    <li>
+      <strong>Google will assign a verification method</strong><br>
+      You cannot choose — Google determines the method based on your business type:
+      <ul class="sub-steps">
+        <li><strong>Video verification (most common for new businesses):</strong> Record a 30+ second video showing your business location, signage, and proof of management.</li>
+        <li><strong>Phone/SMS:</strong> Receive a code via phone call or text.</li>
+        <li><strong>Email:</strong> Receive a code via email.</li>
+        <li><strong>Postcard:</strong> Physical postcard mailed to your business address (5–14 days).</li>
+      </ul>
+    </li>
+    <li>
+      <strong>Complete verification</strong><br>
+      Follow the prompts for your assigned method. Enter the code when received. Verification review can take up to 7 business days.
+    </li>
+  </ol>
+
+  <h3>Step C — Optimize Your Profile</h3>
+  <ol class="steps">
+    <li><strong>Add business hours</strong> — Even for online businesses, set hours when customers can reach you.</li>
+    <li><strong>Write a business description</strong> — Up to 750 characters. Include your key services and value proposition. Use relevant keywords naturally.</li>
+    <li><strong>Upload photos</strong> — Add a logo, cover photo, and 5+ photos of your team/office/work. Businesses with photos receive 42% more direction requests.</li>
+    <li><strong>Add services/products</strong> — List your specific services with descriptions and pricing (if applicable).</li>
+    <li><strong>Set up messaging</strong> — Enable the messaging feature so customers can contact you directly from Google.</li>
+    <li><strong>Create your first post</strong> — Write a "What's New" post about your business. Post regularly (weekly is ideal).</li>
+  </ol>
+
+  <div class="tip">
+    <strong>NAP Consistency</strong>
+    Your <strong>N</strong>ame, <strong>A</strong>ddress, and <strong>P</strong>hone number must be <em>exactly identical</em> across your website, Google Business Profile, and all directory listings. Even small differences (e.g., "St." vs "Street") can hurt local SEO.
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 8: BING WEBMASTER TOOLS                               -->
+<!-- ============================================================ -->
+<div class="section">
+  <div class="section-head">
+    <span class="section-num">Section 08</span>
+    <span class="section-title">Bing Webmaster Tools Setup</span>
+  </div>
+
+  <p>Bing powers both Bing and Yahoo search results (~6% of global search traffic combined). Setup takes under 10 minutes if you've already set up Google Search Console.</p>
+
+  <p><strong>Official URL:</strong> <span class="url">bing.com/webmasters</span></p>
+
+  <ol class="steps">
+    <li>
+      <strong>Sign in to Bing Webmaster Tools</strong><br>
+      Go to <span class="url">bing.com/webmasters</span>. Sign in with a Microsoft, Google, or Facebook account.
+    </li>
+    <li>
+      <strong>Import from Google Search Console (fastest method)</strong><br>
+      Bing offers a one-click import from GSC. Click <strong>"Import from GSC"</strong>, sign in with your Google account, and select your property. This copies your sitemap and settings automatically.
+    </li>
+    <li>
+      <strong>Alternative: Manual setup</strong><br>
+      If not importing, click "Add your site manually" and enter your URL. Verify ownership via:
+      <ul class="sub-steps">
+        <li><strong>CNAME record</strong> (recommended) — Add a CNAME record to your DNS</li>
+        <li><strong>XML file</strong> — Upload a file to your site's root</li>
+        <li><strong>Meta tag</strong> — Add a meta tag to your homepage</li>
+      </ul>
+    </li>
+    <li>
+      <strong>Submit your sitemap</strong><br>
+      If you didn't import from GSC, go to <strong>Sitemaps</strong> in the left menu, enter <code>https://www.yourdomain.com/sitemap.xml</code>, and click Submit.
+    </li>
+    <li>
+      <strong>Submit URLs for indexing</strong><br>
+      Go to <strong>URL Submission</strong> and submit your key pages for faster indexing.
+    </li>
+  </ol>
+
+  <div class="tip">
+    <strong>Quick Win</strong>
+    The "Import from GSC" method takes under 2 minutes and carries over your verified ownership, sitemaps, and geo-targeting settings.
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 9: ADDITIONAL LISTINGS                                -->
+<!-- ============================================================ -->
+<div class="section">
+  <div class="section-head">
+    <span class="section-num">Section 09</span>
+    <span class="section-title">Additional Listings &amp; Directories</span>
+  </div>
+
+  <p>Beyond Google and Bing, listing your business on reputable directories improves visibility, builds backlinks, and strengthens your online presence. Focus on <strong>quality over quantity</strong> — 10-15 high-authority listings are better than 200 low-quality ones.</p>
+
+  <h3>Essential Listings (Do These First)</h3>
+  <table>
+    <thead>
+      <tr><th>Platform</th><th>URL</th><th>Why It Matters</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>LinkedIn Company Page</strong></td><td><span class="url">linkedin.com/company/</span></td><td>Professional visibility, B2B leads, high domain authority backlink</td></tr>
+      <tr><td><strong>Facebook Business Page</strong></td><td><span class="url">business.facebook.com</span></td><td>Social proof, local search, customer reviews</td></tr>
+      <tr><td><strong>Bing Places</strong></td><td><span class="url">bingplaces.com</span></td><td>Bing Maps visibility (auto-sync from GBP possible)</td></tr>
+      <tr><td><strong>Apple Maps</strong></td><td><span class="url">mapsconnect.apple.com</span></td><td>Visibility for iPhone/Mac users using Apple Maps &amp; Siri</td></tr>
+      <tr><td><strong>Yelp</strong></td><td><span class="url">biz.yelp.com</span></td><td>Reviews platform, high DA backlink</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Industry-Specific Listings (For Tech/Agency/SaaS)</h3>
+  <table>
+    <thead>
+      <tr><th>Platform</th><th>URL</th><th>Why It Matters</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Clutch.co</strong></td><td><span class="url">clutch.co</span></td><td>Top B2B directory for agencies; high-intent leads</td></tr>
+      <tr><td><strong>GoodFirms</strong></td><td><span class="url">goodfirms.co</span></td><td>Tech company reviews &amp; rankings</td></tr>
+      <tr><td><strong>DesignRush</strong></td><td><span class="url">designrush.com</span></td><td>Agency marketplace with client matching</td></tr>
+      <tr><td><strong>Crunchbase</strong></td><td><span class="url">crunchbase.com</span></td><td>Company profile for investors &amp; partnerships</td></tr>
+      <tr><td><strong>Product Hunt</strong></td><td><span class="url">producthunt.com</span></td><td>Launch visibility for products/tools</td></tr>
+      <tr><td><strong>G2</strong></td><td><span class="url">g2.com</span></td><td>Software reviews (if you have a product)</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Social Media Profiles</h3>
+  <table>
+    <thead>
+      <tr><th>Platform</th><th>Priority</th><th>Action</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Instagram Business</strong></td><td>High</td><td>Create business account, link to website, post regularly</td></tr>
+      <tr><td><strong>X (Twitter)</strong></td><td>Medium</td><td>Create profile, add website link, share industry content</td></tr>
+      <tr><td><strong>YouTube</strong></td><td>Medium</td><td>Create channel for tutorials, case studies, and demos</td></tr>
+      <tr><td><strong>GitHub</strong></td><td>Medium (for tech)</td><td>Organization profile with pinned repos and README</td></tr>
+    </tbody>
+  </table>
+
+  <div class="check">
+    <strong>Consistency Rule</strong>
+    On every listing, use the <em>exact same</em> business name, address, phone number, website URL, and business description. Inconsistencies confuse search engines and reduce ranking signals.
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 10: POST-LAUNCH CHECKLIST                             -->
+<!-- ============================================================ -->
+<div class="section">
+  <div class="section-head">
+    <span class="section-num">Section 10</span>
+    <span class="section-title">Post-Launch Verification Checklist</span>
+  </div>
+
+  <p>Use this checklist to verify everything is properly set up. Go through each item after completing all the sections above.</p>
+
+  <h3>Hosting &amp; Domain</h3>
+  <ul class="checklist">
+    <li>Website loads at <code>https://www.yourdomain.com</code></li>
+    <li>SSL padlock icon visible in browser</li>
+    <li>All URL variations redirect correctly (http → https, non-www → www)</li>
+    <li>Redirect type is 308 (permanent), not 307 (temporary)</li>
+    <li>Vercel dashboard shows "Valid Configuration" for all domains</li>
+    <li>DNS propagation confirmed on <span class="url">dnschecker.org</span></li>
+  </ul>
+
+  <h3>Technical SEO</h3>
+  <ul class="checklist">
+    <li><code>robots.txt</code> is accessible at <code>/robots.txt</code> and allows crawling</li>
+    <li><code>sitemap.xml</code> is accessible at <code>/sitemap.xml</code> and lists all pages</li>
+    <li>All pages have unique <code>&lt;title&gt;</code> tags (50-60 characters)</li>
+    <li>All pages have unique <code>&lt;meta name="description"&gt;</code> tags (150-160 characters)</li>
+    <li>Open Graph tags are present for social media sharing</li>
+    <li>Favicon is set and displays in browser tab</li>
+    <li>No broken links (test with <span class="url">brokenlinkcheck.com</span>)</li>
+  </ul>
+
+  <h3>Google Search Console</h3>
+  <ul class="checklist">
+    <li>Property verified (green checkmark)</li>
+    <li>Sitemap submitted and status shows "Success"</li>
+    <li>Homepage inspected and indexing requested</li>
+    <li>No critical errors in Coverage/Pages report</li>
+    <li>Core Web Vitals report reviewed</li>
+  </ul>
+
+  <h3>Google Analytics (GA4)</h3>
+  <ul class="checklist">
+    <li>Tracking code installed on all pages</li>
+    <li>Realtime report shows active users when visiting site</li>
+    <li>Data retention set to 14 months</li>
+    <li>Search Console linked to GA4</li>
+    <li>Internal traffic filter configured</li>
+    <li>Key Events (conversions) defined</li>
+    <li>Google Ads linked (if running ads)</li>
+  </ul>
+
+  <h3>Google Business Profile</h3>
+  <ul class="checklist">
+    <li>Business profile created and verification submitted</li>
+    <li>Business name, address, phone match website exactly</li>
+    <li>Category selected accurately</li>
+    <li>Business description written (up to 750 characters)</li>
+    <li>Logo and cover photo uploaded</li>
+    <li>Website URL added and correct</li>
+    <li>Business hours set</li>
+    <li>First post created</li>
+  </ul>
+
+  <h3>Bing &amp; Other Listings</h3>
+  <ul class="checklist">
+    <li>Bing Webmaster Tools verified and sitemap submitted</li>
+    <li>LinkedIn Company Page created with website link</li>
+    <li>Facebook Business Page created with website link</li>
+    <li>At least 2 industry directories submitted (e.g., Clutch, GoodFirms)</li>
+    <li>NAP (Name, Address, Phone) is consistent across all listings</li>
+  </ul>
+
+  <h3>Ongoing Monitoring (Weekly/Monthly)</h3>
+  <table>
+    <thead>
+      <tr><th>Task</th><th>Frequency</th><th>Tool</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Check indexing status &amp; errors</td><td>Weekly</td><td>Google Search Console</td></tr>
+      <tr><td>Review traffic &amp; user behavior</td><td>Weekly</td><td>Google Analytics</td></tr>
+      <tr><td>Respond to reviews &amp; messages</td><td>Daily</td><td>Google Business Profile</td></tr>
+      <tr><td>Run PageSpeed Insights test</td><td>Monthly</td><td><span class="url">pagespeed.web.dev</span></td></tr>
+      <tr><td>Check for broken links</td><td>Monthly</td><td>Broken Link Checker or Ahrefs</td></tr>
+      <tr><td>Update sitemap after adding new pages</td><td>As needed</td><td>Redeploy to Vercel</td></tr>
+      <tr><td>Post updates on Google Business Profile</td><td>Weekly</td><td>Google Business Profile</td></tr>
+    </tbody>
+  </table>
+
+  <hr>
+
+  <div class="info">
+    <strong>Expected Timelines</strong>
+    <ul class="sub-steps" style="margin-top: 4px;">
+      <li><strong>DNS Propagation:</strong> 5 min – 48 hours (usually under 30 min)</li>
+      <li><strong>SSL Certificate:</strong> Automatic within minutes of DNS verification</li>
+      <li><strong>Google Indexing:</strong> 4 – 28 days after sitemap submission</li>
+      <li><strong>Google Business Verification:</strong> 1 – 7 business days</li>
+      <li><strong>Search Console Data:</strong> Starts appearing 2 – 3 days after verification</li>
+      <li><strong>Analytics Data:</strong> Realtime immediately; reports populate within 24 – 48 hours</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- FOOTER                                                        -->
+<!-- ============================================================ -->
+<div class="doc-footer">
+  <p><strong>Worksthal</strong> — Standard Operating Procedure v1.0 — February 2026</p>
+  <p>This document is for internal use. All steps reference official documentation from Vercel, Google, and Microsoft as of February 2026.</p>
+  <p style="margin-top: 6px;">To save as PDF: Open this file in Chrome → Press <strong>Ctrl+P</strong> (or Cmd+P) → Destination: <strong>"Save as PDF"</strong> → Click Save.</p>
+</div>
+
+</div>
+</body>
+</html>

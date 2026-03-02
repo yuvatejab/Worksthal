@@ -198,7 +198,7 @@ export function Contact() {
                     onClick={() => trackPhoneClick()}
                     className="text-sm font-semibold text-foreground transition-colors hover:text-primary"
                   >
-                    +91 63098219055
+                    +91 6309821905
                   </a>
                 </div>
               </div>
@@ -275,13 +275,6 @@ export function Contact() {
                     <p className="mb-2.5 text-xs italic text-neutral-800 leading-snug">
                       "Worksthal automated our entire lead qualification process. We went from spending 15 hours a week on manual data entry to having everything handled automatically. Game changer."
                     </p>
-                    <div className="flex items-center gap-2">
-                      <div className="h-7 w-7 rounded-full bg-gradient-to-br from-teal-500 to-teal-600"></div>
-                      <div>
-                        <p className="text-[10px] font-semibold text-neutral-900">Sarah Chen</p>
-                        <p className="text-[9px] text-neutral-600">Marketing Director, TechFlow</p>
-                      </div>
-                    </div>
                   </div>
                 </div>
 
