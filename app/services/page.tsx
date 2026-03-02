@@ -5,9 +5,9 @@ import Link from "next/link";
 const baseUrl = "https://www.worksthal.com";
 
 export const metadata: Metadata = {
-  title: "Services — AI Automation, Web Development & AEO | Worksthal",
+  title: "AI Automation, Web Development & AEO Services | Worksthal",
   description:
-    "Worksthal offers AI workflow automation, Next.js web development, AI engine optimization (AEO), and data-driven marketing services. Discover how we help businesses automate tasks, build modern websites, and improve search visibility.",
+    "AI automation services, website development, AEO optimization, and SEO services for businesses worldwide. Custom workflow automation using n8n, Next.js web development, and AI-driven marketing. Free consultation.",
   keywords: [
     "AI automation services",
     "workflow automation",
@@ -17,12 +17,20 @@ export const metadata: Metadata = {
     "AI engine optimization",
     "digital marketing services",
     "business automation",
+    "website development",
+    "website development company",
+    "automation services",
+    "SEO optimization",
+    "AI agency",
+    "business process automation",
+    "SEO services",
+    "AEO audit",
   ],
   alternates: {
     canonical: `${baseUrl}/services`,
   },
   openGraph: {
-    title: "Services — AI Automation, Web Development & AEO | Worksthal",
+    title: "AI Automation, Web Development & AEO Services | Worksthal",
     description:
       "Discover Worksthal's services: AI workflow automation, modern web development, AEO optimization, and data-driven marketing. Transform your business with practical AI solutions.",
     type: "website",
@@ -146,7 +154,7 @@ export default function ServicesPage() {
             Our Services
           </div>
           <h1 className="mb-6 font-serif text-5xl font-bold text-foreground md:text-6xl lg:text-7xl">
-            Comprehensive Digital Solutions for Growing Businesses
+            AI Automation, Website Development, AEO &amp; Marketing Services
           </h1>
           <p className="mx-auto max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
             Worksthal offers four core services designed to automate your operations, enhance your
@@ -247,6 +255,39 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      {/* Audit Services */}
+      <section className="w-full px-4 py-12">
+        <div className="mx-auto max-w-6xl">
+          <h2 className="mb-8 text-center font-serif text-3xl font-bold text-foreground md:text-4xl">
+            Audit &amp; Analysis Services
+          </h2>
+          <div className="grid gap-6 md:grid-cols-2">
+            <Link
+              href="/services/seo-audit"
+              className="group rounded-2xl border border-border bg-card p-8 transition-all hover:border-primary/40 hover:shadow-lg"
+            >
+              <h3 className="mb-3 font-serif text-xl font-bold text-foreground group-hover:text-primary transition-colors">
+                SEO Audit Services
+              </h3>
+              <p className="text-muted-foreground">
+                Comprehensive technical SEO analysis, on-page optimization review, and actionable recommendations to improve your search rankings.
+              </p>
+            </Link>
+            <Link
+              href="/services/aeo-audit"
+              className="group rounded-2xl border border-border bg-card p-8 transition-all hover:border-primary/40 hover:shadow-lg"
+            >
+              <h3 className="mb-3 font-serif text-xl font-bold text-foreground group-hover:text-primary transition-colors">
+                AEO Audit Services
+              </h3>
+              <p className="text-muted-foreground">
+                Check if ChatGPT, Claude, and Perplexity can find and cite your business. AI engine optimization audit covering structured data, AI crawler access, and content extractability.
+              </p>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="w-full px-4 py-20 md:py-32">
         <div className="mx-auto max-w-4xl rounded-3xl border border-border bg-gradient-to-br from-card to-card/50 p-8 text-center md:p-12">
@@ -257,13 +298,21 @@ export default function ServicesPage() {
             Get a free consultation to discuss your project and discover how Worksthal can help you
             automate operations, build better digital products, and grow faster.
           </p>
-          <Link
-            href="/contact"
-            className="inline-flex items-center gap-2 rounded-lg bg-primary px-8 py-4 text-base font-semibold text-primary-foreground transition-all hover:bg-primary/90"
-          >
-            Get a Free Consultation
-            <ArrowRight className="h-5 w-5" />
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 rounded-lg bg-primary px-8 py-4 text-base font-semibold text-primary-foreground transition-all hover:bg-primary/90"
+            >
+              Get a Free Consultation
+              <ArrowRight className="h-5 w-5" />
+            </Link>
+            <Link
+              href="/about"
+              className="inline-flex items-center gap-2 rounded-lg border border-border bg-background px-8 py-4 text-base font-semibold text-foreground transition-all hover:bg-card"
+            >
+              About Worksthal
+            </Link>
+          </div>
         </div>
       </section>
     </main>

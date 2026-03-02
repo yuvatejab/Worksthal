@@ -26,7 +26,7 @@ const Logo = () => {
     <a
       href="#home"
       className="relative z-20 flex items-center space-x-2 py-1 text-sm font-normal"
-      aria-label="Worksthal — Go to homepage"
+      aria-label="Worksthal - Go to homepage"
     >
       <div className="h-6 w-6 shrink-0 rounded-lg bg-gradient-to-br from-primary to-secondary" />
       <motion.span

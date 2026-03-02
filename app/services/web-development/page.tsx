@@ -1,13 +1,106 @@
 import type { Metadata } from "next";
-import { Globe, Zap, Smartphone, Search, ArrowRight, CheckCircle2, Code, Layers, Gauge } from "lucide-react";
+import { Globe, Zap, Smartphone, Search, ArrowRight, CheckCircle2, Code, Gauge } from "lucide-react";
 import Link from "next/link";
 
 const baseUrl = "https://www.worksthal.com";
 
+const pageFaqs = [
+  {
+    question: "What is Next.js web development?",
+    answer:
+      "Next.js is a React framework that enables server-side rendering (SSR), static site generation, and full-stack capabilities. Companies like Netflix, Notion, and TikTok use Next.js for fast, scalable web applications. Worksthal builds websites with Next.js for optimal performance and SEO.",
+  },
+  {
+    question: "How long does it take to build a website with Next.js?",
+    answer:
+      "Landing pages and simple corporate sites typically take 2–4 weeks. Complex web applications with authentication, dashboards, or e-commerce features take 6–12 weeks. Worksthal provides detailed timelines during the discovery phase.",
+  },
+  {
+    question: "Does Worksthal build SEO-optimized websites?",
+    answer:
+      "Yes. Worksthal delivers server-rendered content, structured data (JSON-LD), semantic HTML, and Core Web Vitals optimization. For deeper AI visibility, explore our AI Engine Optimization (AEO) services.",
+  },
+  {
+    question: "Can Worksthal redesign my existing website?",
+    answer:
+      "Yes. Worksthal migrates sites from WordPress, Wix, Squarespace, and other platforms to modern Next.js while preserving SEO rankings. We handle content migration, redirects, and structured data updates.",
+  },
+  {
+    question: "What is the cost of a custom website?",
+    answer:
+      "Corporate websites and landing pages typically range from $5,000 to $15,000. E-commerce and SaaS applications cost more based on scope. Worksthal provides transparent quotes after a free consultation.",
+  },
+];
+
+function PageJsonLd() {
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "Website Design and Development",
+    description:
+      "Worksthal creates fast, responsive, conversion-optimized websites using Next.js, React, and TypeScript with SEO best practices.",
+    provider: {
+      "@type": "Organization",
+      "@id": `${baseUrl}/#organization`,
+      name: "Worksthal",
+      url: baseUrl,
+    },
+    areaServed: "Worldwide",
+    url: `${baseUrl}/services/web-development`,
+    datePublished: "2024-01-01",
+    dateModified: "2026-02-27",
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: pageFaqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: baseUrl },
+      { "@type": "ListItem", position: 2, name: "Services", item: `${baseUrl}/services` },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: "Web Development",
+        item: `${baseUrl}/services/web-development`,
+      },
+    ],
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+    </>
+  );
+}
+
 export const metadata: Metadata = {
-  title: "Web Development Services — Next.js, React & TypeScript | Worksthal",
+  title: "Web Development Services | Next.js, React & TypeScript | Worksthal",
   description:
-    "Worksthal creates fast, responsive, conversion-optimized websites using Next.js, React, and TypeScript. Build modern web applications with exceptional performance and SEO. Get a free consultation.",
+    "Website development services using Next.js, React, and TypeScript with 90+ PageSpeed scores, mobile-first, SEO-optimized. Custom web development for businesses worldwide. Free consultation.",
   keywords: [
     "Next.js development",
     "React development",
@@ -17,12 +110,19 @@ export const metadata: Metadata = {
     "responsive web design",
     "SEO-optimized websites",
     "web development agency",
+    "website development",
+    "website development company",
+    "custom website development",
+    "web application development",
+    "ecommerce website development",
+    "web design and development",
+    "website development services",
   ],
   alternates: {
     canonical: `${baseUrl}/services/web-development`,
   },
   openGraph: {
-    title: "Web Development Services — Next.js, React & TypeScript | Worksthal",
+    title: "Web Development Services | Next.js, React & TypeScript | Worksthal",
     description:
       "Build fast, modern websites with Worksthal. We create responsive web applications using Next.js, React, and TypeScript that deliver exceptional performance and user experience.",
     type: "website",
@@ -127,6 +227,7 @@ const process = [
 export default function WebDevelopmentPage() {
   return (
     <main className="min-h-screen bg-background">
+      <PageJsonLd />
       {/* Hero Section */}
       <section className="relative w-full px-4 pt-32 pb-20 md:pt-40 md:pb-32">
         <div className="absolute inset-0 bg-gradient-to-b from-secondary/5 via-background to-background" />
@@ -168,7 +269,7 @@ export default function WebDevelopmentPage() {
         <div className="mx-auto max-w-7xl">
           <div className="mb-12 text-center">
             <h2 className="mb-4 font-serif text-3xl font-bold text-foreground md:text-4xl">
-              Why Choose Modern Web Development?
+              Why Choose Professional Website Development Services?
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
               Modern web frameworks deliver superior performance, better user experience, and easier
@@ -200,7 +301,7 @@ export default function WebDevelopmentPage() {
         <div className="mx-auto max-w-7xl">
           <div className="mb-12 text-center">
             <h2 className="mb-4 font-serif text-3xl font-bold text-foreground md:text-4xl">
-              Types of Web Projects We Build
+              Website Development Services We Offer
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
               From simple landing pages to complex web applications, Worksthal delivers custom solutions
@@ -239,7 +340,7 @@ export default function WebDevelopmentPage() {
         <div className="mx-auto max-w-7xl">
           <div className="mb-12 text-center">
             <h2 className="mb-4 font-serif text-3xl font-bold text-foreground md:text-4xl">
-              Our Technology Stack
+              Web Development Technologies and Tools
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
               We use industry-leading technologies to build scalable, maintainable web applications.
@@ -271,7 +372,7 @@ export default function WebDevelopmentPage() {
         <div className="mx-auto max-w-5xl">
           <div className="mb-12 text-center">
             <h2 className="mb-4 font-serif text-3xl font-bold text-foreground md:text-4xl">
-              Our Development Process
+              Our Website Development Process
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
               We follow a structured approach to ensure your website is delivered on time, on budget,
@@ -297,6 +398,131 @@ export default function WebDevelopmentPage() {
         </div>
       </section>
 
+      {/* What is Modern Web Development? */}
+      <section className="w-full px-4 py-20">
+        <div className="mx-auto max-w-3xl">
+          <h2 className="mb-6 font-serif text-3xl font-bold text-foreground md:text-4xl">
+            What is Modern Web Development?
+          </h2>
+          <div className="space-y-4 text-lg leading-relaxed text-muted-foreground">
+            <p>
+              <strong className="text-foreground">Modern web development</strong> uses frameworks like{" "}
+              <Link
+                href="/blog/nextjs-vs-react-comparison"
+                className="font-medium text-secondary underline underline-offset-4 hover:text-secondary/90"
+              >
+                Next.js and React
+              </Link>{" "}
+              to build fast, scalable websites with server-side rendering, type safety, and built-in SEO. Unlike legacy CMS platforms, modern stacks deliver better performance, security, and maintainability.
+            </p>
+            <p>
+              Worksthal builds websites with Next.js, React, and TypeScript. These technologies power sites used by Netflix, Notion, and TikTok. Server-rendered content improves search rankings and Core Web Vitals. For businesses that want to appear in AI-generated answers, we offer{" "}
+              <Link
+                href="/services/aeo"
+                className="font-medium text-secondary underline underline-offset-4 hover:text-secondary/90"
+              >
+                AI Engine Optimization (AEO)
+              </Link>{" "}
+              to optimize content for ChatGPT, Claude, Perplexity, and Google AI Overviews.
+            </p>
+            <p>
+              Modern web development reduces load times, improves conversion rates, and future-proofs your digital presence. Worksthal delivers custom websites tailored to your business goals.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="w-full bg-gradient-to-b from-card/50 to-background px-4 py-20">
+        <div className="mx-auto max-w-3xl">
+          <h2 className="mb-8 font-serif text-3xl font-bold text-foreground md:text-4xl">
+            Frequently Asked Questions
+          </h2>
+          <div className="space-y-6">
+            {pageFaqs.map((faq, index) => (
+              <div
+                key={index}
+                className="rounded-2xl border border-border bg-card p-6 transition-all hover:border-secondary/30"
+              >
+                <h3 className="mb-3 text-lg font-semibold text-foreground">{faq.question}</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  {faq.question === "Does Worksthal build SEO-optimized websites?" && (
+                    <>
+                      Yes. Worksthal delivers server-rendered content, structured data (JSON-LD), semantic HTML, and Core Web Vitals optimization. For deeper AI visibility, explore our{" "}
+                      <Link
+                        href="/services/aeo"
+                        className="font-medium text-secondary underline underline-offset-4 hover:text-secondary/90"
+                      >
+                        AI Engine Optimization (AEO)
+                      </Link>{" "}
+                      services.
+                    </>
+                  )}
+                  {faq.question === "What is Next.js web development?" && (
+                    <>
+                      Next.js is a React framework that enables server-side rendering (SSR), static site generation, and full-stack capabilities. Companies like Netflix, Notion, and TikTok use Next.js for fast, scalable web applications. Worksthal builds websites with Next.js for optimal performance and SEO.
+                    </>
+                  )}
+                  {faq.question === "How long does it take to build a website with Next.js?" && (
+                    <>
+                      Landing pages and simple corporate sites typically take 2–4 weeks. Complex web applications with authentication, dashboards, or e-commerce features take 6–12 weeks. Worksthal provides detailed timelines during the discovery phase.
+                    </>
+                  )}
+                  {faq.question === "Can Worksthal redesign my existing website?" && (
+                    <>
+                      Yes. Worksthal migrates sites from WordPress, Wix, Squarespace, and other platforms to modern Next.js while preserving SEO rankings. We handle content migration, redirects, and structured data updates.
+                    </>
+                  )}
+                  {faq.question === "What is the cost of a custom website?" && (
+                    <>
+                      Corporate websites and landing pages typically range from $5,000 to $15,000. E-commerce and SaaS applications cost more based on scope. Worksthal provides transparent quotes after a{" "}
+                      <Link
+                        href="/faq"
+                        className="font-medium text-secondary underline underline-offset-4 hover:text-secondary/90"
+                      >
+                        free consultation
+                      </Link>
+                      .
+                    </>
+                  )}
+                </p>
+              </div>
+            ))}
+          </div>
+          <p className="mt-8 text-center text-muted-foreground">
+            Have more questions? Visit our{" "}
+            <Link
+              href="/faq"
+              className="font-medium text-secondary underline underline-offset-4 hover:text-secondary/90"
+            >
+              FAQ page
+            </Link>{" "}
+            or explore our{" "}
+            <Link
+              href="/services/ai-automation"
+              className="font-medium text-secondary underline underline-offset-4 hover:text-secondary/90"
+            >
+              AI automation
+            </Link>
+            ,{" "}
+            <Link
+              href="/services/aeo"
+              className="font-medium text-secondary underline underline-offset-4 hover:text-secondary/90"
+            >
+              AEO
+            </Link>
+            , and{" "}
+            <Link
+              href="/services/ai-marketing"
+              className="font-medium text-secondary underline underline-offset-4 hover:text-secondary/90"
+            >
+              AI marketing
+            </Link>{" "}
+            services. Learn more <Link href="/about" className="font-medium text-secondary underline underline-offset-4 hover:text-secondary/90">about Worksthal</Link>.
+          </p>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="w-full px-4 py-20 md:py-32">
         <div className="mx-auto max-w-4xl rounded-3xl border border-border bg-gradient-to-br from-card to-card/50 p-8 text-center md:p-12">
@@ -309,7 +535,7 @@ export default function WebDevelopmentPage() {
             Ready to Build Your Website?
           </h2>
           <p className="mb-8 text-lg text-muted-foreground">
-            Schedule a free consultation to discuss your project. We'll help you define requirements,
+            Schedule a free consultation to discuss your project. We&apos;ll help you define requirements,
             estimate timelines, and create a roadmap for success.
           </p>
           <Link

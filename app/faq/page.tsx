@@ -1,9 +1,6 @@
-"use client";
-
-import type { Metadata } from "next";
-import { useState } from "react";
-import { ChevronDown, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { FaqAccordion } from "@/components/ui/faq-accordion";
 
 const faqs = [
   {
@@ -12,7 +9,7 @@ const faqs = [
       {
         question: "What services does Worksthal offer?",
         answer:
-          "Worksthal offers four core services: AI Workflow Automation (custom workflows using n8n, Make, and AI APIs that eliminate repetitive tasks), Website Design and Development (fast, responsive sites built with Next.js, React, and TypeScript), AI-Optimized Audit and Visibility (AEO — structured data implementation, semantic content optimization, and AI crawler configuration), and AI-Driven Marketing (data-driven campaigns powered by analytics and AI tools).",
+          "Worksthal offers four core services: AI Workflow Automation (custom workflows using n8n, Make, and AI APIs that eliminate repetitive tasks), Website Design and Development (fast, responsive sites built with Next.js, React, and TypeScript), AI-Optimized Audit and Visibility (AEO: structured data implementation, semantic content optimization, and AI crawler configuration), and AI-Driven Marketing (data-driven campaigns powered by analytics and AI tools).",
       },
       {
         question: "Where is Worksthal located?",
@@ -27,7 +24,7 @@ const faqs = [
       {
         question: "What industries does Worksthal serve?",
         answer:
-          "Worksthal works with growing businesses across various industries including SaaS, e-commerce, professional services, healthcare, education, and technology. The agency's services are industry-agnostic — if you have repetitive tasks to automate, need a modern website, or want to improve your search visibility, Worksthal can help.",
+          "Worksthal works with growing businesses across various industries including SaaS, e-commerce, professional services, healthcare, education, and technology. The agency's services are industry-agnostic. If you have repetitive tasks to automate, need a modern website, or want to improve your search visibility, Worksthal can help.",
       },
     ],
   },
@@ -37,7 +34,7 @@ const faqs = [
       {
         question: "How much time can AI automation save my business?",
         answer:
-          "The time savings depend on your specific workflows and processes. Worksthal's AI automation workflows typically eliminate hours of manual work every week. Most clients see measurable time savings immediately after deployment. Worksthal builds custom workflows tailored to your existing tools and processes — connecting CRMs, email platforms, databases, and third-party APIs into seamless automated pipelines.",
+          "The time savings depend on your specific workflows and processes. Worksthal's AI automation workflows typically eliminate hours of manual work every week. Most clients see measurable time savings immediately after deployment. Worksthal builds custom workflows tailored to your existing tools and processes, connecting CRMs, email platforms, databases, and third-party APIs into seamless automated pipelines.",
       },
       {
         question: "What tools does Worksthal use for automation?",
@@ -62,7 +59,7 @@ const faqs = [
       {
         question: "What technologies does Worksthal use for web development?",
         answer:
-          "Worksthal builds websites using Next.js, React, TypeScript, and Tailwind CSS — the same modern stack used by companies like Vercel, Netflix, and Notion. These frameworks deliver fast load times, server-side rendering for SEO, and responsive designs that work on all devices. Worksthal also integrates Node.js backends, API connections, and AI-powered features into web applications.",
+          "Worksthal builds websites using Next.js, React, TypeScript, and Tailwind CSS. This is the same modern stack used by companies like Vercel, Netflix, and Notion. These frameworks deliver fast load times, server-side rendering for SEO, and responsive designs that work on all devices. Worksthal also integrates Node.js backends, API connections, and AI-powered features into web applications.",
       },
       {
         question: "How long does it take to build a website?",
@@ -97,7 +94,7 @@ const faqs = [
       {
         question: "Does Worksthal guarantee first-page rankings?",
         answer:
-          "No. Any agency that guarantees specific rankings is misleading you — search rankings depend on hundreds of factors including competition, content quality, backlinks, and algorithm updates. Worksthal focuses on implementing best practices that improve your visibility over time. The agency provides transparent reporting on rankings, traffic, and conversions so you can measure real business impact.",
+          "No. Any agency that guarantees specific rankings is misleading you. Search rankings depend on hundreds of factors including competition, content quality, backlinks, and algorithm updates. Worksthal focuses on implementing best practices that improve your visibility over time. The agency provides transparent reporting on rankings, traffic, and conversions so you can measure real business impact.",
       },
     ],
   },
@@ -128,11 +125,30 @@ const faqs = [
   },
 ];
 
-export default function FAQPage() {
-  const [openIndex, setOpenIndex] = useState<string | null>(null);
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.flatMap((cat) =>
+    cat.questions.map((q) => ({
+      "@type": "Question",
+      name: q.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: q.answer,
+      },
+    }))
+  ),
+};
 
+export default function FAQPage() {
   return (
     <main className="min-h-screen bg-background">
+      {/* FAQ JSON-LD structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+
       {/* Hero Section */}
       <section className="relative w-full px-4 pt-32 pb-20 md:pt-40 md:pb-32">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-background to-background" />
@@ -141,68 +157,21 @@ export default function FAQPage() {
             Common Questions
           </div>
           <h1 className="mb-6 font-serif text-5xl font-bold text-foreground md:text-6xl lg:text-7xl">
-            Frequently Asked{" "}
+            AI Automation, Web Development &amp; AEO:{" "}
             <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-              Questions
+              Frequently Asked Questions
             </span>
           </h1>
           <p className="mx-auto max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
-            Find answers to common questions about Worksthal's AI automation, web development, AEO
-            services, pricing, and process. Can't find what you're looking for? Contact us directly.
+            Find answers to common questions about Worksthal&apos;s AI automation, web development, AEO
+            services, pricing, and process. Can&apos;t find what you&apos;re looking for? Contact us directly.
           </p>
         </div>
       </section>
 
-      {/* FAQ Categories */}
+      {/* FAQ Categories — client accordion, all content always in DOM */}
       <section className="w-full px-4 py-12">
-        <div className="mx-auto max-w-4xl space-y-12">
-          {faqs.map((category, categoryIndex) => (
-            <div key={categoryIndex}>
-              <h2 className="mb-6 font-serif text-2xl font-bold text-foreground md:text-3xl">
-                {category.category}
-              </h2>
-              <div className="space-y-3">
-                {category.questions.map((faq, questionIndex) => {
-                  const faqId = `${categoryIndex}-${questionIndex}`;
-                  const isOpen = openIndex === faqId;
-
-                  return (
-                    <div
-                      key={questionIndex}
-                      className="group overflow-hidden rounded-2xl border border-border bg-card transition-all hover:border-primary/30"
-                    >
-                      <button
-                        onClick={() => setOpenIndex(isOpen ? null : faqId)}
-                        className="flex w-full items-center justify-between px-6 py-5 text-left transition-colors"
-                        aria-expanded={isOpen}
-                        aria-controls={`faq-answer-${faqId}`}
-                      >
-                        <span className="pr-4 text-base font-semibold text-foreground md:text-lg">
-                          {faq.question}
-                        </span>
-                        <ChevronDown
-                          className={`h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-200 ${
-                            isOpen ? "rotate-180" : ""
-                          }`}
-                        />
-                      </button>
-                      {isOpen && (
-                        <div
-                          id={`faq-answer-${faqId}`}
-                          className="px-6 pb-5"
-                        >
-                          <p className="text-sm leading-relaxed text-muted-foreground md:text-base">
-                            {faq.answer}
-                          </p>
-                        </div>
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          ))}
-        </div>
+        <FaqAccordion faqs={faqs} />
       </section>
 
       {/* CTA Section */}
@@ -215,13 +184,21 @@ export default function FAQPage() {
             Schedule a free consultation to discuss your specific needs and get personalized answers to
             your questions.
           </p>
-          <Link
-            href="/contact"
-            className="inline-flex items-center gap-2 rounded-lg bg-primary px-8 py-4 text-base font-semibold text-primary-foreground transition-all hover:bg-primary/90"
-          >
-            Get a Free Consultation
-            <ArrowRight className="h-5 w-5" />
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 rounded-lg bg-primary px-8 py-4 text-base font-semibold text-primary-foreground transition-all hover:bg-primary/90"
+            >
+              Get a Free Consultation
+              <ArrowRight className="h-5 w-5" />
+            </Link>
+            <Link
+              href="/services"
+              className="inline-flex items-center gap-2 rounded-lg border border-border bg-background px-8 py-4 text-base font-semibold text-foreground transition-all hover:bg-card"
+            >
+              Explore Our Services
+            </Link>
+          </div>
         </div>
       </section>
     </main>

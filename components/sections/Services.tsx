@@ -33,13 +33,13 @@ export function Services() {
           <div className="relative shadow-[0_8px_32px_rgba(0,0,0,0.08),0_0_0_1px_rgba(255,255,255,0.1)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.3),0_0_0_1px_rgba(255,255,255,0.05)] rounded-[2rem]">
             <FeatureCarousel
               title="Comprehensive Digital Solutions"
-              description="Worksthal delivers AI workflow automation, modern web development, AI engine optimization (AEO), and data-driven marketing — each designed to generate measurable results and accelerate your business growth."
+              description="Worksthal delivers AI workflow automation, modern web development, AI engine optimization (AEO), and data-driven marketing. Each service is designed to generate measurable results and accelerate your business growth."
               image={{
                 step1light1: "/ai-card2.png",
                 step2light1: "/website preview.png",
                 step3light: "/aeo-card.png",
                 step4light: "/marketing-card.png",
-                alt: "Worksthal Services Showcase",
+                alt: "Worksthal AI automation, website development, AEO optimization, and AI marketing services",
               }}
               bgClass="!bg-gradient-to-br !from-[#e8e8eb] !via-[#dddde1] !to-[#d4d4d8] dark:!from-[#3a3a3f] dark:!via-[#2f2f34] dark:!to-[#27272a] !border-zinc-300/60 dark:!border-zinc-700/40"
             />

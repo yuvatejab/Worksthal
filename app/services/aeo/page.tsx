@@ -4,10 +4,98 @@ import Link from "next/link";
 
 const baseUrl = "https://www.worksthal.com";
 
+const pageFaqs = [
+  {
+    question: "What is AEO (AI Engine Optimization)?",
+    answer:
+      "AEO is the practice of optimizing your content and technical infrastructure so AI engines like ChatGPT, Claude, Perplexity, and Google AI Overviews can discover, understand, and cite your business when users ask relevant questions.",
+  },
+  {
+    question: "How is AEO different from SEO?",
+    answer:
+      "SEO targets search engine rankings and organic traffic; AEO targets AI citations and visibility in AI-generated answers. Both are complementary. Strong SEO foundations support AEO, and AEO optimizations often improve traditional search performance.",
+  },
+  {
+    question: "How do I get my business cited by ChatGPT?",
+    answer:
+      "Ensure your site is indexed in Bing (ChatGPT uses Bing for web search), implement structured data (JSON-LD schemas), write answer-first content with clear semantic triples, and allow GPTBot in your robots.txt so OpenAI can crawl your pages.",
+  },
+  {
+    question: "How long does AEO take to show results?",
+    answer:
+      "Technical fixes like structured data and crawler configuration typically show impact within 4–8 weeks. Content-based improvements and building topical authority usually take 3–6 months to influence AI citation patterns.",
+  },
+  {
+    question: "Does Worksthal offer AEO audits?",
+    answer:
+      "Yes. Worksthal offers a free initial AEO audit that analyzes how AI engines currently see your business, identifies optimization opportunities, and provides actionable recommendations.",
+  },
+];
+
+function PageJsonLd() {
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "AI Engine Optimization (AEO)",
+    description:
+      "Worksthal optimizes your content and technical infrastructure so AI assistants like ChatGPT, Perplexity, and Google AI Overviews can understand and recommend your business.",
+    provider: {
+      "@type": "Organization",
+      "@id": `${baseUrl}/#organization`,
+      name: "Worksthal",
+      url: baseUrl,
+    },
+    areaServed: "Worldwide",
+    url: `${baseUrl}/services/aeo`,
+    datePublished: "2024-01-01",
+    dateModified: "2026-02-27",
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: pageFaqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: baseUrl },
+      { "@type": "ListItem", position: 2, name: "Services", item: `${baseUrl}/services` },
+      { "@type": "ListItem", position: 3, name: "AI Engine Optimization (AEO)", item: `${baseUrl}/services/aeo` },
+    ],
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+    </>
+  );
+}
+
 export const metadata: Metadata = {
-  title: "AI Engine Optimization (AEO) Services — Get Cited by AI | Worksthal",
+  title: "AI Engine Optimization (AEO) Services | Get Cited by AI | Worksthal",
   description:
-    "Worksthal optimizes your content for AI assistants like ChatGPT, Perplexity, and Google AI Overviews. Increase visibility in AI-powered search with structured data, semantic optimization, and AI crawler configuration.",
+    "AEO services and AI engine optimization to get your business cited by ChatGPT, Perplexity, and Google AI Overviews. Structured data, semantic optimization, AEO audit, and AI crawler configuration. Free consultation.",
   keywords: [
     "AEO services",
     "AI engine optimization",
@@ -17,6 +105,13 @@ export const metadata: Metadata = {
     "Google AI Overviews",
     "structured data implementation",
     "semantic SEO",
+    "AEO audit",
+    "AEO audit services",
+    "answer engine optimization",
+    "optimize for AI search",
+    "AI visibility optimization",
+    "AEO optimization",
+    "get cited by AI",
   ],
   alternates: {
     canonical: `${baseUrl}/services/aeo`,
@@ -127,6 +222,7 @@ const process = [
 export default function AEOPage() {
   return (
     <main className="min-h-screen bg-background">
+      <PageJsonLd />
       {/* Hero Section */}
       <section className="relative w-full px-4 pt-32 pb-20 md:pt-40 md:pb-32">
         <div className="absolute inset-0 bg-gradient-to-b from-accent/5 via-background to-background" />
@@ -169,7 +265,7 @@ export default function AEOPage() {
         <div className="mx-auto max-w-7xl">
           <div className="mb-12 text-center">
             <h2 className="mb-4 font-serif text-3xl font-bold text-foreground md:text-4xl">
-              Why AEO Matters in 2026
+              Why AI Engine Optimization (AEO) Matters in 2026
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
               The search landscape has fundamentally changed. AI assistants are now the primary research
@@ -195,7 +291,7 @@ export default function AEOPage() {
         <div className="mx-auto max-w-7xl">
           <div className="mb-12 text-center">
             <h2 className="mb-4 font-serif text-3xl font-bold text-foreground md:text-4xl">
-              Benefits of AEO
+              Benefits of AEO Optimization Services
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
               AEO optimization increases your visibility across both traditional search engines and
@@ -227,7 +323,7 @@ export default function AEOPage() {
         <div className="mx-auto max-w-7xl">
           <div className="mb-12 text-center">
             <h2 className="mb-4 font-serif text-3xl font-bold text-foreground md:text-4xl">
-              Our AEO Services
+              AEO Audit and Optimization Services
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
               Comprehensive AEO optimization covering technical infrastructure, content strategy, and
@@ -266,7 +362,7 @@ export default function AEOPage() {
         <div className="mx-auto max-w-5xl">
           <div className="mb-12 text-center">
             <h2 className="mb-4 font-serif text-3xl font-bold text-foreground md:text-4xl">
-              Our AEO Process
+              Our AEO Optimization Process
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
               We follow a data-driven approach to maximize your visibility in AI-powered search results.
@@ -288,6 +384,73 @@ export default function AEOPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* What is AEO */}
+      <section className="w-full bg-gradient-to-b from-card/50 to-background px-4 py-20">
+        <div className="mx-auto max-w-3xl">
+          <h2 className="mb-6 font-serif text-3xl font-bold text-foreground md:text-4xl">
+            What is AI Engine Optimization (AEO)?
+          </h2>
+          <div className="space-y-4 text-lg leading-relaxed text-muted-foreground">
+            <p>
+              <strong className="text-foreground">AI Engine Optimization (AEO) is the practice of optimizing your content and technical infrastructure so AI assistants like ChatGPT, Claude, Perplexity, and Google AI Overviews can discover, understand, and cite your business.</strong> Unlike traditional SEO, which focuses on search rankings and organic traffic, AEO targets visibility in AI-generated answers, where 70% of consumers now conduct research.
+            </p>
+            <p>
+              AEO combines structured data implementation, semantic content optimization, and AI crawler configuration. The goal is to make your business the authoritative source AI engines recommend when users ask relevant questions. Key tactics include JSON-LD schema markup, answer-first content with semantic triples, and proper robots.txt and llms.txt configuration for AI crawlers. Learn more about{" "}
+              <Link href="/blog/aeo-vs-seo-difference" className="font-medium text-accent underline-offset-4 hover:underline">
+                how AEO differs from SEO
+              </Link>
+              {" "}and explore our{" "}
+              <Link href="/services/ai-marketing" className="font-medium text-accent underline-offset-4 hover:underline">
+                AI marketing services
+              </Link>
+              .
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="w-full px-4 py-20">
+        <div className="mx-auto max-w-3xl">
+          <h2 className="mb-8 font-serif text-3xl font-bold text-foreground md:text-4xl">
+            Frequently Asked Questions
+          </h2>
+          <div className="space-y-6">
+            {pageFaqs.map((faq, index) => (
+              <div
+                key={index}
+                className="rounded-2xl border border-border bg-card p-6 transition-all hover:border-accent/30"
+              >
+                <h3 className="mb-3 text-lg font-semibold text-foreground">{faq.question}</h3>
+                <p className="text-muted-foreground">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+          <p className="mt-8 text-center text-muted-foreground">
+            Have more questions? Visit our{" "}
+            <Link href="/faq" className="font-medium text-accent underline-offset-4 hover:underline">
+              FAQ page
+            </Link>
+            , or explore{" "}
+            <Link href="/services/ai-automation" className="font-medium text-accent underline-offset-4 hover:underline">
+              AI automation
+            </Link>
+            ,{" "}
+            <Link href="/services/web-development" className="font-medium text-accent underline-offset-4 hover:underline">
+              web development
+            </Link>
+            , and{" "}
+            <Link href="/services/ai-marketing" className="font-medium text-accent underline-offset-4 hover:underline">
+              AI marketing
+            </Link>
+            {" "}services. Learn more{" "}
+            <Link href="/about" className="font-medium text-accent underline-offset-4 hover:underline">
+              about Worksthal
+            </Link>.
+          </p>
         </div>
       </section>
 

@@ -300,7 +300,7 @@ const StepImage = forwardRef<
 )
 StepImage.displayName = "StepImage"
 
-const MotionStepImage = motion(StepImage)
+const MotionStepImage = motion.create(StepImage)
 
 /**
  * Wrapper component for StepImage that applies animation presets.

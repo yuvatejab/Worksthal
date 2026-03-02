@@ -4,10 +4,98 @@ import Link from "next/link";
 
 const baseUrl = "https://www.worksthal.com";
 
+const pageFaqs = [
+  {
+    question: "What is AI-driven marketing?",
+    answer:
+      "AI-driven marketing is data-driven marketing that uses AI analytics from tools like Google Analytics, Ahrefs, and Semrush to create targeted campaigns, optimize ad spend, and deliver measurable ROI.",
+  },
+  {
+    question: "How does Worksthal measure marketing success?",
+    answer:
+      "Worksthal tracks conversion rates, ROAS (return on ad spend), cost per acquisition, and organic traffic growth. We provide transparent reporting with actionable insights so you always know how your campaigns perform.",
+  },
+  {
+    question: "Does Worksthal manage Google Ads and Meta Ads?",
+    answer:
+      "Yes. Worksthal handles full campaign setup, audience targeting, bid optimization, and performance reporting for Google Ads, Meta Ads, and LinkedIn campaigns.",
+  },
+  {
+    question: "How quickly can I expect marketing results?",
+    answer:
+      "SEO and content marketing typically show meaningful results in 3–6 months. Paid advertising can deliver measurable results within 2–4 weeks of campaign launch.",
+  },
+  {
+    question: "What is the minimum budget for marketing services?",
+    answer:
+      "SEO and content marketing services start at $2,000/month. Paid ads management varies based on ad spend and campaign scope. Contact us for a custom quote.",
+  },
+];
+
+function PageJsonLd() {
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "AI-Driven Marketing",
+    description:
+      "Data-driven marketing campaigns powered by AI analytics. Targeted content strategies, optimized ad spend, and measurable ROI using Google Analytics, Ahrefs, and Semrush.",
+    provider: {
+      "@type": "Organization",
+      "@id": `${baseUrl}/#organization`,
+      name: "Worksthal",
+      url: baseUrl,
+    },
+    areaServed: "Worldwide",
+    url: `${baseUrl}/services/ai-marketing`,
+    datePublished: "2024-01-01",
+    dateModified: "2026-02-27",
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: pageFaqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: baseUrl },
+      { "@type": "ListItem", position: 2, name: "Services", item: `${baseUrl}/services` },
+      { "@type": "ListItem", position: 3, name: "AI-Driven Marketing", item: `${baseUrl}/services/ai-marketing` },
+    ],
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+    </>
+  );
+}
+
 export const metadata: Metadata = {
-  title: "AI-Driven Marketing Services — Data-Driven Growth | Worksthal",
+  title: "AI-Driven Marketing Services | Data-Driven Growth | Worksthal",
   description:
-    "Worksthal delivers data-driven marketing campaigns powered by AI analytics. Get targeted content strategies, optimized ad spend, and measurable ROI using Google Analytics, Ahrefs, and Semrush.",
+    "AI marketing services and SEO optimization including data-driven campaigns, SEO audit, content strategy, and PPC management using Google Analytics, Ahrefs, and Semrush. Measurable ROI for businesses worldwide. Free consultation.",
   keywords: [
     "AI marketing services",
     "data-driven marketing",
@@ -17,6 +105,13 @@ export const metadata: Metadata = {
     "PPC management",
     "marketing analytics",
     "conversion optimization",
+    "SEO optimization",
+    "SEO audit",
+    "SEO agency",
+    "marketing automation",
+    "AI marketing agency",
+    "digital marketing services",
+    "SEO consultant",
   ],
   alternates: {
     canonical: `${baseUrl}/services/ai-marketing`,
@@ -127,6 +222,7 @@ const process = [
 export default function AIMarketingPage() {
   return (
     <main className="min-h-screen bg-background">
+      <PageJsonLd />
       {/* Hero Section */}
       <section className="relative w-full px-4 pt-32 pb-20 md:pt-40 md:pb-32">
         <div className="absolute inset-0 bg-gradient-to-b from-success/5 via-background to-background" />
@@ -151,7 +247,7 @@ export default function AIMarketingPage() {
             Worksthal delivers data-driven marketing campaigns powered by AI analytics. Using tools like
             Google Analytics, Search Console, Ahrefs, and Semrush, Worksthal creates targeted content
             strategies, optimizes ad spend for maximum ROI, and identifies the growth levers that
-            actually increase your revenue — not just vanity metrics.
+            actually increase your revenue, not just vanity metrics.
           </p>
           
           <Link
@@ -169,7 +265,7 @@ export default function AIMarketingPage() {
         <div className="mx-auto max-w-7xl">
           <div className="mb-12 text-center">
             <h2 className="mb-4 font-serif text-3xl font-bold text-foreground md:text-4xl">
-              Why Data-Driven Marketing?
+              Why AI-Powered Marketing and SEO Services?
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
               Stop guessing and start growing. Data-driven marketing eliminates waste and focuses
@@ -201,7 +297,7 @@ export default function AIMarketingPage() {
         <div className="mx-auto max-w-7xl">
           <div className="mb-12 text-center">
             <h2 className="mb-4 font-serif text-3xl font-bold text-foreground md:text-4xl">
-              Our Marketing Services
+              Digital Marketing and SEO Optimization Services
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
               Comprehensive marketing services covering SEO, paid advertising, conversion optimization,
@@ -240,7 +336,7 @@ export default function AIMarketingPage() {
         <div className="mx-auto max-w-7xl">
           <div className="mb-12 text-center">
             <h2 className="mb-4 font-serif text-3xl font-bold text-foreground md:text-4xl">
-              Tools & Platforms We Use
+              Marketing and SEO Optimization Tools
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
               We leverage industry-leading tools to deliver data-driven insights and measurable results.
@@ -269,7 +365,7 @@ export default function AIMarketingPage() {
         <div className="mx-auto max-w-5xl">
           <div className="mb-12 text-center">
             <h2 className="mb-4 font-serif text-3xl font-bold text-foreground md:text-4xl">
-              Our Marketing Process
+              Our AI Marketing and SEO Process
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
               We follow a data-driven approach to maximize ROI and deliver sustainable growth.
@@ -291,6 +387,84 @@ export default function AIMarketingPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* What is AI-Driven Marketing? */}
+      <section className="w-full px-4 py-20">
+        <div className="mx-auto max-w-3xl">
+          <h2 className="mb-6 font-serif text-3xl font-bold text-foreground md:text-4xl">
+            What is AI-Driven Marketing?
+          </h2>
+          <div className="space-y-4 text-lg leading-relaxed text-muted-foreground">
+            <p>
+              AI-driven marketing is data-driven marketing that uses AI analytics from tools like
+              Google Analytics, Ahrefs, and Semrush to create targeted campaigns, optimize ad spend,
+              and deliver measurable ROI. Instead of guessing, you make decisions based on real
+              performance data.
+            </p>
+            <p>
+              Worksthal combines AI-powered insights with human strategy to deliver campaigns that
+              convert. We track conversion rates, ROAS, cost per acquisition, and organic traffic
+              growth, then optimize continuously. Every campaign is built on clear metrics, so you
+              know exactly what&apos;s working and what to adjust. This data-first approach reduces
+              wasted spend and focuses resources on strategies that drive real revenue.
+            </p>
+            <p>
+              Our approach aligns with{" "}
+              <Link href="/services/aeo" className="font-medium text-foreground underline underline-offset-4 hover:text-success">
+                AI Engine Optimization (AEO)
+              </Link>
+              , ensuring your brand stays visible as search evolves. Learn more about{" "}
+              <Link href="/blog/aeo-vs-seo-difference" className="font-medium text-foreground underline underline-offset-4 hover:text-success">
+                AEO vs SEO
+              </Link>
+              {" "}to understand how AI engines are changing how buyers discover brands and why
+              optimizing for citations matters as much as rankings.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="w-full bg-gradient-to-b from-card/50 to-background px-4 py-20">
+        <div className="mx-auto max-w-3xl">
+          <h2 className="mb-8 font-serif text-3xl font-bold text-foreground md:text-4xl">
+            Frequently Asked Questions
+          </h2>
+          <div className="space-y-6">
+            {pageFaqs.map((faq, index) => (
+              <div
+                key={index}
+                className="rounded-2xl border border-border bg-card p-6 transition-all hover:border-success/30"
+              >
+                <h3 className="mb-3 text-lg font-semibold text-foreground">{faq.question}</h3>
+                <p className="text-muted-foreground">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+          <p className="mt-8 text-center text-sm text-muted-foreground">
+            Have more questions?{" "}
+            <Link href="/faq" className="font-medium text-foreground underline underline-offset-4 hover:text-success">
+              View our full FAQ
+            </Link>
+            <span className="mx-2">·</span>
+            <Link href="/services/ai-automation" className="font-medium text-foreground underline underline-offset-4 hover:text-success">
+              AI Automation
+            </Link>
+            <span className="mx-2">·</span>
+            <Link href="/services/web-development" className="font-medium text-foreground underline underline-offset-4 hover:text-success">
+              Web Development
+            </Link>
+            <span className="mx-2">·</span>
+            <Link href="/services/aeo" className="font-medium text-foreground underline underline-offset-4 hover:text-success">
+              AEO Services
+            </Link>
+            <span className="mx-2">·</span>
+            <Link href="/about" className="font-medium text-foreground underline underline-offset-4 hover:text-success">
+              About Worksthal
+            </Link>
+          </p>
         </div>
       </section>
 

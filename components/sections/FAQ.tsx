@@ -9,12 +9,12 @@ const faqs = [
   {
     question: "What services does Worksthal offer?",
     answer:
-      "Worksthal offers four core services: AI Workflow Automation (custom workflows using n8n, Make, and AI APIs that save 20+ hours per week), Website Design and Development (fast, responsive sites built with Next.js, React, and TypeScript), AI-Optimized Audit and Visibility (AEO — structured data implementation, semantic content optimization, and AI crawler configuration), and AI-Driven Marketing (data-driven campaigns powered by analytics and AI tools).",
+      "Worksthal offers four core services: AI Workflow Automation (custom workflows using n8n, Make, and AI APIs that save 20+ hours per week), Website Design and Development (fast, responsive sites built with Next.js, React, and TypeScript), AI-Optimized Audit and Visibility (AEO: structured data implementation, semantic content optimization, and AI crawler configuration), and AI-Driven Marketing (data-driven campaigns powered by analytics and AI tools).",
   },
   {
     question: "How much time can AI automation save my business?",
     answer:
-      "Worksthal's AI automation workflows typically save clients 20+ hours per week on repetitive manual tasks. Most clients see measurable time savings within the first 30 days of deployment. Worksthal builds custom workflows tailored to your existing tools and processes — connecting CRMs, email platforms, databases, and third-party APIs into seamless automated pipelines.",
+      "Worksthal's AI automation workflows typically save clients 20+ hours per week on repetitive manual tasks. Most clients see measurable time savings within the first 30 days of deployment. Worksthal builds custom workflows tailored to your existing tools and processes, connecting CRMs, email platforms, databases, and third-party APIs into seamless automated pipelines.",
   },
   {
     question: "What is AEO and why does it matter for my business?",
@@ -24,7 +24,7 @@ const faqs = [
   {
     question: "What technologies does Worksthal use for web development?",
     answer:
-      "Worksthal builds websites using Next.js, React, TypeScript, and Tailwind CSS — the same modern stack used by companies like Vercel, Netflix, and Notion. These frameworks deliver sub-2-second load times, server-side rendering for SEO, and responsive designs that work on all devices. Worksthal also integrates Node.js backends, API connections, and AI-powered features into web applications.",
+      "Worksthal builds websites using Next.js, React, TypeScript, and Tailwind CSS, the same modern stack used by companies like Vercel, Netflix, and Notion. These frameworks deliver sub-2-second load times, server-side rendering for SEO, and responsive designs that work on all devices. Worksthal also integrates Node.js backends, API connections, and AI-powered features into web applications.",
   },
   {
     question: "How quickly can I expect results from working with Worksthal?",

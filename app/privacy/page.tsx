@@ -4,7 +4,7 @@ import Link from "next/link";
 const baseUrl = "https://www.worksthal.com";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — Worksthal",
+  title: "Privacy Policy | Worksthal",
   description:
     "Worksthal's privacy policy explains how we collect, use, and protect your personal information when you use our services or visit our website.",
   alternates: {

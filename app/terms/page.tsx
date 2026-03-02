@@ -4,7 +4,7 @@ import Link from "next/link";
 const baseUrl = "https://www.worksthal.com";
 
 export const metadata: Metadata = {
-  title: "Terms of Service — Worksthal",
+  title: "Terms of Service | Worksthal",
   description:
     "Worksthal's terms of service outline the rules and regulations for using our website and services. Read our terms before engaging with Worksthal.",
   alternates: {

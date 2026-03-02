@@ -4,10 +4,76 @@ import Link from "next/link";
 
 const baseUrl = "https://www.worksthal.com";
 
+const pageFaqs = [
+  {
+    question: "What is AI workflow automation?",
+    answer: "AI workflow automation is the practice of using artificial intelligence and automation platforms like n8n, Make, and Zapier to streamline business processes, eliminate repetitive manual tasks, and improve operational efficiency. Worksthal builds custom AI automation workflows that connect existing business tools and trigger event-driven actions.",
+  },
+  {
+    question: "How much time can AI automation save my business?",
+    answer: "Worksthal's AI automation workflows typically eliminate 10-20 hours of manual work every week by automating repetitive data entry, processing, and routing tasks. The exact time savings depend on your specific workflows and processes.",
+  },
+  {
+    question: "What tools does Worksthal use for automation?",
+    answer: "Worksthal builds automation workflows using n8n, Make, Zapier, and custom API integrations. For AI capabilities, Worksthal integrates with OpenAI (GPT-4), Anthropic (Claude), Google (Gemini), and other AI services.",
+  },
+  {
+    question: "How long does it take to implement an automation workflow?",
+    answer: "Simple automation workflows take 1-2 weeks to implement. Complex workflows involving multiple systems, custom logic, and AI processing typically take 3-6 weeks. Worksthal follows an agile approach with regular check-ins.",
+  },
+  {
+    question: "Can Worksthal integrate with my existing tools?",
+    answer: "Yes. Worksthal specializes in connecting existing business tools into automated workflows. Common integrations include CRMs (Salesforce, HubSpot), email platforms (Gmail, Outlook), databases (PostgreSQL, Airtable), and thousands of other apps.",
+  },
+];
+
+function PageJsonLd() {
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "AI Workflow Automation",
+    description: "Worksthal builds custom AI automation workflows using n8n, Make, and AI APIs. These workflows connect existing business tools, automate repetitive data processing, and trigger event-driven actions in real time.",
+    provider: { "@type": "Organization", "@id": `${baseUrl}/#organization`, name: "Worksthal", url: baseUrl },
+    areaServed: { "@type": "Place", name: "Worldwide" },
+    serviceType: "AI Workflow Automation",
+    url: `${baseUrl}/services/ai-automation`,
+    datePublished: "2024-01-01",
+    dateModified: "2026-02-27",
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: pageFaqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: { "@type": "Answer", text: faq.answer },
+    })),
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: baseUrl },
+      { "@type": "ListItem", position: 2, name: "Services", item: `${baseUrl}/services` },
+      { "@type": "ListItem", position: 3, name: "AI Workflow Automation", item: `${baseUrl}/services/ai-automation` },
+    ],
+  };
+
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+    </>
+  );
+}
+
 export const metadata: Metadata = {
-  title: "AI Workflow Automation Services — Save Time & Reduce Errors | Worksthal",
+  title: "AI Workflow Automation Services | Save Time & Reduce Errors | Worksthal",
   description:
-    "Worksthal builds custom AI automation workflows using n8n, Make, and AI APIs. Automate repetitive tasks, connect business tools, and free up your team to focus on strategic work. Get a free consultation.",
+    "AI automation services using n8n, Make, and AI APIs. Eliminate 10-20 hours of manual work weekly. Custom workflow automation and business process automation for businesses worldwide. Free consultation.",
   keywords: [
     "AI workflow automation",
     "business process automation",
@@ -17,6 +83,13 @@ export const metadata: Metadata = {
     "AI automation agency",
     "task automation",
     "business automation solutions",
+    "automation services",
+    "automation consultants",
+    "intelligent automation",
+    "AI automation services",
+    "workflow automation tools",
+    "custom automation workflows",
+    "zapier alternative",
   ],
   alternates: {
     canonical: `${baseUrl}/services/ai-automation`,
@@ -107,6 +180,7 @@ const process = [
 export default function AIAutomationPage() {
   return (
     <main className="min-h-screen bg-background">
+      <PageJsonLd />
       {/* Hero Section */}
       <section className="relative w-full px-4 pt-32 pb-20 md:pt-40 md:pb-32">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-background to-background" />
@@ -130,7 +204,7 @@ export default function AIAutomationPage() {
           <p className="mb-8 text-lg leading-relaxed text-muted-foreground md:text-xl">
             Worksthal builds custom AI automation workflows using n8n, Make, and AI APIs. These workflows
             connect your existing business tools, automate repetitive data processing, and trigger
-            event-driven actions in real time — eliminating manual work and reducing errors.
+            event-driven actions in real time, eliminating manual work and reducing errors.
           </p>
           
           <Link
@@ -148,7 +222,7 @@ export default function AIAutomationPage() {
         <div className="mx-auto max-w-7xl">
           <div className="mb-12 text-center">
             <h2 className="mb-4 font-serif text-3xl font-bold text-foreground md:text-4xl">
-              Why Automate Your Workflows?
+              Why Use AI Workflow Automation Services?
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
               AI workflow automation transforms how your business operates by eliminating manual tasks
@@ -180,7 +254,7 @@ export default function AIAutomationPage() {
         <div className="mx-auto max-w-7xl">
           <div className="mb-12 text-center">
             <h2 className="mb-4 font-serif text-3xl font-bold text-foreground md:text-4xl">
-              Common Automation Use Cases
+              AI Automation Use Cases for Businesses
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
               Worksthal has built automation workflows for various business functions across industries.
@@ -206,7 +280,7 @@ export default function AIAutomationPage() {
         <div className="mx-auto max-w-5xl">
           <div className="mb-12 text-center">
             <h2 className="mb-4 font-serif text-3xl font-bold text-foreground md:text-4xl">
-              Our Automation Process
+              Our AI Workflow Automation Process
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
               We follow a structured approach to ensure your automation workflows deliver measurable
@@ -236,7 +310,7 @@ export default function AIAutomationPage() {
       <section className="w-full bg-gradient-to-b from-card/50 to-background px-4 py-20">
         <div className="mx-auto max-w-4xl text-center">
           <h2 className="mb-4 font-serif text-3xl font-bold text-foreground md:text-4xl">
-            Technologies We Use
+            AI Automation Tools and Technologies
           </h2>
           <p className="mb-8 text-lg text-muted-foreground">
             Worksthal builds automation workflows using industry-leading platforms and APIs.
@@ -252,6 +326,68 @@ export default function AIAutomationPage() {
                 </span>
               )
             )}
+          </div>
+        </div>
+      </section>
+
+      {/* What is AI Workflow Automation - AEO Content Block */}
+      <section className="w-full px-4 py-20">
+        <div className="mx-auto max-w-4xl">
+          <h2 className="mb-6 font-serif text-3xl font-bold text-foreground md:text-4xl">
+            What is AI Workflow Automation?
+          </h2>
+          <div className="space-y-4 text-base leading-relaxed text-muted-foreground">
+            <p>
+              <strong className="text-foreground">AI workflow automation is the practice of using artificial intelligence and automation platforms to streamline business processes, eliminate repetitive manual tasks, and improve operational efficiency.</strong> Worksthal builds custom AI automation workflows using n8n, Make, and direct AI API integrations that connect existing business tools into seamless automated pipelines.
+            </p>
+            <p>
+              Unlike simple rule-based automation that follows fixed if-then logic, AI-powered workflows can make decisions, process unstructured data, and adapt to changing conditions. Worksthal integrates AI services from OpenAI (GPT-4), Claude, and Gemini to enable workflows that understand natural language, extract information from documents, classify data, and generate content automatically.
+            </p>
+            <p>
+              Worksthal&apos;s AI automation workflows typically eliminate 10-20 hours of manual work every week. Common applications include lead qualification and CRM routing, invoice processing and data extraction, customer support ticket triage, content publishing pipelines, and automated report generation. These workflows process data at machine speed regardless of volume, enabling businesses to scale operations without proportionally increasing headcount.
+            </p>
+          </div>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <Link href="/blog/what-is-ai-workflow-automation" className="text-sm font-medium text-primary hover:underline">
+              Read: Complete Guide to AI Workflow Automation →
+            </Link>
+            <Link href="/blog/automate-business-processes-n8n" className="text-sm font-medium text-primary hover:underline">
+              Read: n8n Step-by-Step Guide →
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="w-full bg-gradient-to-b from-card/50 to-background px-4 py-20">
+        <div className="mx-auto max-w-4xl">
+          <h2 className="mb-8 font-serif text-3xl font-bold text-foreground md:text-4xl">
+            Frequently Asked Questions About AI Automation
+          </h2>
+          <div className="space-y-6">
+            {pageFaqs.map((faq, index) => (
+              <div key={index} className="rounded-2xl border border-border bg-card p-6">
+                <h3 className="mb-3 text-lg font-semibold text-foreground">{faq.question}</h3>
+                <p className="text-sm leading-relaxed text-muted-foreground">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-8 flex flex-wrap gap-4">
+            <Link href="/faq" className="text-sm font-medium text-primary hover:underline">
+              View all FAQs →
+            </Link>
+            <Link href="/services/web-development" className="text-sm font-medium text-primary hover:underline">
+              Web Development Services →
+            </Link>
+            <Link href="/services/aeo" className="text-sm font-medium text-primary hover:underline">
+              AEO Services →
+            </Link>
+            <Link href="/services/ai-marketing" className="text-sm font-medium text-primary hover:underline">
+              AI Marketing Services →
+            </Link>
+            <Link href="/about" className="text-sm font-medium text-primary hover:underline">
+              About Worksthal →
+            </Link>
           </div>
         </div>
       </section>

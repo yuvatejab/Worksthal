@@ -7,31 +7,31 @@ import { trackCTAClick, trackConversion } from "@/lib/analytics";
 
 export function Hero() {
   return (
-    <section id="home" className="relative flex min-h-screen w-full items-center overflow-hidden px-4 py-20 lg:py-32">
+    <section id="home" className="relative flex h-screen w-full items-center overflow-hidden px-4 py-0">
       {/* Subtle Background Gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-primary/5" />
       
-      <div className="relative z-10 mx-auto grid w-full max-w-7xl gap-12 lg:grid-cols-2 lg:gap-16 items-center">
+      <div className="relative z-10 mx-auto grid w-full max-w-7xl gap-8 lg:grid-cols-2 lg:gap-12 items-center">
         {/* Left Content */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
-          className="flex flex-col gap-8"
+          className="flex flex-col gap-7"
         >
           {/* Main Content */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="flex flex-col gap-6"
+            className="flex flex-col gap-5"
           >
             <h1 className="text-5xl font-bold leading-tight tracking-tight md:text-6xl lg:text-7xl bg-gradient-to-r from-zinc-900 via-zinc-700 to-zinc-500 dark:from-zinc-100 dark:via-zinc-200 dark:to-zinc-300 bg-clip-text text-transparent">
               Redefine Your{" "}
               <span className="block">Digital Footprint</span>
             </h1>
-            <p className="text-lg leading-relaxed text-muted-foreground md:text-xl max-w-xl">
-              From SEO audits and AI-ready content to custom web development and brand strategy, Worksthal delivers end-to-end digital solutions designed specifically for your business. We build personalized strategies that help you rank higher in search engines, get cited by AI platforms, and everywhere your customers search.
+            <p className="text-lg leading-relaxed text-muted-foreground max-w-xl">
+              AI automation, custom web development, AEO visibility, and data-driven marketing. All built to generate measurable results for your business.
             </p>
           </motion.div>
 
@@ -58,15 +58,48 @@ export function Hero() {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onClick={() => {
-                trackCTAClick("Request a demo", "Hero Section");
+                trackCTAClick("Book a Free Call", "Hero Section");
                 trackConversion("request_demo", 8);
                 document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
               }}
               className="rounded-xl border border-border bg-background/50 backdrop-blur-sm px-8 py-4 text-base font-semibold text-foreground transition-all hover:bg-card hover:shadow-lg"
             >
-              Request a demo
+              Book a Free Call
             </motion.button>
           </div>
+
+          {/* AEO-optimized service summary */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="grid grid-cols-2 gap-3"
+          >
+            <div className="flex items-start gap-2.5">
+              <Bot className="h-4 w-4 mt-0.5 shrink-0 text-primary" />
+              <p className="text-sm leading-relaxed text-muted-foreground">
+                <strong className="text-foreground">AI Automation</strong>: Custom workflows using n8n, Make, and AI APIs
+              </p>
+            </div>
+            <div className="flex items-start gap-2.5">
+              <Code2 className="h-4 w-4 mt-0.5 shrink-0 text-primary" />
+              <p className="text-sm leading-relaxed text-muted-foreground">
+                <strong className="text-foreground">Web Development</strong>: Fast, SEO-optimized websites with Next.js
+              </p>
+            </div>
+            <div className="flex items-start gap-2.5">
+              <Sparkles className="h-4 w-4 mt-0.5 shrink-0 text-primary" />
+              <p className="text-sm leading-relaxed text-muted-foreground">
+                <strong className="text-foreground">AEO Optimization</strong>: Get cited by ChatGPT, Claude, Perplexity
+              </p>
+            </div>
+            <div className="flex items-start gap-2.5">
+              <Zap className="h-4 w-4 mt-0.5 shrink-0 text-primary" />
+              <p className="text-sm leading-relaxed text-muted-foreground">
+                <strong className="text-foreground">AI Marketing</strong>: Data-driven campaigns with Ahrefs and Semrush
+              </p>
+            </div>
+          </motion.div>
         </motion.div>
 
         {/* Right Visual */}
@@ -77,7 +110,7 @@ export function Hero() {
           className="relative hidden lg:block"
         >
           {/* Main Visual Container */}
-          <div className="relative aspect-square w-full max-w-2xl">
+          <div className="relative aspect-square w-full max-w-xl mx-auto">
             {/* Background Gradient Blob */}
             <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/20 via-secondary/20 to-accent/20 blur-3xl" />
             
@@ -98,7 +131,7 @@ export function Hero() {
                 {/* Hero Image */}
                 <Image
                   src="/hero-img.webp"
-                  alt="AI Automation Robot"
+                  alt="Worksthal AI automation and website development services illustration"
                   width={640}
                   height={640}
                   priority
