@@ -316,6 +316,21 @@ export function HomeClient() {
                     &copy; {new Date().getFullYear()} Worksthal. All rights
                     reserved.
                   </p>
+                  <a
+                    href="https://www.producthunt.com/products/worksthal?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-worksthal"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition-opacity hover:opacity-80"
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1089036&theme=dark&t=1772528248037"
+                      alt="Worksthal - Redefine your Digital Footprint | Product Hunt"
+                      width={250}
+                      height={54}
+                      className="h-[40px] w-auto"
+                    />
+                  </a>
                   <div className="flex gap-6">
                     <a
                       href="/privacy"

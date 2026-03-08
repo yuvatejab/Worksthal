@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useId } from "react";
+import { motion } from "motion/react";
 import { LightRays } from "@/components/ui/light-rays";
 import {
   ExpandableScreen,
@@ -132,9 +133,58 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="relative w-full px-4 pt-32 pb-20 md:pt-40 md:pb-32">
+    <section id="contact" className="relative w-full px-4 pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden">
+      {/* Animated background layers */}
+      <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-primary/5 to-transparent" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/15 via-transparent to-transparent" />
+      
+      {/* Animated grid pattern */}
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
+      </div>
+
+      {/* Floating orbs */}
+      <motion.div
+        animate={{
+          y: [0, -20, 0],
+          opacity: [0.2, 0.4, 0.2],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        className="absolute top-20 left-10 w-64 h-64 bg-primary/20 rounded-full blur-3xl"
+      />
+      <motion.div
+        animate={{
+          y: [0, 20, 0],
+          opacity: [0.15, 0.3, 0.15],
+        }}
+        transition={{
+          duration: 10,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 1,
+        }}
+        className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/20 rounded-full blur-3xl"
+      />
+      <motion.div
+        animate={{
+          x: [-20, 20, -20],
+          opacity: [0.15, 0.25, 0.15],
+        }}
+        transition={{
+          duration: 12,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 2,
+        }}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-accent/20 rounded-full blur-3xl"
+      />
+
       {/* Background with Light Rays from bottom */}
-      <div className="absolute inset-0 z-0 rotate-180 opacity-50">
+      <div className="absolute inset-0 z-0 rotate-180 opacity-30">
         <LightRays
           count={5}
           color="rgba(161, 161, 170, 0.06)"
@@ -153,65 +203,97 @@ export function Contact() {
         >
           {/* Trigger Section */}
           <div className="flex min-h-[50vh] flex-col items-center justify-center text-center">
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-2 text-sm font-medium text-primary backdrop-blur-sm">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
+              className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 backdrop-blur-xl px-5 py-2.5 text-xs font-bold text-primary shadow-xl shadow-primary/20 tracking-wide uppercase"
+            >
               Get In Touch
-            </div>
-            <h2 className="mb-6 font-serif text-4xl font-bold text-foreground md:text-5xl lg:text-6xl">
-              Let's Build Something Great
-            </h2>
-            <p className="mb-12 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+            </motion.div>
+            <motion.h2 
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.1, ease: [0.32, 0.72, 0, 1] }}
+              className="mb-6 font-serif text-4xl font-bold text-foreground md:text-5xl lg:text-6xl tracking-tight"
+            >
+              Let's Build{" "}
+              <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
+                Something Great
+              </span>
+            </motion.h2>
+            <motion.p 
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.2, ease: [0.32, 0.72, 0, 1] }}
+              className="mb-12 max-w-2xl text-lg leading-relaxed text-muted-foreground"
+            >
               Tell us about your project and we'll show you how automation and modern technology can transform your business.
-            </p>
+            </motion.p>
 
             <ExpandableScreenTrigger>
-              <button className="rounded-lg bg-primary px-8 py-3 text-base font-semibold text-primary-foreground transition-all hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/20">
+              <motion.button 
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.3, ease: [0.32, 0.72, 0, 1] }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="rounded-lg bg-primary px-8 py-3 text-base font-semibold text-primary-foreground transition-all hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/20"
+              >
                 Schedule Free Consultation
-              </button>
+              </motion.button>
             </ExpandableScreenTrigger>
 
             {/* Contact Info */}
             <address className="mt-16 not-italic grid grid-cols-1 gap-6 md:grid-cols-3">
-              <div className="flex flex-col items-center gap-3 rounded-2xl border border-border bg-card/50 p-6 backdrop-blur-sm">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
-                  <Mail className="h-6 w-6 text-primary" />
-                </div>
-                <div className="text-center">
-                  <p className="mb-1 text-sm font-medium text-muted-foreground">Email</p>
-                  <a 
-                    href="mailto:shubham@worksthal.com" 
-                    onClick={() => trackEmailClick()}
-                    className="text-sm font-semibold text-foreground transition-colors hover:text-primary"
-                  >
-                    shubham@worksthal.com
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex flex-col items-center gap-3 rounded-2xl border border-border bg-card/50 p-6 backdrop-blur-sm">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
-                  <Phone className="h-6 w-6 text-primary" />
-                </div>
-                <div className="text-center">
-                  <p className="mb-1 text-sm font-medium text-muted-foreground">Phone</p>
-                  <a 
-                    href="tel:+916309821905" 
-                    onClick={() => trackPhoneClick()}
-                    className="text-sm font-semibold text-foreground transition-colors hover:text-primary"
-                  >
-                    +91 6309821905
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex flex-col items-center gap-3 rounded-2xl border border-border bg-card/50 p-6 backdrop-blur-sm">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
-                  <MapPin className="h-6 w-6 text-primary" />
-                </div>
-                <div className="text-center">
-                  <p className="mb-1 text-sm font-medium text-muted-foreground">Location</p>
-                  <p className="text-sm font-semibold text-foreground">India</p>
-                </div>
-              </div>
+              {[
+                {
+                  icon: Mail,
+                  label: "Email",
+                  value: "shubham@worksthal.com",
+                  href: "mailto:shubham@worksthal.com",
+                  onClick: trackEmailClick,
+                },
+                {
+                  icon: Phone,
+                  label: "Phone",
+                  value: "+91 6309821905",
+                  href: "tel:+916309821905",
+                  onClick: trackPhoneClick,
+                },
+                {
+                  icon: MapPin,
+                  label: "Location",
+                  value: "India",
+                },
+              ].map((item, idx) => (
+                <motion.div
+                  key={item.label}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 + idx * 0.1, duration: 0.5 }}
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  className="flex flex-col items-center gap-3 rounded-2xl border border-white/10 bg-card/50 backdrop-blur-xl p-6 shadow-lg hover:shadow-xl transition-all"
+                >
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
+                    <item.icon className="h-6 w-6 text-primary" />
+                  </div>
+                  <div className="text-center">
+                    <p className="mb-1 text-sm font-medium text-muted-foreground">{item.label}</p>
+                    {item.href ? (
+                      <a 
+                        href={item.href}
+                        onClick={item.onClick}
+                        className="text-sm font-semibold text-foreground transition-colors hover:text-primary"
+                      >
+                        {item.value}
+                      </a>
+                    ) : (
+                      <p className="text-sm font-semibold text-foreground">{item.value}</p>
+                    )}
+                  </div>
+                </motion.div>
+              ))}
             </address>
           </div>
 

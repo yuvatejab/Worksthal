@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { Search, Bot, TrendingUp, ArrowRight, CheckCircle2, Sparkles, Target, BarChart } from "lucide-react";
+import { Bot, TrendingUp, ArrowRight, CheckCircle2, Sparkles, Target, BarChart, Search } from "lucide-react";
 import Link from "next/link";
+import { ServiceHero } from "@/components/ServiceHero";
 
 const baseUrl = "https://www.worksthal.com";
 
@@ -223,42 +224,13 @@ export default function AEOPage() {
   return (
     <main className="min-h-screen bg-background">
       <PageJsonLd />
-      {/* Hero Section */}
-      <section className="relative w-full px-4 pt-32 pb-20 md:pt-40 md:pb-32">
-        <div className="absolute inset-0 bg-gradient-to-b from-accent/5 via-background to-background" />
-        <div className="relative z-10 mx-auto max-w-4xl">
-          <Link
-            href="/services"
-            className="mb-6 inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
-          >
-            ← Back to Services
-          </Link>
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/5 px-4 py-2 text-sm font-medium text-accent backdrop-blur-sm">
-            <Search className="h-4 w-4" />
-            AI Engine Optimization (AEO)
-          </div>
-          <h1 className="mb-6 font-serif text-5xl font-bold text-foreground md:text-6xl lg:text-7xl">
-            Get Your Business{" "}
-            <span className="bg-gradient-to-r from-accent via-primary to-secondary bg-clip-text text-transparent">
-              Cited by AI
-            </span>
-          </h1>
-          <p className="mb-8 text-lg leading-relaxed text-muted-foreground md:text-xl">
-            Worksthal optimizes your content and technical infrastructure so search engines and AI
-            assistants (ChatGPT, Perplexity, Google AI Overviews) can understand and recommend your
-            business. With 70% of consumers now using AI for research, AEO ensures your business stays
-            visible in the AI-driven search landscape.
-          </p>
-          
-          <Link
-            href="/contact"
-            className="inline-flex items-center gap-2 rounded-lg bg-accent px-8 py-4 text-base font-semibold text-accent-foreground transition-all hover:bg-accent/90"
-          >
-            Get a Free AEO Audit
-            <ArrowRight className="h-5 w-5" />
-          </Link>
-        </div>
-      </section>
+      <ServiceHero
+        iconName="search"
+        badge="AI Engine Optimization (AEO)"
+        title="Get Your Business"
+        gradientText="Cited by AI"
+        description="Worksthal optimizes your content and technical infrastructure so search engines and AI assistants (ChatGPT, Perplexity, Google AI Overviews) can understand and recommend your business. With 70% of consumers now using AI for research, AEO ensures your business stays visible in the AI-driven search landscape."
+      />
 
       {/* Why AEO Stats */}
       <section className="w-full bg-gradient-to-b from-card/50 to-background px-4 py-20">

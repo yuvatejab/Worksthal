@@ -1,0 +1,661 @@
+%PDF-1.3
+%ºß¬à
+3 0 obj
+<</Type /Page
+/Parent 1 0 R
+/Resources 2 0 R
+/MediaBox [0 0 595.2799999999999727 841.8899999999999864]
+/Contents 4 0 R
+>>
+endobj
+4 0 obj
+<<
+/Length 8872
+>>
+stream
+0.5670000000000001 w
+0 G
+BT
+/F2 16 Tf
+18.3999999999999986 TL
+0. g
+193.6377952755905483 813.5435433070865656 Td
+(YUVA TEJA BANDHARAPU) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0. g
+164.7577952755905244 800.7876377952756002 Td
+(+91 6301465458 | ybandharapu@gmail.com | Hyderabad, Telangana, India) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0. g
+161.1577952755905301 792.2837007874015853 Td
+(LinkedIn: linkedin.com/in/yuva-teja-bandharapu | GitHub: github.com/yuvateja) Tj
+ET
+0.8503937007874016 w
+28.3464566929133888 790.0159842519684616 m
+566.9291338582677326 790.0159842519684616 l
+S
+BT
+/F2 10 Tf
+11.5 TL
+0. g
+28.3464566929133888 780.0947244094487587 Td
+(PROFESSIONAL SUMMARY) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0. g
+28.3464566929133888 771.0238582677164914 Td
+(Computer Science Engineering student specializing in AI/ML with hands-on experience building production-grade full-stack applications. Developed) Tj
+T* (scalable web applications using React, Next.js, and FastAPI with proven ability to work in remote environments. Strong foundation in OOP, data) Tj
+T* (structures, algorithms, and modern web frameworks.) Tj
+ET
+BT
+/F2 10 Tf
+11.5 TL
+0. g
+28.3464566929133888 728.7876377952756002 Td
+(TECHNICAL SKILLS) Tj
+ET
+BT
+/F2 8 Tf
+9.1999999999999993 TL
+0. g
+28.3464566929133888 719.7167716535432191 Td
+(Programming Languages:) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0. g
+175.748031496063021 719.7167716535432191 Td
+(Python, JavaScript, C++, C, SQL, HTML, CSS, React, Next.js, FastAPI) Tj
+ET
+BT
+/F2 8 Tf
+9.1999999999999993 TL
+0. g
+28.3464566929133888 708.9451181102361943 Td
+(Technical Skills:) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0. g
+175.748031496063021 708.9451181102361943 Td
+(Object-Oriented Programming, Data Structures, Problem Solving, Machine Learning, Numpy, Pandas) Tj
+ET
+BT
+/F2 8 Tf
+9.1999999999999993 TL
+0. g
+28.3464566929133888 698.1734645669291695 Td
+(Development Tools & Practices:) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0. g
+175.748031496063021 698.1734645669291695 Td
+(Git, Version Control, Docker, CI/CD) Tj
+ET
+BT
+/F2 8 Tf
+9.1999999999999993 TL
+0. g
+28.3464566929133888 687.4018110236220309 Td
+(Cloud & Infrastructure:) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0. g
+175.748031496063021 687.4018110236220309 Td
+(AWS \(ECS, S3, SQS, Lambda, CloudWatch\), Docker, Containerization, Cloud Deployment) Tj
+ET
+BT
+/F2 10 Tf
+11.5 TL
+0. g
+28.3464566929133888 666.7088976377953031 Td
+(PROFESSIONAL EXPERIENCE) Tj
+ET
+BT
+/F2 9 Tf
+10.3499999999999996 TL
+0. g
+28.3464566929133888 657.6380314960630358 Td
+(Software Development Intern) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0. g
+491.889133858267769 657.6380314960630358 Td
+(Sep 2025 - Dec 2025) Tj
+ET
+BT
+/F3 8 Tf
+9.1999999999999993 TL
+0. g
+28.3464566929133888 648.5671653543306547 Td
+(BugRaid AI | Remote, Hyderabad) Tj
+ET
+BT
+/F2 8.5 Tf
+9.7749999999999986 TL
+0. g
+28.3464566929133888 638.6459055118109518 Td
+(Signal Fetching Agent) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0. g
+28.3464566929133888 630.1419685039370506 Td
+(•) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0. g
+39.6850393700787407 630.1419685039370506 Td
+(Built automated incident telemetry system using Python and AWS Bedrock \(Claude 4.5\), integrating with multiple monitoring platforms through) Tj
+T* (RESTful APIs, reducing manual investigation time for DevOps teams) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0. g
+28.3464566929133888 608.5986614173228872 Td
+(•) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0. g
+39.6850393700787407 608.5986614173228872 Td
+(Optimized data fetching with async HTTP/2 connections \(aiohttp\), parallel processing \(300 concurrent requests\), achieving 10,000 rows per API call) Tj
+T* (with 70-80% bandwidth reduction through gzip compression) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0. g
+28.3464566929133888 587.0553543307087239 Td
+(•) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0. g
+39.6850393700787407 587.0553543307087239 Td
+(Integrated Datadog MCP server for AI-driven telemetry access, reducing data retrieval latency by 40% and improving incident correlation for better) Tj
+T* (root cause analysis) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0. g
+28.3464566929133888 565.5120472440944468 Td
+(•) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0. g
+39.6850393700787407 565.5120472440944468 Td
+(Engineered high-performance S3 storage pipeline processing 100MB batches in parallel with thread pools \(12 workers\) for compression and real-time) Tj
+T* (streaming) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0. g
+28.3464566929133888 543.9687401574803971 Td
+(•) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0. g
+39.6850393700787407 543.9687401574803971 Td
+(Deployed production AWS infrastructure using ECS Fargate, Docker, ECR, SQS message queues, and automated CI/CD scripts for dev and prod) Tj
+T* (environments) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0. g
+28.3464566929133888 522.4254330708662337 Td
+(•) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0. g
+39.6850393700787407 522.4254330708662337 Td
+(Created tool-agnostic monitoring adapter pattern supporting multiple platforms \(SigNoz, Grafana, Datadog, CloudWatch\) with automatic source) Tj
+T* (detection) Tj
+ET
+BT
+/F2 8.5 Tf
+9.7749999999999986 TL
+0. g
+28.3464566929133888 496.6301574803150629 Td
+(OpenTelemetry Observability Pipeline) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0. g
+28.3464566929133888 488.1262204724410481 Td
+(•) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0. g
+39.6850393700787407 488.1262204724410481 Td
+(Deployed end-to-end OpenTelemetry observability implementing distributed tracing across 5 microservices with custom span attributes and context) Tj
+T* (propagation) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0. g
+28.3464566929133888 466.5829133858268847 Td
+(•) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0. g
+39.6850393700787407 466.5829133858268847 Td
+(Implemented comprehensive metrics tracking for data fetch duration, S3 uploads, queue processing, and AWS Bedrock LLM calls, providing visibility) Tj
+T* (into 100+ daily operations) Tj
+ET
+BT
+/F2 10 Tf
+11.5 TL
+0. g
+28.3464566929133888 435.1183464566930184 Td
+(PROJECTS) Tj
+ET
+BT
+/F2 9 Tf
+10.3499999999999996 TL
+0. g
+28.3464566929133888 426.047480314960751 Td
+(Deepfake Detection System) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0. g
+28.3464566929133888 417.5435433070867361 Td
+(•) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0. g
+39.6850393700787407 417.5435433070867361 Td
+(Engineered hybrid CNN/RNN video classification pipeline achieving 87% detection accuracy on benchmark datasets) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0. g
+28.3464566929133888 406.7718897637796545 Td
+(•) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0. g
+39.6850393700787407 406.7718897637796545 Td
+(Aggregated data from 3+ datasets \(FaceForensics++, Celeb-DF v4\) implementing frame extraction and temporal analysis techniques) Tj
+ET
+BT
+/F2 9 Tf
+10.3499999999999996 TL
+0. g
+28.3464566929133888 391.7482677165355085 Td
+(API Health Monitoring Dashboard) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0. g
+28.3464566929133888 383.2443307086614936 Td
+(•) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0. g
+39.6850393700787407 383.2443307086614936 Td
+(Developed full-stack monitoring dashboard for distributed systems analyzing 15,000+ daily traces using React, OpenTelemetry, Elasticsearch, and) Tj
+T* (Kibana) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0. g
+28.3464566929133888 361.7010236220473303 Td
+(•) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0. g
+39.6850393700787407 361.7010236220473303 Td
+(Built responsive front-end with data visualization components, reducing manual troubleshooting by 25%) Tj
+ET
+BT
+/F2 10 Tf
+11.5 TL
+0. g
+28.3464566929133888 341.0081102362205456 Td
+(EDUCATION) Tj
+ET
+BT
+/F2 8.5 Tf
+9.7749999999999986 TL
+0. g
+28.3464566929133888 331.9372440944882783 Td
+(B.Tech in Computer Science Engineering \(AI & ML\)) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0. g
+498.5291338582677554 331.9372440944882783 Td
+(Sep 2022 - Present) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0. g
+28.3464566929133888 323.4333070866142634 Td
+(Vishwakarma Institute of Technology | Pune) Tj
+ET
+BT
+/F2 8.5 Tf
+9.7749999999999986 TL
+0. g
+28.3464566929133888 313.5120472440945605 Td
+(HSC, Loyola Academy) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0. g
+524.6091338582677963 313.5120472440945605 Td
+(2020 - 2022) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0. g
+28.3464566929133888 305.0081102362205456 Td
+(undefined | Hyderabad) Tj
+ET
+BT
+/F2 10 Tf
+11.5 TL
+0. g
+28.3464566929133888 288.0002362204725159 Td
+(CERTIFICATIONS) Tj
+ET
+BT
+/F2 8 Tf
+9.1999999999999993 TL
+0. g
+28.3464566929133888 278.9293700787402486 Td
+(IBM Artificial Intelligence Engineer - Simplilearn) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0. g
+532.0491338582677372 278.9293700787402486 Td
+(May 2025) Tj
+ET
+BT
+/F2 8 Tf
+9.1999999999999993 TL
+0. g
+28.3464566929133888 269.8585039370079812 Td
+(Python for Data Science - Simplilearn) Tj
+ET
+BT
+/F1 8 Tf
+9.1999999999999993 TL
+0. g
+533.0091338582677736 269.8585039370079812 Td
+(Sep 2024) Tj
+ET
+endstream
+endobj
+1 0 obj
+<</Type /Pages
+/Kids [3 0 R ]
+/Count 1
+>>
+endobj
+5 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+6 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica-Bold
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+7 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica-Oblique
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+8 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica-BoldOblique
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+9 0 obj
+<<
+/Type /Font
+/BaseFont /Courier
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+10 0 obj
+<<
+/Type /Font
+/BaseFont /Courier-Bold
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+11 0 obj
+<<
+/Type /Font
+/BaseFont /Courier-Oblique
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+12 0 obj
+<<
+/Type /Font
+/BaseFont /Courier-BoldOblique
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+13 0 obj
+<<
+/Type /Font
+/BaseFont /Times-Roman
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+14 0 obj
+<<
+/Type /Font
+/BaseFont /Times-Bold
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+15 0 obj
+<<
+/Type /Font
+/BaseFont /Times-Italic
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+16 0 obj
+<<
+/Type /Font
+/BaseFont /Times-BoldItalic
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+17 0 obj
+<<
+/Type /Font
+/BaseFont /ZapfDingbats
+/Subtype /Type1
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+18 0 obj
+<<
+/Type /Font
+/BaseFont /Symbol
+/Subtype /Type1
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+2 0 obj
+<<
+/ProcSet [/PDF /Text /ImageB /ImageC /ImageI]
+/Font <<
+/F1 5 0 R
+/F2 6 0 R
+/F3 7 0 R
+/F4 8 0 R
+/F5 9 0 R
+/F6 10 0 R
+/F7 11 0 R
+/F8 12 0 R
+/F9 13 0 R
+/F10 14 0 R
+/F11 15 0 R
+/F12 16 0 R
+/F13 17 0 R
+/F14 18 0 R
+>>
+/XObject <<
+>>
+>>
+endobj
+19 0 obj
+<<
+/Producer (jsPDF 4.2.0)
+/CreationDate (D:20260306231811+05'30')
+>>
+endobj
+20 0 obj
+<<
+/Type /Catalog
+/Pages 1 0 R
+/OpenAction [3 0 R /FitH null]
+/PageLayout /OneColumn
+>>
+endobj
+xref
+0 21
+0000000000 65535 f 
+0000009076 00000 n 
+0000010893 00000 n 
+0000000015 00000 n 
+0000000152 00000 n 
+0000009133 00000 n 
+0000009258 00000 n 
+0000009388 00000 n 
+0000009521 00000 n 
+0000009658 00000 n 
+0000009781 00000 n 
+0000009910 00000 n 
+0000010042 00000 n 
+0000010178 00000 n 
+0000010306 00000 n 
+0000010433 00000 n 
+0000010562 00000 n 
+0000010695 00000 n 
+0000010797 00000 n 
+0000011141 00000 n 
+0000011227 00000 n 
+trailer
+<<
+/Size 21
+/Root 20 0 R
+/Info 19 0 R
+/ID [ <3219EC96EECF04A9DDAF377E2BCF2E9E> <3219EC96EECF04A9DDAF377E2BCF2E9E> ]
+>>
+startxref
+11331
+%%EOF

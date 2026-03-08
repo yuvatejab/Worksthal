@@ -8,7 +8,43 @@ export function Services() {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
 
   return (
-    <section id="services" className="relative w-full px-4 py-16 md:py-24">
+    <section id="services" className="relative w-full px-4 py-16 md:py-24 overflow-hidden">
+      {/* Animated background layers */}
+      <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent" />
+      
+      {/* Animated grid pattern */}
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
+      </div>
+
+      {/* Floating orbs */}
+      <motion.div
+        animate={{
+          y: [0, -15, 0],
+          opacity: [0.2, 0.35, 0.2],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        className="absolute top-10 left-10 w-64 h-64 bg-primary/15 rounded-full blur-3xl"
+      />
+      <motion.div
+        animate={{
+          y: [0, 15, 0],
+          opacity: [0.15, 0.3, 0.15],
+        }}
+        transition={{
+          duration: 10,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 1,
+        }}
+        className="absolute bottom-10 right-10 w-80 h-80 bg-secondary/15 rounded-full blur-3xl"
+      />
+
       <motion.div 
         ref={ref}
         initial={{ opacity: 0, y: 20 }}
@@ -18,9 +54,14 @@ export function Services() {
       >
         {/* Section Header */}
         <div className="mb-12 text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-zinc-300/40 bg-zinc-200/30 dark:border-zinc-400/20 dark:bg-zinc-400/10 px-4 py-2 text-sm font-medium text-zinc-700 dark:text-zinc-200 backdrop-blur-sm">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={isVisible ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+            transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
+            className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 backdrop-blur-xl px-5 py-2.5 text-xs font-bold text-primary shadow-xl shadow-primary/20 tracking-wide uppercase"
+          >
             What We Do
-          </div>
+          </motion.div>
         </div>
 
         {/* Single Service Carousel - Showcasing All Services */}

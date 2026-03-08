@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { TrendingUp, Target, BarChart, ArrowRight, CheckCircle2, LineChart, PieChart, Activity } from "lucide-react";
+import { Target, BarChart, ArrowRight, CheckCircle2, LineChart, PieChart, Activity, TrendingUp } from "lucide-react";
 import Link from "next/link";
+import { ServiceHero } from "@/components/ServiceHero";
 
 const baseUrl = "https://www.worksthal.com";
 
@@ -223,42 +224,13 @@ export default function AIMarketingPage() {
   return (
     <main className="min-h-screen bg-background">
       <PageJsonLd />
-      {/* Hero Section */}
-      <section className="relative w-full px-4 pt-32 pb-20 md:pt-40 md:pb-32">
-        <div className="absolute inset-0 bg-gradient-to-b from-success/5 via-background to-background" />
-        <div className="relative z-10 mx-auto max-w-4xl">
-          <Link
-            href="/services"
-            className="mb-6 inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
-          >
-            ← Back to Services
-          </Link>
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-success/20 bg-success/5 px-4 py-2 text-sm font-medium text-success backdrop-blur-sm">
-            <TrendingUp className="h-4 w-4" />
-            AI-Driven Marketing
-          </div>
-          <h1 className="mb-6 font-serif text-5xl font-bold text-foreground md:text-6xl lg:text-7xl">
-            Marketing That Delivers{" "}
-            <span className="bg-gradient-to-r from-success via-accent to-primary bg-clip-text text-transparent">
-              Measurable Growth
-            </span>
-          </h1>
-          <p className="mb-8 text-lg leading-relaxed text-muted-foreground md:text-xl">
-            Worksthal delivers data-driven marketing campaigns powered by AI analytics. Using tools like
-            Google Analytics, Search Console, Ahrefs, and Semrush, Worksthal creates targeted content
-            strategies, optimizes ad spend for maximum ROI, and identifies the growth levers that
-            actually increase your revenue, not just vanity metrics.
-          </p>
-          
-          <Link
-            href="/contact"
-            className="inline-flex items-center gap-2 rounded-lg bg-success px-8 py-4 text-base font-semibold text-success-foreground transition-all hover:bg-success/90"
-          >
-            Get a Free Marketing Audit
-            <ArrowRight className="h-5 w-5" />
-          </Link>
-        </div>
-      </section>
+      <ServiceHero
+        iconName="trending-up"
+        badge="AI-Driven Marketing"
+        title="Marketing That Delivers"
+        gradientText="Measurable Growth"
+        description="Worksthal delivers data-driven marketing campaigns powered by AI analytics. Using tools like Google Analytics, Search Console, Ahrefs, and Semrush, Worksthal creates targeted content strategies, optimizes ad spend for maximum ROI, and identifies the growth levers that actually increase your revenue, not just vanity metrics."
+      />
 
       {/* Benefits Grid */}
       <section className="w-full px-4 py-20">

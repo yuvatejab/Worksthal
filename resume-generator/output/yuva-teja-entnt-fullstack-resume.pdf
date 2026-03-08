@@ -1,0 +1,654 @@
+%PDF-1.3
+%ºß¬à
+3 0 obj
+<</Type /Page
+/Parent 1 0 R
+/Resources 2 0 R
+/MediaBox [0 0 595.2799999999999727 841.8899999999999864]
+/Contents 4 0 R
+>>
+endobj
+4 0 obj
+<<
+/Length 9743
+>>
+stream
+0.5670000000000001 w
+0 G
+BT
+/F2 16 Tf
+18.3999999999999986 TL
+0 g
+193.6377952755905483 799.3703149606299121 Td
+(YUVA TEJA BANDHARAPU) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0 g
+148.1477952755905108 782.3624409448818824 Td
+(+91 6301465458 | ybandharapu@gmail.com | Hyderabad, Telangana, India) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0 g
+97.7477952755905619 771.0238582677164914 Td
+(LinkedIn: https://www.linkedin.com/in/yuva-teja-bandharapu-0a5bb9327/ | GitHub: https://github.com/) Tj
+ET
+BT
+/F2 11 Tf
+12.6499999999999986 TL
+0 g
+42.5196850393700814 754.0159842519684616 Td
+(SUMMARY) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0 g
+42.5196850393700814 739.8427559055118081 Td
+(Computer Science Engineering student with hands-on experience building production-grade full-stack applications and) Tj
+T* (AI-powered systems. Developed and deployed scalable web applications using React, Next.js, and FastAPI, with proven ability) Tj
+T* (to work in remote, collaborative environments. Strong foundation in object-oriented programming \(Python, C++, JavaScript\), data) Tj
+T* (structures, algorithms, and modern web development frameworks. Demonstrated skill in applying engineering principles to solve) Tj
+T* (complex problems, maintaining comprehensive documentation, and delivering projects in agile team settings.) Tj
+ET
+BT
+/F2 11 Tf
+12.6499999999999986 TL
+0 g
+42.5196850393700814 651.9687401574802834 Td
+(EXPERIENCE) Tj
+ET
+BT
+/F2 10 Tf
+11.5 TL
+0 g
+42.5196850393700814 637.7955118110235162 Td
+(BugRaid AI, Software Development Intern) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0 g
+380.9459055118110768 637.7955118110235162 Td
+(Sep 2025 - Dec 2025 | Remote, Hyderabad) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0 g
+42.5196850393700814 623.6222834645668627 Td
+(•) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0 g
+56.6929133858267775 623.6222834645668627 Td
+(Built and deployed a production-grade incident telemetry system using Python, integrating with multiple monitoring platforms) Tj
+T* (through RESTful APIs, demonstrating strong understanding of software development lifecycle and API design) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0 g
+42.5196850393700814 595.2758267716535556 Td
+(•) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0 g
+56.6929133858267775 595.2758267716535556 Td
+(Developed high-performance async processing pipeline using Python \(aiohttp\) handling 300 concurrent requests, achieving) Tj
+T* (10,000 rows per API call with 70-80% bandwidth optimization through gzip compression, showcasing strong problem-solving) Tj
+T* (and performance optimization skills) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0 g
+42.5196850393700814 552.7561417322833677 Td
+(•) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0 g
+56.6929133858267775 552.7561417322833677 Td
+(Engineered scalable AWS cloud infrastructure using ECS Fargate, Docker containerization, SQS message queues, and S3) Tj
+T* (storage, processing 100MB+ data batches with automated CI/CD deployment for dev and prod environments) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0 g
+42.5196850393700814 524.4096850393700606 Td
+(•) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0 g
+56.6929133858267775 524.4096850393700606 Td
+(Implemented comprehensive observability using OpenTelemetry for distributed tracing across 5 microservices, demonstrating) Tj
+T* (understanding of modern software architecture and debugging practices) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0 g
+42.5196850393700814 496.0632283464566399 Td
+(•) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0 g
+56.6929133858267775 496.0632283464566399 Td
+(Created tool-agnostic adapter pattern supporting multiple platforms \(SigNoz, Grafana, Datadog, CloudWatch\), showcasing) Tj
+T* (strong object-oriented programming principles and design patterns) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0 g
+42.5196850393700814 467.716771653543276 Td
+(•) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0 g
+56.6929133858267775 467.716771653543276 Td
+(Collaborated effectively in remote team environment, maintained detailed code documentation, and delivered project) Tj
+T* (milestones on schedule following agile methodologies) Tj
+ET
+BT
+/F2 11 Tf
+12.6499999999999986 TL
+0 g
+42.5196850393700814 422.3624409448818255 Td
+(EDUCATION) Tj
+ET
+BT
+/F2 10 Tf
+11.5 TL
+0 g
+42.5196850393700814 408.1892125984251152 Td
+(B.Tech in Computer Science Engineering \(Artificial Intelligence and Machine Learning\)) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0 g
+42.5196850393700814 396.850629921259781 Td
+(Vishwakarma Institute of Technology) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0 g
+447.6359055118110746 396.850629921259781 Td
+(Sep 2022 - Present | Pune) Tj
+ET
+BT
+/F2 10 Tf
+11.5 TL
+0 g
+42.5196850393700814 382.6774015748030706 Td
+(Telangana State Board of Intermediate Education \(HSC\)) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0 g
+42.5196850393700814 371.3388188976377364 Td
+(Loyola Academy) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0 g
+454.1159055118110928 371.3388188976377364 Td
+(2020 - 2022 | Hyderabad) Tj
+ET
+BT
+/F2 11 Tf
+12.6499999999999986 TL
+0 g
+42.5196850393700814 340.1577165354329964 Td
+(CERTIFICATIONS) Tj
+ET
+BT
+/F2 9 Tf
+10.3499999999999996 TL
+0 g
+42.5196850393700814 325.9844881889763428 Td
+(IBM Artificial Intelligence Engineer, Simplilearn) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0 g
+513.51590551181107 325.9844881889763428 Td
+(May 2025) Tj
+ET
+BT
+/F2 9 Tf
+10.3499999999999996 TL
+0 g
+42.5196850393700814 314.6459055118109518 Td
+(Python for Data Science, Simplilearn) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0 g
+514.595905511811111 314.6459055118109518 Td
+(Sep 2024) Tj
+ET
+BT
+/F2 11 Tf
+12.6499999999999986 TL
+0 g
+42.5196850393700814 286.2994488188975311 Td
+(PROJECTS) Tj
+ET
+BT
+/F2 10 Tf
+11.5 TL
+0 g
+42.5196850393700814 272.1262204724408775 Td
+(API Health Monitoring Dashboard \(Full-Stack Web Application\)) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0 g
+42.5196850393700814 260.7876377952754865 Td
+(•) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0 g
+56.6929133858267775 260.7876377952754865 Td
+(Developed full-stack monitoring dashboard for distributed systems analyzing 15,000+ daily traces using modern web) Tj
+T* (technologies and responsive design principles) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0 g
+42.5196850393700814 232.4411811023621794 Td
+(•) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0 g
+56.6929133858267775 232.4411811023621794 Td
+(Built front-end interface with data visualization components, implementing responsive design for optimal viewing across) Tj
+T* (devices) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0 g
+42.5196850393700814 204.0947244094487587 Td
+(•) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0 g
+56.6929133858267775 204.0947244094487587 Td
+(Integrated OpenTelemetry for telemetry collection, Elasticsearch for data storage, and Kibana for real-time dashboards,) Tj
+T* (reducing manual troubleshooting by 25%) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0 g
+42.5196850393700814 175.748267716535338 Td
+(•) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0 g
+56.6929133858267775 175.748267716535338 Td
+(Utilized Git for version control and followed agile development practices throughout the project lifecycle) Tj
+ET
+BT
+/F2 10 Tf
+11.5 TL
+0 g
+42.5196850393700814 155.9057480314959321 Td
+(Deepfake Detection System \(AI/ML Application\)) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0 g
+42.5196850393700814 144.5671653543306547 Td
+(•) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0 g
+56.6929133858267775 144.5671653543306547 Td
+(Engineered hybrid video classification pipeline using Python, integrating CNN and RNN models with 87% detection accuracy) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0 g
+42.5196850393700814 130.3939370078738875 Td
+(•) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0 g
+56.6929133858267775 130.3939370078738875 Td
+(Processed and analyzed data from 3+ benchmark datasets \(FaceForensics++, Celeb-DF v4\) demonstrating strong data) Tj
+T* (management and analytical skills) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0 g
+42.5196850393700814 102.0474803149605805 Td
+(•) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0 g
+56.6929133858267775 102.0474803149605805 Td
+(Implemented efficient data structures and algorithms for frame extraction and model inference optimization) Tj
+ET
+BT
+/F2 11 Tf
+12.6499999999999986 TL
+0 g
+42.5196850393700814 65.1970866141731449 Td
+(SKILLS) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0 g
+42.5196850393700814 51.0238582677164914 Td
+(Programming Languages: Python, JavaScript, C++, C, SQL, HTML, CSS) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0 g
+42.5196850393700814 36.8506299212597241 Td
+(Web Development: React, Next.js, FastAPI, HTML5, CSS3, Responsive Design, RESTful APIs) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0 g
+42.5196850393700814 22.6774015748030706 Td
+(Front-End Technologies: React, Next.js, Tailwind CSS, Modern JavaScript \(ES6+\), Component-Based Architecture) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0 g
+42.5196850393700814 8.5041732283463034 Td
+(Back-End & APIs: FastAPI, Python, RESTful API Design, Async Programming, API Integration) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0 g
+42.5196850393700814 -5.6690551181103501 Td
+(Development Tools & Practices: Git, Version Control, Docker, CI/CD, Agile Methodologies, Code Documentation) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0 g
+42.5196850393700814 -19.8422834645670036 Td
+(Cloud & Infrastructure: AWS \(ECS, S3, SQS, Lambda, CloudWatch\), Docker, Containerization, Cloud Deployment) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0 g
+42.5196850393700814 -34.0155118110237709 Td
+(Data Structures & Algorithms: Object-Oriented Programming, Data Structures, Algorithm Design, Problem Solving) Tj
+ET
+BT
+/F1 9 Tf
+10.3499999999999996 TL
+0 g
+42.5196850393700814 -48.1887401574804244 Td
+(Additional Skills: Machine Learning, AI Integration, OpenTelemetry, Elasticsearch, Kibana) Tj
+ET
+endstream
+endobj
+1 0 obj
+<</Type /Pages
+/Kids [3 0 R ]
+/Count 1
+>>
+endobj
+5 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+6 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica-Bold
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+7 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica-Oblique
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+8 0 obj
+<<
+/Type /Font
+/BaseFont /Helvetica-BoldOblique
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+9 0 obj
+<<
+/Type /Font
+/BaseFont /Courier
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+10 0 obj
+<<
+/Type /Font
+/BaseFont /Courier-Bold
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+11 0 obj
+<<
+/Type /Font
+/BaseFont /Courier-Oblique
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+12 0 obj
+<<
+/Type /Font
+/BaseFont /Courier-BoldOblique
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+13 0 obj
+<<
+/Type /Font
+/BaseFont /Times-Roman
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+14 0 obj
+<<
+/Type /Font
+/BaseFont /Times-Bold
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+15 0 obj
+<<
+/Type /Font
+/BaseFont /Times-Italic
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+16 0 obj
+<<
+/Type /Font
+/BaseFont /Times-BoldItalic
+/Subtype /Type1
+/Encoding /WinAnsiEncoding
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+17 0 obj
+<<
+/Type /Font
+/BaseFont /ZapfDingbats
+/Subtype /Type1
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+18 0 obj
+<<
+/Type /Font
+/BaseFont /Symbol
+/Subtype /Type1
+/FirstChar 32
+/LastChar 255
+>>
+endobj
+2 0 obj
+<<
+/ProcSet [/PDF /Text /ImageB /ImageC /ImageI]
+/Font <<
+/F1 5 0 R
+/F2 6 0 R
+/F3 7 0 R
+/F4 8 0 R
+/F5 9 0 R
+/F6 10 0 R
+/F7 11 0 R
+/F8 12 0 R
+/F9 13 0 R
+/F10 14 0 R
+/F11 15 0 R
+/F12 16 0 R
+/F13 17 0 R
+/F14 18 0 R
+>>
+/XObject <<
+>>
+>>
+endobj
+19 0 obj
+<<
+/Producer (jsPDF 4.2.0)
+/CreationDate (D:20260306224424+05'30')
+>>
+endobj
+20 0 obj
+<<
+/Type /Catalog
+/Pages 1 0 R
+/OpenAction [3 0 R /FitH null]
+/PageLayout /OneColumn
+>>
+endobj
+xref
+0 21
+0000000000 65535 f 
+0000009947 00000 n 
+0000011764 00000 n 
+0000000015 00000 n 
+0000000152 00000 n 
+0000010004 00000 n 
+0000010129 00000 n 
+0000010259 00000 n 
+0000010392 00000 n 
+0000010529 00000 n 
+0000010652 00000 n 
+0000010781 00000 n 
+0000010913 00000 n 
+0000011049 00000 n 
+0000011177 00000 n 
+0000011304 00000 n 
+0000011433 00000 n 
+0000011566 00000 n 
+0000011668 00000 n 
+0000012012 00000 n 
+0000012098 00000 n 
+trailer
+<<
+/Size 21
+/Root 20 0 R
+/Info 19 0 R
+/ID [ <54BE49E75C7B434CC5436CA25796C3C0> <54BE49E75C7B434CC5436CA25796C3C0> ]
+>>
+startxref
+12202
+%%EOF

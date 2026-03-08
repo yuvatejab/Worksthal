@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { Workflow, Bot, Zap, ArrowRight, CheckCircle2, Clock, TrendingUp, Users } from "lucide-react";
+import { Bot, Zap, ArrowRight, CheckCircle2, Clock, TrendingUp, Users } from "lucide-react";
 import Link from "next/link";
+import { ServiceHero } from "@/components/ServiceHero";
 
 const baseUrl = "https://www.worksthal.com";
 
@@ -181,41 +182,13 @@ export default function AIAutomationPage() {
   return (
     <main className="min-h-screen bg-background">
       <PageJsonLd />
-      {/* Hero Section */}
-      <section className="relative w-full px-4 pt-32 pb-20 md:pt-40 md:pb-32">
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-background to-background" />
-        <div className="relative z-10 mx-auto max-w-4xl">
-          <Link
-            href="/services"
-            className="mb-6 inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
-          >
-            ← Back to Services
-          </Link>
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-2 text-sm font-medium text-primary backdrop-blur-sm">
-            <Workflow className="h-4 w-4" />
-            AI Workflow Automation
-          </div>
-          <h1 className="mb-6 font-serif text-5xl font-bold text-foreground md:text-6xl lg:text-7xl">
-            Automate Repetitive Tasks,{" "}
-            <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-              Focus on Growth
-            </span>
-          </h1>
-          <p className="mb-8 text-lg leading-relaxed text-muted-foreground md:text-xl">
-            Worksthal builds custom AI automation workflows using n8n, Make, and AI APIs. These workflows
-            connect your existing business tools, automate repetitive data processing, and trigger
-            event-driven actions in real time, eliminating manual work and reducing errors.
-          </p>
-          
-          <Link
-            href="/contact"
-            className="inline-flex items-center gap-2 rounded-lg bg-primary px-8 py-4 text-base font-semibold text-primary-foreground transition-all hover:bg-primary/90"
-          >
-            Get a Free Consultation
-            <ArrowRight className="h-5 w-5" />
-          </Link>
-        </div>
-      </section>
+      <ServiceHero
+        iconName="workflow"
+        badge="AI Workflow Automation"
+        title="Automate Repetitive Tasks,"
+        gradientText="Focus on Growth"
+        description="Worksthal builds custom AI automation workflows using n8n, Make, and AI APIs. These workflows connect your existing business tools, automate repetitive data processing, and trigger event-driven actions in real time, eliminating manual work and reducing errors."
+      />
 
       {/* Benefits Grid */}
       <section className="w-full px-4 py-20">

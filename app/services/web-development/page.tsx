@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { Globe, Zap, Smartphone, Search, ArrowRight, CheckCircle2, Code, Gauge } from "lucide-react";
+import { Zap, Smartphone, Search, ArrowRight, CheckCircle2, Code, Gauge, Globe } from "lucide-react";
 import Link from "next/link";
+import { ServiceHero } from "@/components/ServiceHero";
 
 const baseUrl = "https://www.worksthal.com";
 
@@ -228,41 +229,13 @@ export default function WebDevelopmentPage() {
   return (
     <main className="min-h-screen bg-background">
       <PageJsonLd />
-      {/* Hero Section */}
-      <section className="relative w-full px-4 pt-32 pb-20 md:pt-40 md:pb-32">
-        <div className="absolute inset-0 bg-gradient-to-b from-secondary/5 via-background to-background" />
-        <div className="relative z-10 mx-auto max-w-4xl">
-          <Link
-            href="/services"
-            className="mb-6 inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
-          >
-            ← Back to Services
-          </Link>
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-secondary/20 bg-secondary/5 px-4 py-2 text-sm font-medium text-secondary backdrop-blur-sm">
-            <Globe className="h-4 w-4" />
-            Web Development
-          </div>
-          <h1 className="mb-6 font-serif text-5xl font-bold text-foreground md:text-6xl lg:text-7xl">
-            Build Modern Websites That{" "}
-            <span className="bg-gradient-to-r from-secondary via-accent to-primary bg-clip-text text-transparent">
-              Convert & Perform
-            </span>
-          </h1>
-          <p className="mb-8 text-lg leading-relaxed text-muted-foreground md:text-xl">
-            Worksthal creates fast, responsive, conversion-optimized websites using Next.js, React, and
-            TypeScript. These modern web applications follow SEO best practices for high search rankings
-            and are designed to turn visitors into paying customers.
-          </p>
-          
-          <Link
-            href="/contact"
-            className="inline-flex items-center gap-2 rounded-lg bg-secondary px-8 py-4 text-base font-semibold text-secondary-foreground transition-all hover:bg-secondary/90"
-          >
-            Get a Free Consultation
-            <ArrowRight className="h-5 w-5" />
-          </Link>
-        </div>
-      </section>
+      <ServiceHero
+        iconName="globe"
+        badge="Web Development"
+        title="Build Modern Websites That"
+        gradientText="Convert & Perform"
+        description="Worksthal creates fast, responsive, conversion-optimized websites using Next.js, React, and TypeScript. These modern web applications follow SEO best practices for high search rankings and are designed to turn visitors into paying customers."
+      />
 
       {/* Benefits Grid */}
       <section className="w-full px-4 py-20">

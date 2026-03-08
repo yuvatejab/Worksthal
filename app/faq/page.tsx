@@ -149,22 +149,28 @@ export default function FAQPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
-      {/* Hero Section */}
-      <section className="relative w-full px-4 pt-32 pb-20 md:pt-40 md:pb-32">
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-background to-background" />
-        <div className="relative z-10 mx-auto max-w-4xl text-center">
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-2 text-sm font-medium text-primary backdrop-blur-sm">
-            Common Questions
+      {/* Hero Section - Compact */}
+      <section className="relative w-full px-4 pt-32 pb-12 md:pt-40 md:pb-16 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/8 via-transparent to-transparent" />
+        
+        {/* Subtle grid pattern */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:32px_32px]" />
+        </div>
+
+        <div className="relative z-10 mx-auto max-w-5xl text-center">
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-sm px-4 py-1.5 text-[10px] font-semibold text-primary tracking-wider uppercase">
+            FAQ
           </div>
-          <h1 className="mb-6 font-serif text-5xl font-bold text-foreground md:text-6xl lg:text-7xl">
+          <h1 className="mb-3 font-serif text-4xl font-bold text-foreground md:text-5xl tracking-tight">
             AI Automation, Web Development &amp; AEO:{" "}
             <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-              Frequently Asked Questions
+              FAQ
             </span>
           </h1>
-          <p className="mx-auto max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
-            Find answers to common questions about Worksthal&apos;s AI automation, web development, AEO
-            services, pricing, and process. Can&apos;t find what you&apos;re looking for? Contact us directly.
+          <p className="mx-auto max-w-2xl text-sm text-muted-foreground">
+            Quick answers about our services, pricing, and process. Can&apos;t find what you need? Contact us directly.
           </p>
         </div>
       </section>
@@ -174,30 +180,39 @@ export default function FAQPage() {
         <FaqAccordion faqs={faqs} />
       </section>
 
-      {/* CTA Section */}
-      <section className="w-full px-4 py-20 md:py-32">
-        <div className="mx-auto max-w-4xl rounded-3xl border border-border bg-gradient-to-br from-card to-card/50 p-8 text-center md:p-12">
-          <h2 className="mb-4 font-serif text-3xl font-bold text-foreground md:text-4xl">
-            Still Have Questions?
-          </h2>
-          <p className="mb-8 text-lg text-muted-foreground">
-            Schedule a free consultation to discuss your specific needs and get personalized answers to
-            your questions.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 rounded-lg bg-primary px-8 py-4 text-base font-semibold text-primary-foreground transition-all hover:bg-primary/90"
-            >
-              Get a Free Consultation
-              <ArrowRight className="h-5 w-5" />
-            </Link>
-            <Link
-              href="/services"
-              className="inline-flex items-center gap-2 rounded-lg border border-border bg-background px-8 py-4 text-base font-semibold text-foreground transition-all hover:bg-card"
-            >
-              Explore Our Services
-            </Link>
+      {/* CTA Section - Compact */}
+      <section className="w-full px-4 py-16">
+        <div className="mx-auto max-w-4xl relative">
+          <div className="relative rounded-xl border border-border/50 bg-card/80 backdrop-blur-sm p-8 text-center overflow-hidden">
+            {/* Subtle gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent" />
+            
+            <div className="relative">
+              <h2 className="mb-3 font-serif text-2xl font-bold text-foreground md:text-3xl">
+                Still Have{" "}
+                <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
+                  Questions?
+                </span>
+              </h2>
+              <p className="mb-6 text-sm text-muted-foreground max-w-2xl mx-auto">
+                Schedule a free consultation to discuss your specific needs and get personalized answers.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-6 py-2.5 text-sm font-semibold text-primary-foreground transition-all hover:bg-primary/90 hover:shadow-lg"
+                >
+                  Get a Free Consultation
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+                <Link
+                  href="/services"
+                  className="inline-flex items-center justify-center gap-2 rounded-lg border border-border bg-background/50 px-6 py-2.5 text-sm font-semibold text-foreground transition-all hover:bg-card"
+                >
+                  Explore Our Services
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>
