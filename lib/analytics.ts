@@ -135,7 +135,7 @@ export const trackServiceClick = (serviceName: string) => {
 export const trackEmailClick = () => {
   trackEvent(EventName.EMAIL_CLICK, {
     category: EventCategory.CONTACT,
-    label: "shubham@worksthal.com",
+    label: "admin@worksthal.com",
   });
 };
 

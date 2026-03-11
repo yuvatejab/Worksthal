@@ -277,7 +277,7 @@ export default function TermsPage() {
               <p className="mb-2 text-foreground">
                 <strong>Worksthal</strong>
               </p>
-              <p className="mb-1 text-muted-foreground">Email: shubham@worksthal.com</p>
+              <p className="mb-1 text-muted-foreground">Email: admin@worksthal.com</p>
               <p className="mb-1 text-muted-foreground">Phone: +91 63098 21905</p>
               <p className="text-muted-foreground">Location: India</p>
             </div>

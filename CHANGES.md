@@ -134,7 +134,7 @@ Track these in Google Search Console and Analytics:
 ## 📞 Support
 
 Questions? Contact:
-- Email: shubham@worksthal.com
+- Email: admin@worksthal.com
 - Phone: +91 63098 21905
 
 ---

@@ -51,7 +51,7 @@ function AboutJsonLd() {
       jobTitle: "Founder",
       worksFor: { "@type": "Organization", name: "Worksthal" },
     },
-    email: "shubham@worksthal.com",
+    email: "admin@worksthal.com",
     telephone: "+916309821905",
     address: {
       "@type": "PostalAddress",

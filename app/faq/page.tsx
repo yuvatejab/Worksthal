@@ -14,7 +14,7 @@ const faqs = [
       {
         question: "Where is Worksthal located?",
         answer:
-          "Worksthal is based in India. The agency serves clients worldwide and operates remotely for international projects. You can reach Worksthal at shubham@worksthal.com or +91 63098 21905.",
+          "Worksthal is based in India. The agency serves clients worldwide and operates remotely for international projects. You can reach Worksthal at admin@worksthal.com or +91 63098 21905.",
       },
       {
         question: "Does Worksthal work with international clients?",
@@ -119,7 +119,7 @@ const faqs = [
       {
         question: "How do I get started with Worksthal?",
         answer:
-          "Start by scheduling a free consultation via the contact form or email (shubham@worksthal.com). During the consultation, Worksthal will understand your goals, challenges, and requirements. Then Worksthal provides a detailed proposal with scope, timeline, and pricing. Once approved, work begins with regular check-ins and progress updates throughout the project.",
+          "Start by scheduling a free consultation via the contact form or email (admin@worksthal.com). During the consultation, Worksthal will understand your goals, challenges, and requirements. Then Worksthal provides a detailed proposal with scope, timeline, and pricing. Once approved, work begins with regular check-ins and progress updates throughout the project.",
       },
     ],
   },

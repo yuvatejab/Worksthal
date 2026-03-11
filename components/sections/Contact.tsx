@@ -250,8 +250,8 @@ export function Contact() {
                 {
                   icon: Mail,
                   label: "Email",
-                  value: "shubham@worksthal.com",
-                  href: "mailto:shubham@worksthal.com",
+                  value: "admin@worksthal.com",
+                  href: "mailto:admin@worksthal.com",
                   onClick: trackEmailClick,
                 },
                 {

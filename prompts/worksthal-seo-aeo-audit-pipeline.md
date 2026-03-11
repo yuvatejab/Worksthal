@@ -289,7 +289,7 @@ Each recommendation MUST be:
 
 ### Footer
 - Worksthal branding (W icon, "WORKSTHAL" text, tagline)
-- Contact: shubham@worksthal.com
+- Contact: admin@worksthal.com
 - Confidentiality notice
 - Copyright
 

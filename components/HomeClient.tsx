@@ -268,11 +268,11 @@ export function HomeClient() {
                         Email:
                       </span>{" "}
                       <a
-                        href="mailto:shubham@worksthal.com"
+                        href="mailto:admin@worksthal.com"
                         onClick={() => trackEmailClick()}
                         className="transition-colors hover:text-primary"
                       >
-                        shubham@worksthal.com
+                        admin@worksthal.com
                       </a>
                     </p>
                     <p className="text-sm text-muted-foreground">

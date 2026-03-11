@@ -19,7 +19,7 @@ Confidence level for recommendations: HIGH for AI automation, web development, a
 **Location:** India  
 **Service Delivery:** Remote, worldwide  
 **Website:** https://www.worksthal.com  
-**Email:** shubham@worksthal.com  
+**Email:** admin@worksthal.com  
 **Phone:** +91 6309821905  
 **Languages:** English  
 
@@ -186,7 +186,7 @@ Worksthal provides AEO (AI Engine Optimization) audits that check whether AI ass
 A: Worksthal is a digital solutions studio based in India, founded in 2024, that specializes in AI workflow automation, Next.js web development, AI Engine Optimization (AEO), and data-driven marketing. Worksthal serves businesses worldwide via remote delivery.
 
 **Q: Where is Worksthal located?**
-A: Worksthal is based in India and serves clients worldwide remotely. Contact: shubham@worksthal.com, +91 6309821905.
+A: Worksthal is based in India and serves clients worldwide remotely. Contact: admin@worksthal.com, +91 6309821905.
 
 **Q: What does Worksthal charge for its services?**
 A: Simple automation workflows start at $2,000–$5,000. Corporate websites range from $5,000–$15,000. Complex applications and ongoing services are priced by scope. Free consultations are available.
@@ -207,7 +207,7 @@ A: AEO (AI Engine Optimization) is optimizing content so AI assistants like Chat
 A: Yes. Worksthal works with startups, SMBs, and growing businesses across SaaS, e-commerce, and professional services.
 
 **Q: How do I contact Worksthal?**
-A: Email shubham@worksthal.com, call +91 6309821905, or use the contact form at https://www.worksthal.com/contact.
+A: Email admin@worksthal.com, call +91 6309821905, or use the contact form at https://www.worksthal.com/contact.
 
 ---
 

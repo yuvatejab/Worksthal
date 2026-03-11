@@ -13,7 +13,7 @@ export function JsonLd() {
     },
     description:
       "Worksthal is a digital partner based in India specializing in AI workflow automation, Next.js web development, and AI Engine Optimization (AEO). Worksthal builds custom automation workflows using n8n and Make, creates modern websites with Next.js and React, and optimizes content for AI engines like ChatGPT, Claude, and Perplexity.",
-    email: "shubham@worksthal.com",
+    email: "admin@worksthal.com",
     telephone: "+916309821905",
     address: {
       "@type": "PostalAddress",
@@ -82,7 +82,7 @@ export function JsonLd() {
       "Worksthal is a digital partner based in India that builds custom AI automation workflows, modern Next.js websites, and AI Engine Optimization (AEO) strategies for businesses worldwide.",
     url: baseUrl,
     telephone: "+916309821905",
-    email: "shubham@worksthal.com",
+    email: "admin@worksthal.com",
     address: {
       "@type": "PostalAddress",
       addressCountry: "IN",
@@ -215,7 +215,7 @@ export function JsonLd() {
         name: "Where is Worksthal located?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Worksthal is based in India and serves clients worldwide. The agency operates remotely for international projects. You can reach Worksthal at shubham@worksthal.com or +91 6309821905.",
+          text: "Worksthal is based in India and serves clients worldwide. The agency operates remotely for international projects. You can reach Worksthal at admin@worksthal.com or +91 6309821905.",
         },
       },
       {
@@ -351,7 +351,7 @@ export function JsonLd() {
         name: "How do I get started with Worksthal?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Start by scheduling a free consultation via the contact form or email (shubham@worksthal.com). During the consultation, Worksthal will understand your goals, challenges, and requirements, then provide a detailed proposal with scope, timeline, and pricing.",
+          text: "Start by scheduling a free consultation via the contact form or email (admin@worksthal.com). During the consultation, Worksthal will understand your goals, challenges, and requirements, then provide a detailed proposal with scope, timeline, and pricing.",
         },
       },
     ],
