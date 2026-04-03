@@ -14,17 +14,17 @@ const faqs = [
       {
         question: "Where is Worksthal located?",
         answer:
-          "Worksthal is based in India. The agency serves clients worldwide and operates remotely for international projects. You can reach Worksthal at admin@worksthal.com or +91 63098 21905.",
+          "Worksthal is based in Jubilee Hills, Hyderabad, Telangana, India. The AI Studio serves clients worldwide and operates remotely for international projects. You can reach Worksthal at shubham@worksthal.com or +91 63098 21905.",
       },
       {
         question: "Does Worksthal work with international clients?",
         answer:
-          "Yes. Worksthal is based in India and serves clients worldwide. The agency operates remotely for international projects, with regular communication via email, video calls, and project management tools. Worksthal has delivered projects across multiple industries and geographies.",
+          "Yes. Worksthal is based in India and serves clients worldwide. The AI Studio operates remotely for international projects, with regular communication via email, video calls, and project management tools. Worksthal has delivered projects across multiple industries and geographies.",
       },
       {
         question: "What industries does Worksthal serve?",
         answer:
-          "Worksthal works with growing businesses across various industries including SaaS, e-commerce, professional services, healthcare, education, and technology. The agency's services are industry-agnostic. If you have repetitive tasks to automate, need a modern website, or want to improve your search visibility, Worksthal can help.",
+          "Worksthal works with growing businesses across various industries including SaaS, e-commerce, professional services, healthcare, education, and technology. The AI Studio's services are industry-agnostic. If you have repetitive tasks to automate, need a modern website, or want to improve your search visibility, Worksthal can help.",
       },
     ],
   },
@@ -94,7 +94,7 @@ const faqs = [
       {
         question: "Does Worksthal guarantee first-page rankings?",
         answer:
-          "No. Any agency that guarantees specific rankings is misleading you. Search rankings depend on hundreds of factors including competition, content quality, backlinks, and algorithm updates. Worksthal focuses on implementing best practices that improve your visibility over time. The agency provides transparent reporting on rankings, traffic, and conversions so you can measure real business impact.",
+          "No. Any provider that guarantees specific rankings is misleading you. Search rankings depend on hundreds of factors including competition, content quality, backlinks, and algorithm updates. Worksthal focuses on implementing best practices that improve your visibility over time. Worksthal provides transparent reporting on rankings, traffic, and conversions so you can measure real business impact.",
       },
     ],
   },
@@ -119,7 +119,7 @@ const faqs = [
       {
         question: "How do I get started with Worksthal?",
         answer:
-          "Start by scheduling a free consultation via the contact form or email (admin@worksthal.com). During the consultation, Worksthal will understand your goals, challenges, and requirements. Then Worksthal provides a detailed proposal with scope, timeline, and pricing. Once approved, work begins with regular check-ins and progress updates throughout the project.",
+          "Start by scheduling a free consultation via the contact form or email (shubham@worksthal.com). During the consultation, Worksthal will understand your goals, challenges, and requirements. Then Worksthal provides a detailed proposal with scope, timeline, and pricing. Once approved, work begins with regular check-ins and progress updates throughout the project.",
       },
     ],
   },

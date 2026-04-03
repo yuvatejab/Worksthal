@@ -80,7 +80,7 @@ export const metadata: Metadata = {
     "business process automation",
     "n8n automation",
     "automation services",
-    "AI automation agency",
+    "AI automation studio",
     "custom automation workflows",
     "automation consultants",
     "task automation",

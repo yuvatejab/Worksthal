@@ -277,9 +277,9 @@ export default function TermsPage() {
               <p className="mb-2 text-foreground">
                 <strong>Worksthal</strong>
               </p>
-              <p className="mb-1 text-muted-foreground">Email: admin@worksthal.com</p>
+              <p className="mb-1 text-muted-foreground">Email: shubham@worksthal.com</p>
               <p className="mb-1 text-muted-foreground">Phone: +91 63098 21905</p>
-              <p className="text-muted-foreground">Location: India</p>
+              <p className="text-muted-foreground">Location: 4th floor, Apurupa Turbo Tower, No:36 Pillar No:1680, H.No 8-2-293/82/a/787, Road, Jubilee Hills, Hyderabad, Telangana</p>
             </div>
           </section>
         </div>

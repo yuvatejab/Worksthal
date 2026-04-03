@@ -74,7 +74,7 @@ const blogPosts = [
     author: "Worksthal Team",
   },
   {
-    title: "How to Choose an AI Agency: What to Look For in 2026",
+    title: "How to Choose an AI Studio: What to Look For in 2026",
     slug: "how-to-choose-ai-agency",
     excerpt:
       "A practical guide to evaluating AI agencies for workflow automation, web development, and marketing. Learn what to look for, questions to ask, and red flags to avoid.",

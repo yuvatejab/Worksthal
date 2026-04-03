@@ -80,7 +80,7 @@ export const metadata: Metadata = {
     "website development",
     "Next.js development",
     "React development",
-    "web development agency",
+    "web development studio",
     "custom website development",
     "website development services",
     "web application development",

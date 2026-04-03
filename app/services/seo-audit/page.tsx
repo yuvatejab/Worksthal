@@ -107,7 +107,7 @@ export const metadata: Metadata = {
     "SEO audit services",
     "SEO optimization",
     "technical SEO audit",
-    "SEO agency",
+    "SEO studio",
     "on-page SEO",
     "SEO consultant",
     "website SEO audit",

@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     "website development company",
     "automation services",
     "SEO optimization",
-    "AI agency",
+    "AI Studio",
     "business process automation",
     "SEO services",
     "AEO audit",

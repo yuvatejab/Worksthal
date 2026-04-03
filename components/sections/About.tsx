@@ -215,7 +215,7 @@ export function About() {
                 About Worksthal
               </div>
               <h2 className="text-h1 font-serif font-bold">
-                Digital Agency Built for Growing Businesses
+                AI Studio Built for Growing Businesses
               </h2>
             </div>
           </BlurFade>

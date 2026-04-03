@@ -8,10 +8,10 @@ export const metadata: Metadata = {
     "Worksthal is a digital partner based in India specializing in AI workflow automation using n8n and Make, Next.js web development, and AI Engine Optimization (AEO). We build practical solutions that deliver measurable results for businesses worldwide.",
   keywords: [
     "about Worksthal",
-    "AI automation agency India",
+    "AI automation studio India",
     "web development company India",
-    "AEO agency",
-    "digital agency India",
+    "AEO studio",
+    "digital AI Studio India",
     "n8n automation",
     "Next.js development",
   ],

@@ -236,7 +236,7 @@ export async function POST(request: Request) {
                 </p>
                 
                 <p style="color: #d4d4d8; margin-bottom: 30px;">
-                  We typically respond within <strong style="color: #10b981;">24-48 hours</strong>. If your project is time-sensitive, feel free to reach us directly at <a href="mailto:admin@worksthal.com" style="color: #10b981; text-decoration: none;">admin@worksthal.com</a>.
+                  We typically respond within <strong style="color: #10b981;">24-48 hours</strong>. If your project is time-sensitive, feel free to reach us directly at <a href="mailto:shubham@worksthal.com" style="color: #10b981; text-decoration: none;">shubham@worksthal.com</a>.
                 </p>
 
                 <div class="message-preview">
@@ -289,7 +289,7 @@ export async function POST(request: Request) {
                   <strong style="color: #fafafa;">Worksthal</strong> — AI Automation, Web Development & AEO Studio
                 </p>
                 <p class="footer-text">
-                  📧 admin@worksthal.com  •  📱 +91 6309821905
+                  📧 shubham@worksthal.com  •  📱 +91 6309821905
                 </p>
                 <div class="footer-links">
                   <a href="https://worksthal.com" class="footer-link">Website</a>
@@ -308,7 +308,7 @@ export async function POST(request: Request) {
       // Send notification email to admin
       resend.emails.send({
         from: 'Worksthal Contact Form <noreply@worksthal.com>',
-        to: 'admin@worksthal.com',
+        to: 'shubham@worksthal.com',
         subject: `🔔 New Lead: ${fullName}${company ? ` from ${company}` : ''}`,
       html: `
         <!DOCTYPE html>

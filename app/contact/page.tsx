@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     "free consultation",
     "AI automation consultation",
     "web development quote",
-    "contact digital agency",
+    "contact AI Studio",
     "hire AI automation expert",
     "website development consultation",
     "AEO consultation",

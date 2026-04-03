@@ -250,8 +250,8 @@ export function Contact() {
                 {
                   icon: Mail,
                   label: "Email",
-                  value: "admin@worksthal.com",
-                  href: "mailto:admin@worksthal.com",
+                  value: "shubham@worksthal.com",
+                  href: "mailto:shubham@worksthal.com",
                   onClick: trackEmailClick,
                 },
                 {
@@ -264,7 +264,7 @@ export function Contact() {
                 {
                   icon: MapPin,
                   label: "Location",
-                  value: "India",
+                  value: "4th floor, Apurupa Turbo Tower, Jubilee Hills, Hyderabad, Telangana",
                 },
               ].map((item, idx) => (
                 <motion.div

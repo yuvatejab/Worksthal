@@ -160,7 +160,7 @@ export function HomeClient() {
                     Worksthal
                   </h3>
                   <p className="text-sm leading-relaxed text-muted-foreground">
-                    Worksthal is a digital agency based in India,
+                    Worksthal is an AI Studio based in India,
                     specializing in AI workflow automation, web development, and
                     AI engine optimization. We deliver measurable results within
                     90 days.
@@ -268,11 +268,11 @@ export function HomeClient() {
                         Email:
                       </span>{" "}
                       <a
-                        href="mailto:admin@worksthal.com"
+                        href="mailto:shubham@worksthal.com"
                         onClick={() => trackEmailClick()}
                         className="transition-colors hover:text-primary"
                       >
-                        admin@worksthal.com
+                        shubham@worksthal.com
                       </a>
                     </p>
                     <p className="text-sm text-muted-foreground">
@@ -291,7 +291,7 @@ export function HomeClient() {
                       <span className="font-semibold text-foreground">
                         Location:
                       </span>{" "}
-                      India
+                      4th floor, Apurupa Turbo Tower, Jubilee Hills, Hyderabad, Telangana
                     </p>
                   </address>
                 </div>

@@ -12,11 +12,15 @@ export function JsonLd() {
       url: `${baseUrl}/favicon.ico`,
     },
     description:
-      "Worksthal is a digital partner based in India specializing in AI workflow automation, Next.js web development, and AI Engine Optimization (AEO). Worksthal builds custom automation workflows using n8n and Make, creates modern websites with Next.js and React, and optimizes content for AI engines like ChatGPT, Claude, and Perplexity.",
-    email: "admin@worksthal.com",
+      "Worksthal is a digital partner based in Jubilee Hills, Hyderabad, Telangana, India specializing in AI workflow automation, Next.js web development, and AI Engine Optimization (AEO). Worksthal builds custom automation workflows using n8n and Make, creates modern websites with Next.js and React, and optimizes content for AI engines like ChatGPT, Claude, and Perplexity.",
+    email: "shubham@worksthal.com",
     telephone: "+916309821905",
     address: {
       "@type": "PostalAddress",
+      streetAddress: "4th floor, Apurupa Turbo Tower, No:36 Pillar No:1680, H.No 8-2-293/82/a/787, Road",
+      addressLocality: "Jubilee Hills",
+      addressRegion: "Hyderabad, Telangana",
+      postalCode: "500033",
       addressCountry: "IN",
     },
     foundingDate: "2024",
@@ -57,7 +61,7 @@ export function JsonLd() {
     name: "Worksthal",
     url: baseUrl,
     description:
-      "Worksthal is a digital partner based in India specializing in AI workflow automation, Next.js web development, and AI Engine Optimization (AEO).",
+      "Worksthal is a digital partner based in Jubilee Hills, Hyderabad, Telangana, India specializing in AI workflow automation, Next.js web development, and AI Engine Optimization (AEO).",
     publisher: {
       "@type": "Organization",
       "@id": `${baseUrl}/#organization`,
@@ -79,12 +83,16 @@ export function JsonLd() {
     "@id": `${baseUrl}/#professionalservice`,
     name: "Worksthal",
     description:
-      "Worksthal is a digital partner based in India that builds custom AI automation workflows, modern Next.js websites, and AI Engine Optimization (AEO) strategies for businesses worldwide.",
+      "Worksthal is a digital partner based in Jubilee Hills, Hyderabad, Telangana, India that builds custom AI automation workflows, modern Next.js websites, and AI Engine Optimization (AEO) strategies for businesses worldwide.",
     url: baseUrl,
     telephone: "+916309821905",
-    email: "admin@worksthal.com",
+    email: "shubham@worksthal.com",
     address: {
       "@type": "PostalAddress",
+      streetAddress: "4th floor, Apurupa Turbo Tower, No:36 Pillar No:1680, H.No 8-2-293/82/a/787, Road",
+      addressLocality: "Jubilee Hills",
+      addressRegion: "Hyderabad, Telangana",
+      postalCode: "500033",
       addressCountry: "IN",
     },
     priceRange: "$$",
@@ -215,7 +223,7 @@ export function JsonLd() {
         name: "Where is Worksthal located?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Worksthal is based in India and serves clients worldwide. The agency operates remotely for international projects. You can reach Worksthal at admin@worksthal.com or +91 6309821905.",
+          text: "Worksthal is based in Jubilee Hills, Hyderabad, Telangana, India and serves clients worldwide. The AI Studio operates remotely for international projects. You can reach Worksthal at shubham@worksthal.com or +91 6309821905.",
         },
       },
       {
@@ -223,7 +231,7 @@ export function JsonLd() {
         name: "Does Worksthal work with international clients?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Yes. Worksthal is based in India and serves clients worldwide. The agency operates remotely for international projects, with regular communication via email, video calls, and project management tools.",
+          text: "Yes. Worksthal is based in Jubilee Hills, Hyderabad, Telangana, India and serves clients worldwide. The AI Studio operates remotely for international projects, with regular communication via email, video calls, and project management tools.",
         },
       },
       {
@@ -231,7 +239,7 @@ export function JsonLd() {
         name: "What industries does Worksthal serve?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Worksthal works with growing businesses across various industries including SaaS, e-commerce, professional services, healthcare, education, and technology. The agency's services are industry-agnostic.",
+          text: "Worksthal works with growing businesses across various industries including SaaS, e-commerce, professional services, healthcare, education, and technology. The AI Studio's services are industry-agnostic.",
         },
       },
       {
@@ -319,7 +327,7 @@ export function JsonLd() {
         name: "Does Worksthal guarantee first-page rankings?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "No. Any agency that guarantees specific rankings is misleading you. Worksthal focuses on implementing best practices that improve visibility over time, with transparent reporting on rankings, traffic, and conversions.",
+          text: "No. Any provider that guarantees specific rankings is misleading you. Worksthal focuses on implementing best practices that improve visibility over time, with transparent reporting on rankings, traffic, and conversions.",
         },
       },
       {
@@ -351,7 +359,7 @@ export function JsonLd() {
         name: "How do I get started with Worksthal?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Start by scheduling a free consultation via the contact form or email (admin@worksthal.com). During the consultation, Worksthal will understand your goals, challenges, and requirements, then provide a detailed proposal with scope, timeline, and pricing.",
+          text: "Start by scheduling a free consultation via the contact form or email (shubham@worksthal.com). During the consultation, Worksthal will understand your goals, challenges, and requirements, then provide a detailed proposal with scope, timeline, and pricing.",
         },
       },
     ],

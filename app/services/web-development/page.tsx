@@ -110,7 +110,7 @@ export const metadata: Metadata = {
     "modern web applications",
     "responsive web design",
     "SEO-optimized websites",
-    "web development agency",
+    "web development studio",
     "website development",
     "website development company",
     "custom website development",
